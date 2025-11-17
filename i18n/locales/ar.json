@@ -44,5 +44,314 @@
     "edit": "تعديل",
     "copy": "نسخ",
     "download": "تحميل"
+  },
+  "builder": {
+    "role": {
+      "label": "دورك الوظيفي",
+      "placeholder": "اختر دورك الوظيفي...",
+      "otherPlaceholder": "أدخل دورك الوظيفي (مثلاً: باحث تجربة مستخدم)",
+      "helpText": "اختر الدور الذي يصف مهنتك أو خبرتك بشكل أفضل",
+      "options": {
+        "softwareEngineer": {
+          "label": "مهندس برمجيات",
+          "description": "مطور أو مبرمج"
+        },
+        "productManager": {
+          "label": "مدير منتجات",
+          "description": "مالك منتج أو استراتيجي منتجات"
+        },
+        "dataAnalyst": {
+          "label": "محلل بيانات",
+          "description": "عالم بيانات أو محترف تحليلات"
+        },
+        "marketingSpecialist": {
+          "label": "أخصائي تسويق",
+          "description": "مسوق رقمي أو استراتيجي تسويق"
+        },
+        "designer": {
+          "label": "مصمم",
+          "description": "مصمم واجهات أو مصمم جرافيك"
+        },
+        "businessAnalyst": {
+          "label": "محلل أعمال",
+          "description": "ذكاء أعمال أو محلل استراتيجي"
+        },
+        "contentWriter": {
+          "label": "كاتب محتوى",
+          "description": "كاتب نصوص أو منشئ محتوى"
+        },
+        "projectManager": {
+          "label": "مدير مشاريع",
+          "description": "منسق مشاريع أو سكرم ماستر"
+        },
+        "researcher": {
+          "label": "باحث",
+          "description": "باحث أكاديمي أو صناعي"
+        },
+        "other": {
+          "label": "أخرى",
+          "description": "أدخل دور مخصص"
+        }
+      }
+    },
+    "audience": {
+      "label": "الجمهور المستهدف",
+      "placeholder": "اختر جمهورك المستهدف...",
+      "otherPlaceholder": "أدخل جمهورك المستهدف",
+      "helpText": "من سيقرأ أو يستخدم مخرجاتك؟",
+      "options": {
+        "technicalTeam": {
+          "label": "الفريق التقني",
+          "description": "مطورون، مهندسون، متخصصو تقنية المعلومات"
+        },
+        "executives": {
+          "label": "المديرون التنفيذيون",
+          "description": "المديرون التنفيذيون، القيادة العليا"
+        },
+        "clients": {
+          "label": "العملاء",
+          "description": "العملاء أو الزبائن الخارجيون"
+        },
+        "generalPublic": {
+          "label": "الجمهور العام",
+          "description": "جمهور واسع بخلفيات متنوعة"
+        },
+        "students": {
+          "label": "الطلاب",
+          "description": "المتعلمون أو الجمهور التعليمي"
+        },
+        "experts": {
+          "label": "الخبراء",
+          "description": "متخصصون أو محترفون في المجال"
+        },
+        "beginners": {
+          "label": "المبتدئون",
+          "description": "أشخاص جدد على الموضوع"
+        },
+        "stakeholders": {
+          "label": "أصحاب المصلحة",
+          "description": "أصحاب المصلحة أو صناع القرار"
+        },
+        "teamMembers": {
+          "label": "أعضاء الفريق",
+          "description": "الفريق الداخلي أو الزملاء"
+        },
+        "other": {
+          "label": "أخرى",
+          "description": "أدخل جمهور مخصص"
+        }
+      }
+    },
+    "task": {
+      "label": "وصف المهمة",
+      "placeholder": "صف ما تريد أن يساعدك به الذكاء الاصطناعي...",
+      "characters": "حرف",
+      "helpText": "كن محدداً حول ما تريد تحقيقه (10-1000 حرف)",
+      "examplesTitle": "أمثلة على الأوامر (انقر للاستخدام):",
+      "examples": [
+        "اشرح مفهوم بنية الخدمات الصغيرة لجمهور غير تقني",
+        "اكتب بريد إلكتروني احترافي لرفض طلب اجتماع",
+        "أنشئ دليل خطوة بخطوة لنشر تطبيق React على Vercel"
+      ]
+    },
+    "tone": {
+      "label": "الأسلوب",
+      "helpText": "اختر الأسلوب الذي يناسب طريقة تواصلك وجمهورك",
+      "options": {
+        "professional": {
+          "label": "احترافي",
+          "description": "رسمي ومناسب للأعمال",
+          "example": "تقارير الأعمال، المقترحات"
+        },
+        "friendly": {
+          "label": "ودي",
+          "description": "دافئ وقريب",
+          "example": "تواصل الفريق"
+        },
+        "formal": {
+          "label": "رسمي",
+          "description": "رسمي واحتفالي",
+          "example": "الوثائق القانونية، الإعلانات"
+        },
+        "casual": {
+          "label": "غير رسمي",
+          "description": "مريح ومحادثاتي",
+          "example": "محادثات داخلية، مقالات المدونة"
+        },
+        "persuasive": {
+          "label": "إقناعي",
+          "description": "مقنع ومؤثر",
+          "example": "نصوص تسويقية، مقترحات"
+        },
+        "informative": {
+          "label": "إعلامي",
+          "description": "تعليمي وتوضيحي",
+          "example": "الوثائق، الأدلة"
+        },
+        "creative": {
+          "label": "إبداعي",
+          "description": "تخيلي وأصيل",
+          "example": "إنشاء المحتوى، العصف الذهني"
+        },
+        "technical": {
+          "label": "تقني",
+          "description": "دقيق ومفصل",
+          "example": "وثائق تقنية، مواصفات"
+        },
+        "empathetic": {
+          "label": "تعاطفي",
+          "description": "متفهم وداعم",
+          "example": "دعم العملاء، التعليقات"
+        }
+      }
+    },
+    "outputFormat": {
+      "label": "تنسيق الإخراج",
+      "placeholder": "اختر تنسيق الإخراج...",
+      "otherPlaceholder": "أدخل تنسيق مخصص (مثلاً: محضر اجتماع)",
+      "helpText": "اختر كيف تريد أن يتم تنظيم استجابة الذكاء الاصطناعي",
+      "options": {
+        "paragraph": {
+          "label": "فقرات",
+          "description": "نص متدفق في شكل فقرات"
+        },
+        "bulletPoints": {
+          "label": "نقاط",
+          "description": "نقاط موجزة مع رموز"
+        },
+        "numberedList": {
+          "label": "قائمة مرقمة",
+          "description": "عناصر مرقمة متسلسلة"
+        },
+        "email": {
+          "label": "بريد إلكتروني",
+          "description": "تنسيق بريد إلكتروني احترافي"
+        },
+        "report": {
+          "label": "تقرير",
+          "description": "تقرير منظم بأقسام"
+        },
+        "presentation": {
+          "label": "عرض تقديمي",
+          "description": "محتوى جاهز للشرائح"
+        },
+        "codeComments": {
+          "label": "تعليقات الكود",
+          "description": "توثيق كود تقني"
+        },
+        "socialPost": {
+          "label": "منشور وسائل التواصل",
+          "description": "محتوى اجتماعي قصير وجذاب"
+        },
+        "executiveSummary": {
+          "label": "ملخص تنفيذي",
+          "description": "نظرة عامة رفيعة المستوى للقيادة"
+        },
+        "table": {
+          "label": "جدول",
+          "description": "تنسيق بيانات جدولي"
+        },
+        "dialogue": {
+          "label": "حوار",
+          "description": "تبادل محادثاتي"
+        },
+        "stepByStep": {
+          "label": "دليل خطوة بخطوة",
+          "description": "شرح تعليمي"
+        },
+        "faq": {
+          "label": "أسئلة شائعة",
+          "description": "تنسيق أسئلة وأجوبة"
+        },
+        "other": {
+          "label": "أخرى",
+          "description": "تنسيق مخصص"
+        }
+      }
+    },
+    "constraints": {
+      "label": "القيود",
+      "optional": "اختياري",
+      "otherLabel": "قيود إضافية",
+      "otherPlaceholder": "أدخل أي متطلبات أو قيود محددة أخرى...",
+      "noneSelected": "لم يتم اختيار قيود",
+      "selectedCount": "{count} قيد محدد",
+      "helpText": "اختر أي قيود لتحسين ناتج الذكاء الاصطناعي",
+      "options": {
+        "wordLimit100": {
+          "label": "حد أقصى 100 كلمة",
+          "description": "احتفظ بالاستجابة أقل من 100 كلمة",
+          "example": "قصير وموجز"
+        },
+        "wordLimit300": {
+          "label": "حد أقصى 300 كلمة",
+          "description": "احتفظ بالاستجابة أقل من 300 كلمة",
+          "example": "طول متوسط"
+        },
+        "wordLimit500": {
+          "label": "حد أقصى 500 كلمة",
+          "description": "احتفظ بالاستجابة أقل من 500 كلمة",
+          "example": "استجابة مفصلة"
+        },
+        "includeCitations": {
+          "label": "تضمين المراجع",
+          "description": "أضف مراجع ومصادر",
+          "example": "محتوى مدعوم بالبحث"
+        },
+        "useProvidedData": {
+          "label": "استخدم البيانات المقدمة فقط",
+          "description": "بناء الاستجابة على المعلومات المعطاة",
+          "example": "لا معرفة خارجية"
+        },
+        "noJargon": {
+          "label": "بدون مصطلحات تقنية",
+          "description": "استخدم لغة بسيطة ويومية",
+          "example": "لغة عادية"
+        },
+        "technicalDetail": {
+          "label": "تفاصيل تقنية",
+          "description": "تضمين مواصفات تقنية",
+          "example": "محتوى تقني عميق"
+        },
+        "beginnerFriendly": {
+          "label": "مناسب للمبتدئين",
+          "description": "اشرح المفاهيم من الأساسيات",
+          "example": "نهج تعليمي"
+        },
+        "actionOriented": {
+          "label": "موجه للعمل",
+          "description": "ركز على الخطوات القابلة للتنفيذ",
+          "example": "خطوات عملية تالية"
+        },
+        "dataDriven": {
+          "label": "مدفوع بالبيانات",
+          "description": "تضمين إحصائيات وبيانات",
+          "example": "محتوى قائم على الأدلة"
+        }
+      }
+    },
+    "advanced": {
+      "title": "خيارات متقدمة",
+      "optional": "اختياري",
+      "hasContent": "تم التكوين",
+      "characters": "حرف",
+      "enhancementLevel": {
+        "label": "مستوى التحسين",
+        "quick": "تحسين سريع",
+        "detailed": "تحسين شامل",
+        "quickDescription": "تحسينات سريعة تركز على الوضوح والبنية",
+        "detailedDescription": "تحسين شامل مع نسخ بديلة"
+      },
+      "examples": {
+        "label": "أمثلة",
+        "placeholder": "قدم أمثلة على المدخلات أو المخرجات التي توضح ما تبحث عنه...",
+        "helpText": "تساعد الأمثلة الذكاء الاصطناعي على فهم توقعاتك بشكل أفضل"
+      },
+      "context": {
+        "label": "سياق إضافي",
+        "placeholder": "أضف أي معلومات خلفية أو قيود أو تفاصيل محددة...",
+        "helpText": "المزيد من السياق يؤدي إلى نتائج أكثر صلة ودقة"
+      }
+    }
   }
 }

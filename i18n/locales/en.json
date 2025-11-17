@@ -44,5 +44,314 @@
     "edit": "Edit",
     "copy": "Copy",
     "download": "Download"
+  },
+  "builder": {
+    "role": {
+      "label": "Your Role",
+      "placeholder": "Select your role...",
+      "otherPlaceholder": "Enter your role (e.g., UX Researcher)",
+      "helpText": "Select the role that best describes your profession or expertise",
+      "options": {
+        "softwareEngineer": {
+          "label": "Software Engineer",
+          "description": "Developer, programmer, or coder"
+        },
+        "productManager": {
+          "label": "Product Manager",
+          "description": "Product owner or product strategist"
+        },
+        "dataAnalyst": {
+          "label": "Data Analyst",
+          "description": "Data scientist or analytics professional"
+        },
+        "marketingSpecialist": {
+          "label": "Marketing Specialist",
+          "description": "Digital marketer or marketing strategist"
+        },
+        "designer": {
+          "label": "Designer",
+          "description": "UI/UX designer or graphic designer"
+        },
+        "businessAnalyst": {
+          "label": "Business Analyst",
+          "description": "Business intelligence or strategy analyst"
+        },
+        "contentWriter": {
+          "label": "Content Writer",
+          "description": "Copywriter or content creator"
+        },
+        "projectManager": {
+          "label": "Project Manager",
+          "description": "Project coordinator or scrum master"
+        },
+        "researcher": {
+          "label": "Researcher",
+          "description": "Academic or industry researcher"
+        },
+        "other": {
+          "label": "Other",
+          "description": "Enter a custom role"
+        }
+      }
+    },
+    "audience": {
+      "label": "Target Audience",
+      "placeholder": "Select your target audience...",
+      "otherPlaceholder": "Enter your target audience",
+      "helpText": "Who will be reading or using your output?",
+      "options": {
+        "technicalTeam": {
+          "label": "Technical Team",
+          "description": "Developers, engineers, IT professionals"
+        },
+        "executives": {
+          "label": "Executives",
+          "description": "C-level executives, senior leadership"
+        },
+        "clients": {
+          "label": "Clients",
+          "description": "External clients or customers"
+        },
+        "generalPublic": {
+          "label": "General Public",
+          "description": "Broad audience with varied backgrounds"
+        },
+        "students": {
+          "label": "Students",
+          "description": "Learners or educational audience"
+        },
+        "experts": {
+          "label": "Experts",
+          "description": "Industry specialists or professionals"
+        },
+        "beginners": {
+          "label": "Beginners",
+          "description": "People new to the topic"
+        },
+        "stakeholders": {
+          "label": "Stakeholders",
+          "description": "Project stakeholders or decision makers"
+        },
+        "teamMembers": {
+          "label": "Team Members",
+          "description": "Internal team or colleagues"
+        },
+        "other": {
+          "label": "Other",
+          "description": "Enter a custom audience"
+        }
+      }
+    },
+    "task": {
+      "label": "Task Description",
+      "placeholder": "Describe what you want the AI to help you with...",
+      "characters": "characters",
+      "helpText": "Be specific about what you want to accomplish (10-1000 characters)",
+      "examplesTitle": "Example prompts (click to use):",
+      "examples": [
+        "Explain the concept of microservices architecture to a non-technical audience",
+        "Write a professional email to decline a meeting request",
+        "Create a step-by-step guide for deploying a React app to Vercel"
+      ]
+    },
+    "tone": {
+      "label": "Tone",
+      "helpText": "Select the tone that best fits your communication style and audience",
+      "options": {
+        "professional": {
+          "label": "Professional",
+          "description": "Formal and business-appropriate",
+          "example": "Business reports, proposals"
+        },
+        "friendly": {
+          "label": "Friendly",
+          "description": "Warm and approachable",
+          "example": "Team communications"
+        },
+        "formal": {
+          "label": "Formal",
+          "description": "Official and ceremonial",
+          "example": "Legal documents, announcements"
+        },
+        "casual": {
+          "label": "Casual",
+          "description": "Relaxed and conversational",
+          "example": "Internal chats, blog posts"
+        },
+        "persuasive": {
+          "label": "Persuasive",
+          "description": "Convincing and influential",
+          "example": "Marketing copy, proposals"
+        },
+        "informative": {
+          "label": "Informative",
+          "description": "Educational and explanatory",
+          "example": "Documentation, guides"
+        },
+        "creative": {
+          "label": "Creative",
+          "description": "Imaginative and original",
+          "example": "Content creation, brainstorming"
+        },
+        "technical": {
+          "label": "Technical",
+          "description": "Precise and detailed",
+          "example": "Technical docs, specifications"
+        },
+        "empathetic": {
+          "label": "Empathetic",
+          "description": "Understanding and supportive",
+          "example": "Customer support, feedback"
+        }
+      }
+    },
+    "outputFormat": {
+      "label": "Output Format",
+      "placeholder": "Select output format...",
+      "otherPlaceholder": "Enter custom format (e.g., Meeting Minutes)",
+      "helpText": "Choose how you want the AI response to be structured",
+      "options": {
+        "paragraph": {
+          "label": "Paragraph",
+          "description": "Flowing text in paragraph form"
+        },
+        "bulletPoints": {
+          "label": "Bullet Points",
+          "description": "Concise points with bullets"
+        },
+        "numberedList": {
+          "label": "Numbered List",
+          "description": "Sequential numbered items"
+        },
+        "email": {
+          "label": "Email",
+          "description": "Professional email format"
+        },
+        "report": {
+          "label": "Report",
+          "description": "Structured report with sections"
+        },
+        "presentation": {
+          "label": "Presentation",
+          "description": "Slide-ready content"
+        },
+        "codeComments": {
+          "label": "Code Comments",
+          "description": "Technical code documentation"
+        },
+        "socialPost": {
+          "label": "Social Media Post",
+          "description": "Short, engaging social content"
+        },
+        "executiveSummary": {
+          "label": "Executive Summary",
+          "description": "High-level overview for leadership"
+        },
+        "table": {
+          "label": "Table",
+          "description": "Tabular data format"
+        },
+        "dialogue": {
+          "label": "Dialogue",
+          "description": "Conversational back-and-forth"
+        },
+        "stepByStep": {
+          "label": "Step-by-Step Guide",
+          "description": "Instructional walkthrough"
+        },
+        "faq": {
+          "label": "FAQ",
+          "description": "Question and answer format"
+        },
+        "other": {
+          "label": "Other",
+          "description": "Custom format"
+        }
+      }
+    },
+    "constraints": {
+      "label": "Constraints",
+      "optional": "Optional",
+      "otherLabel": "Additional Constraints",
+      "otherPlaceholder": "Enter any other specific requirements or limitations...",
+      "noneSelected": "No constraints selected",
+      "selectedCount": "{count} constraint(s) selected",
+      "helpText": "Select any constraints to refine the AI output",
+      "options": {
+        "wordLimit100": {
+          "label": "Max 100 Words",
+          "description": "Keep response under 100 words",
+          "example": "Short and concise"
+        },
+        "wordLimit300": {
+          "label": "Max 300 Words",
+          "description": "Keep response under 300 words",
+          "example": "Moderate length"
+        },
+        "wordLimit500": {
+          "label": "Max 500 Words",
+          "description": "Keep response under 500 words",
+          "example": "Detailed response"
+        },
+        "includeCitations": {
+          "label": "Include Citations",
+          "description": "Add references and sources",
+          "example": "Research-backed content"
+        },
+        "useProvidedData": {
+          "label": "Use Provided Data Only",
+          "description": "Base response on given information",
+          "example": "No external knowledge"
+        },
+        "noJargon": {
+          "label": "No Jargon",
+          "description": "Use simple, everyday language",
+          "example": "Plain English"
+        },
+        "technicalDetail": {
+          "label": "Technical Detail",
+          "description": "Include technical specifications",
+          "example": "Deep technical content"
+        },
+        "beginnerFriendly": {
+          "label": "Beginner Friendly",
+          "description": "Explain concepts from basics",
+          "example": "Educational approach"
+        },
+        "actionOriented": {
+          "label": "Action-Oriented",
+          "description": "Focus on actionable steps",
+          "example": "Practical next steps"
+        },
+        "dataDriven": {
+          "label": "Data-Driven",
+          "description": "Include statistics and data",
+          "example": "Evidence-based content"
+        }
+      }
+    },
+    "advanced": {
+      "title": "Advanced Options",
+      "optional": "Optional",
+      "hasContent": "Configured",
+      "characters": "characters",
+      "enhancementLevel": {
+        "label": "Enhancement Level",
+        "quick": "Quick Polish",
+        "detailed": "Deep Enhancement",
+        "quickDescription": "Fast improvements focusing on clarity and structure",
+        "detailedDescription": "Comprehensive enhancement with alternative versions"
+      },
+      "examples": {
+        "label": "Examples",
+        "placeholder": "Provide example inputs or outputs that demonstrate what you're looking for...",
+        "helpText": "Examples help the AI understand your expectations better"
+      },
+      "context": {
+        "label": "Additional Context",
+        "placeholder": "Add any background information, constraints, or specific details...",
+        "helpText": "More context leads to more relevant and accurate results"
+      }
+    }
   }
 }
