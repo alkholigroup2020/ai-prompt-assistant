@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/hints',
     '@nuxt/image',
     '@nuxt/ui',
-    '@nuxt/test-utils'
+    '@nuxt/test-utils',
+    'nuxt-mcp'
   ]
 })
