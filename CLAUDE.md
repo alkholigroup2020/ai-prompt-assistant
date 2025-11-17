@@ -30,6 +30,238 @@ nuxt typecheck
 eslint .
 ```
 
+## 🚨 CRITICAL: TypeScript & ESLint Validation Protocol
+
+**MANDATORY**: At the end of EVERY task that involves code creation or modification, you MUST run the following validation checks and fix ALL errors before considering the task complete.
+
+### Validation Commands (Run in Order)
+
+1. **TypeScript Type Checking** (MUST pass with zero errors)
+   ```bash
+   npx nuxt typecheck
+   ```
+
+2. **ESLint Validation** (MUST pass with zero errors)
+   ```bash
+   npx eslint server/ app/
+   ```
+
+3. **Specific File Check** (if only certain files were modified)
+   ```bash
+   npx eslint path/to/file1.ts path/to/file2.ts
+   ```
+
+### Common TypeScript/ESLint Errors & Solutions
+
+#### 1. **Avoid `any` Type** ❌
+**Error**: `Unexpected any. Specify a different type @typescript-eslint/no-explicit-any`
+
+**Bad**:
+```typescript
+function processData(data: any) { }
+function parseResponse(response: any): any { }
+```
+
+**Good**:
+```typescript
+function processData(data: unknown) { }
+function parseResponse(response: string): ParsedResponse { }
+
+// For complex objects, use Record or create an interface
+function validateInput(data: unknown) {
+  const input = data as Record<string, unknown>;
+  // ... validation
+}
+```
+
+**Solution Pattern**:
+- Use `unknown` for truly unknown types
+- Use `Record<string, unknown>` for object types
+- Create proper interfaces for complex structures
+- Use type guards to narrow types
+
+#### 2. **Unused Variables** ❌
+**Error**: `'variable' is defined but never used @typescript-eslint/no-unused-vars`
+
+**Bad**:
+```typescript
+const startTime = Date.now();
+// variable never used
+
+catch (error) {
+  // error variable unused
+  console.log('Failed');
+}
+```
+
+**Good**:
+```typescript
+// Actually use the variable
+const startTime = Date.now();
+const elapsed = Date.now() - startTime;
+
+// Prefix with underscore if intentionally unused
+catch (_error) {
+  console.log('Failed');
+}
+
+// Or use empty catch if truly not needed
+catch {
+  console.log('Failed');
+}
+```
+
+#### 3. **Type Assertions** ❌
+**Error**: `Conversion of type X to type Y may be a mistake`
+
+**Bad**:
+```typescript
+return sanitized as FormInput; // Direct assertion may fail
+```
+
+**Good**:
+```typescript
+return sanitized as unknown as FormInput; // Double assertion for complex types
+```
+
+**Pattern**: When converting between incompatible types, use double assertion through `unknown`
+
+#### 4. **Property Access on Union Types** ❌
+**Error**: `Property 'code' does not exist on type 'Error'`
+
+**Bad**:
+```typescript
+function logError(error: Error | { code?: string }) {
+  console.log(error.code); // Error: Property doesn't exist on Error
+}
+```
+
+**Good**:
+```typescript
+function logError(error: Error | { code?: string }) {
+  const code = 'code' in error ? error.code : 'UNKNOWN';
+  console.log(code);
+}
+```
+
+**Pattern**: Use `in` operator or type guards to safely access properties
+
+#### 5. **Array/Object Access with Potential Undefined** ❌
+**Error**: `Object is possibly 'undefined'`
+
+**Bad**:
+```typescript
+const match = text.match(/pattern/);
+return match[1]; // match could be null
+
+const item = array[0];
+return item.property; // item could be undefined
+```
+
+**Good**:
+```typescript
+const match = text.match(/pattern/);
+if (match && match[1]) {
+  return match[1];
+}
+
+const item = array[0];
+if (item) {
+  return item.property;
+}
+
+// Or use optional chaining
+return array[0]?.property;
+```
+
+#### 6. **String vs Number in Headers** ❌
+**Error**: `Argument of type 'string' is not assignable to parameter of type 'number'`
+
+**Bad**:
+```typescript
+setHeader(event, 'Access-Control-Max-Age', '86400'); // String instead of number
+```
+
+**Good**:
+```typescript
+setHeader(event, 'Access-Control-Max-Age', 86400); // Correct number type
+```
+
+#### 7. **Missing Return Type Annotations** ⚠️
+**Best Practice**: Always define return types for exported functions
+
+**Good**:
+```typescript
+export function validateInput(data: unknown): {
+  valid: boolean;
+  sanitized?: FormInput;
+  error?: ValidationError;
+} {
+  // implementation
+}
+```
+
+### TypeScript Best Practices for This Project
+
+1. **Create Interfaces for Complex Types**
+   ```typescript
+   interface ExportMetadata {
+     title?: string;
+     timestamp?: boolean;
+     qualityScore?: number;
+   }
+
+   function exportData(data: string, metadata?: ExportMetadata) { }
+   ```
+
+2. **Use Type Guards**
+   ```typescript
+   function isFormInput(data: unknown): data is FormInput {
+     return typeof data === 'object' && data !== null && 'role' in data;
+   }
+   ```
+
+3. **Prefer `unknown` over `any`**
+   - `unknown` is type-safe and requires type checking
+   - `any` bypasses type checking (avoid at all costs)
+
+4. **Use Proper Type Imports**
+   ```typescript
+   import type { FormInput, EnhancementResponse } from '~/types';
+   ```
+
+5. **Handle Nullable Values**
+   ```typescript
+   // Use optional chaining and nullish coalescing
+   const value = config.public.appUrl ?? 'http://localhost:3000';
+   const header = getHeader(event, 'x-session-id') ?? 'anonymous';
+   ```
+
+### Error Fixing Workflow
+
+1. **Run type check**: `npx nuxt typecheck`
+2. **Read error messages carefully**: Note file name, line number, and error type
+3. **Fix errors one file at a time**: Start with the file that has the most errors
+4. **Apply the appropriate solution pattern** from the list above
+5. **Re-run type check** after each fix
+6. **Run ESLint**: `npx eslint server/ app/`
+7. **Fix any linting errors** using the patterns above
+8. **Final verification**: Run both checks again to ensure zero errors
+
+### Pre-Commit Checklist
+
+Before considering ANY task complete:
+
+- [ ] Run `npx nuxt typecheck` - **MUST PASS**
+- [ ] Run `npx eslint server/ app/` - **MUST PASS**
+- [ ] No `any` types in the code
+- [ ] No unused variables (unless prefixed with `_`)
+- [ ] All functions have return type annotations
+- [ ] Proper error handling with type-safe access
+- [ ] All property accesses are safe (use `in` operator or optional chaining)
+
+**REMEMBER**: TypeScript errors = Production bugs. Zero tolerance for type errors!
+
 ## MCP Servers (Model Context Protocol)
 
 This project has the following MCP servers installed and configured:
