@@ -353,5 +353,39 @@
         "helpText": "More context leads to more relevant and accurate results"
       }
     }
+  },
+  "quality": {
+    "scoreLabel": "Quality Score",
+    "rating": {
+      "excellent": "Excellent",
+      "veryGood": "Very Good",
+      "good": "Good",
+      "fair": "Fair",
+      "needsImprovement": "Needs Improvement",
+      "poor": "Poor"
+    },
+    "breakdown": {
+      "title": "Quality Breakdown",
+      "clarity": "Clarity",
+      "clarityDesc": "How clear and understandable your prompt is",
+      "specificity": "Specificity",
+      "specificityDesc": "How specific and detailed your requirements are",
+      "context": "Context",
+      "contextDesc": "How much relevant background information is provided",
+      "structure": "Structure",
+      "structureDesc": "How well-organized and structured your prompt is",
+      "completeness": "Completeness",
+      "completenessDesc": "How complete all required fields are",
+      "summaryTitle": "Understanding Quality Metrics",
+      "summaryDesc": "These metrics help you create more effective prompts. Higher scores in each area lead to better AI responses."
+    },
+    "suggestions": {
+      "title": "Improvement Suggestions",
+      "noSuggestions": "Great job! No suggestions at the moment.",
+      "noSuggestionsDesc": "Your prompt looks good. Continue to the enhancement step.",
+      "critical": "Critical",
+      "important": "Important",
+      "minor": "Minor Improvements"
+    }
   }
 }
