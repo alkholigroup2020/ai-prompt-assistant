@@ -240,24 +240,24 @@ This document contains a comprehensive checklist of all development tasks requir
   - [x] Language switching
   - [x] Theme switching
 
-### 4.3 Utilities
-- [ ] Create `/app/utils/validators.ts`
-  - [ ] Validate role field
-  - [ ] Validate audience field
-  - [ ] Validate task field
-  - [ ] Validate character limits
-  - [ ] Export validation functions
-- [ ] Create `/app/utils/formatters.ts`
-  - [ ] Format quality scores
-  - [ ] Format timestamps
-  - [ ] Format file sizes
-  - [ ] Truncate text
-- [ ] Create `/app/utils/export.ts`
-  - [ ] Generate TXT file
-  - [ ] Generate MD file
-  - [ ] Generate JSON file
-  - [ ] Trigger download
-  - [ ] Copy to clipboard
+### 4.3 Utilities ✅
+- [x] Create `/app/utils/validators.ts`
+  - [x] Validate role field
+  - [x] Validate audience field
+  - [x] Validate task field
+  - [x] Validate character limits
+  - [x] Export validation functions
+- [x] Create `/app/utils/formatters.ts`
+  - [x] Format quality scores
+  - [x] Format timestamps
+  - [x] Format file sizes
+  - [x] Truncate text
+- [x] Create `/app/utils/export.ts`
+  - [x] Generate TXT file
+  - [x] Generate MD file
+  - [x] Generate JSON file
+  - [x] Trigger download
+  - [x] Copy to clipboard
 
 ---
 
