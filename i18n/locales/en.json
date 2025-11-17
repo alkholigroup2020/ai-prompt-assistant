@@ -9,6 +9,30 @@
     "templates": "Templates",
     "about": "About"
   },
+  "header": {
+    "title": "AI Prompt Assistant",
+    "logoAria": "Navigate to home page",
+    "switchLanguage": "Switch language",
+    "toggleTheme": "Toggle dark mode",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "footer": {
+    "appName": "AI Prompt Assistant",
+    "description": "Transform rough ideas into powerful, production-ready AI prompts for any AI tool.",
+    "quickLinks": "Quick Links",
+    "company": "Company",
+    "companyWebsite": "Alkholi Group Website",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "about": "About",
+    "copyright": "© {year} {company}. All rights reserved.",
+    "version": "v{version}",
+    "poweredBy": "Powered by"
+  },
+  "a11y": {
+    "skipToMain": "Skip to main content"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",

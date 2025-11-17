@@ -1,0 +1,147 @@
+<template>
+  <footer class="w-full border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <!-- Company Information -->
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <svg
+              class="h-6 w-6 text-emerald-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              />
+            </svg>
+            <span class="text-lg font-bold text-navy-900 dark:text-white">
+              {{ t('footer.appName') }}
+            </span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {{ t('footer.description') }}
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-col gap-3">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">
+            {{ t('footer.quickLinks') }}
+          </h3>
+          <nav class="flex flex-col gap-2" aria-label="Footer navigation">
+            <NuxtLink
+              v-for="link in footerLinks"
+              :key="link.to"
+              :to="link.to"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+            >
+              {{ t(link.label) }}
+            </NuxtLink>
+          </nav>
+        </div>
+
+        <!-- Company & Legal -->
+        <div class="flex flex-col gap-3">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">
+            {{ t('footer.company') }}
+          </h3>
+          <nav class="flex flex-col gap-2" aria-label="Company links">
+            <a
+              :href="companyWebsite"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-1 text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+            >
+              {{ t('footer.companyWebsite') }}
+              <svg
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+            <NuxtLink
+              to="/privacy"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+            >
+              {{ t('footer.privacyPolicy') }}
+            </NuxtLink>
+            <NuxtLink
+              to="/terms"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+            >
+              {{ t('footer.termsOfUse') }}
+            </NuxtLink>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="mt-8 border-t border-gray-200 pt-6 dark:border-gray-800">
+        <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {{ t('footer.copyright', { year: currentYear, company: companyName }) }}
+          </p>
+          <div class="flex items-center gap-4">
+            <!-- Version Info -->
+            <span class="text-xs text-gray-500 dark:text-gray-500">
+              {{ t('footer.version', { version: appVersion }) }}
+            </span>
+            <!-- Powered by Badge -->
+            <span class="text-xs text-gray-500 dark:text-gray-500">
+              {{ t('footer.poweredBy') }}
+              <span class="font-semibold text-emerald-600 dark:text-emerald-400">
+                Google Gemini AI
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup lang="ts">
+// i18n
+const { t } = useI18n()
+
+// Computed
+const currentYear = computed(() => new Date().getFullYear())
+const appVersion = computed(() => '1.0.0')
+const companyName = computed(() => 'Alkholi Group')
+const companyWebsite = computed(() => 'https://alkholigroup.com')
+
+// Footer navigation links
+const footerLinks = [
+  { to: '/', label: 'nav.home' },
+  { to: '/builder', label: 'nav.builder' },
+  { to: '/templates', label: 'nav.templates' },
+  { to: '/about', label: 'footer.about' }
+]
+</script>
+
+<style scoped>
+/* Focus visible styles for accessibility */
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-emerald-600 ring-2 ring-emerald-600/20 rounded;
+}
+
+/* External link icon animation */
+a[target="_blank"]:hover svg {
+  @apply translate-x-0.5 -translate-y-0.5;
+  transition: transform 0.2s ease-in-out;
+}
+</style>

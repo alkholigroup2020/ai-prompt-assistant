@@ -9,6 +9,30 @@
     "templates": "القوالب",
     "about": "حول"
   },
+  "header": {
+    "title": "مساعد الأوامر الذكية",
+    "logoAria": "الانتقال إلى الصفحة الرئيسية",
+    "switchLanguage": "تغيير اللغة",
+    "toggleTheme": "تبديل الوضع الداكن",
+    "openMenu": "فتح قائمة التنقل",
+    "closeMenu": "إغلاق قائمة التنقل"
+  },
+  "footer": {
+    "appName": "مساعد الأوامر الذكية",
+    "description": "حوّل أفكارك البسيطة إلى أوامر ذكاء اصطناعي احترافية لأي أداة ذكاء اصطناعي.",
+    "quickLinks": "روابط سريعة",
+    "company": "الشركة",
+    "companyWebsite": "موقع الخولي جروب",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfUse": "شروط الاستخدام",
+    "about": "حول",
+    "copyright": "© {year} {company}. جميع الحقوق محفوظة.",
+    "version": "الإصدار {version}",
+    "poweredBy": "مدعوم بـ"
+  },
+  "a11y": {
+    "skipToMain": "الانتقال إلى المحتوى الرئيسي"
+  },
   "common": {
     "loading": "جاري التحميل...",
     "error": "خطأ",

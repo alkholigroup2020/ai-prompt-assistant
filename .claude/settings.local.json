@@ -12,7 +12,8 @@
       "Bash(npm view:*)",
       "Bash(node --version:*)",
       "mcp__filesystem__create_directory",
-      "Bash(timeout 30 npm run dev:*)"
+      "Bash(timeout 30 npm run dev:*)",
+      "mcp__filesystem__list_directory"
     ],
     "deny": [],
     "ask": []
