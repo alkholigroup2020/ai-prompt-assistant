@@ -226,19 +226,19 @@ This document contains a comprehensive checklist of all development tasks requir
   - [x] Generate suggestions
   - [x] Return score breakdown
 
-### 4.2 Pinia Stores
-- [ ] Create `/app/stores/form.ts`
-  - [ ] Define form state
-  - [ ] Create form actions
-  - [ ] Create form getters
-  - [ ] Implement validation
-  - [ ] Implement reset functionality
-- [ ] Create `/app/stores/preferences.ts`
-  - [ ] Define preferences state
-  - [ ] Load from localStorage
-  - [ ] Save to localStorage
-  - [ ] Language switching
-  - [ ] Theme switching
+### 4.2 Pinia Stores ✅
+- [x] Create `/app/stores/form.ts`
+  - [x] Define form state
+  - [x] Create form actions
+  - [x] Create form getters
+  - [x] Implement validation
+  - [x] Implement reset functionality
+- [x] Create `/app/stores/preferences.ts`
+  - [x] Define preferences state
+  - [x] Load from localStorage
+  - [x] Save to localStorage
+  - [x] Language switching
+  - [x] Theme switching
 
 ### 4.3 Utilities
 - [ ] Create `/app/utils/validators.ts`

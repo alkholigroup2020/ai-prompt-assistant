@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     'nuxt-mcp',
     '@nuxtjs/i18n',
     '@nuxtjs/google-fonts',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@pinia/nuxt'
   ],
 
   // @nuxt/ui Configuration
