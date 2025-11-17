@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Custom CSS Variables */
+    --primary-emerald: #45cf7b;
+    --primary-navy: #000046;
+    --transition-speed: 0.3s;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="ltr"] {
+    direction: ltr;
+  }
+
+  /* Base Typography */
+  body {
+    @apply font-sans antialiased;
+  }
+
+  /* Arabic Typography */
+  html[lang="ar"] body {
+    @apply font-arabic;
+  }
+}
+
+@layer components {
+  /* Custom component styles can be added here */
+}
+
+@layer utilities {
+  /* Custom utility classes */
+  .transition-default {
+    transition: all var(--transition-speed) ease-in-out;
+  }
+
+  .bg-gradient-emerald {
+    background: linear-gradient(135deg, #45cf7b 0%, #16a34a 100%);
+  }
+
+  .bg-gradient-navy {
+    background: linear-gradient(135deg, #000046 0%, #00002e 100%);
+  }
+
+  /* Focus visible for accessibility */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "AI Prompt Assistant",
+    "description": "Transform rough ideas into powerful, production-ready AI prompts"
+  },
+  "nav": {
+    "home": "Home",
+    "builder": "Prompt Builder",
+    "templates": "Templates",
+    "about": "About"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "copy": "Copy",
+    "download": "Download"
+  }
+}
