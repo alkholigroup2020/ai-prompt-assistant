@@ -21,8 +21,7 @@ export default defineNuxtConfig({
     'nuxt-mcp',
     '@nuxtjs/i18n',
     '@nuxtjs/google-fonts',
-    '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss'
+    '@vueuse/nuxt'
   ],
 
   // @nuxt/ui Configuration
@@ -34,25 +33,23 @@ export default defineNuxtConfig({
 
   // i18n Configuration
   i18n: {
+    langDir: 'locales',
     locales: [
       {
         code: 'en',
         iso: 'en-US',
         name: 'English',
-        file: 'en.json',
-        dir: 'ltr'
+        file: 'en.json'
       },
       {
         code: 'ar',
         iso: 'ar-SA',
         name: 'العربية',
-        file: 'ar.json',
-        dir: 'rtl'
+        file: 'ar.json'
       }
     ],
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
-    langDir: 'locales',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
