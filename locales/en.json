@@ -6,6 +6,27 @@
     "results": "Results",
     "language": "Language"
   },
+  "header": {
+    "title": "AI Prompt Assistant",
+    "logoAria": "Navigate to home page",
+    "switchLanguage": "Switch language",
+    "toggleTheme": "Toggle dark mode",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "footer": {
+    "appName": "AI Prompt Assistant",
+    "description": "Transform rough ideas into powerful, production-ready AI prompts for any AI tool.",
+    "quickLinks": "Quick Links",
+    "company": "Company",
+    "companyWebsite": "Alkholi Group Website",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "about": "About",
+    "copyright": "© {year} {company}. All rights reserved.",
+    "version": "v{version}",
+    "poweredBy": "Powered by"
+  },
   "common": {
     "loading": "Loading...",
     "save": "Save",
@@ -70,6 +91,72 @@
         "title": "Enhance & Use",
         "description": "AI-polish your prompt and copy it to any AI tool"
       }
+    }
+  },
+  "landing": {
+    "meta": {
+      "title": "AI Prompt Assistant - Transform Ideas Into Powerful AI Prompts | Alkholi Group",
+      "description": "Build better prompts for any AI tool with intelligent guidance, real-time quality analysis, and AI enhancement. Free tool for Alkholi Group employees.",
+      "keywords": "AI prompts, prompt builder, ChatGPT prompts, Claude prompts, AI assistant, prompt engineering, Gemini, Alkholi Group"
+    },
+    "hero": {
+      "headline": "Transform Your Ideas Into Powerful AI Prompts",
+      "subheadline": "Build better prompts for any AI tool (ChatGPT, Claude, Gemini) with intelligent guidance and real-time quality analysis.",
+      "ctaStart": "Start Building Now",
+      "ctaTemplates": "Browse Templates",
+      "trust": "Free for all Alkholi Group employees"
+    },
+    "valueProps": {
+      "title": "Why Choose AI Prompt Assistant?",
+      "subtitle": "Get professional results from any AI tool with our intelligent prompt builder",
+      "betterResults": {
+        "title": "Better Results",
+        "description": "Get 80% better AI outputs with professionally crafted prompts"
+      },
+      "fasterWriting": {
+        "title": "Faster Creation",
+        "description": "Build effective prompts 3x faster with smart guidance and templates"
+      },
+      "templates": {
+        "title": "Ready Templates",
+        "description": "20+ pre-built templates for business, technical, and creative tasks"
+      },
+      "bilingual": {
+        "title": "Languages",
+        "description": "Full support for English and Arabic with RTL interface"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Create professional AI prompts in three simple steps",
+      "step": "Step",
+      "step1": {
+        "title": "Describe Your Task",
+        "description": "Fill in your role, audience, task details, and desired tone. Our smart form guides you with real-time suggestions."
+      },
+      "step2": {
+        "title": "Get AI Enhancement",
+        "description": "Our AI analyzes your prompt and suggests improvements. Choose quick polish or deep enhancement for better results."
+      },
+      "step3": {
+        "title": "Copy & Use",
+        "description": "Review your enhanced prompt, see improvements, and copy it to any AI tool. Export in multiple formats if needed."
+      },
+      "cta": "Try It Now - It's Free"
+    },
+    "templatesPreview": {
+      "title": "Popular Templates",
+      "subtitle": "Start faster with our ready-to-use prompt templates",
+      "viewAll": "View All Templates",
+      "emailReply": "Professional Email Reply",
+      "dataAnalysis": "Data Analysis Report",
+      "codeReview": "Code Review Checklist",
+      "salesPitch": "Sales Presentation"
+    },
+    "finalCta": {
+      "title": "Ready to Create Better AI Prompts?",
+      "subtitle": "Join your colleagues at Alkholi Group and start building professional prompts in minutes. No sign-up required.",
+      "cta": "Get Started Free"
     }
   },
   "builder": {

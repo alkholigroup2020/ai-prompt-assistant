@@ -28,7 +28,15 @@
       "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates.json\")",
       "Bash(node:*)",
       "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates_fixed.json\")",
-      "mcp__puppeteer__puppeteer_evaluate"
+      "mcp__puppeteer__puppeteer_evaluate",
+      "mcp__filesystem__directory_tree",
+      "Bash(timeout 5 cmd:*)",
+      "Bash(timeout:*)",
+      "WebFetch(domain:starter-template.nuxt.dev)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(taskkill:*)",
+      "WebFetch(domain:ui.nuxt.com)"
     ],
     "deny": [],
     "ask": []

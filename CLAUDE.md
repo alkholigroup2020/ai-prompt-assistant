@@ -264,6 +264,63 @@ export function validateInput(data: unknown): {
    const header = getHeader(event, 'x-session-id') ?? 'anonymous'
    ```
 
+## 🚫 CRITICAL: Common Nuxt Pitfalls to Avoid
+
+### 1. **NEVER use `useI18n()` in Nuxt Plugins** ❌
+
+**Error**: `SyntaxError: Must be called at the top of a setup function`
+
+**Problem**: Vue composables like `useI18n()`, `useRoute()`, `useRouter()` cannot be called directly in Nuxt plugins. They must be called at the top of a component's setup function.
+
+**Bad** ❌:
+```typescript
+// ❌ app/plugins/preferences.client.ts
+export default defineNuxtPlugin(() => {
+  const { locale } = useI18n() // ERROR: Cannot call useI18n() here!
+
+  // This will cause hydration errors and 500 server crashes
+})
+```
+
+**Good** ✅:
+```typescript
+// ✅ app/plugins/preferences.client.ts
+export default defineNuxtPlugin((nuxtApp) => {
+  // Access i18n through nuxtApp context instead
+  const i18n = nuxtApp.$i18n
+
+  if (!i18n) {
+    console.warn('i18n is not available')
+    return
+  }
+
+  // Now you can use i18n safely
+  i18n.setLocale('en')
+
+  // Watch for changes
+  watch(() => i18n.locale.value, (newLocale) => {
+    console.log('Locale changed:', newLocale)
+  })
+})
+```
+
+**Why This Matters**:
+- Using composables incorrectly in plugins causes **hydration mismatches**
+- Results in **500 Server Errors** on page refresh
+- Breaks SSR (Server-Side Rendering)
+- Makes the app unstable and unusable
+
+**Available through nuxtApp context**:
+- `nuxtApp.$i18n` - i18n instance
+- `nuxtApp.$router` - Vue Router instance
+- `nuxtApp.$pinia` - Pinia store
+- `nuxtApp.$config` - Runtime config
+
+**When to use composables vs nuxtApp**:
+- ✅ **In components**: Use `useI18n()`, `useRouter()`, `useRoute()`
+- ✅ **In composables**: Use `useI18n()`, `useRouter()`, `useRoute()`
+- ❌ **In plugins**: Use `nuxtApp.$i18n`, `nuxtApp.$router`, etc.
+
 ### Error Fixing Workflow
 
 1. **Run type check**: `npx nuxt typecheck`

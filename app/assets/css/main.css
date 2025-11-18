@@ -1,7 +1,43 @@
-/* Tailwind CSS Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Tailwind CSS and Nuxt UI */
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Define Custom Theme Tokens */
+@theme {
+  /* Custom Color Palettes */
+  --color-emerald-50: #f0fdf5;
+  --color-emerald-100: #dcfce8;
+  --color-emerald-200: #bbf7d1;
+  --color-emerald-300: #86efac;
+  --color-emerald-400: #4ade80;
+  --color-emerald-500: #45cf7b;
+  --color-emerald-600: #16a34a;
+  --color-emerald-700: #15803d;
+  --color-emerald-800: #166534;
+  --color-emerald-900: #14532d;
+
+  --color-navy-50: #e6e6f0;
+  --color-navy-100: #b3b3d6;
+  --color-navy-200: #8080bd;
+  --color-navy-300: #4d4da3;
+  --color-navy-400: #26268f;
+  --color-navy-500: #000046;
+  --color-navy-600: #00003f;
+  --color-navy-700: #000036;
+  --color-navy-800: #00002e;
+  --color-navy-900: #000020;
+
+  /* Typography */
+  --font-sans: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
 
 /* Custom CSS Variables */
 :root {
