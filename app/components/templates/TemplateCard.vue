@@ -19,7 +19,7 @@
           v-if="isNew"
           color="emerald"
           variant="solid"
-          size="xs"
+          size="sm"
         >
           {{ $t('templates.card.new') }}
         </UBadge>
@@ -27,7 +27,7 @@
           v-if="isPopular"
           color="emerald"
           variant="soft"
-          size="xs"
+          size="sm"
         >
           {{ $t('templates.card.popular') }}
         </UBadge>

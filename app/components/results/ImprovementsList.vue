@@ -118,7 +118,7 @@ const getCategoryLabel = (category: string): string => {
     <!-- Header -->
     <div class="mb-6">
       <div class="flex items-center gap-2 mb-2">
-        <UIcon name="i-heroicons-check-badge" class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+        <UIcon name="i-heroicons-check-badge" class="w-6 h-6 text-emerald-700 dark:text-emerald-400" />
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
           {{ t('results.improvements.title') }}
         </h2>
@@ -163,7 +163,7 @@ const getCategoryLabel = (category: string): string => {
               <!-- Checkmark Icon -->
               <div class="flex-shrink-0 mt-0.5">
                 <div class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center">
-                  <UIcon name="i-heroicons-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <UIcon name="i-heroicons-check" class="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ const getCategoryLabel = (category: string): string => {
                 <!-- Expandable Details -->
                 <div v-if="expandable && improvement.details" class="mt-2">
                   <button
-                    class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center gap-1 transition-colors"
+                    class="text-sm text-emerald-700 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center gap-1 transition-colors"
                     @click="toggleExpansion(index)"
                   >
                     <span>{{ isExpanded(index) ? t('results.improvements.showLess') : t('results.improvements.showMore') }}</span>

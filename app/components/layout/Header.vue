@@ -5,11 +5,11 @@
       <div class="flex items-center gap-3">
         <NuxtLink
           to="/"
-          class="flex items-center gap-2 text-xl font-bold text-navy-900 transition-colors hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+          class="flex items-center gap-2 text-xl font-bold text-navy-900 transition-colors hover:text-emerald-700 dark:text-white dark:hover:text-emerald-400"
           :aria-label="t('header.logoAria')"
         >
           <svg
-            class="h-8 w-8 text-emerald-600"
+            class="h-8 w-8 text-emerald-700"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -32,7 +32,7 @@
           v-for="item in navigationItems"
           :key="item.to"
           :to="item.to"
-          class="text-sm font-medium text-gray-700 transition-colors hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400"
+          class="text-sm font-medium text-gray-700 transition-colors hover:text-emerald-700 dark:text-gray-300 dark:hover:text-emerald-400"
           :aria-current="isActive(item.to) ? 'page' : undefined"
         >
           {{ t(item.label) }}
@@ -97,7 +97,7 @@
             v-for="item in navigationItems"
             :key="item.to"
             :to="item.to"
-            class="rounded-md px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-emerald-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-emerald-400 min-h-[44px] flex items-center touch-manipulation"
+            class="rounded-md px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-emerald-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-emerald-400 min-h-[44px] flex items-center touch-manipulation"
             :aria-current="isActive(item.to) ? 'page' : undefined"
             @click="closeMobileMenu"
           >

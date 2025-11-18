@@ -17,7 +17,7 @@
           <span class="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
             {{ t('builder.progress.label') }}
           </span>
-          <span class="text-sm md:text-base font-medium text-emerald-600 dark:text-emerald-400">
+          <span class="text-sm md:text-base font-medium text-emerald-700 dark:text-emerald-400">
             {{ completionPercentage }}%
           </span>
         </div>
@@ -38,7 +38,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.sections.basic') }}
                 </h2>
@@ -56,7 +56,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-paint-brush" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-paint-brush" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.sections.style') }}
                 </h2>
@@ -73,7 +73,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.sections.constraints') }}
                 </h2>
@@ -87,7 +87,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-adjustments-horizontal" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-adjustments-horizontal" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.sections.advanced') }}
                 </h2>
@@ -105,7 +105,7 @@
             <template #header>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <UIcon name="i-heroicons-chart-bar" class="w-5 h-5 text-emerald-600" />
+                  <UIcon name="i-heroicons-chart-bar" class="w-5 h-5 text-emerald-700" />
                   <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                     {{ t('builder.preview.quality') }}
                   </h2>
@@ -136,7 +136,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-light-bulb" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-light-bulb" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.preview.suggestions') }}
                 </h2>
@@ -153,7 +153,7 @@
           <Card padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-eye" class="w-5 h-5 text-emerald-600" />
+                <UIcon name="i-heroicons-eye" class="w-5 h-5 text-emerald-700" />
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                   {{ t('builder.preview.title') }}
                 </h2>

@@ -37,7 +37,9 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(taskkill:*)",
       "WebFetch(domain:ui.nuxt.com)",
-      "mcp__playwright__browser_navigate"
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_run_code",
+      "Bash(del fix-contrast.cjs)"
     ],
     "deny": [],
     "ask": []

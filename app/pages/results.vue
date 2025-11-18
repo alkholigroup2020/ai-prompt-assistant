@@ -31,7 +31,7 @@
         <!-- Success Message & Header -->
         <div class="text-center max-w-3xl mx-auto px-4">
           <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 dark:bg-emerald-950 rounded-full mb-4">
-            <UIcon name="i-heroicons-check-circle" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-600 dark:text-emerald-400" />
+            <UIcon name="i-heroicons-check-circle" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-700 dark:text-emerald-400" />
           </div>
           <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             {{ t('results.success.title', 'Your Prompt is Ready!') }}
@@ -47,7 +47,7 @@
             <template #header>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <UIcon name="i-heroicons-chart-bar" class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                  <UIcon name="i-heroicons-chart-bar" class="w-6 h-6 text-emerald-700 dark:text-emerald-400" />
                   <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                     {{ t('results.qualityScore.title', 'Quality Score') }}
                   </h2>

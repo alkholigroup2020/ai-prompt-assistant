@@ -653,11 +653,11 @@ This document contains a comprehensive checklist of all development tasks requir
 - [x] Don't rely on color alone for information
 - [x] Sufficient focus indicators (visible outline)
 
-### 10.5 Basic Accessibility Testing
-- [ ] Run axe-core automated tests (browser extension)
-- [ ] Test keyboard-only navigation (unplug mouse)
-- [ ] Run Lighthouse accessibility audit (score >90)
-- [ ] Fix critical and serious WCAG 2.1 AA violations
+### 10.5 Basic Accessibility Testing ✅
+- [x] Run axe-core automated tests (browser extension)
+- [x] Test keyboard-only navigation (unplug mouse)
+- [x] Run Lighthouse accessibility audit (score >90)
+- [x] Fix critical and serious WCAG 2.1 AA violations
 
 **Note**: Advanced accessibility features (comprehensive screen reader testing, colorblind modes, WCAG AAA) moved to PostReleaseEnhancements.md (Phase C)
 

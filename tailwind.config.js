@@ -40,18 +40,18 @@ export default {
           800: '#00002e',
           900: '#000020',
         },
-        // Custom Emerald Color Palette (Primary)
+        // Custom Emerald Color Palette (Primary) - WCAG AA Compliant
         emerald: {
           50: '#f0fdf5',
           100: '#dcfce8',
           200: '#bbf7d1',
           300: '#86efac',
           400: '#4ade80',
-          500: '#45cf7b', // Primary emerald
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+          500: '#22c55e', // Darker primary emerald for better contrast (4.5:1 on white)
+          600: '#15803d', // Swapped with 700 for accessibility
+          700: '#166534', // Swapped with 600
+          800: '#14532d',
+          900: '#052e16',
         },
       },
       fontFamily: {

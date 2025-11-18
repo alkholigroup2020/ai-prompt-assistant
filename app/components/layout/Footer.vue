@@ -6,7 +6,7 @@
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-2">
             <svg
-              class="h-6 w-6 text-emerald-600"
+              class="h-6 w-6 text-emerald-700"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -38,7 +38,7 @@
               v-for="link in footerLinks"
               :key="link.to"
               :to="link.to"
-              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t(link.label) }}
             </NuxtLink>
@@ -55,7 +55,7 @@
               :href="companyWebsite"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-1 text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+              class="flex items-center gap-1 text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t('footer.companyWebsite') }}
               <svg
@@ -75,13 +75,13 @@
             </a>
             <NuxtLink
               to="/privacy"
-              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t('footer.privacyPolicy') }}
             </NuxtLink>
             <NuxtLink
               to="/terms"
-              class="text-sm text-gray-600 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
+              class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t('footer.termsOfUse') }}
             </NuxtLink>
@@ -103,7 +103,7 @@
             <!-- Powered by Badge -->
             <span class="text-xs text-gray-500 dark:text-gray-500">
               {{ t('footer.poweredBy') }}
-              <span class="font-semibold text-emerald-600 dark:text-emerald-400">
+              <span class="font-semibold text-emerald-700 dark:text-emerald-400">
                 Google Gemini AI
               </span>
             </span>

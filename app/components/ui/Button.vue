@@ -53,7 +53,7 @@ const buttonClasses = computed(() => {
     );
   } else if (props.variant === 'outline') {
     classes.push(
-      'border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50',
+      'border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-50',
       'focus:ring-emerald-500',
       'active:bg-emerald-100'
     );

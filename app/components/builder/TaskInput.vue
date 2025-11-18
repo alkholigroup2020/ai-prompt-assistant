@@ -29,7 +29,7 @@
         <span
           :class="{
             'text-red-600 dark:text-red-400': isOverLimit || isUnderLimit,
-            'text-emerald-600 dark:text-emerald-400': isWithinLimit,
+            'text-emerald-700 dark:text-emerald-400': isWithinLimit,
             'text-gray-500 dark:text-gray-400': !taskValue
           }"
         >
@@ -79,7 +79,7 @@
         <li
           v-for="(example, index) in examples"
           :key="index"
-          class="cursor-pointer hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+          class="cursor-pointer hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
           @click="applyExample(example)"
         >
           • {{ example }}

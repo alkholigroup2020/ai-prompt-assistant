@@ -32,9 +32,9 @@ export function getQualityScoreLabel(score: number): string {
  * @returns Tailwind color class
  */
 export function getQualityScoreColor(score: number): string {
-  if (score >= 75) return 'text-emerald-600'
-  if (score >= 60) return 'text-yellow-600'
-  return 'text-red-600'
+  if (score >= 75) return 'text-emerald-700'
+  if (score >= 60) return 'text-yellow-700'
+  return 'text-red-700'
 }
 
 /**

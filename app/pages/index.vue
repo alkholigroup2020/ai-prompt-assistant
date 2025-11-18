@@ -201,7 +201,7 @@ const handleTemplateClick = (templateId: string): void => {
               <UIcon name="i-heroicons-arrow-trending-up" class="h-12 w-12" />
             </div>
             <div
-              class="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400"
+              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
             >
               80%
             </div>
@@ -223,7 +223,7 @@ const handleTemplateClick = (templateId: string): void => {
               <UIcon name="i-heroicons-bolt" class="h-12 w-12" />
             </div>
             <div
-              class="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400"
+              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
             >
               3x
             </div>
@@ -245,7 +245,7 @@ const handleTemplateClick = (templateId: string): void => {
               <UIcon name="i-heroicons-document-duplicate" class="h-12 w-12" />
             </div>
             <div
-              class="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400"
+              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
             >
               20+
             </div>
@@ -267,7 +267,7 @@ const handleTemplateClick = (templateId: string): void => {
               <UIcon name="i-heroicons-language" class="h-12 w-12" />
             </div>
             <div
-              class="mb-2 text-4xl font-bold text-emerald-600 dark:text-emerald-400"
+              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
             >
               2
             </div>
@@ -306,7 +306,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon
                 name="i-heroicons-pencil-square"
-                class="h-12 w-12 text-emerald-600 dark:text-emerald-400"
+                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
               />
             </div>
             <div
@@ -339,7 +339,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon
                 name="i-heroicons-sparkles"
-                class="h-12 w-12 text-emerald-600 dark:text-emerald-400"
+                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
               />
             </div>
             <div
@@ -372,7 +372,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon
                 name="i-heroicons-clipboard-document-check"
-                class="h-12 w-12 text-emerald-600 dark:text-emerald-400"
+                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
               />
             </div>
             <div
@@ -442,14 +442,14 @@ const handleTemplateClick = (templateId: string): void => {
             @click="handleTemplateClick(template.id)"
           >
             <div
-              class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white dark:bg-emerald-900/30 dark:text-emerald-400"
+              class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 transition-colors group-hover:bg-emerald-500 group-hover:text-white dark:bg-emerald-900/30 dark:text-emerald-400"
             >
               <UIcon :name="`i-heroicons-${template.icon}`" class="h-8 w-8" />
             </div>
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ template.title }}
             </h3>
-            <UBadge :color="template.category === 'business' ? 'primary' : template.category === 'technical' ? 'navy' : 'emerald'" size="xs">
+            <UBadge :color="template.category === 'business' ? 'primary' : template.category === 'technical' ? 'navy' : 'emerald'" size="sm">
               {{ t(`templates.categories.${template.category}`) }}
             </UBadge>
           </div>

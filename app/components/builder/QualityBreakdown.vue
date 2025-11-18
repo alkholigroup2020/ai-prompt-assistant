@@ -170,7 +170,7 @@ const metrics = computed(() => [
       class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900 dark:bg-emerald-950"
     >
       <div class="flex items-start gap-3">
-        <UIcon name="i-heroicons-information-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+        <UIcon name="i-heroicons-information-circle" class="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
         <div class="flex-1">
           <h4 class="text-sm font-semibold text-emerald-900 dark:text-emerald-100">
             {{ t('quality.breakdown.summaryTitle') }}

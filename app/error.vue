@@ -84,7 +84,7 @@
               <UIcon name="i-heroicons-home" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
               <button
                 type="button"
-                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
                 :aria-label="$t('error.suggestions.home')"
                 @click="handleGoHome"
               >
@@ -95,7 +95,7 @@
               <UIcon name="i-heroicons-sparkles" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
               <button
                 type="button"
-                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
                 :aria-label="$t('error.suggestions.builder')"
                 @click="handleStartBuilder"
               >
@@ -106,7 +106,7 @@
               <UIcon name="i-heroicons-document-text" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
               <button
                 type="button"
-                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
                 :aria-label="$t('error.suggestions.templates')"
                 @click="handleViewTemplates"
               >
@@ -117,7 +117,7 @@
               <UIcon name="i-heroicons-arrow-path" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
               <button
                 type="button"
-                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
                 :aria-label="$t('error.suggestions.refresh')"
                 @click="handleTryAgain"
               >
@@ -137,7 +137,7 @@
           </p>
           <a
             href="mailto:support@alkholi-group.com"
-            class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium transition-colors"
+            class="inline-flex items-center gap-2 text-emerald-700 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium transition-colors"
           >
             <UIcon name="i-heroicons-envelope" class="w-5 h-5" />
             {{ $t('error.support.contact') }}

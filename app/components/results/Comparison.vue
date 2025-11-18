@@ -94,7 +94,7 @@ const improvementPercentage = computed(() => {
         <div class="card-header bg-emerald-50 dark:bg-emerald-950">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <UIcon name="i-heroicons-sparkles" class="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              <UIcon name="i-heroicons-sparkles" class="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                 {{ t('results.comparison.enhanced') }}
               </h3>
@@ -123,7 +123,7 @@ const improvementPercentage = computed(() => {
     <!-- Improvement Indicator -->
     <div v-if="improvementPercentage > 0" class="mt-6 p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg border border-emerald-200 dark:border-emerald-800">
       <div class="flex items-center gap-3">
-        <UIcon name="i-heroicons-arrow-trending-up" class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+        <UIcon name="i-heroicons-arrow-trending-up" class="w-6 h-6 text-emerald-700 dark:text-emerald-400" />
         <div>
           <p class="text-sm font-medium text-emerald-900 dark:text-emerald-100">
             {{ t('results.comparison.improved', { percentage: improvementPercentage }) }}

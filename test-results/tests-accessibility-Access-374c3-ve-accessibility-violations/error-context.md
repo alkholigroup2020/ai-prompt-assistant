@@ -1,0 +1,102 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Navigate to home page" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: AI Prompt Assistant
+        - generic [ref=e11]:
+          - link "Home" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Prompt Builder" [ref=e13] [cursor=pointer]:
+            - /url: /builder
+          - link "Templates" [ref=e14] [cursor=pointer]:
+            - /url: /templates
+        - generic [ref=e15]:
+          - button "Switch language" [ref=e16]:
+            - generic [ref=e18]: EN
+          - button "Toggle dark mode" [ref=e19]
+    - main [ref=e21]:
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - heading "Prompt Builder" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Build your perfect AI prompt with real-time quality feedback and smart suggestions
+        - generic [ref=e28]:
+          - generic [ref=e29]: Completion Progress
+          - generic [ref=e30]: 0%
+        - generic [ref=e33]:
+          - paragraph [ref=e38]: Start filling out the form to see a preview of your prompt
+          - generic [ref=e39]:
+            - button "Quick Polish" [ref=e40]: Quick Polish
+            - button "Deep Enhancement" [ref=e42]: Deep Enhancement
+          - generic [ref=e44]:
+            - button "Reset Form" [ref=e45]: Reset Form
+            - button "Save Draft" [disabled] [ref=e47]: Save Draft
+        - generic [ref=e52]:
+          - heading "Keyboard Shortcuts" [level=3] [ref=e53]
+          - generic [ref=e54]:
+            - generic [ref=e55]: Ctrl+Enter Quick Enhance
+            - generic [ref=e56]: Ctrl+Shift+Enter Deep Enhancement
+            - generic [ref=e57]: Ctrl+S Save Draft
+            - generic [ref=e58]: Ctrl+R Reset Form (prevents browser refresh)
+            - generic [ref=e59]: Esc Clear Focus
+    - contentinfo [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - img [ref=e65]
+              - generic [ref=e67]: AI Prompt Assistant
+            - paragraph [ref=e68]: Transform rough ideas into powerful, production-ready AI prompts for any AI tool.
+          - generic [ref=e69]:
+            - heading "Quick Links" [level=3] [ref=e70]
+            - navigation "Footer navigation" [ref=e71]:
+              - link "Home" [ref=e72] [cursor=pointer]:
+                - /url: /
+              - link "Prompt Builder" [ref=e73] [cursor=pointer]:
+                - /url: /builder
+              - link "Templates" [ref=e74] [cursor=pointer]:
+                - /url: /templates
+              - link "About" [ref=e75] [cursor=pointer]:
+                - /url: /about
+          - generic [ref=e76]:
+            - heading "Company" [level=3] [ref=e77]
+            - navigation "Company links" [ref=e78]:
+              - link "Alkholi Group Website" [ref=e79] [cursor=pointer]:
+                - /url: https://alkholigroup.com
+                - text: Alkholi Group Website
+                - img [ref=e80]
+              - link "Privacy Policy" [ref=e82] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Use" [ref=e83] [cursor=pointer]:
+                - /url: /terms
+        - generic [ref=e85]:
+          - paragraph [ref=e86]: © 2025 Alkholi Group. All rights reserved.
+          - generic [ref=e87]:
+            - generic [ref=e88]: v1.0.0
+            - generic [ref=e89]: Powered by Google Gemini AI
+    - link "Skip to main content" [ref=e90] [cursor=pointer]:
+      - /url: "#main-content"
+  - generic:
+    - img
+  - generic:
+    - generic:
+      - generic:
+        - button "Go to parent" [disabled]
+        - button "Open in editor"
+        - button "Close"
+  - generic [ref=e91]:
+    - button "Toggle Nuxt DevTools" [ref=e92] [cursor=pointer]:
+      - img [ref=e93]
+    - generic "Page load time" [ref=e96]:
+      - generic [ref=e97]: "367"
+      - generic [ref=e98]: ms
+    - button "Toggle Component Inspector" [ref=e100] [cursor=pointer]:
+      - img [ref=e101]
+  - region "Notifications (F8)":
+    - list
+```
