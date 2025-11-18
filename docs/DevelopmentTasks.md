@@ -641,11 +641,11 @@ This document contains a comprehensive checklist of all development tasks requir
 - [x] Arrow keys for radio groups and comboboxes
 
 ### 10.3 Basic Screen Reader Support
-- [ ] ARIA roles applied correctly (button, dialog, alert)
-- [ ] Form error announcements (aria-describedby)
-- [ ] Loading state announcements (aria-busy)
-- [ ] Success announcements (aria-live="polite")
-- [ ] Descriptive link text (avoid "click here")
+- [x] ARIA roles applied correctly (button, dialog, alert)
+- [x] Form error announcements (aria-describedby)
+- [x] Loading state announcements (aria-busy)
+- [x] Success announcements (aria-live="polite")
+- [x] Descriptive link text (avoid "click here")
 
 ### 10.4 Color & Contrast
 - [ ] Minimum 4.5:1 text contrast (AA standard)

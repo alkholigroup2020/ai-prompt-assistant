@@ -17,6 +17,8 @@
       :maxrows="15"
       :ui="{ base: 'w-full' }"
       :class="isError ? 'ring-2 ring-red-500 dark:ring-red-400 rounded-md' : ''"
+      :aria-describedby="validationError ? 'task-error' : 'task-help'"
+      :aria-invalid="isError"
       @input="handleTaskChange"
       @blur="handleBlur"
     />
@@ -56,13 +58,13 @@
     </div>
 
     <!-- Validation Error -->
-    <p v-if="validationError" class="text-sm text-red-600 dark:text-red-400 mt-1">
+    <p v-if="validationError" id="task-error" class="text-sm text-red-600 dark:text-red-400 mt-1" role="alert" aria-live="polite">
       <UIcon name="i-heroicons-exclamation-circle" class="w-4 h-4 inline" />
       {{ validationError }}
     </p>
 
     <!-- Help Text -->
-    <p v-else class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+    <p v-else id="task-help" class="text-sm text-gray-500 dark:text-gray-400 mt-1">
       <UIcon name="i-heroicons-information-circle" class="w-4 h-4 inline" />
       {{ $t('builder.task.helpText') }}
     </p>

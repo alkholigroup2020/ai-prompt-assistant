@@ -171,6 +171,8 @@ const exportOptions = [
         size="lg"
         :loading="false"
         :disabled="isCopying"
+        :aria-busy="isCopying"
+        :aria-live="isCopying ? 'polite' : undefined"
         class="flex-1 sm:flex-none"
         @click="handleCopy"
       />
@@ -183,6 +185,8 @@ const exportOptions = [
           color="primary"
           size="lg"
           :loading="isExporting"
+          :aria-busy="isExporting"
+          :aria-expanded="showExportMenu"
           class="w-full"
           @click="showExportMenu = !showExportMenu"
         />

@@ -14,6 +14,8 @@
       :options="audienceOptions"
       :placeholder="$t('builder.audience.placeholder')"
       :ui="{ base: 'w-full' }"
+      :aria-describedby="validationError ? 'audience-error' : 'audience-help'"
+      :aria-invalid="!!validationError"
       @update:model-value="handleAudienceChange"
     >
       <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
@@ -46,18 +48,20 @@
         v-model="otherAudienceValue"
         :placeholder="$t('builder.audience.otherPlaceholder')"
         :ui="{ base: 'w-full' }"
+        :aria-describedby="validationError ? 'audience-error' : 'audience-help'"
+        :aria-invalid="!!validationError"
         @input="handleOtherAudienceChange"
       />
     </div>
 
     <!-- Validation Error -->
-    <p v-if="validationError" class="text-sm text-red-600 dark:text-red-400 mt-1">
+    <p v-if="validationError" id="audience-error" class="text-sm text-red-600 dark:text-red-400 mt-1" role="alert" aria-live="polite">
       <UIcon name="i-heroicons-exclamation-circle" class="w-4 h-4 inline" />
       {{ validationError }}
     </p>
 
     <!-- Help Text -->
-    <p v-else class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+    <p v-else id="audience-help" class="text-sm text-gray-500 dark:text-gray-400 mt-1">
       {{ $t('builder.audience.helpText') }}
     </p>
   </div>

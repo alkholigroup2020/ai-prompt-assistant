@@ -186,6 +186,8 @@
               class="min-h-[44px]"
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
+              :aria-busy="isEnhancing"
+              :aria-label="isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')"
               @click="handleEnhance('quick')"
             >
               <template #leading>
@@ -201,6 +203,8 @@
               class="min-h-[44px]"
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
+              :aria-busy="isEnhancing"
+              :aria-label="isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.deepEnhance')"
               @click="handleEnhance('detailed')"
             >
               <template #leading>
