@@ -679,5 +679,49 @@
       "applied": "Template Applied",
       "appliedDescription": "The template has been applied to the prompt builder"
     }
+  },
+  "error": {
+    "meta": {
+      "title": "Error - AI Prompt Assistant",
+      "description": "An error occurred while processing your request"
+    },
+    "404": {
+      "title": "Page Not Found",
+      "code": "404",
+      "message": "Oops! The page you're looking for doesn't exist.",
+      "description": "The page might have been moved, deleted, or the URL might be incorrect. Let's get you back on track!"
+    },
+    "500": {
+      "title": "Server Error",
+      "code": "500",
+      "message": "Something went wrong on our end.",
+      "description": "We're sorry for the inconvenience. Our team has been notified and is working to fix the issue."
+    },
+    "default": {
+      "title": "Unexpected Error",
+      "code": "Error",
+      "message": "Something unexpected happened.",
+      "description": "We encountered an unexpected error. Please try again or return to the home page."
+    },
+    "actions": {
+      "goHome": "Go to Home",
+      "goBack": "Go Back",
+      "tryAgain": "Try Again",
+      "viewTemplates": "View Templates",
+      "startBuilder": "Start Building"
+    },
+    "support": {
+      "title": "Need Help?",
+      "description": "If this problem persists, please contact our support team.",
+      "contact": "Contact Support",
+      "email": "support[at]alkholi-group.com"
+    },
+    "suggestions": {
+      "title": "You might want to:",
+      "home": "Return to the home page",
+      "builder": "Create a new prompt",
+      "templates": "Browse prompt templates",
+      "refresh": "Refresh the page"
+    }
   }
 }

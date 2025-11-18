@@ -136,12 +136,14 @@ const footerLinks = [
 <style scoped>
 /* Focus visible styles for accessibility */
 a:focus-visible {
-  @apply outline-2 outline-offset-2 outline-emerald-600 ring-2 ring-emerald-600/20 rounded;
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* External link icon animation */
 a[target="_blank"]:hover svg {
-  @apply translate-x-0.5 -translate-y-0.5;
+  transform: translate(2px, -2px);
   transition: transform 0.2s ease-in-out;
 }
 </style>

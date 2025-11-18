@@ -185,12 +185,17 @@ header {
 
 /* Active link styling */
 a[aria-current="page"] {
-  @apply text-emerald-600 dark:text-emerald-400;
+  color: #16a34a;
+}
+
+:deep(.dark) a[aria-current="page"] {
+  color: #4ade80;
 }
 
 /* Focus visible styles for accessibility */
 a:focus-visible,
 button:focus-visible {
-  @apply outline-2 outline-offset-2 outline-emerald-600 ring-2 ring-emerald-600/20;
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
 }
 </style>
