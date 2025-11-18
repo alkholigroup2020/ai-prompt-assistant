@@ -114,6 +114,75 @@
     "download": "Download"
   },
   "builder": {
+    "meta": {
+      "title": "Prompt Builder - Create Perfect AI Prompts",
+      "description": "Build effective, professional AI prompts with our smart prompt builder. Get real-time quality feedback and suggestions as you create.",
+      "keywords": "prompt builder, AI prompts, quality score, prompt enhancement, ChatGPT prompts, Claude prompts"
+    },
+    "title": "Prompt Builder",
+    "subtitle": "Build your perfect AI prompt with real-time quality feedback and smart suggestions",
+    "progress": {
+      "label": "Completion Progress"
+    },
+    "sections": {
+      "basic": "Basic Information",
+      "style": "Style & Format",
+      "constraints": "Constraints & Requirements",
+      "advanced": "Advanced Options"
+    },
+    "preview": {
+      "quality": "Quality Score",
+      "suggestions": "Suggestions",
+      "title": "Live Preview",
+      "empty": "Start filling out the form to see a preview of your prompt",
+      "words": "Words",
+      "chars": "Characters",
+      "roleLabel": "Role",
+      "audienceLabel": "Audience",
+      "taskLabel": "Task",
+      "toneLabel": "Tone",
+      "formatLabel": "Format",
+      "constraintsLabel": "Constraints",
+      "examplesLabel": "Examples",
+      "contextLabel": "Context"
+    },
+    "autoSave": {
+      "saved": "Saved",
+      "saving": "Saving..."
+    },
+    "actions": {
+      "quickEnhance": "Quick Polish",
+      "deepEnhance": "Deep Enhancement",
+      "reset": "Reset Form",
+      "saveDraft": "Save Draft",
+      "resetConfirm": "Are you sure you want to reset the form? All your current work will be lost.",
+      "resetSuccess": "Form Reset",
+      "resetSuccessDescription": "The form has been reset. Start fresh with your new prompt.",
+      "draftSaved": "Draft Saved",
+      "draftSavedDescription": "Your work has been saved and can be restored later"
+    },
+    "validation": {
+      "error": "Validation Error",
+      "fixErrors": "Please fix the errors in the form before enhancing"
+    },
+    "enhancement": {
+      "success": "Enhancement Complete",
+      "successDescription": "Your prompt has been enhanced! Redirecting to results...",
+      "error": "Enhancement Failed",
+      "errorDescription": "Unable to enhance your prompt. Please try again."
+    },
+    "suggestions": {
+      "applied": "Suggestion Applied",
+      "appliedDescription": "The suggestion has been applied to your prompt"
+    },
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "quickEnhance": "Quick Enhance",
+      "deepEnhance": "Deep Enhancement",
+      "saveDraft": "Save Draft",
+      "reset": "Reset Form (prevents browser refresh)",
+      "clearFocus": "Clear Focus"
+    },
     "role": {
       "label": "Your Role",
       "placeholder": "Select your role...",
