@@ -22,7 +22,12 @@
       "Bash(curl:*)",
       "Bash(npm run dev:*)",
       "mcp__puppeteer__puppeteer_screenshot",
-      "mcp__puppeteer__puppeteer_click"
+      "mcp__puppeteer__puppeteer_click",
+      "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates_temp.json\")",
+      "Bash(cat:*)",
+      "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates.json\")",
+      "Bash(node:*)",
+      "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates_fixed.json\")"
     ],
     "deny": [],
     "ask": []

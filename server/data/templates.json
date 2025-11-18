@@ -1,0 +1,2843 @@
+[
+  {
+    "id": "content-strategy-plan",
+    "category": "creative",
+    "title": "Content Strategy Plan",
+    "description": "Develop a comprehensive content strategy with goals, audience personas, content pillars, and distribution plan.",
+    "tags": [
+      "content-strategy",
+      "marketing",
+      "planning",
+      "content-calendar",
+      "seo"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create a content strategy for: {{business_or_brand}}\nIndustry: {{industry}}\nTime Frame: {{time_frame}}\n\nBusiness Goals:\n{{business_goals}}\n\nTarget Audience:\n{{target_audience}}\n\nContent Pillars:\n{{content_pillars}}\n\nChannels: {{channels}}\nResources: {{resources}}\nKPIs: {{kpis}}",
+    "variables": [
+      {
+        "key": "{{business_or_brand}}",
+        "label": "Business/Brand Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., TechStart Solutions",
+        "maxLength": 150
+      },
+      {
+        "key": "{{industry}}",
+        "label": "Industry/Niche",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., B2B SaaS, E-commerce",
+        "maxLength": 100
+      },
+      {
+        "key": "{{time_frame}}",
+        "label": "Strategy Time Frame",
+        "type": "select",
+        "required": true,
+        "options": [
+          "3 months",
+          "6 months",
+          "1 year"
+        ]
+      },
+      {
+        "key": "{{business_goals}}",
+        "label": "Business Goals",
+        "type": "text",
+        "required": true,
+        "maxLength": 400
+      },
+      {
+        "key": "{{target_audience}}",
+        "label": "Target Audience",
+        "type": "text",
+        "required": true,
+        "maxLength": 400
+      },
+      {
+        "key": "{{content_pillars}}",
+        "label": "Content Pillars/Themes",
+        "type": "text",
+        "required": true,
+        "maxLength": 300
+      },
+      {
+        "key": "{{channels}}",
+        "label": "Distribution Channels",
+        "type": "text",
+        "required": true,
+        "maxLength": 200
+      },
+      {
+        "key": "{{resources}}",
+        "label": "Available Resources",
+        "type": "text",
+        "required": true,
+        "maxLength": 250
+      },
+      {
+        "key": "{{kpis}}",
+        "label": "Key Performance Indicators",
+        "type": "text",
+        "required": true,
+        "maxLength": 250
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.5,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "story-writing-prompt",
+    "category": "creative",
+    "title": "Creative Story Writing",
+    "description": "Generate creative story prompts, plot outlines, or character development frameworks for fiction writing.",
+    "tags": [
+      "creative-writing",
+      "storytelling",
+      "fiction",
+      "narrative",
+      "plot"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create a story outline for: {{story_type}}\nGenre: {{genre}}\nTarget Length: {{target_length}}\n\nMain Theme:\n{{main_theme}}\n\nProtagonist:\n{{protagonist_description}}\n\nSetting:\n{{setting}}\n\nConflict:\n{{central_conflict}}",
+    "variables": [
+      {
+        "key": "{{story_type}}",
+        "label": "Story Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Short Story",
+          "Novella",
+          "Novel",
+          "Flash Fiction"
+        ]
+      },
+      {
+        "key": "{{genre}}",
+        "label": "Genre",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Fantasy",
+          "Science Fiction",
+          "Mystery/Thriller",
+          "Romance",
+          "Literary Fiction",
+          "Horror"
+        ]
+      },
+      {
+        "key": "{{target_length}}",
+        "label": "Target Length",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 5,000 words",
+        "maxLength": 50
+      },
+      {
+        "key": "{{main_theme}}",
+        "label": "Main Theme",
+        "type": "text",
+        "required": true,
+        "maxLength": 300
+      },
+      {
+        "key": "{{protagonist_description}}",
+        "label": "Protagonist Description",
+        "type": "text",
+        "required": true,
+        "maxLength": 400
+      },
+      {
+        "key": "{{setting}}",
+        "label": "Setting",
+        "type": "text",
+        "required": true,
+        "maxLength": 300
+      },
+      {
+        "key": "{{central_conflict}}",
+        "label": "Central Conflict",
+        "type": "text",
+        "required": true,
+        "maxLength": 400
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "brainstorming-session",
+    "category": "creative",
+    "title": "Brainstorming Session Facilitator",
+    "description": "Structure and facilitate productive brainstorming sessions with prompts, exercises, and idea generation frameworks.",
+    "tags": [
+      "brainstorming",
+      "ideation",
+      "creativity",
+      "innovation",
+      "workshop"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create a brainstorming session plan for: {{session_goal}}\nParticipants: {{participants}}\nDuration: {{duration}}\n\nChallenge/Problem:\n{{problem_statement}}\n\nBrainstorming Method: {{brainstorming_method}}\n\nDesired Outcomes:\n{{desired_outcomes}}",
+    "variables": [
+      {
+        "key": "{{session_goal}}",
+        "label": "Session Goal",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Generate new product ideas",
+        "maxLength": 200
+      },
+      {
+        "key": "{{participants}}",
+        "label": "Participants",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Marketing team (6 people)",
+        "maxLength": 150
+      },
+      {
+        "key": "{{duration}}",
+        "label": "Session Duration",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 90 minutes",
+        "maxLength": 50
+      },
+      {
+        "key": "{{problem_statement}}",
+        "label": "Challenge/Problem Statement",
+        "type": "text",
+        "required": true,
+        "maxLength": 400
+      },
+      {
+        "key": "{{brainstorming_method}}",
+        "label": "Brainstorming Method",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Classic Brainstorming",
+          "Mind Mapping",
+          "SCAMPER",
+          "Six Thinking Hats",
+          "Rapid Ideation"
+        ]
+      },
+      {
+        "key": "{{desired_outcomes}}",
+        "label": "Desired Outcomes",
+        "type": "text",
+        "required": true,
+        "maxLength": 300
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "email-reply-professional",
+    "category": "business",
+    "title": "Professional Email Reply",
+    "description": "Generate a professional email response that addresses the sender's concerns while maintaining a courteous and business-appropriate tone.",
+    "tags": [
+      "email",
+      "communication",
+      "professional",
+      "reply",
+      "business"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "2 minutes",
+    "basePrompt": "Draft a professional email reply to {{sender_name}} regarding {{email_topic}}. The original email states: {{original_message}}.\n\nTone: {{tone}}\nKey points to address:\n{{key_points}}\n\n{{additional_context}}",
+    "variables": [
+      {
+        "key": "{{sender_name}}",
+        "label": "Sender Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., John Smith",
+        "maxLength": 100,
+        "description": "The name of the person you're replying to"
+      },
+      {
+        "key": "{{email_topic}}",
+        "label": "Email Topic",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Project deadline extension request",
+        "maxLength": 200,
+        "description": "Brief description of what the email is about"
+      },
+      {
+        "key": "{{original_message}}",
+        "label": "Original Message Summary",
+        "type": "text",
+        "required": true,
+        "placeholder": "Paste or summarize the original email content",
+        "maxLength": 500,
+        "description": "The key content from the email you're replying to"
+      },
+      {
+        "key": "{{tone}}",
+        "label": "Response Tone",
+        "type": "select",
+        "required": true,
+        "options": [
+          "formal",
+          "friendly-professional",
+          "empathetic",
+          "apologetic",
+          "assertive"
+        ],
+        "description": "The tone you want to convey in your response"
+      },
+      {
+        "key": "{{key_points}}",
+        "label": "Key Points to Address",
+        "type": "text",
+        "required": true,
+        "placeholder": "- Approve extension\n- Request updated timeline\n- Offer support",
+        "maxLength": 300,
+        "description": "Main points you need to cover in your reply"
+      },
+      {
+        "key": "{{additional_context}}",
+        "label": "Additional Context (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other relevant information",
+        "maxLength": 200,
+        "description": "Extra details that might be useful"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Deadline Extension Approval",
+        "description": "Approving a project deadline extension request",
+        "input": {
+          "sender_name": "Sarah Johnson",
+          "email_topic": "Website redesign deadline extension",
+          "original_message": "Due to unexpected technical challenges with the CMS migration, we need 2 more weeks",
+          "tone": "friendly-professional",
+          "key_points": "- Approve the extension\n- Request bi-weekly updates\n- Offer technical support if needed",
+          "additional_context": "Project is critical for Q4 launch"
+        },
+        "output": "Dear Sarah,\n\nThank you for bringing this to my attention. I understand that the CMS migration has presented some unexpected technical challenges.\n\nI'm happy to approve the two-week extension for the website redesign project. Given the importance of this project for our Q4 launch, I'd like to request bi-weekly progress updates so we can stay aligned and address any issues promptly.\n\nPlease don't hesitate to reach out if you need any technical support or resources from our end. We're here to help ensure the project's success.\n\nBest regards"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "meeting-summary-notes",
+    "category": "business",
+    "title": "Meeting Summary & Action Items",
+    "description": "Create a structured meeting summary with key discussion points, decisions made, and action items with clear ownership.",
+    "tags": [
+      "meeting",
+      "summary",
+      "notes",
+      "action-items",
+      "minutes"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create a comprehensive meeting summary for: {{meeting_title}}\nDate: {{meeting_date}}\nAttendees: {{attendees}}\n\nKey discussion points:\n{{discussion_points}}\n\nDecisions made:\n{{decisions}}\n\nAction items:\n{{action_items}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{meeting_title}}",
+        "label": "Meeting Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Q4 Marketing Strategy Review",
+        "maxLength": 150,
+        "description": "The name or purpose of the meeting"
+      },
+      {
+        "key": "{{meeting_date}}",
+        "label": "Meeting Date",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., November 17, 2025",
+        "maxLength": 50,
+        "description": "When the meeting took place"
+      },
+      {
+        "key": "{{attendees}}",
+        "label": "Attendees",
+        "type": "text",
+        "required": true,
+        "placeholder": "List all participants",
+        "maxLength": 300,
+        "description": "Who attended the meeting"
+      },
+      {
+        "key": "{{discussion_points}}",
+        "label": "Discussion Points",
+        "type": "text",
+        "required": true,
+        "placeholder": "Main topics discussed in the meeting",
+        "maxLength": 600,
+        "description": "Key topics and discussions from the meeting"
+      },
+      {
+        "key": "{{decisions}}",
+        "label": "Decisions Made",
+        "type": "text",
+        "required": true,
+        "placeholder": "List all decisions that were made",
+        "maxLength": 400,
+        "description": "Important decisions reached during the meeting"
+      },
+      {
+        "key": "{{action_items}}",
+        "label": "Action Items",
+        "type": "text",
+        "required": true,
+        "placeholder": "Tasks with owners and due dates",
+        "maxLength": 500,
+        "description": "Tasks that need to be completed, who's responsible, and deadlines"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other relevant information",
+        "maxLength": 300,
+        "description": "Extra context or follow-up information"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Marketing Strategy Meeting",
+        "description": "Summary of a quarterly marketing strategy review",
+        "input": {
+          "meeting_title": "Q4 Marketing Strategy Review",
+          "meeting_date": "November 17, 2025",
+          "attendees": "Sarah (Marketing Director), Mike (Content Lead), Lisa (Social Media Manager), Ahmed (Analytics)",
+          "discussion_points": "- Q3 campaign performance\n- Budget allocation for Q4\n- New social media strategy\n- Website traffic analysis",
+          "decisions": "- Increase social media budget by 20%\n- Launch new Instagram campaign in December\n- Hire additional content writer",
+          "action_items": "- Sarah: Finalize Q4 budget by Nov 24\n- Mike: Create content calendar by Nov 21\n- Lisa: Prepare Instagram campaign brief by Nov 25\n- Ahmed: Send detailed analytics report by Nov 20",
+          "additional_notes": "Next meeting scheduled for December 15, 2025"
+        },
+        "output": "# Meeting Summary: Q4 Marketing Strategy Review\n\n**Date:** November 17, 2025\n**Attendees:** Sarah (Marketing Director), Mike (Content Lead), Lisa (Social Media Manager), Ahmed (Analytics)\n\n## Key Discussion Points\n- Q3 campaign performance review and lessons learned\n- Budget allocation strategy for Q4 initiatives\n- Development of new social media strategy focusing on engagement\n- Comprehensive website traffic analysis and optimization opportunities\n\n## Decisions Made\n1. Increase social media advertising budget by 20% to capitalize on holiday season\n2. Launch new Instagram campaign targeting millennials in December\n3. Hire additional content writer to support increased content production needs\n\n## Action Items\n- **Sarah:** Finalize Q4 budget allocation | Due: Nov 24\n- **Mike:** Create comprehensive content calendar | Due: Nov 21\n- **Lisa:** Prepare Instagram campaign creative brief | Due: Nov 25\n- **Ahmed:** Send detailed analytics report with recommendations | Due: Nov 20\n\n**Next Meeting:** December 15, 2025"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.9,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "project-status-report",
+    "category": "business",
+    "title": "Project Status Report",
+    "description": "Generate a comprehensive project status report highlighting progress, challenges, and next steps for stakeholder communication.",
+    "tags": [
+      "project",
+      "status",
+      "report",
+      "update",
+      "management"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create a project status report for: {{project_name}}\nReporting Period: {{reporting_period}}\nProject Manager: {{project_manager}}\n\nCurrent Status: {{status}}\nCompletion: {{completion_percentage}}%\n\nAccomplishments this period:\n{{accomplishments}}\n\nChallenges and risks:\n{{challenges}}\n\nNext steps:\n{{next_steps}}\n\nBudget status: {{budget_status}}\nTimeline status: {{timeline_status}}\n\n{{additional_info}}",
+    "variables": [
+      {
+        "key": "{{project_name}}",
+        "label": "Project Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Customer Portal Redesign",
+        "maxLength": 150,
+        "description": "Name of the project"
+      },
+      {
+        "key": "{{reporting_period}}",
+        "label": "Reporting Period",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., November 1-15, 2025",
+        "maxLength": 100,
+        "description": "The time period this report covers"
+      },
+      {
+        "key": "{{project_manager}}",
+        "label": "Project Manager",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Ahmed Hassan",
+        "maxLength": 100,
+        "description": "Name of the person managing the project"
+      },
+      {
+        "key": "{{status}}",
+        "label": "Project Status",
+        "type": "select",
+        "required": true,
+        "options": [
+          "On Track",
+          "At Risk",
+          "Behind Schedule",
+          "Ahead of Schedule",
+          "Completed"
+        ],
+        "description": "Overall status of the project"
+      },
+      {
+        "key": "{{completion_percentage}}",
+        "label": "Completion Percentage",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 65",
+        "maxLength": 3,
+        "description": "Percentage of project completed (0-100)"
+      },
+      {
+        "key": "{{accomplishments}}",
+        "label": "Key Accomplishments",
+        "type": "text",
+        "required": true,
+        "placeholder": "List major achievements this period",
+        "maxLength": 500,
+        "description": "What was completed during this reporting period"
+      },
+      {
+        "key": "{{challenges}}",
+        "label": "Challenges & Risks",
+        "type": "text",
+        "required": true,
+        "placeholder": "List any issues or risks",
+        "maxLength": 400,
+        "description": "Problems encountered and potential risks"
+      },
+      {
+        "key": "{{next_steps}}",
+        "label": "Next Steps",
+        "type": "text",
+        "required": true,
+        "placeholder": "Planned activities for next period",
+        "maxLength": 400,
+        "description": "What will be done in the next reporting period"
+      },
+      {
+        "key": "{{budget_status}}",
+        "label": "Budget Status",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., On budget / 5% under budget",
+        "maxLength": 100,
+        "description": "Current budget situation"
+      },
+      {
+        "key": "{{timeline_status}}",
+        "label": "Timeline Status",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 2 weeks behind schedule",
+        "maxLength": 100,
+        "description": "Current timeline situation"
+      },
+      {
+        "key": "{{additional_info}}",
+        "label": "Additional Information (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other relevant details",
+        "maxLength": 300,
+        "description": "Extra context or notes"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Portal Redesign Update",
+        "description": "Biweekly status report for a customer portal redesign project",
+        "input": {
+          "project_name": "Customer Portal Redesign",
+          "reporting_period": "November 1-15, 2025",
+          "project_manager": "Ahmed Hassan",
+          "status": "On Track",
+          "completion_percentage": "65",
+          "accomplishments": "- Completed user interface mockups for all 12 pages\n- Finished backend API development\n- Conducted user testing with 20 participants\n- Implemented responsive design for mobile",
+          "challenges": "- Third-party payment integration delayed by vendor\n- Two team members on sick leave affected velocity\n- Minor browser compatibility issues in Safari",
+          "next_steps": "- Complete payment integration by Nov 25\n- Begin security audit\n- Finalize accessibility compliance\n- Prepare for staging deployment",
+          "budget_status": "3% under budget",
+          "timeline_status": "On schedule for December 15 launch",
+          "additional_info": "Stakeholder demo scheduled for November 22"
+        },
+        "output": "# Project Status Report\n\n**Project:** Customer Portal Redesign\n**Reporting Period:** November 1-15, 2025\n**Project Manager:** Ahmed Hassan\n**Overall Status:** 🟢 On Track (65% Complete)\n\n## Executive Summary\nThe Customer Portal Redesign project continues to progress well with 65% completion. We've achieved significant milestones this period including UI completion and successful user testing. Despite minor vendor delays, the project remains on schedule for the December 15 launch.\n\n## Key Accomplishments\n- ✅ Completed user interface mockups for all 12 portal pages\n- ✅ Finished backend API development and integration\n- ✅ Conducted comprehensive user testing with 20 participants (92% satisfaction rate)\n- ✅ Successfully implemented responsive design optimized for mobile devices\n\n## Challenges & Risk Mitigation\n- ⚠️ **Payment Integration Delay:** Third-party vendor has pushed delivery by 5 days. Mitigation: Direct escalation with vendor's technical team, parallel workaround development\n- ⚠️ **Resource Availability:** Two team members on sick leave reduced sprint velocity by 15%. Mitigation: Reallocated tasks, extended work hours for critical path items\n- ⚠️ **Browser Compatibility:** Minor rendering issues identified in Safari. Mitigation: Dedicated fix scheduled for this week\n\n## Next Steps (Nov 16-30)\n1. Complete payment gateway integration (Target: Nov 25)\n2. Initiate comprehensive security audit with third-party firm\n3. Finalize WCAG 2.1 AA accessibility compliance testing\n4. Prepare and deploy to staging environment for stakeholder review\n\n## Budget & Timeline\n**Budget:** 3% under allocated budget ($145K of $150K spent)\n**Timeline:** On schedule for December 15, 2025 production launch\n\n**Upcoming Milestone:** Stakeholder demonstration scheduled for November 22, 2025"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "business-proposal",
+    "category": "business",
+    "title": "Business Proposal",
+    "description": "Draft a compelling business proposal that outlines your solution, value proposition, and expected outcomes for potential clients or partners.",
+    "tags": [
+      "proposal",
+      "business",
+      "sales",
+      "partnership",
+      "pitch"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create a business proposal for: {{proposal_title}}\nTo: {{recipient_organization}}\nFrom: {{your_organization}}\n\nExecutive Summary:\n{{executive_summary}}\n\nProblem Statement:\n{{problem_statement}}\n\nProposed Solution:\n{{proposed_solution}}\n\nExpected Benefits:\n{{expected_benefits}}\n\nTimeline: {{timeline}}\nInvestment: {{investment}}\n\n{{additional_details}}",
+    "variables": [
+      {
+        "key": "{{proposal_title}}",
+        "label": "Proposal Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Digital Transformation Consulting Services",
+        "maxLength": 200,
+        "description": "Title of your business proposal"
+      },
+      {
+        "key": "{{recipient_organization}}",
+        "label": "Recipient Organization",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., ABC Corporation",
+        "maxLength": 150,
+        "description": "The organization you're proposing to"
+      },
+      {
+        "key": "{{your_organization}}",
+        "label": "Your Organization",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Alkholi Group",
+        "maxLength": 150,
+        "description": "Your company or organization name"
+      },
+      {
+        "key": "{{executive_summary}}",
+        "label": "Executive Summary",
+        "type": "text",
+        "required": true,
+        "placeholder": "Brief overview of the proposal (2-3 sentences)",
+        "maxLength": 400,
+        "description": "High-level summary of your proposal"
+      },
+      {
+        "key": "{{problem_statement}}",
+        "label": "Problem Statement",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe the problem or opportunity",
+        "maxLength": 500,
+        "description": "The challenge or opportunity you're addressing"
+      },
+      {
+        "key": "{{proposed_solution}}",
+        "label": "Proposed Solution",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe your solution and approach",
+        "maxLength": 600,
+        "description": "How you plan to solve the problem"
+      },
+      {
+        "key": "{{expected_benefits}}",
+        "label": "Expected Benefits",
+        "type": "text",
+        "required": true,
+        "placeholder": "List key benefits and ROI",
+        "maxLength": 400,
+        "description": "What outcomes the client can expect"
+      },
+      {
+        "key": "{{timeline}}",
+        "label": "Project Timeline",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 6 months (Jan-Jun 2026)",
+        "maxLength": 150,
+        "description": "Expected duration of the project"
+      },
+      {
+        "key": "{{investment}}",
+        "label": "Investment Required",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., $150,000 - $200,000",
+        "maxLength": 150,
+        "description": "Budget or cost estimate"
+      },
+      {
+        "key": "{{additional_details}}",
+        "label": "Additional Details (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Next steps, terms, or other information",
+        "maxLength": 300,
+        "description": "Any other relevant information"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Digital Transformation Proposal",
+        "description": "Comprehensive proposal for digital transformation consulting",
+        "input": {
+          "proposal_title": "Digital Transformation & Cloud Migration Services",
+          "recipient_organization": "Heritage Manufacturing Ltd.",
+          "your_organization": "Alkholi Group",
+          "executive_summary": "Alkholi Group proposes a comprehensive digital transformation program to modernize Heritage Manufacturing's operations, migrate to cloud infrastructure, and implement data-driven decision making systems. This initiative will enhance operational efficiency by 40% and reduce IT costs by 30%.",
+          "problem_statement": "Heritage Manufacturing currently operates on legacy on-premise systems that are costly to maintain, lack scalability, and hinder real-time collaboration. The absence of integrated data analytics prevents data-driven decision making, resulting in missed opportunities and inefficiencies.",
+          "proposed_solution": "We propose a three-phase approach: 1) Infrastructure Assessment & Planning, 2) Cloud Migration (AWS/Azure), and 3) Analytics Platform Implementation. This includes migrating core systems to cloud, implementing real-time dashboards, training staff, and establishing ongoing support.",
+          "expected_benefits": "- 40% improvement in operational efficiency\n- 30% reduction in IT infrastructure costs\n- Real-time access to business intelligence\n- Enhanced collaboration across teams\n- Improved scalability and disaster recovery\n- ROI expected within 18 months",
+          "timeline": "6 months (January - June 2026)",
+          "investment": "$180,000 - $220,000 (depending on final scope)",
+          "additional_details": "Proposal valid for 60 days. Next step: Schedule discovery workshop in December 2025."
+        },
+        "output": "# Business Proposal\n## Digital Transformation & Cloud Migration Services\n\n**To:** Heritage Manufacturing Ltd.\n**From:** Alkholi Group\n**Date:** November 17, 2025\n\n---\n\n## Executive Summary\n\nAlkholi Group proposes a comprehensive digital transformation program to modernize Heritage Manufacturing's operations, migrate to cloud infrastructure, and implement data-driven decision making systems. This strategic initiative will enhance operational efficiency by 40% and reduce IT costs by 30%, positioning Heritage Manufacturing for sustainable growth in an increasingly digital marketplace.\n\n## Problem Statement\n\nHeritage Manufacturing currently operates on legacy on-premise systems that are costly to maintain, lack scalability, and hinder real-time collaboration across departments. The absence of integrated data analytics prevents data-driven decision making, resulting in missed market opportunities and operational inefficiencies. As competition intensifies and customer expectations evolve, the need for digital transformation has become critical.\n\n## Proposed Solution\n\nAlkholi Group proposes a three-phase digital transformation approach:\n\n**Phase 1: Infrastructure Assessment & Planning (Month 1)**\n- Comprehensive audit of current systems and workflows\n- Stakeholder interviews and requirements gathering\n- Detailed migration roadmap development\n\n**Phase 2: Cloud Migration (Months 2-4)**\n- Migration of core systems to enterprise cloud platform (AWS/Azure)\n- Implementation of secure, scalable infrastructure\n- Data migration with zero-downtime approach\n\n**Phase 3: Analytics Platform Implementation (Months 5-6)**\n- Deployment of real-time business intelligence dashboards\n- Staff training and change management\n- Establishment of ongoing support and optimization framework\n\n## Expected Benefits\n\n- **40% improvement** in operational efficiency through automated workflows\n- **30% reduction** in IT infrastructure and maintenance costs\n- **Real-time access** to actionable business intelligence and KPIs\n- **Enhanced collaboration** across teams with cloud-based tools\n- **Improved scalability** to support business growth\n- **Robust disaster recovery** and business continuity\n- **ROI expected within 18 months** of project completion\n\n## Timeline & Investment\n\n**Project Duration:** 6 months (January - June 2026)\n**Investment Required:** $180,000 - $220,000 (final cost dependent on agreed scope)\n\n## Next Steps\n\nThis proposal is valid for 60 days. We recommend scheduling a discovery workshop in December 2025 to refine requirements and finalize the implementation plan.\n\nWe look forward to partnering with Heritage Manufacturing on this transformative journey.\n\n---\n\n**Contact:** [Your contact information]\n**Proposal Reference:** DT-HM-2025-11"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "executive-summary",
+    "category": "business",
+    "title": "Executive Summary",
+    "description": "Create a concise executive summary that captures the key points of a longer document, report, or proposal for leadership review.",
+    "tags": [
+      "summary",
+      "executive",
+      "report",
+      "overview",
+      "leadership"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create an executive summary for: {{document_title}}\nDocument Type: {{document_type}}\nTarget Audience: {{target_audience}}\n\nKey Findings:\n{{key_findings}}\n\nMain Recommendations:\n{{recommendations}}\n\nExpected Impact:\n{{expected_impact}}\n\nNext Steps:\n{{next_steps}}\n\n{{additional_context}}",
+    "variables": [
+      {
+        "key": "{{document_title}}",
+        "label": "Document Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Q4 2025 Market Analysis Report",
+        "maxLength": 200,
+        "description": "Title of the full document"
+      },
+      {
+        "key": "{{document_type}}",
+        "label": "Document Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Report",
+          "Proposal",
+          "Analysis",
+          "Strategy Document",
+          "Research Study",
+          "Business Plan"
+        ],
+        "description": "Type of document being summarized"
+      },
+      {
+        "key": "{{target_audience}}",
+        "label": "Target Audience",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Board of Directors, C-Suite",
+        "maxLength": 150,
+        "description": "Who will read this summary"
+      },
+      {
+        "key": "{{key_findings}}",
+        "label": "Key Findings",
+        "type": "text",
+        "required": true,
+        "placeholder": "List the most important findings or insights",
+        "maxLength": 500,
+        "description": "Main discoveries or conclusions from the document"
+      },
+      {
+        "key": "{{recommendations}}",
+        "label": "Main Recommendations",
+        "type": "text",
+        "required": true,
+        "placeholder": "List primary recommendations or action items",
+        "maxLength": 400,
+        "description": "What actions are being recommended"
+      },
+      {
+        "key": "{{expected_impact}}",
+        "label": "Expected Impact",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe anticipated outcomes or benefits",
+        "maxLength": 300,
+        "description": "What will happen if recommendations are followed"
+      },
+      {
+        "key": "{{next_steps}}",
+        "label": "Next Steps",
+        "type": "text",
+        "required": true,
+        "placeholder": "Immediate actions required",
+        "maxLength": 250,
+        "description": "What needs to happen next"
+      },
+      {
+        "key": "{{additional_context}}",
+        "label": "Additional Context (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other relevant information",
+        "maxLength": 200,
+        "description": "Extra background or details"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Market Analysis Summary",
+        "description": "Executive summary for quarterly market analysis",
+        "input": {
+          "document_title": "Q4 2025 Middle East E-commerce Market Analysis",
+          "document_type": "Report",
+          "target_audience": "Executive Leadership Team",
+          "key_findings": "- E-commerce market grew 34% YoY in MENA region\n- Mobile shopping now accounts for 72% of transactions\n- Social commerce emerging as major channel (45% growth)\n- Consumer preference shifting toward local brands\n- Payment method diversity increasing (digital wallets up 89%)",
+          "recommendations": "1. Increase mobile app investment by 40%\n2. Launch social commerce pilot on Instagram\n3. Partner with local payment providers\n4. Develop localized marketing campaigns\n5. Accelerate same-day delivery expansion",
+          "expected_impact": "Expected revenue increase of 25-30% in 2026, improved market share from 12% to 18%, enhanced customer satisfaction scores, and stronger competitive positioning",
+          "next_steps": "- Executive decision on budget allocation (by Dec 1)\n- Form cross-functional implementation team\n- Initiate vendor negotiations for payment partnerships\n- Schedule detailed planning sessions for Q1 2026",
+          "additional_context": "Full 85-page report with detailed data appendix available upon request"
+        },
+        "output": "# Executive Summary\n## Q4 2025 Middle East E-commerce Market Analysis\n\n**Document Type:** Market Analysis Report\n**Prepared For:** Executive Leadership Team\n**Date:** November 2025\n\n---\n\n## Overview\n\nThis analysis examines the rapidly evolving Middle East e-commerce landscape, identifying critical market trends, competitive dynamics, and strategic opportunities for our organization.\n\n## Key Findings\n\nOur research reveals significant market transformation:\n\n- **Strong Market Growth:** E-commerce market expanded 34% year-over-year across the MENA region, significantly outpacing global averages\n- **Mobile-First Reality:** Mobile shopping now dominates with 72% of all transactions, up from 58% in Q4 2024\n- **Social Commerce Surge:** Social commerce channels experiencing explosive 45% growth, driven primarily by Instagram and TikTok integration\n- **Local Brand Preference:** Consumer sentiment shifting toward regional brands, presenting both opportunity and competitive pressure\n- **Payment Evolution:** Digital wallet adoption surged 89%, with diverse payment preferences requiring multi-provider strategies\n\n## Strategic Recommendations\n\n1. **Increase mobile app investment by 40%** to capitalize on mobile-first consumer behavior\n2. **Launch Instagram social commerce pilot** to capture emerging channel growth\n3. **Partner with leading local payment providers** to accommodate diverse payment preferences\n4. **Develop culturally-localized marketing campaigns** to strengthen regional brand affinity\n5. **Accelerate same-day delivery expansion** to meet rising customer expectations\n\n## Expected Business Impact\n\nSuccessful implementation of these recommendations is projected to deliver:\n- **Revenue increase of 25-30%** in 2026\n- **Market share growth** from 12% to 18%\n- **Enhanced customer satisfaction** through improved user experience\n- **Stronger competitive positioning** in rapidly growing markets\n\n## Immediate Next Steps\n\n1. **Executive Decision Required:** Budget allocation approval needed by December 1, 2025\n2. **Team Formation:** Assemble cross-functional implementation team\n3. **Partnership Initiation:** Begin vendor negotiations with payment providers\n4. **Planning:** Schedule detailed Q1 2026 implementation planning sessions\n\n---\n\n**Full Report:** 85-page detailed analysis with comprehensive data appendix available upon request\n\n**Contact:** [Your contact information]"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "code-review-checklist",
+    "category": "technical",
+    "title": "Code Review Checklist",
+    "description": "Generate a comprehensive code review checklist and feedback template for evaluating code quality, security, and best practices.",
+    "tags": [
+      "code-review",
+      "development",
+      "quality",
+      "programming",
+      "feedback"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create a code review for:\nPull Request: {{pr_title}}\nAuthor: {{author_name}}\nProgramming Language: {{programming_language}}\nFramework: {{framework}}\n\nCode Changes Summary:\n{{code_changes}}\n\nReview Focus Areas:\n{{focus_areas}}\n\nSpecific Concerns:\n{{specific_concerns}}\n\n{{additional_context}}",
+    "variables": [
+      {
+        "key": "{{pr_title}}",
+        "label": "Pull Request Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Add user authentication module",
+        "maxLength": 200,
+        "description": "Title of the pull request being reviewed"
+      },
+      {
+        "key": "{{author_name}}",
+        "label": "Code Author",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., John Doe",
+        "maxLength": 100,
+        "description": "Name of the developer who wrote the code"
+      },
+      {
+        "key": "{{programming_language}}",
+        "label": "Programming Language",
+        "type": "select",
+        "required": true,
+        "options": [
+          "JavaScript/TypeScript",
+          "Python",
+          "Java",
+          "C#",
+          "Go",
+          "Rust",
+          "PHP",
+          "Ruby",
+          "Other"
+        ],
+        "description": "Primary language used in the code"
+      },
+      {
+        "key": "{{framework}}",
+        "label": "Framework/Stack",
+        "type": "text",
+        "required": false,
+        "placeholder": "e.g., React, Vue, Django, Spring Boot",
+        "maxLength": 100,
+        "description": "Framework or tech stack being used"
+      },
+      {
+        "key": "{{code_changes}}",
+        "label": "Code Changes Summary",
+        "type": "text",
+        "required": true,
+        "placeholder": "Brief description of what changed",
+        "maxLength": 500,
+        "description": "Summary of the code changes in this PR"
+      },
+      {
+        "key": "{{focus_areas}}",
+        "label": "Review Focus Areas",
+        "type": "multiselect",
+        "required": true,
+        "options": [
+          "Security",
+          "Performance",
+          "Code Quality",
+          "Testing",
+          "Documentation",
+          "Architecture",
+          "Error Handling",
+          "Accessibility"
+        ],
+        "description": "What aspects should be prioritized in the review"
+      },
+      {
+        "key": "{{specific_concerns}}",
+        "label": "Specific Concerns",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any particular issues or questions",
+        "maxLength": 300,
+        "description": "Specific areas you want the reviewer to examine"
+      },
+      {
+        "key": "{{additional_context}}",
+        "label": "Additional Context (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Background or related information",
+        "maxLength": 200,
+        "description": "Any other relevant context"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Authentication Module Review",
+        "description": "Code review for new authentication feature",
+        "input": {
+          "pr_title": "Add JWT-based user authentication module",
+          "author_name": "Sarah Chen",
+          "programming_language": "JavaScript/TypeScript",
+          "framework": "Node.js with Express",
+          "code_changes": "Implemented JWT authentication, created auth middleware, added login/logout endpoints, integrated bcrypt for password hashing, added refresh token mechanism",
+          "focus_areas": "Security, Error Handling, Testing",
+          "specific_concerns": "Want to ensure token expiration is handled correctly and no security vulnerabilities exist",
+          "additional_context": "This will be used in production with 10K+ users"
+        },
+        "output": "# Code Review: Add JWT-based User Authentication Module\n\n**Pull Request:** #247\n**Author:** Sarah Chen\n**Stack:** Node.js with Express (TypeScript)\n**Reviewer:** [Your Name]\n**Date:** November 17, 2025\n\n---\n\n## Changes Summary\n\nThis PR implements a comprehensive JWT-based authentication system including login/logout endpoints, authentication middleware, password hashing with bcrypt, and refresh token mechanism.\n\n## Review Checklist\n\n### ✅ Code Quality\n- [ ] Code follows project style guidelines and conventions\n- [ ] Functions and variables have clear, descriptive names\n- [ ] Code is DRY (Don't Repeat Yourself) - no unnecessary duplication\n- [ ] Complex logic includes explanatory comments\n- [ ] TypeScript types are properly defined (no `any` types)\n\n### 🔒 Security (Priority Focus)\n- [ ] **JWT Secret:** Verify JWT secret is stored in environment variables, not hardcoded\n- [ ] **Token Expiration:** Confirm access token has reasonable expiration (15-30 min)\n- [ ] **Password Hashing:** Verify bcrypt salt rounds are adequate (minimum 10)\n- [ ] **SQL Injection:** Check all database queries use parameterized queries\n- [ ] **XSS Protection:** Ensure all user inputs are sanitized\n- [ ] **HTTPS Only:** Confirm tokens are only transmitted over HTTPS\n- [ ] **Rate Limiting:** Verify login endpoint has rate limiting to prevent brute force\n- [ ] **Refresh Token Security:** Ensure refresh tokens are stored securely and have rotation\n\n### ⚡ Performance\n- [ ] Database queries are optimized (no N+1 queries)\n- [ ] Appropriate caching strategies implemented\n- [ ] No blocking operations in request handlers\n\n### ⚠️ Error Handling (Priority Focus)\n- [ ] **Token Expiration:** Proper handling of expired tokens with clear error messages\n- [ ] **Invalid Credentials:** Secure error messages (don't reveal if user exists)\n- [ ] **Network Errors:** Graceful handling of database connection issues\n- [ ] **Input Validation:** All endpoints validate input and return meaningful errors\n- [ ] **Logging:** Errors are logged (without exposing sensitive data)\n- [ ] **Try-Catch:** All async operations wrapped in error handlers\n\n### 🧪 Testing (Priority Focus)\n- [ ] Unit tests cover authentication logic (minimum 80% coverage)\n- [ ] Integration tests for login/logout flows\n- [ ] Test cases for token expiration scenarios\n- [ ] Test cases for invalid credentials\n- [ ] Test cases for refresh token rotation\n- [ ] Edge cases tested (empty inputs, malformed tokens, etc.)\n\n### 📚 Documentation\n- [ ] API endpoints documented (request/response formats)\n- [ ] Environment variables documented in README\n- [ ] Authentication flow documented for future developers\n- [ ] Migration guide included if this changes existing auth\n\n### 🏗️ Architecture\n- [ ] Code structure follows existing patterns\n- [ ] Separation of concerns maintained\n- [ ] Middleware is reusable and composable\n- [ ] No tight coupling to specific implementations\n\n---\n\n## Specific Concerns to Address\n\n⚠️ **Critical:** Given the 10K+ production user base, please pay special attention to:\n1. Token expiration edge cases and renewal flow\n2. Security vulnerabilities (OWASP Top 10)\n3. Database connection pooling under high load\n4. Comprehensive error logging for production debugging\n\n---\n\n## Preliminary Observations\n\n[Reviewer to add specific feedback here after reviewing code]\n\n## Questions for Author\n\n1. Have you tested the refresh token rotation mechanism under concurrent requests?\n2. What's the strategy for handling users who are logged in when we deploy this?\n3. Are there any breaking changes to existing authentication flows?\n\n---\n\n## Review Decision\n\n- [ ] ✅ Approved - Ready to merge\n- [ ] 🔄 Approved with minor changes\n- [ ] ⚠️ Changes requested\n- [ ] ❌ Rejected - Major issues found\n\n**Comments:**\n\n[Detailed feedback to be added here]"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "bug-report-template",
+    "category": "technical",
+    "title": "Detailed Bug Report",
+    "description": "Create a comprehensive bug report with reproduction steps, environment details, and expected vs actual behavior for efficient debugging.",
+    "tags": [
+      "bug",
+      "issue",
+      "testing",
+      "debugging",
+      "report"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create a bug report for: {{bug_title}}\n\nSeverity: {{severity}}\nPriority: {{priority}}\nAffected Component: {{component}}\nEnvironment: {{environment}}\n\nSteps to Reproduce:\n{{steps_to_reproduce}}\n\nExpected Behavior:\n{{expected_behavior}}\n\nActual Behavior:\n{{actual_behavior}}\n\nAdditional Information:\n{{additional_info}}",
+    "variables": [
+      {
+        "key": "{{bug_title}}",
+        "label": "Bug Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Login button unresponsive on mobile",
+        "maxLength": 200,
+        "description": "Clear, concise description of the bug"
+      },
+      {
+        "key": "{{severity}}",
+        "label": "Severity Level",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "description": "How serious is this bug?"
+      },
+      {
+        "key": "{{priority}}",
+        "label": "Priority",
+        "type": "select",
+        "required": true,
+        "options": [
+          "P0 - Urgent",
+          "P1 - High",
+          "P2 - Medium",
+          "P3 - Low"
+        ],
+        "description": "How soon should this be fixed?"
+      },
+      {
+        "key": "{{component}}",
+        "label": "Affected Component/Module",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Authentication Module, User Dashboard",
+        "maxLength": 150,
+        "description": "Which part of the system is affected"
+      },
+      {
+        "key": "{{environment}}",
+        "label": "Environment Details",
+        "type": "text",
+        "required": true,
+        "placeholder": "OS, Browser, Version, Device type",
+        "maxLength": 300,
+        "description": "Where did this bug occur (OS, browser, device, etc.)"
+      },
+      {
+        "key": "{{steps_to_reproduce}}",
+        "label": "Steps to Reproduce",
+        "type": "text",
+        "required": true,
+        "placeholder": "List numbered steps to reproduce the bug",
+        "maxLength": 500,
+        "description": "Exact steps to make the bug happen again"
+      },
+      {
+        "key": "{{expected_behavior}}",
+        "label": "Expected Behavior",
+        "type": "text",
+        "required": true,
+        "placeholder": "What should happen normally",
+        "maxLength": 300,
+        "description": "What you expected to happen"
+      },
+      {
+        "key": "{{actual_behavior}}",
+        "label": "Actual Behavior",
+        "type": "text",
+        "required": true,
+        "placeholder": "What actually happened",
+        "maxLength": 300,
+        "description": "What actually happened instead"
+      },
+      {
+        "key": "{{additional_info}}",
+        "label": "Additional Information",
+        "type": "text",
+        "required": false,
+        "placeholder": "Screenshots, error messages, logs, workarounds",
+        "maxLength": 400,
+        "description": "Any other helpful details (screenshots, error logs, etc.)"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Mobile Login Bug",
+        "description": "Bug report for unresponsive login button on mobile devices",
+        "input": {
+          "bug_title": "Login button unresponsive on mobile Safari",
+          "severity": "High",
+          "priority": "P1 - High",
+          "component": "Authentication Module - Login Page",
+          "environment": "iOS 17.1, Safari 17.0, iPhone 14 Pro, Production environment (app.example.com)",
+          "steps_to_reproduce": "1. Open app.example.com on iPhone Safari\n2. Navigate to login page\n3. Enter valid username and password\n4. Tap the 'Login' button\n5. Observe that nothing happens - no loading state, no navigation",
+          "expected_behavior": "After tapping 'Login', button should show loading spinner and user should be redirected to dashboard upon successful authentication",
+          "actual_behavior": "Login button does not respond to taps. No visual feedback, no API call made, user remains on login page. Button appears to be completely non-functional.",
+          "additional_info": "- Issue only occurs on iOS Safari, works fine on Chrome iOS and Android devices\n- Console shows no JavaScript errors\n- Button hover state works on desktop browsers\n- Workaround: Using desktop mode in Safari works\n- Screenshots attached showing console output\n- Started occurring after deployment on Nov 15, 2025"
+        },
+        "output": "# Bug Report: Login Button Unresponsive on Mobile Safari\n\n**Bug ID:** BUG-2025-1117-001\n**Reported By:** [Your Name]\n**Date:** November 17, 2025\n**Status:** Open\n\n---\n\n## Classification\n\n- **Severity:** 🔴 High\n- **Priority:** P1 - High (Fix within 48 hours)\n- **Component:** Authentication Module - Login Page\n- **Type:** Functional Bug\n- **Regression:** Possibly (started after Nov 15 deployment)\n\n---\n\n## Environment\n\n- **Platform:** iOS 17.1\n- **Browser:** Safari 17.0\n- **Device:** iPhone 14 Pro\n- **Environment:** Production (app.example.com)\n- **Network:** WiFi and Cellular tested\n\n---\n\n## Bug Description\n\nThe login button on the authentication page is completely unresponsive when accessed via Safari on iOS devices. Users cannot log in to the application, making this a critical authentication blocker.\n\n## Steps to Reproduce\n\n1. Open `app.example.com` using Safari on iPhone (iOS 17.1)\n2. Navigate to the login page (`/login`)\n3. Enter valid credentials:\n   - Username: [test user]\n   - Password: [test password]\n4. Tap the 'Login' button\n5. **Observe:** Button does not respond to tap interaction\n\n## Expected Behavior\n\nWhen a user taps the 'Login' button with valid credentials:\n1. Button should display a loading spinner\n2. Authentication API request should be sent to backend\n3. Upon successful authentication, user should be redirected to dashboard\n4. Upon failure, appropriate error message should be displayed\n\n## Actual Behavior\n\nWhen tapping the 'Login' button:\n- ❌ No visual feedback or loading state\n- ❌ No API call is made (verified in Network tab)\n- ❌ No navigation occurs\n- ❌ User remains stuck on login page\n- ❌ Button appears completely non-functional\n\n## Additional Information\n\n### Browser Compatibility\n- ❌ **Safari iOS:** Bug present\n- ✅ **Chrome iOS:** Works correctly\n- ✅ **Android Chrome:** Works correctly\n- ✅ **Desktop browsers:** Works correctly\n- ✅ **Safari Desktop Mode on iOS:** Works correctly (workaround)\n\n### Technical Details\n- No JavaScript errors in console\n- Button hover states work correctly on desktop\n- Touch event appears not to be registered\n- Issue started occurring after deployment on November 15, 2025\n\n### Workaround\nUsers can temporarily use \"Request Desktop Site\" in Safari settings to successfully log in.\n\n### Attachments\n- Screenshot: Console output (attached)\n- Screenshot: Network tab showing no requests (attached)\n- Video recording of reproduction (attached)\n\n---\n\n## Impact Assessment\n\n- **User Impact:** High - Approximately 30% of users access via iOS Safari\n- **Business Impact:** Critical - Users cannot access the platform\n- **Affected Users:** ~3,000 iOS Safari users\n\n## Suggested Investigation Areas\n\n1. Review touch event handlers in login button component\n2. Check for iOS Safari-specific CSS that might be blocking interactions\n3. Review changes deployed on November 15, 2025\n4. Verify z-index layering (possible overlay issue)\n5. Test with -webkit-touch-callout and related properties\n\n---\n\n**Assigned To:** [To be assigned]\n**Labels:** `bug`, `high-priority`, `authentication`, `ios`, `mobile`"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.9,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "api-documentation",
+    "category": "technical",
+    "title": "API Endpoint Documentation",
+    "description": "Generate comprehensive API documentation including endpoint details, parameters, request/response examples, and error codes.",
+    "tags": [
+      "api",
+      "documentation",
+      "endpoint",
+      "rest",
+      "swagger"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Document API endpoint: {{endpoint_path}}\nMethod: {{http_method}}\nDescription: {{endpoint_description}}\n\nAuthentication Required: {{auth_required}}\n\nRequest Parameters:\n{{request_parameters}}\n\nRequest Body Schema:\n{{request_body}}\n\nResponse Schema:\n{{response_schema}}\n\nStatus Codes:\n{{status_codes}}\n\nExample Usage:\n{{example_usage}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{endpoint_path}}",
+        "label": "Endpoint Path",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., /api/v1/users/{userId}",
+        "maxLength": 200,
+        "description": "The API endpoint URL path"
+      },
+      {
+        "key": "{{http_method}}",
+        "label": "HTTP Method",
+        "type": "select",
+        "required": true,
+        "options": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE"
+        ],
+        "description": "HTTP method for this endpoint"
+      },
+      {
+        "key": "{{endpoint_description}}",
+        "label": "Endpoint Description",
+        "type": "text",
+        "required": true,
+        "placeholder": "What does this endpoint do?",
+        "maxLength": 300,
+        "description": "Brief description of the endpoint's purpose"
+      },
+      {
+        "key": "{{auth_required}}",
+        "label": "Authentication Required",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Yes - Bearer Token",
+          "Yes - API Key",
+          "Yes - OAuth 2.0",
+          "No - Public"
+        ],
+        "description": "What authentication is needed"
+      },
+      {
+        "key": "{{request_parameters}}",
+        "label": "Request Parameters",
+        "type": "text",
+        "required": false,
+        "placeholder": "Query params, path params, headers",
+        "maxLength": 500,
+        "description": "URL parameters, query strings, headers"
+      },
+      {
+        "key": "{{request_body}}",
+        "label": "Request Body Schema",
+        "type": "text",
+        "required": false,
+        "placeholder": "JSON schema or example",
+        "maxLength": 600,
+        "description": "Structure of the request body (for POST/PUT/PATCH)"
+      },
+      {
+        "key": "{{response_schema}}",
+        "label": "Response Schema",
+        "type": "text",
+        "required": true,
+        "placeholder": "JSON schema or example of successful response",
+        "maxLength": 600,
+        "description": "Structure of successful response"
+      },
+      {
+        "key": "{{status_codes}}",
+        "label": "Status Codes",
+        "type": "text",
+        "required": true,
+        "placeholder": "List possible HTTP status codes and meanings",
+        "maxLength": 400,
+        "description": "All possible HTTP status codes this endpoint can return"
+      },
+      {
+        "key": "{{example_usage}}",
+        "label": "Example Usage",
+        "type": "text",
+        "required": true,
+        "placeholder": "cURL or code example",
+        "maxLength": 500,
+        "description": "Code example showing how to use this endpoint"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Rate limits, deprecation info, etc.",
+        "maxLength": 300,
+        "description": "Any other important information"
+      }
+    ],
+    "examples": [
+      {
+        "title": "User Profile API",
+        "description": "Documentation for user profile update endpoint",
+        "input": {
+          "endpoint_path": "/api/v1/users/{userId}/profile",
+          "http_method": "PUT",
+          "endpoint_description": "Updates the profile information for a specific user. Allows partial updates - only fields provided in the request will be modified.",
+          "auth_required": "Yes - Bearer Token",
+          "request_parameters": "Path Parameters:\n- userId (string, required): The unique identifier of the user\n\nHeaders:\n- Authorization (string, required): Bearer token for authentication\n- Content-Type: application/json",
+          "request_body": "{\n  \"firstName\": \"string (optional)\",\n  \"lastName\": \"string (optional)\",\n  \"email\": \"string (optional, must be valid email)\",\n  \"phoneNumber\": \"string (optional)\",\n  \"bio\": \"string (optional, max 500 chars)\",\n  \"avatarUrl\": \"string (optional, must be valid URL)\"\n}",
+          "response_schema": "{\n  \"success\": true,\n  \"data\": {\n    \"userId\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"bio\": \"string\",\n    \"avatarUrl\": \"string\",\n    \"updatedAt\": \"ISO 8601 timestamp\"\n  }\n}",
+          "status_codes": "200 OK - Profile updated successfully\n400 Bad Request - Invalid input data\n401 Unauthorized - Missing or invalid token\n403 Forbidden - User not authorized to update this profile\n404 Not Found - User not found\n422 Unprocessable Entity - Validation errors\n429 Too Many Requests - Rate limit exceeded\n500 Internal Server Error - Server error",
+          "example_usage": "curl -X PUT 'https://api.example.com/api/v1/users/123456/profile' \\\n  -H 'Authorization: Bearer YOUR_TOKEN_HERE' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"firstName\": \"Ahmed\",\n    \"lastName\": \"Hassan\",\n    \"bio\": \"Software Engineer at Alkholi Group\"\n  }'",
+          "additional_notes": "- Rate Limit: 100 requests per hour per user\n- Email changes require email verification\n- User can only update their own profile unless they have admin role\n- This endpoint supports partial updates (PATCH behavior)"
+        },
+        "output": "# API Documentation\n\n## Update User Profile\n\nUpdates the profile information for a specific user. This endpoint supports partial updates - only the fields provided in the request body will be modified, all other fields remain unchanged.\n\n---\n\n### Endpoint\n\n```\nPUT /api/v1/users/{userId}/profile\n```\n\n**Base URL:** `https://api.example.com`\n\n---\n\n### Authentication\n\n🔐 **Required:** Bearer Token\n\nInclude your authentication token in the Authorization header:\n\n```\nAuthorization: Bearer YOUR_TOKEN_HERE\n```\n\n---\n\n### Request Parameters\n\n#### Path Parameters\n\n| Parameter | Type | Required | Description |\n|-----------|------|----------|-------------|\n| `userId` | string | ✅ Yes | The unique identifier of the user whose profile is being updated |\n\n#### Headers\n\n| Header | Value | Required | Description |\n|--------|-------|----------|-------------|\n| `Authorization` | Bearer {token} | ✅ Yes | Authentication token |\n| `Content-Type` | application/json | ✅ Yes | Request content type |\n\n---\n\n### Request Body\n\nAll fields are optional. Include only the fields you want to update.\n\n```json\n{\n  \"firstName\": \"string (optional)\",\n  \"lastName\": \"string (optional)\",\n  \"email\": \"string (optional, must be valid email format)\",\n  \"phoneNumber\": \"string (optional)\",\n  \"bio\": \"string (optional, maximum 500 characters)\",\n  \"avatarUrl\": \"string (optional, must be valid URL)\"\n}\n```\n\n#### Field Validation\n\n- **email**: Must be a valid email format\n- **bio**: Maximum 500 characters\n- **avatarUrl**: Must be a valid URL format\n- **phoneNumber**: Must follow E.164 format\n\n---\n\n### Response\n\n#### Success Response (200 OK)\n\n```json\n{\n  \"success\": true,\n  \"data\": {\n    \"userId\": \"123456\",\n    \"firstName\": \"Ahmed\",\n    \"lastName\": \"Hassan\",\n    \"email\": \"ahmed.hassan@example.com\",\n    \"phoneNumber\": \"+201234567890\",\n    \"bio\": \"Software Engineer at Alkholi Group\",\n    \"avatarUrl\": \"https://cdn.example.com/avatars/123456.jpg\",\n    \"updatedAt\": \"2025-11-17T10:30:00.000Z\"\n  }\n}\n```\n\n#### Error Response (400 Bad Request)\n\n```json\n{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"INVALID_INPUT\",\n    \"message\": \"Invalid email format\",\n    \"details\": {\n      \"field\": \"email\",\n      \"value\": \"invalid-email\"\n    }\n  }\n}\n```\n\n---\n\n### Status Codes\n\n| Code | Status | Description |\n|------|--------|-------------|\n| 200 | OK | Profile updated successfully |\n| 400 | Bad Request | Invalid input data or malformed request |\n| 401 | Unauthorized | Missing or invalid authentication token |\n| 403 | Forbidden | User not authorized to update this profile |\n| 404 | Not Found | User with specified ID not found |\n| 422 | Unprocessable Entity | Validation errors in request body |\n| 429 | Too Many Requests | Rate limit exceeded |\n| 500 | Internal Server Error | Server-side error occurred |\n\n---\n\n### Example Usage\n\n#### cURL\n\n```bash\ncurl -X PUT 'https://api.example.com/api/v1/users/123456/profile' \\\n  -H 'Authorization: Bearer YOUR_TOKEN_HERE' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"firstName\": \"Ahmed\",\n    \"lastName\": \"Hassan\",\n    \"bio\": \"Software Engineer at Alkholi Group\"\n  }'\n```\n\n#### JavaScript (Fetch API)\n\n```javascript\nconst response = await fetch('https://api.example.com/api/v1/users/123456/profile', {\n  method: 'PUT',\n  headers: {\n    'Authorization': 'Bearer YOUR_TOKEN_HERE',\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    firstName: 'Ahmed',\n    lastName: 'Hassan',\n    bio: 'Software Engineer at Alkholi Group'\n  })\n});\n\nconst data = await response.json();\nconsole.log(data);\n```\n\n#### Python (Requests)\n\n```python\nimport requests\n\nurl = 'https://api.example.com/api/v1/users/123456/profile'\nheaders = {\n    'Authorization': 'Bearer YOUR_TOKEN_HERE',\n    'Content-Type': 'application/json'\n}\npayload = {\n    'firstName': 'Ahmed',\n    'lastName': 'Hassan',\n    'bio': 'Software Engineer at Alkholi Group'\n}\n\nresponse = requests.put(url, json=payload, headers=headers)\ndata = response.json()\nprint(data)\n```\n\n---\n\n### Important Notes\n\n⚠️ **Rate Limiting:** This endpoint is limited to 100 requests per hour per user\n\n📧 **Email Changes:** If the email field is updated, a verification email will be sent to the new address. The email change will not take effect until verified.\n\n🔒 **Authorization:** Users can only update their own profile unless they have an admin role.\n\n🔄 **Partial Updates:** This endpoint behaves like a PATCH request - you only need to send the fields you want to update.\n\n---\n\n**Version:** 1.0\n**Last Updated:** November 17, 2025"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "technical-specification",
+    "category": "technical",
+    "title": "Technical Specification Document",
+    "description": "Create a detailed technical specification outlining system architecture, components, data models, and implementation approach.",
+    "tags": [
+      "technical-spec",
+      "architecture",
+      "design",
+      "documentation",
+      "engineering"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create technical specification for: {{feature_name}}\n\nOverview:\n{{feature_overview}}\n\nTechnical Requirements:\n{{technical_requirements}}\n\nSystem Architecture:\n{{architecture}}\n\nData Models:\n{{data_models}}\n\nAPI Design:\n{{api_design}}\n\nSecurity Considerations:\n{{security}}\n\nPerformance Requirements:\n{{performance}}\n\nTesting Strategy:\n{{testing_strategy}}\n\n{{additional_sections}}",
+    "variables": [
+      {
+        "key": "{{feature_name}}",
+        "label": "Feature/System Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Real-time Notification System",
+        "maxLength": 200,
+        "description": "Name of the feature or system being specified"
+      },
+      {
+        "key": "{{feature_overview}}",
+        "label": "Feature Overview",
+        "type": "text",
+        "required": true,
+        "placeholder": "High-level description of what this feature does",
+        "maxLength": 400,
+        "description": "Executive summary of the feature"
+      },
+      {
+        "key": "{{technical_requirements}}",
+        "label": "Technical Requirements",
+        "type": "text",
+        "required": true,
+        "placeholder": "List functional and non-functional requirements",
+        "maxLength": 600,
+        "description": "What the system must do and how it must perform"
+      },
+      {
+        "key": "{{architecture}}",
+        "label": "System Architecture",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe components, layers, services",
+        "maxLength": 600,
+        "description": "How the system is structured"
+      },
+      {
+        "key": "{{data_models}}",
+        "label": "Data Models",
+        "type": "text",
+        "required": true,
+        "placeholder": "Database schema, entities, relationships",
+        "maxLength": 500,
+        "description": "Data structures and database design"
+      },
+      {
+        "key": "{{api_design}}",
+        "label": "API Design",
+        "type": "text",
+        "required": false,
+        "placeholder": "Endpoints, request/response formats",
+        "maxLength": 500,
+        "description": "API endpoints and contracts"
+      },
+      {
+        "key": "{{security}}",
+        "label": "Security Considerations",
+        "type": "text",
+        "required": true,
+        "placeholder": "Authentication, authorization, data protection",
+        "maxLength": 400,
+        "description": "Security requirements and measures"
+      },
+      {
+        "key": "{{performance}}",
+        "label": "Performance Requirements",
+        "type": "text",
+        "required": true,
+        "placeholder": "Response times, throughput, scalability",
+        "maxLength": 300,
+        "description": "Performance targets and constraints"
+      },
+      {
+        "key": "{{testing_strategy}}",
+        "label": "Testing Strategy",
+        "type": "text",
+        "required": true,
+        "placeholder": "Unit, integration, E2E testing approach",
+        "maxLength": 400,
+        "description": "How the system will be tested"
+      },
+      {
+        "key": "{{additional_sections}}",
+        "label": "Additional Sections (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Deployment, monitoring, dependencies, etc.",
+        "maxLength": 400,
+        "description": "Any other relevant technical details"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Real-time Notification System",
+        "description": "Technical specification for implementing a real-time notification system",
+        "input": {
+          "feature_name": "Real-time Notification System with WebSocket Support",
+          "feature_overview": "A scalable real-time notification system that delivers instant updates to users across web and mobile platforms. The system will support multiple notification types (alerts, messages, updates) with read/unread tracking, preferences management, and delivery guarantees.",
+          "technical_requirements": "Functional:\n- Send notifications to online users in real-time (<500ms latency)\n- Queue notifications for offline users\n- Support multiple notification types and priorities\n- Allow users to manage notification preferences\n- Track read/unread status\n- Support notification history (30 days)\n\nNon-functional:\n- Support 100K concurrent connections\n- 99.9% uptime SLA\n- Horizontal scalability\n- Graceful degradation",
+          "architecture": "Microservices architecture:\n1. WebSocket Gateway Service (Node.js) - handles real-time connections\n2. Notification Service (Python) - business logic and orchestration\n3. Queue Service (RabbitMQ) - message brokering\n4. Storage Service (PostgreSQL + Redis) - persistence and caching\n5. API Gateway (Kong) - REST API endpoints\n\nCommunication: Event-driven architecture with message queues",
+          "data_models": "Notifications Table:\n- id (UUID, PK)\n- userId (UUID, FK)\n- type (enum: alert, message, update)\n- title (varchar 200)\n- content (text)\n- priority (enum: low, medium, high)\n- readAt (timestamp, nullable)\n- createdAt (timestamp)\n\nUserPreferences Table:\n- userId (UUID, PK)\n- enableEmail (boolean)\n- enablePush (boolean)\n- enableInApp (boolean)\n- quietHoursStart (time)\n- quietHoursEnd (time)",
+          "api_design": "REST Endpoints:\n- GET /api/v1/notifications - List user notifications\n- POST /api/v1/notifications/{id}/read - Mark as read\n- PUT /api/v1/preferences - Update user preferences\n- DELETE /api/v1/notifications/{id} - Delete notification\n\nWebSocket Events:\n- 'notification:new' - New notification received\n- 'notification:read' - Notification marked as read\n- 'connection:authenticated' - Connection established",
+          "security": "- WebSocket authentication via JWT tokens\n- TLS/SSL for all connections\n- Rate limiting: 100 requests/minute per user\n- User can only access their own notifications\n- Input validation and sanitization (XSS prevention)\n- CORS configuration for trusted origins only\n- Encrypted sensitive data at rest",
+          "performance": "- WebSocket message delivery: <500ms 95th percentile\n- REST API response time: <200ms\n- Support 100,000 concurrent WebSocket connections\n- Message throughput: 10,000 messages/second\n- Database query time: <50ms\n- Redis cache hit ratio: >90%\n- Auto-scaling based on connection count",
+          "testing_strategy": "Unit Tests (80% coverage):\n- Service logic validation\n- Data model methods\n\nIntegration Tests:\n- WebSocket connection flows\n- Database operations\n- Queue message processing\n\nLoad Tests:\n- 100K concurrent connections\n- Message delivery under load\n- Failover scenarios\n\nE2E Tests:\n- User notification flows\n- Preference management\n- Read/unread tracking",
+          "additional_sections": "Deployment:\n- Kubernetes orchestration\n- Blue-green deployment strategy\n- 3 availability zones for redundancy\n\nMonitoring:\n- Prometheus metrics collection\n- Grafana dashboards\n- Alert on >5% error rate or >1s latency\n\nDependencies:\n- Node.js 20.x\n- Python 3.11\n- PostgreSQL 15\n- Redis 7.0\n- RabbitMQ 3.12"
+        },
+        "output": "# Technical Specification Document\n## Real-time Notification System with WebSocket Support\n\n**Version:** 1.0\n**Date:** November 17, 2025\n**Status:** Draft\n**Author:** Engineering Team\n\n---\n\n## 1. Overview\n\n### 1.1 Executive Summary\n\nThis document specifies the technical design and implementation approach for a scalable real-time notification system that delivers instant updates to users across web and mobile platforms. The system will support multiple notification types (alerts, messages, updates) with comprehensive read/unread tracking, user preferences management, and guaranteed delivery mechanisms.\n\n### 1.2 Goals and Objectives\n\n- Enable real-time communication with users across platforms\n- Provide reliable message delivery with offline support\n- Allow granular user control over notification preferences\n- Ensure system scalability to support business growth\n- Maintain high availability and performance standards\n\n---\n\n## 2. Technical Requirements\n\n### 2.1 Functional Requirements\n\n| ID | Requirement | Priority |\n|----|-------------|----------|\n| FR-1 | Send notifications to online users in real-time with <500ms latency | P0 |\n| FR-2 | Queue notifications for offline users and deliver upon reconnection | P0 |\n| FR-3 | Support multiple notification types (alert, message, update) and priorities | P0 |\n| FR-4 | Allow users to manage notification preferences (email, push, in-app) | P1 |\n| FR-5 | Track read/unread status for all notifications | P0 |\n| FR-6 | Maintain notification history for 30 days | P1 |\n| FR-7 | Support quiet hours configuration per user | P2 |\n\n### 2.2 Non-Functional Requirements\n\n| ID | Requirement | Target |\n|----|-------------|--------|\n| NFR-1 | Concurrent Connection Support | 100,000 simultaneous connections |\n| NFR-2 | System Uptime | 99.9% SLA |\n| NFR-3 | Horizontal Scalability | Auto-scaling based on load |\n| NFR-4 | Graceful Degradation | System remains functional during partial failures |\n| NFR-5 | Data Retention | 30 days for notifications, indefinite for preferences |\n\n---\n\n## 3. System Architecture\n\n### 3.1 High-Level Architecture\n\nThe system follows a **microservices architecture** with event-driven communication patterns:\n\n```\n┌─────────────┐\n│   Clients   │ (Web, Mobile)\n└──────┬──────┘\n       │\n   ┌───▼────────────────┐\n   │   API Gateway      │ (Kong)\n   │   - REST API       │\n   │   - Load Balancer  │\n   └───┬────────────────┘\n       │\n   ┌───▼────────────────┐\n   │ WebSocket Gateway  │ (Node.js)\n   │   - Real-time      │\n   │   - Connection Mgmt│\n   └───┬────────────────┘\n       │\n   ┌───▼────────────────┐\n   │ Notification Svc   │ (Python)\n   │   - Business Logic │\n   │   - Orchestration  │\n   └───┬────────────────┘\n       │\n   ┌───▼────────────────┐\n   │  Message Queue     │ (RabbitMQ)\n   │   - Event Routing  │\n   └───┬────────────────┘\n       │\n   ┌───▼────────────────┐\n   │  Storage Layer     │\n   │  - PostgreSQL      │\n   │  - Redis Cache     │\n   └────────────────────┘\n```\n\n### 3.2 Component Breakdown\n\n**1. WebSocket Gateway Service** (Node.js)\n- Manages persistent WebSocket connections\n- Handles authentication and connection lifecycle\n- Routes messages to/from clients\n- Implements connection pooling and load distribution\n\n**2. Notification Service** (Python/FastAPI)\n- Core business logic implementation\n- Notification creation and orchestration\n- User preference validation\n- Integration with external notification channels\n\n**3. Message Queue Service** (RabbitMQ)\n- Asynchronous message brokering\n- Event routing between services\n- Offline notification queuing\n- Dead letter queue for failed deliveries\n\n**4. Storage Service**\n- **PostgreSQL**: Primary data store for notifications and preferences\n- **Redis**: Caching layer for active connections and frequent queries\n\n**5. API Gateway** (Kong)\n- REST API endpoint management\n- Rate limiting and throttling\n- Authentication/authorization\n- Request routing\n\n---\n\n## 4. Data Models\n\n### 4.1 Database Schema (PostgreSQL)\n\n#### Notifications Table\n\n```sql\nCREATE TABLE notifications (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id UUID NOT NULL REFERENCES users(id),\n  type VARCHAR(20) NOT NULL CHECK (type IN ('alert', 'message', 'update')),\n  title VARCHAR(200) NOT NULL,\n  content TEXT NOT NULL,\n  priority VARCHAR(10) NOT NULL CHECK (priority IN ('low', 'medium', 'high')),\n  read_at TIMESTAMP NULL,\n  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  expires_at TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP + INTERVAL '30 days'),\n  \n  INDEX idx_user_created (user_id, created_at DESC),\n  INDEX idx_user_unread (user_id, read_at) WHERE read_at IS NULL\n);\n```\n\n#### UserPreferences Table\n\n```sql\nCREATE TABLE user_preferences (\n  user_id UUID PRIMARY KEY REFERENCES users(id),\n  enable_email BOOLEAN DEFAULT true,\n  enable_push BOOLEAN DEFAULT true,\n  enable_in_app BOOLEAN DEFAULT true,\n  quiet_hours_start TIME NULL,\n  quiet_hours_end TIME NULL,\n  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP\n);\n```\n\n### 4.2 Redis Cache Structure\n\n```\nKEY: user:{userId}:connections\nTYPE: Set\nVALUE: [connectionId1, connectionId2, ...]\nTTL: No expiration (managed by connection lifecycle)\n\nKEY: user:{userId}:unread_count\nTYPE: Integer\nTTL: 5 minutes\n```\n\n---\n\n## 5. API Design\n\n### 5.1 REST API Endpoints\n\n#### GET /api/v1/notifications\nRetrieve user's notifications with pagination and filtering.\n\n**Query Parameters:**\n- `page` (integer, default: 1)\n- `limit` (integer, default: 20, max: 100)\n- `type` (string, optional): Filter by notification type\n- `unreadOnly` (boolean, default: false)\n\n**Response (200 OK):**\n```json\n{\n  \"notifications\": [\n    {\n      \"id\": \"uuid\",\n      \"type\": \"alert\",\n      \"title\": \"System Update\",\n      \"content\": \"New features available\",\n      \"priority\": \"medium\",\n      \"readAt\": null,\n      \"createdAt\": \"2025-11-17T10:30:00Z\"\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"limit\": 20,\n    \"total\": 45,\n    \"totalPages\": 3\n  }\n}\n```\n\n#### POST /api/v1/notifications/{id}/read\nMark notification as read.\n\n**Response (200 OK):**\n```json\n{\n  \"success\": true,\n  \"readAt\": \"2025-11-17T10:35:00Z\"\n}\n```\n\n#### PUT /api/v1/preferences\nUpdate user notification preferences.\n\n**Request Body:**\n```json\n{\n  \"enableEmail\": true,\n  \"enablePush\": false,\n  \"quietHoursStart\": \"22:00\",\n  \"quietHoursEnd\": \"07:00\"\n}\n```\n\n### 5.2 WebSocket Events\n\n#### Client → Server\n\n**authentication**\n```json\n{\n  \"event\": \"authenticate\",\n  \"token\": \"jwt-token-here\"\n}\n```\n\n#### Server → Client\n\n**notification:new**\n```json\n{\n  \"event\": \"notification:new\",\n  \"data\": {\n    \"id\": \"uuid\",\n    \"type\": \"alert\",\n    \"title\": \"New Message\",\n    \"content\": \"You have a new message from John\",\n    \"priority\": \"high\",\n    \"createdAt\": \"2025-11-17T10:30:00Z\"\n  }\n}\n```\n\n---\n\n## 6. Security Considerations\n\n### 6.1 Authentication & Authorization\n\n- **WebSocket Authentication:** JWT tokens validated on connection establishment\n- **Token Refresh:** Automatic token refresh mechanism for long-lived connections\n- **Authorization:** Users can only access their own notifications (userId validation)\n\n### 6.2 Transport Security\n\n- **TLS/SSL:** All connections encrypted (WSS for WebSockets, HTTPS for REST)\n- **Certificate Pinning:** Mobile apps use certificate pinning\n\n### 6.3 Input Validation\n\n- **XSS Prevention:** All user inputs sanitized before storage and display\n- **SQL Injection:** Parameterized queries only, no dynamic SQL\n- **Size Limits:** Maximum 200 chars for title, 5000 chars for content\n\n### 6.4 Rate Limiting\n\n- **REST API:** 100 requests/minute per user\n- **WebSocket:** 50 messages/minute per connection\n- **429 Too Many Requests** returned when limits exceeded\n\n### 6.5 Data Protection\n\n- **Encryption at Rest:** Sensitive data encrypted in database\n- **PII Handling:** Notification content may contain PII - encrypted and auto-deleted after 30 days\n- **CORS:** Strict CORS policy allowing only trusted origins\n\n---\n\n## 7. Performance Requirements\n\n| Metric | Target | Measurement Method |\n|--------|--------|-------------------|\n| WebSocket Message Delivery | <500ms (95th percentile) | End-to-end latency monitoring |\n| REST API Response Time | <200ms (95th percentile) | Application performance monitoring |\n| Concurrent Connections | 100,000 simultaneous | Load testing |\n| Message Throughput | 10,000 messages/second | System stress testing |\n| Database Query Time | <50ms (average) | Database monitoring |\n| Cache Hit Ratio | >90% | Redis metrics |\n| Auto-scaling Trigger | >80% connection capacity | Kubernetes HPA |\n\n---\n\n## 8. Testing Strategy\n\n### 8.1 Unit Testing (Target: 80% Coverage)\n\n- Service layer business logic\n- Data model methods and validations\n- Utility functions and helpers\n- **Tools:** pytest (Python), Jest (Node.js)\n\n### 8.2 Integration Testing\n\n- WebSocket connection establishment and authentication flows\n- Database CRUD operations\n- Message queue pub/sub patterns\n- Redis caching behavior\n- **Tools:** pytest-asyncio, Testcontainers\n\n### 8.3 Load & Performance Testing\n\n- 100K concurrent WebSocket connections\n- Message delivery throughput under load\n- Database performance under stress\n- Failover and recovery scenarios\n- **Tools:** K6, Artillery, JMeter\n\n### 8.4 End-to-End Testing\n\n- Complete user notification workflows\n- Preference management flows\n- Read/unread tracking accuracy\n- Offline delivery queueing\n- **Tools:** Playwright, Cypress\n\n### 8.5 Security Testing\n\n- Authentication bypass attempts\n- Authorization boundary testing\n- Input validation and injection attacks\n- Rate limit effectiveness\n- **Tools:** OWASP ZAP, Burp Suite\n\n---\n\n## 9. Deployment Strategy\n\n### 9.1 Infrastructure\n\n- **Orchestration:** Kubernetes (AWS EKS)\n- **Availability:** 3 availability zones for redundancy\n- **Scaling:** Horizontal Pod Autoscaler (HPA) based on connection count and CPU\n- **Deployment Pattern:** Blue-green deployment for zero-downtime updates\n\n### 9.2 CI/CD Pipeline\n\n1. Code commit triggers automated build\n2. Unit and integration tests executed\n3. Docker image built and pushed to registry\n4. Deployment to staging environment\n5. Automated smoke tests\n6. Manual approval for production\n7. Blue-green deployment to production\n8. Health checks and monitoring validation\n\n### 9.3 Rollback Strategy\n\n- Automated rollback on health check failures\n- Manual rollback capability via kubectl\n- Database migrations use backward-compatible changes\n\n---\n\n## 10. Monitoring & Observability\n\n### 10.1 Metrics Collection\n\n- **Tool:** Prometheus\n- **Metrics:**\n  - Active WebSocket connections\n  - Message delivery latency\n  - API response times\n  - Error rates by service\n  - Database query performance\n  - Cache hit/miss ratios\n\n### 10.2 Visualization\n\n- **Tool:** Grafana dashboards\n- **Dashboards:**\n  - System health overview\n  - Performance metrics\n  - Error tracking\n  - Resource utilization\n\n### 10.3 Alerting\n\n- **Tool:** Alertmanager + PagerDuty\n- **Alert Conditions:**\n  - Error rate >5% for 5 minutes\n  - Latency >1s (95th percentile) for 5 minutes\n  - Connection failures >10% for 2 minutes\n  - Database connection pool exhaustion\n\n### 10.4 Logging\n\n- **Tool:** ELK Stack (Elasticsearch, Logstash, Kibana)\n- **Log Levels:** ERROR, WARN, INFO, DEBUG\n- **Retention:** 30 days\n- **Sensitive Data:** Sanitized before logging\n\n---\n\n## 11. Dependencies\n\n### 11.1 Technology Stack\n\n| Component | Technology | Version |\n|-----------|------------|----------|\n| WebSocket Gateway | Node.js | 20.x |\n| Notification Service | Python | 3.11 |\n| Database | PostgreSQL | 15 |\n| Cache | Redis | 7.0 |\n| Message Queue | RabbitMQ | 3.12 |\n| API Gateway | Kong | 3.4 |\n| Container Runtime | Docker | 24.x |\n| Orchestration | Kubernetes | 1.28 |\n\n### 11.2 External Dependencies\n\n- **Authentication Service:** JWT token validation\n- **Email Service:** SendGrid for email notifications\n- **Push Notification Service:** FCM (Firebase Cloud Messaging)\n\n---\n\n## 12. Migration & Rollout Plan\n\n### Phase 1: Infrastructure Setup (Week 1-2)\n- Provision Kubernetes cluster\n- Deploy databases and caching layer\n- Set up monitoring and logging\n\n### Phase 2: Core Services Development (Week 3-6)\n- Develop and test WebSocket Gateway\n- Develop and test Notification Service\n- Implement data models and APIs\n\n### Phase 3: Testing & Optimization (Week 7-8)\n- Comprehensive testing (unit, integration, load)\n- Performance optimization\n- Security audit\n\n### Phase 4: Beta Release (Week 9)\n- Deploy to production with 10% traffic\n- Monitor metrics and gather feedback\n- Fix critical issues\n\n### Phase 5: Full Rollout (Week 10)\n- Gradual rollout to 100% of users\n- Continuous monitoring\n- Performance tuning\n\n---\n\n## 13. Open Questions & Risks\n\n### Open Questions\n1. Should we support notification categories/channels?\n2. Do we need notification templates for consistency?\n3. Should we implement notification batching for high-volume scenarios?\n\n### Risks & Mitigation\n\n| Risk | Impact | Probability | Mitigation |\n|------|--------|------------|------------|\n| WebSocket connection instability | High | Medium | Implement robust reconnection logic with exponential backoff |\n| Database performance degradation | High | Low | Implement read replicas and aggressive caching |\n| Message queue overload | Medium | Low | Implement backpressure and circuit breaker patterns |\n| Third-party service downtime (email/push) | Low | Medium | Queue notifications and retry with exponential backoff |\n\n---\n\n## 14. Future Enhancements\n\n- **V2.0:** Multi-tenancy support for white-label deployments\n- **V2.5:** Advanced filtering and notification rules engine\n- **V3.0:** Machine learning-powered notification optimization\n- **V3.5:** Rich media support (images, videos in notifications)\n\n---\n\n**Document Control**\n\n| Version | Date | Author | Changes |\n|---------|------|--------|----------|\n| 1.0 | 2025-11-17 | Engineering Team | Initial draft |\n\n**Approval**\n\n- [ ] Engineering Lead\n- [ ] Product Manager\n- [ ] Security Team\n- [ ] DevOps Lead"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "troubleshooting-guide",
+    "category": "technical",
+    "title": "Troubleshooting Guide",
+    "description": "Create a comprehensive troubleshooting guide with common issues, symptoms, root causes, and step-by-step solutions.",
+    "tags": [
+      "troubleshooting",
+      "debugging",
+      "support",
+      "documentation",
+      "help"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create troubleshooting guide for: {{system_or_feature}}\n\nCommon Issues:\n{{common_issues}}\n\nDiagnostic Steps:\n{{diagnostic_steps}}\n\nSolutions:\n{{solutions}}\n\nPreventive Measures:\n{{preventive_measures}}\n\n{{additional_resources}}",
+    "variables": [
+      {
+        "key": "{{system_or_feature}}",
+        "label": "System/Feature Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Email Integration Module",
+        "maxLength": 200,
+        "description": "What system or feature this guide covers"
+      },
+      {
+        "key": "{{common_issues}}",
+        "label": "Common Issues",
+        "type": "text",
+        "required": true,
+        "placeholder": "List frequent problems users encounter",
+        "maxLength": 600,
+        "description": "The most common problems and their symptoms"
+      },
+      {
+        "key": "{{diagnostic_steps}}",
+        "label": "Diagnostic Steps",
+        "type": "text",
+        "required": true,
+        "placeholder": "How to identify the root cause",
+        "maxLength": 500,
+        "description": "Steps to diagnose and identify the problem"
+      },
+      {
+        "key": "{{solutions}}",
+        "label": "Solutions & Fixes",
+        "type": "text",
+        "required": true,
+        "placeholder": "Step-by-step solutions for each issue",
+        "maxLength": 700,
+        "description": "Detailed solutions to fix the problems"
+      },
+      {
+        "key": "{{preventive_measures}}",
+        "label": "Preventive Measures",
+        "type": "text",
+        "required": false,
+        "placeholder": "How to prevent these issues",
+        "maxLength": 300,
+        "description": "Steps to prevent issues from occurring"
+      },
+      {
+        "key": "{{additional_resources}}",
+        "label": "Additional Resources (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Links, contacts, related docs",
+        "maxLength": 200,
+        "description": "Other helpful resources"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Database Connection Issues",
+        "description": "Troubleshooting guide for database connectivity problems",
+        "input": {
+          "system_or_feature": "Application Database Connectivity",
+          "common_issues": "Issue #1: 'Connection timeout' errors\n- Symptoms: App shows 'Cannot connect to database' error, pages load slowly or not at all\n- Frequency: Intermittent, usually during high traffic\n\nIssue #2: 'Too many connections' error\n- Symptoms: Error message 'max_connections exceeded', new requests fail\n- Frequency: During peak hours\n\nIssue #3: 'Authentication failed' errors\n- Symptoms: App cannot authenticate with database, all queries fail\n- Frequency: After deployments or credential rotations",
+          "diagnostic_steps": "Step 1: Check application logs\n- Look for specific database error messages\n- Note timestamp of first occurrence\n\nStep 2: Verify database server status\n- Check if database service is running\n- Verify network connectivity (ping, telnet)\n\nStep 3: Check connection pool status\n- Review active connections count\n- Check for connection leaks\n\nStep 4: Verify credentials\n- Confirm username/password in config\n- Check credential expiration",
+          "solutions": "Solution for Issue #1 (Connection Timeout):\n1. Increase connection timeout in app config (from 30s to 60s)\n2. Optimize slow queries causing connections to hang\n3. Add database connection retry logic with exponential backoff\n4. Scale database resources if consistently under load\n\nSolution for Issue #2 (Too Many Connections):\n1. Check for connection leaks in code (connections not closed)\n2. Reduce max pool size in application config\n3. Implement connection pooling if not already present\n4. Increase max_connections on database server\n5. Add connection cleanup in error handlers\n\nSolution for Issue #3 (Authentication Failed):\n1. Verify credentials in environment variables\n2. Rotate credentials and update in app config\n3. Check database user permissions\n4. Ensure SSL certificates are valid (if using SSL)",
+          "preventive_measures": "- Implement connection health checks\n- Monitor connection pool metrics (Prometheus)\n- Set up alerts for >80% pool utilization\n- Use connection pooling libraries (e.g., pg-pool)\n- Implement graceful shutdown to close connections\n- Regular credential rotation policy\n- Load test before production deployments",
+          "additional_resources": "- Database connection pooling guide: [internal wiki link]\n- Monitoring dashboard: [Grafana link]\n- On-call support: db-team@company.com\n- Related docs: Database Performance Tuning Guide"
+        },
+        "output": "# Troubleshooting Guide: Application Database Connectivity\n\n**Version:** 1.0\n**Last Updated:** November 17, 2025\n**Audience:** Developers, DevOps, Support Engineers\n\n---\n\n## Overview\n\nThis guide helps diagnose and resolve common database connectivity issues in our application. Follow the diagnostic steps to identify the root cause, then apply the appropriate solution.\n\n---\n\n## Common Issues\n\n### Issue #1: Connection Timeout Errors\n\n**Symptoms:**\n- Application displays \"Cannot connect to database\" error message\n- Pages load very slowly or fail to load entirely\n- Intermittent failures, not consistent\n- More common during high traffic periods\n\n**Severity:** 🟡 Medium to 🔴 High (depending on frequency)\n\n**Common Causes:**\n- Network latency or instability\n- Database server overload\n- Slow queries blocking connection pool\n- Insufficient connection timeout settings\n\n---\n\n### Issue #2: Too Many Connections Error\n\n**Symptoms:**\n- Error message: \"max_connections exceeded\" or \"FATAL: too many connections\"\n- New database requests fail immediately\n- Existing connections may continue to work\n- Typically occurs during peak hours\n\n**Severity:** 🔴 High (prevents new users from accessing system)\n\n**Common Causes:**\n- Connection pool exhaustion\n- Connection leaks (connections not properly closed)\n- Insufficient max_connections setting on database\n- Traffic spike beyond expected capacity\n\n---\n\n### Issue #3: Authentication Failed Errors\n\n**Symptoms:**\n- Error message: \"Authentication failed for user\" or \"password authentication failed\"\n- All database queries fail across the application\n- Complete database access failure\n- Often occurs after deployments or credential changes\n\n**Severity:** 🔴 Critical (complete system outage)\n\n**Common Causes:**\n- Incorrect credentials in application configuration\n- Expired database credentials\n- Missing or incorrect SSL certificates\n- Database user permissions revoked\n\n---\n\n## Diagnostic Workflow\n\nFollow these steps systematically to identify the root cause:\n\n### Step 1: Check Application Logs 📋\n\n```bash\n# Check recent logs for database errors\ntail -n 100 /var/log/app/error.log | grep -i database\n\n# Or using Docker\ndocker logs app-container --tail 100 | grep -i database\n```\n\n**What to look for:**\n- Specific error messages (connection timeout, auth failed, etc.)\n- Timestamp of first occurrence\n- Frequency of errors\n- Stack traces indicating error location\n\n---\n\n### Step 2: Verify Database Server Status 🔍\n\n```bash\n# Check if database service is running\nsystemctl status postgresql\n# or for MySQL\nsystemctl status mysql\n\n# Test network connectivity\nping db-server.example.com\n\n# Test database port connectivity\ntelnet db-server.example.com 5432\n# or\nnc -zv db-server.example.com 5432\n```\n\n**What to check:**\n- Database service is running\n- Network connectivity to database server\n- Firewall rules allow connection\n- DNS resolution working correctly\n\n---\n\n### Step 3: Check Connection Pool Status 📊\n\n```bash\n# Connect to database and check active connections\npsql -h db-server -U admin -d production\n\nSELECT count(*) as active_connections \nFROM pg_stat_activity \nWHERE state = 'active';\n\nSELECT count(*) as total_connections \nFROM pg_stat_activity;\n\nSHOW max_connections;\n```\n\n**What to check:**\n- Current number of active connections vs. max_connections\n- Idle connections that should have been closed\n- Long-running queries blocking connections\n- Connection pool utilization metrics\n\n---\n\n### Step 4: Verify Credentials 🔐\n\n```bash\n# Check environment variables (redact actual values)\nenv | grep DATABASE\n\n# Test connection with credentials\npsql \"postgresql://username:password@host:port/database\"\n```\n\n**What to verify:**\n- Username and password are correct\n- Credentials haven't expired\n- User has necessary permissions\n- SSL certificate is valid (if using SSL)\n\n---\n\n## Solutions & Fixes\n\n### ✅ Solution for Issue #1: Connection Timeout\n\n#### Quick Fix (Immediate)\n\n1. **Increase connection timeout in application configuration:**\n\n```javascript\n// config/database.js\nmodule.exports = {\n  host: process.env.DB_HOST,\n  port: process.env.DB_PORT,\n  connectionTimeoutMillis: 60000, // Increase from 30000 to 60000\n}\n```\n\n2. **Add retry logic with exponential backoff:**\n\n```javascript\nasync function connectWithRetry(maxRetries = 3) {\n  for (let i = 0; i < maxRetries; i++) {\n    try {\n      await db.connect();\n      return;\n    } catch (error) {\n      if (i === maxRetries - 1) throw error;\n      await sleep(Math.pow(2, i) * 1000); // Exponential backoff\n    }\n  }\n}\n```\n\n#### Long-term Fix\n\n3. **Identify and optimize slow queries:**\n\n```sql\n-- Find slow queries\nSELECT query, mean_exec_time, calls\nFROM pg_stat_statements\nORDER BY mean_exec_time DESC\nLIMIT 10;\n```\n\n4. **Scale database resources if needed:**\n- Upgrade database instance size\n- Add read replicas for read-heavy workloads\n- Implement caching layer (Redis)\n\n---\n\n### ✅ Solution for Issue #2: Too Many Connections\n\n#### Emergency Fix (Immediate)\n\n1. **Kill idle/stuck connections:**\n\n```sql\n-- View long-running connections\nSELECT pid, usename, state, query_start, query\nFROM pg_stat_activity\nWHERE state = 'idle'\n  AND query_start < NOW() - INTERVAL '10 minutes';\n\n-- Terminate specific connection\nSELECT pg_terminate_backend(pid);\n```\n\n2. **Restart application to reset connection pool:**\n\n```bash\nsystemctl restart app-service\n# or\nkubectl rollout restart deployment/app\n```\n\n#### Root Cause Fix\n\n3. **Implement proper connection pooling:**\n\n```javascript\n// Use pg-pool for PostgreSQL\nconst { Pool } = require('pg');\n\nconst pool = new Pool({\n  host: process.env.DB_HOST,\n  max: 20, // Maximum pool size\n  min: 5,  // Minimum pool size\n  idleTimeoutMillis: 30000,\n  connectionTimeoutMillis: 60000,\n});\n\n// Always release connections\nasync function queryDatabase(sql, params) {\n  const client = await pool.connect();\n  try {\n    const result = await client.query(sql, params);\n    return result;\n  } finally {\n    client.release(); // CRITICAL: Always release\n  }\n}\n```\n\n4. **Check for connection leaks in code:**\n\n```javascript\n// BAD - Connection leak\nasync function badExample() {\n  const client = await pool.connect();\n  const result = await client.query('SELECT * FROM users');\n  return result; // ERROR: Connection never released!\n}\n\n// GOOD - Proper connection handling\nasync function goodExample() {\n  const client = await pool.connect();\n  try {\n    const result = await client.query('SELECT * FROM users');\n    return result;\n  } finally {\n    client.release(); // Always released\n  }\n}\n```\n\n5. **Increase max_connections on database server (if needed):**\n\n```sql\n-- Check current setting\nSHOW max_connections;\n\n-- Increase (requires restart)\nALTER SYSTEM SET max_connections = 200;\n-- Then restart PostgreSQL\n```\n\n⚠️ **Warning:** Increasing max_connections increases memory usage. Ensure server has sufficient RAM.\n\n---\n\n### ✅ Solution for Issue #3: Authentication Failed\n\n#### Immediate Fix\n\n1. **Verify credentials in configuration:**\n\n```bash\n# Check environment variables\necho $DATABASE_USER\necho $DATABASE_PASSWORD  # Be careful with this in logs\necho $DATABASE_HOST\n```\n\n2. **Test connection manually:**\n\n```bash\npsql -h $DATABASE_HOST -U $DATABASE_USER -d $DATABASE_NAME\n# Enter password when prompted\n```\n\n3. **Update credentials if incorrect:**\n\n```bash\n# Update environment variable\nexport DATABASE_PASSWORD=\"new_password\"\n\n# Or update in secrets management\nkubectl create secret generic db-credentials \\\n  --from-literal=username=dbuser \\\n  --from-literal=password=new_password \\\n  --dry-run=client -o yaml | kubectl apply -f -\n```\n\n4. **Restart application to load new credentials:**\n\n```bash\nsystemctl restart app-service\n```\n\n#### Prevention\n\n5. **Implement credential rotation process:**\n\n- Use secrets management (AWS Secrets Manager, HashiCorp Vault)\n- Rotate credentials quarterly\n- Test credentials in staging before production\n- Document rotation procedure\n\n---\n\n## Preventive Measures\n\n### 1. Implement Connection Health Checks\n\n```javascript\n// Regular health check\nsetInterval(async () => {\n  try {\n    await pool.query('SELECT 1');\n    console.log('Database connection healthy');\n  } catch (error) {\n    console.error('Database health check failed:', error);\n    // Trigger alert\n  }\n}, 60000); // Check every minute\n```\n\n### 2. Monitor Connection Pool Metrics\n\n```javascript\n// Export metrics for Prometheus\nconst poolMetrics = {\n  totalConnections: pool.totalCount,\n  idleConnections: pool.idleCount,\n  waitingConnections: pool.waitingCount,\n};\n```\n\n### 3. Set Up Alerts\n\n- Alert when connection pool >80% utilized\n- Alert when connection errors >5% of requests\n- Alert when database response time >1s\n- Alert when max_connections exceeded\n\n### 4. Best Practices\n\n✅ **DO:**\n- Always use connection pooling\n- Always release connections in finally blocks\n- Set reasonable timeouts\n- Monitor connection metrics\n- Test connection handling under load\n- Implement graceful shutdown\n\n❌ **DON'T:**\n- Create new connections for each query\n- Forget to release connections\n- Set timeouts too low (<10s)\n- Ignore connection pool exhaustion warnings\n- Skip load testing before production\n\n### 5. Load Testing\n\nBefore production deployments:\n\n```bash\n# Use k6 for load testing\nk6 run --vus 100 --duration 5m load-test.js\n```\n\nMonitor:\n- Connection pool behavior under load\n- Database query performance\n- Error rates at various load levels\n\n---\n\n## Additional Resources\n\n### Documentation\n- **Database Connection Pooling Guide:** [Internal Wiki](https://wiki.company.com/db-pooling)\n- **Database Performance Tuning:** [Internal Wiki](https://wiki.company.com/db-performance)\n- **PostgreSQL Documentation:** https://www.postgresql.org/docs/\n\n### Monitoring & Tools\n- **Connection Pool Dashboard:** [Grafana](https://grafana.company.com/d/db-connections)\n- **Database Metrics:** [Grafana](https://grafana.company.com/d/db-metrics)\n- **Application Logs:** [Kibana](https://kibana.company.com)\n\n### Support Contacts\n- **Database Team:** db-team@company.com\n- **DevOps On-Call:** +1-555-0100 (PagerDuty)\n- **Slack Channel:** #database-support\n\n### Related Guides\n- Database Backup & Recovery Procedure\n- Production Deployment Checklist\n- Incident Response Playbook\n\n---\n\n## Escalation Path\n\nIf issues persist after trying solutions:\n\n1. **Level 1:** Application support team (support@company.com)\n2. **Level 2:** Database team (db-team@company.com)\n3. **Level 3:** On-call DevOps engineer (PagerDuty)\n4. **Level 4:** Database vendor support (for critical outages)\n\n---\n\n**Document Feedback**\n\nFound an issue or have a suggestion? Open a ticket or contact: docs-team@company.com\n\n---\n\n**Revision History**\n\n| Version | Date | Changes | Author |\n|---------|------|---------|--------|\n| 1.0 | 2025-11-17 | Initial creation | DevOps Team |"
+      }
+    ],
+    "usageCount": 0,
+    "rating": 4.9,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "story-writing-prompt",
+    "category": "creative",
+    "title": "Creative Story Writing",
+    "description": "Generate creative story prompts, plot outlines, or character development frameworks for fiction writing.",
+    "tags": [
+      "creative-writing",
+      "storytelling",
+      "fiction",
+      "narrative",
+      "plot"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create a story outline for: {{story_type}}\nGenre: {{genre}}\nTarget Length: {{target_length}}\n\nMain Theme:\n{{main_theme}}\n\nProtagonist:\n{{protagonist_description}}\n\nSetting:\n{{setting}}\n\nConflict:\n{{central_conflict}}\n\nTone: {{tone}}\n\n{{additional_elements}}",
+    "variables": [
+      {
+        "key": "{{story_type}}",
+        "label": "Story Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Short Story",
+          "Novella",
+          "Novel",
+          "Flash Fiction",
+          "Chapter Outline"
+        ],
+        "description": "What type of story are you writing?"
+      },
+      {
+        "key": "{{genre}}",
+        "label": "Genre",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Fantasy",
+          "Science Fiction",
+          "Mystery/Thriller",
+          "Romance",
+          "Literary Fiction",
+          "Horror",
+          "Historical Fiction"
+        ],
+        "description": "Primary genre of your story"
+      },
+      {
+        "key": "{{target_length}}",
+        "label": "Target Length",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 5,000 words, 80,000 words",
+        "maxLength": 50,
+        "description": "Approximate word count goal"
+      },
+      {
+        "key": "{{main_theme}}",
+        "label": "Main Theme",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Redemption, identity, survival",
+        "maxLength": 300,
+        "description": "Central theme or message"
+      },
+      {
+        "key": "{{protagonist_description}}",
+        "label": "Protagonist Description",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe your main character",
+        "maxLength": 400,
+        "description": "Main character details, backstory, motivations"
+      },
+      {
+        "key": "{{setting}}",
+        "label": "Setting",
+        "type": "text",
+        "required": true,
+        "placeholder": "Time period and location",
+        "maxLength": 300,
+        "description": "Where and when the story takes place"
+      },
+      {
+        "key": "{{central_conflict}}",
+        "label": "Central Conflict",
+        "type": "text",
+        "required": true,
+        "placeholder": "What is the main problem or challenge?",
+        "maxLength": 400,
+        "description": "The primary conflict driving the story"
+      },
+      {
+        "key": "{{tone}}",
+        "label": "Tone",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Dark & Gritty",
+          "Light & Humorous",
+          "Serious & Dramatic",
+          "Whimsical",
+          "Suspenseful"
+        ],
+        "description": "Overall mood and atmosphere"
+      },
+      {
+        "key": "{{additional_elements}}",
+        "label": "Additional Elements (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Secondary characters, subplots, twists",
+        "maxLength": 300,
+        "description": "Other story elements to include"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "brainstorming-session",
+    "category": "creative",
+    "title": "Brainstorming Session Facilitator",
+    "description": "Structure and facilitate productive brainstorming sessions with prompts, exercises, and idea generation frameworks.",
+    "tags": [
+      "brainstorming",
+      "ideation",
+      "creativity",
+      "innovation",
+      "workshop"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create a brainstorming session plan for: {{session_goal}}\nParticipants: {{participants}}\nDuration: {{duration}}\n\nChallenge/Problem:\n{{problem_statement}}\n\nBrainstorming Method: {{brainstorming_method}}\n\nConstraints:\n{{constraints}}\n\nDesired Outcomes:\n{{desired_outcomes}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{session_goal}}",
+        "label": "Session Goal",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Generate new product ideas for Q2",
+        "maxLength": 200,
+        "description": "What are you trying to achieve?"
+      },
+      {
+        "key": "{{participants}}",
+        "label": "Participants",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Marketing team (6 people)",
+        "maxLength": 150,
+        "description": "Who will be participating?"
+      },
+      {
+        "key": "{{duration}}",
+        "label": "Session Duration",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 90 minutes",
+        "maxLength": 50,
+        "description": "How long is the session?"
+      },
+      {
+        "key": "{{problem_statement}}",
+        "label": "Challenge/Problem Statement",
+        "type": "text",
+        "required": true,
+        "placeholder": "Clearly define the problem to solve",
+        "maxLength": 400,
+        "description": "What specific challenge are you addressing?"
+      },
+      {
+        "key": "{{brainstorming_method}}",
+        "label": "Brainstorming Method",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Classic Brainstorming",
+          "Mind Mapping",
+          "SCAMPER",
+          "Six Thinking Hats",
+          "Rapid Ideation",
+          "Reverse Brainstorming"
+        ],
+        "description": "Which technique to use?"
+      },
+      {
+        "key": "{{constraints}}",
+        "label": "Constraints",
+        "type": "text",
+        "required": false,
+        "placeholder": "Budget limits, timeline, resources",
+        "maxLength": 300,
+        "description": "Any limitations or boundaries?"
+      },
+      {
+        "key": "{{desired_outcomes}}",
+        "label": "Desired Outcomes",
+        "type": "text",
+        "required": true,
+        "placeholder": "What should result from this session?",
+        "maxLength": 300,
+        "description": "Expected deliverables from the session"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other relevant information",
+        "maxLength": 200,
+        "description": "Other context or requirements"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "data-analysis-report",
+    "category": "analysis",
+    "title": "Data Analysis Report",
+    "description": "Create a comprehensive data analysis report with findings, visualizations, insights, and actionable recommendations.",
+    "tags": [
+      "data-analysis",
+      "analytics",
+      "report",
+      "insights",
+      "metrics"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create a data analysis report for: {{report_title}}\nData Source: {{data_source}}\nAnalysis Period: {{analysis_period}}\n\nObjective:\n{{analysis_objective}}\n\nKey Metrics Analyzed:\n{{key_metrics}}\n\nFindings:\n{{findings}}\n\nData Patterns:\n{{patterns}}\n\nRecommendations:\n{{recommendations}}\n\n{{additional_context}}",
+    "variables": [
+      {
+        "key": "{{report_title}}",
+        "label": "Report Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Q3 2025 Sales Performance Analysis",
+        "maxLength": 200,
+        "description": "Title of the analysis report"
+      },
+      {
+        "key": "{{data_source}}",
+        "label": "Data Source",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., CRM system, Google Analytics",
+        "maxLength": 200,
+        "description": "Where the data comes from"
+      },
+      {
+        "key": "{{analysis_period}}",
+        "label": "Analysis Period",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., July 1 - September 30, 2025",
+        "maxLength": 100,
+        "description": "Time period analyzed"
+      },
+      {
+        "key": "{{analysis_objective}}",
+        "label": "Analysis Objective",
+        "type": "text",
+        "required": true,
+        "placeholder": "What questions are you trying to answer?",
+        "maxLength": 400,
+        "description": "Purpose and goals of the analysis"
+      },
+      {
+        "key": "{{key_metrics}}",
+        "label": "Key Metrics Analyzed",
+        "type": "text",
+        "required": true,
+        "placeholder": "List main metrics and KPIs examined",
+        "maxLength": 400,
+        "description": "What data points were analyzed?"
+      },
+      {
+        "key": "{{findings}}",
+        "label": "Key Findings",
+        "type": "text",
+        "required": true,
+        "placeholder": "Summarize main discoveries",
+        "maxLength": 600,
+        "description": "What did the data reveal?"
+      },
+      {
+        "key": "{{patterns}}",
+        "label": "Data Patterns & Trends",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe patterns, correlations, anomalies",
+        "maxLength": 500,
+        "description": "Notable trends or patterns observed"
+      },
+      {
+        "key": "{{recommendations}}",
+        "label": "Recommendations",
+        "type": "text",
+        "required": true,
+        "placeholder": "Action items based on findings",
+        "maxLength": 500,
+        "description": "What actions should be taken?"
+      },
+      {
+        "key": "{{additional_context}}",
+        "label": "Additional Context (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Methodology, limitations, next steps",
+        "maxLength": 300,
+        "description": "Other relevant information"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "swot-analysis",
+    "category": "analysis",
+    "title": "SWOT Analysis",
+    "description": "Conduct a comprehensive SWOT analysis identifying Strengths, Weaknesses, Opportunities, and Threats for strategic planning.",
+    "tags": [
+      "swot",
+      "strategy",
+      "analysis",
+      "planning",
+      "business-strategy"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create a SWOT analysis for: {{subject}}\nContext: {{context}}\nPurpose: {{purpose}}\n\nStrengths:\n{{strengths}}\n\nWeaknesses:\n{{weaknesses}}\n\nOpportunities:\n{{opportunities}}\n\nThreats:\n{{threats}}\n\nStrategic Implications:\n{{strategic_implications}}",
+    "variables": [
+      {
+        "key": "{{subject}}",
+        "label": "Analysis Subject",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Company name, product, project, market entry",
+        "maxLength": 200,
+        "description": "What are you analyzing?"
+      },
+      {
+        "key": "{{context}}",
+        "label": "Context",
+        "type": "text",
+        "required": true,
+        "placeholder": "Industry, market conditions, competitive landscape",
+        "maxLength": 300,
+        "description": "Relevant background information"
+      },
+      {
+        "key": "{{purpose}}",
+        "label": "Analysis Purpose",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Strategic planning, investment decision, market entry",
+        "maxLength": 200,
+        "description": "Why are you conducting this SWOT?"
+      },
+      {
+        "key": "{{strengths}}",
+        "label": "Strengths (Internal Positive)",
+        "type": "text",
+        "required": true,
+        "placeholder": "List internal advantages and capabilities",
+        "maxLength": 500,
+        "description": "What are you good at? What advantages do you have?"
+      },
+      {
+        "key": "{{weaknesses}}",
+        "label": "Weaknesses (Internal Negative)",
+        "type": "text",
+        "required": true,
+        "placeholder": "List internal limitations and disadvantages",
+        "maxLength": 500,
+        "description": "What needs improvement? Where are you lacking?"
+      },
+      {
+        "key": "{{opportunities}}",
+        "label": "Opportunities (External Positive)",
+        "type": "text",
+        "required": true,
+        "placeholder": "List external favorable conditions",
+        "maxLength": 500,
+        "description": "What external factors could you exploit?"
+      },
+      {
+        "key": "{{threats}}",
+        "label": "Threats (External Negative)",
+        "type": "text",
+        "required": true,
+        "placeholder": "List external challenges and risks",
+        "maxLength": 500,
+        "description": "What external factors could harm you?"
+      },
+      {
+        "key": "{{strategic_implications}}",
+        "label": "Strategic Implications (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "What strategies emerge from this analysis?",
+        "maxLength": 300,
+        "description": "How should you respond to this analysis?"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "competitive-analysis",
+    "category": "analysis",
+    "title": "Competitive Analysis",
+    "description": "Analyze competitors systematically across products, pricing, marketing, strengths, and weaknesses to inform strategy.",
+    "tags": [
+      "competitive-analysis",
+      "market-research",
+      "competitors",
+      "strategy",
+      "benchmarking"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create a competitive analysis for: {{your_company}}\nIndustry: {{industry}}\nMarket Segment: {{market_segment}}\n\nCompetitors to Analyze:\n{{competitors_list}}\n\nComparison Criteria:\n{{comparison_criteria}}\n\nYour Position:\n{{your_position}}\n\nCompetitor Strengths/Weaknesses:\n{{competitor_assessment}}\n\nMarket Gaps:\n{{market_gaps}}\n\nStrategic Recommendations:\n{{recommendations}}",
+    "variables": [
+      {
+        "key": "{{your_company}}",
+        "label": "Your Company/Product",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Acme SaaS Platform",
+        "maxLength": 150,
+        "description": "Your company or product name"
+      },
+      {
+        "key": "{{industry}}",
+        "label": "Industry",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Cloud Software, E-commerce, FinTech",
+        "maxLength": 100,
+        "description": "What industry are you in?"
+      },
+      {
+        "key": "{{market_segment}}",
+        "label": "Market Segment",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., SMB project management tools",
+        "maxLength": 150,
+        "description": "Specific market segment you're targeting"
+      },
+      {
+        "key": "{{competitors_list}}",
+        "label": "Competitors to Analyze",
+        "type": "text",
+        "required": true,
+        "placeholder": "List 3-5 main competitors",
+        "maxLength": 300,
+        "description": "Who are your direct competitors?"
+      },
+      {
+        "key": "{{comparison_criteria}}",
+        "label": "Comparison Criteria",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Features, pricing, market share, customer satisfaction",
+        "maxLength": 300,
+        "description": "What factors are you comparing?"
+      },
+      {
+        "key": "{{your_position}}",
+        "label": "Your Current Position",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe your current market standing",
+        "maxLength": 400,
+        "description": "Where do you stand in the market?"
+      },
+      {
+        "key": "{{competitor_assessment}}",
+        "label": "Competitor Strengths & Weaknesses",
+        "type": "text",
+        "required": true,
+        "placeholder": "Assess each competitor's advantages and disadvantages",
+        "maxLength": 600,
+        "description": "Detailed competitor evaluation"
+      },
+      {
+        "key": "{{market_gaps}}",
+        "label": "Market Gaps & Opportunities",
+        "type": "text",
+        "required": true,
+        "placeholder": "Unmet needs, underserved segments",
+        "maxLength": 400,
+        "description": "What opportunities exist in the market?"
+      },
+      {
+        "key": "{{recommendations}}",
+        "label": "Strategic Recommendations",
+        "type": "text",
+        "required": true,
+        "placeholder": "How should you position against competitors?",
+        "maxLength": 400,
+        "description": "Action items based on analysis"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "market-research-summary",
+    "category": "analysis",
+    "title": "Market Research Summary",
+    "description": "Synthesize market research findings into actionable insights covering market size, trends, customer needs, and opportunities.",
+    "tags": [
+      "market-research",
+      "market-analysis",
+      "trends",
+      "customer-insights",
+      "research"
+    ],
+    "difficulty": "advanced",
+    "estimatedTime": "5 minutes",
+    "basePrompt": "Create market research summary for: {{market_or_industry}}\nResearch Scope: {{research_scope}}\nResearch Period: {{research_period}}\n\nMarket Overview:\n{{market_overview}}\n\nMarket Size & Growth:\n{{market_size}}\n\nKey Trends:\n{{key_trends}}\n\nCustomer Insights:\n{{customer_insights}}\n\nCompetitive Landscape:\n{{competitive_landscape}}\n\nOpportunities & Risks:\n{{opportunities_risks}}\n\nRecommendations:\n{{recommendations}}",
+    "variables": [
+      {
+        "key": "{{market_or_industry}}",
+        "label": "Market/Industry",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Electric Vehicle Market in Middle East",
+        "maxLength": 200,
+        "description": "What market are you researching?"
+      },
+      {
+        "key": "{{research_scope}}",
+        "label": "Research Scope",
+        "type": "text",
+        "required": true,
+        "placeholder": "Geographic region, customer segment, specific aspect",
+        "maxLength": 250,
+        "description": "Boundaries of your research"
+      },
+      {
+        "key": "{{research_period}}",
+        "label": "Research Period",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., January - November 2025",
+        "maxLength": 100,
+        "description": "Time period covered"
+      },
+      {
+        "key": "{{market_overview}}",
+        "label": "Market Overview",
+        "type": "text",
+        "required": true,
+        "placeholder": "High-level market description",
+        "maxLength": 400,
+        "description": "General market landscape"
+      },
+      {
+        "key": "{{market_size}}",
+        "label": "Market Size & Growth",
+        "type": "text",
+        "required": true,
+        "placeholder": "Current size, growth rate, projections",
+        "maxLength": 300,
+        "description": "Quantitative market metrics"
+      },
+      {
+        "key": "{{key_trends}}",
+        "label": "Key Trends",
+        "type": "text",
+        "required": true,
+        "placeholder": "Major trends shaping the market",
+        "maxLength": 500,
+        "description": "Important market trends"
+      },
+      {
+        "key": "{{customer_insights}}",
+        "label": "Customer Insights",
+        "type": "text",
+        "required": true,
+        "placeholder": "Customer needs, preferences, behaviors",
+        "maxLength": 500,
+        "description": "What did you learn about customers?"
+      },
+      {
+        "key": "{{competitive_landscape}}",
+        "label": "Competitive Landscape",
+        "type": "text",
+        "required": true,
+        "placeholder": "Major players, market share, dynamics",
+        "maxLength": 400,
+        "description": "Competitive environment overview"
+      },
+      {
+        "key": "{{opportunities_risks}}",
+        "label": "Opportunities & Risks",
+        "type": "text",
+        "required": true,
+        "placeholder": "Market opportunities and potential risks",
+        "maxLength": 400,
+        "description": "What opportunities and threats exist?"
+      },
+      {
+        "key": "{{recommendations}}",
+        "label": "Strategic Recommendations",
+        "type": "text",
+        "required": true,
+        "placeholder": "Actions based on research findings",
+        "maxLength": 400,
+        "description": "What should be done with these insights?"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "performance-review",
+    "category": "analysis",
+    "title": "Employee Performance Review",
+    "description": "Create a comprehensive and constructive employee performance review with achievements, areas for improvement, and development goals.",
+    "tags": [
+      "performance-review",
+      "hr",
+      "evaluation",
+      "feedback",
+      "employee-development"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create performance review for: {{employee_name}}\nPosition: {{position}}\nReview Period: {{review_period}}\nReviewer: {{reviewer_name}}\n\nKey Achievements:\n{{achievements}}\n\nStrengths:\n{{strengths}}\n\nAreas for Improvement:\n{{areas_for_improvement}}\n\nGoals Progress:\n{{goals_progress}}\n\nFuture Goals:\n{{future_goals}}\n\nOverall Rating: {{overall_rating}}\n\n{{additional_feedback}}",
+    "variables": [
+      {
+        "key": "{{employee_name}}",
+        "label": "Employee Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Sarah Johnson",
+        "maxLength": 100,
+        "description": "Name of the employee being reviewed"
+      },
+      {
+        "key": "{{position}}",
+        "label": "Position/Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Senior Software Engineer",
+        "maxLength": 150,
+        "description": "Employee's job title"
+      },
+      {
+        "key": "{{review_period}}",
+        "label": "Review Period",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., January 1 - December 31, 2025",
+        "maxLength": 100,
+        "description": "Time period being reviewed"
+      },
+      {
+        "key": "{{reviewer_name}}",
+        "label": "Reviewer Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Michael Chen (Manager)",
+        "maxLength": 100,
+        "description": "Person conducting the review"
+      },
+      {
+        "key": "{{achievements}}",
+        "label": "Key Achievements",
+        "type": "text",
+        "required": true,
+        "placeholder": "List major accomplishments and contributions",
+        "maxLength": 600,
+        "description": "What did the employee achieve this period?"
+      },
+      {
+        "key": "{{strengths}}",
+        "label": "Strengths",
+        "type": "text",
+        "required": true,
+        "placeholder": "Areas where employee excels",
+        "maxLength": 400,
+        "description": "What are the employee's strong points?"
+      },
+      {
+        "key": "{{areas_for_improvement}}",
+        "label": "Areas for Improvement",
+        "type": "text",
+        "required": true,
+        "placeholder": "Constructive feedback on areas to develop",
+        "maxLength": 400,
+        "description": "What could be improved?"
+      },
+      {
+        "key": "{{goals_progress}}",
+        "label": "Previous Goals Progress",
+        "type": "text",
+        "required": false,
+        "placeholder": "Progress on goals set in last review",
+        "maxLength": 400,
+        "description": "How did they do on previous goals?"
+      },
+      {
+        "key": "{{future_goals}}",
+        "label": "Future Goals & Development Plan",
+        "type": "text",
+        "required": true,
+        "placeholder": "Goals for next review period",
+        "maxLength": 400,
+        "description": "What should they focus on next?"
+      },
+      {
+        "key": "{{overall_rating}}",
+        "label": "Overall Rating",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Exceeds Expectations",
+          "Meets Expectations",
+          "Needs Improvement",
+          "Unsatisfactory"
+        ],
+        "description": "Overall performance rating"
+      },
+      {
+        "key": "{{additional_feedback}}",
+        "label": "Additional Feedback (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Any other comments or observations",
+        "maxLength": 300,
+        "description": "Other relevant feedback"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "customer-support-response",
+    "category": "communication",
+    "title": "Customer Support Response",
+    "description": "Craft empathetic and effective customer support responses that address concerns, provide solutions, and maintain customer satisfaction.",
+    "tags": [
+      "customer-support",
+      "customer-service",
+      "help-desk",
+      "communication",
+      "ticket-response"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "2 minutes",
+    "basePrompt": "Create a customer support response for:\nCustomer Name: {{customer_name}}\nIssue Type: {{issue_type}}\nPriority: {{priority}}\n\nCustomer's Issue:\n{{customer_issue}}\n\nSolution/Response:\n{{solution}}\n\nTone: {{tone}}\n\nNext Steps:\n{{next_steps}}\n\n{{additional_info}}",
+    "variables": [
+      {
+        "key": "{{customer_name}}",
+        "label": "Customer Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., John Smith",
+        "maxLength": 100,
+        "description": "Customer's name"
+      },
+      {
+        "key": "{{issue_type}}",
+        "label": "Issue Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Technical Problem",
+          "Billing Inquiry",
+          "Product Question",
+          "Feature Request",
+          "Complaint",
+          "Account Issue"
+        ],
+        "description": "Category of the support request"
+      },
+      {
+        "key": "{{priority}}",
+        "label": "Priority Level",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "description": "Urgency of the issue"
+      },
+      {
+        "key": "{{customer_issue}}",
+        "label": "Customer's Issue",
+        "type": "text",
+        "required": true,
+        "placeholder": "Describe what the customer reported",
+        "maxLength": 500,
+        "description": "What problem is the customer experiencing?"
+      },
+      {
+        "key": "{{solution}}",
+        "label": "Solution/Response",
+        "type": "text",
+        "required": true,
+        "placeholder": "How you're addressing the issue",
+        "maxLength": 500,
+        "description": "Your solution or response to their issue"
+      },
+      {
+        "key": "{{tone}}",
+        "label": "Response Tone",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Empathetic",
+          "Professional",
+          "Apologetic",
+          "Friendly",
+          "Educational"
+        ],
+        "description": "Tone for the response"
+      },
+      {
+        "key": "{{next_steps}}",
+        "label": "Next Steps",
+        "type": "text",
+        "required": false,
+        "placeholder": "What should happen next?",
+        "maxLength": 250,
+        "description": "Follow-up actions or expectations"
+      },
+      {
+        "key": "{{additional_info}}",
+        "label": "Additional Information (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Resources, links, compensation offered",
+        "maxLength": 200,
+        "description": "Other relevant details"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.9,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "internal-announcement",
+    "category": "communication",
+    "title": "Internal Company Announcement",
+    "description": "Draft clear and engaging internal communications for company updates, policy changes, or important announcements to employees.",
+    "tags": [
+      "internal-communication",
+      "announcement",
+      "company-update",
+      "employee-communication",
+      "memo"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create an internal announcement for: {{announcement_topic}}\nAudience: {{target_audience}}\nUrgency: {{urgency_level}}\n\nAnnouncement Details:\n{{announcement_details}}\n\nImpact on Employees:\n{{employee_impact}}\n\nAction Required:\n{{action_required}}\n\nEffective Date: {{effective_date}}\n\nContact for Questions: {{contact_info}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{announcement_topic}}",
+        "label": "Announcement Topic",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., New Remote Work Policy, Office Relocation, Leadership Change",
+        "maxLength": 200,
+        "description": "What is the announcement about?"
+      },
+      {
+        "key": "{{target_audience}}",
+        "label": "Target Audience",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., All employees, Engineering team, Management",
+        "maxLength": 150,
+        "description": "Who should receive this announcement?"
+      },
+      {
+        "key": "{{urgency_level}}",
+        "label": "Urgency Level",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Urgent - Immediate Action Required",
+          "Important - Read Soon",
+          "Informational - FYI"
+        ],
+        "description": "How urgent is this announcement?"
+      },
+      {
+        "key": "{{announcement_details}}",
+        "label": "Announcement Details",
+        "type": "text",
+        "required": true,
+        "placeholder": "Full details of what's being announced",
+        "maxLength": 600,
+        "description": "What are you announcing?"
+      },
+      {
+        "key": "{{employee_impact}}",
+        "label": "Impact on Employees",
+        "type": "text",
+        "required": true,
+        "placeholder": "How this affects employees",
+        "maxLength": 400,
+        "description": "How will this affect employees?"
+      },
+      {
+        "key": "{{action_required}}",
+        "label": "Action Required",
+        "type": "text",
+        "required": false,
+        "placeholder": "What do employees need to do?",
+        "maxLength": 300,
+        "description": "Any actions employees must take"
+      },
+      {
+        "key": "{{effective_date}}",
+        "label": "Effective Date",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., December 1, 2025",
+        "maxLength": 100,
+        "description": "When does this take effect?"
+      },
+      {
+        "key": "{{contact_info}}",
+        "label": "Contact for Questions",
+        "type": "text",
+        "required": true,
+        "placeholder": "Who to contact with questions",
+        "maxLength": 150,
+        "description": "Point of contact for questions"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "FAQs, resources, context",
+        "maxLength": 300,
+        "description": "Other relevant information"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.6,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "training-material",
+    "category": "communication",
+    "title": "Training Material Outline",
+    "description": "Design effective training materials with learning objectives, content modules, activities, and assessments for employee development.",
+    "tags": [
+      "training",
+      "learning",
+      "development",
+      "education",
+      "onboarding"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create training material for: {{training_topic}}\nTarget Audience: {{target_audience}}\nTraining Format: {{training_format}}\nDuration: {{training_duration}}\n\nLearning Objectives:\n{{learning_objectives}}\n\nPrerequisites:\n{{prerequisites}}\n\nContent Outline:\n{{content_outline}}\n\nActivities/Exercises:\n{{activities}}\n\nAssessment Method:\n{{assessment}}\n\nResources Needed:\n{{resources}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{training_topic}}",
+        "label": "Training Topic",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Project Management Fundamentals, Sales Techniques",
+        "maxLength": 200,
+        "description": "What will be taught?"
+      },
+      {
+        "key": "{{target_audience}}",
+        "label": "Target Audience",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., New hires, junior developers, sales team",
+        "maxLength": 150,
+        "description": "Who is this training for?"
+      },
+      {
+        "key": "{{training_format}}",
+        "label": "Training Format",
+        "type": "select",
+        "required": true,
+        "options": [
+          "In-Person Workshop",
+          "Online Course",
+          "Webinar",
+          "Self-Paced",
+          "Hybrid",
+          "On-the-Job Training"
+        ],
+        "description": "How will it be delivered?"
+      },
+      {
+        "key": "{{training_duration}}",
+        "label": "Training Duration",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 2 days, 4 hours, 6 weeks",
+        "maxLength": 100,
+        "description": "How long is the training?"
+      },
+      {
+        "key": "{{learning_objectives}}",
+        "label": "Learning Objectives",
+        "type": "text",
+        "required": true,
+        "placeholder": "What should participants be able to do after training?",
+        "maxLength": 500,
+        "description": "Clear, measurable learning outcomes"
+      },
+      {
+        "key": "{{prerequisites}}",
+        "label": "Prerequisites",
+        "type": "text",
+        "required": false,
+        "placeholder": "Required prior knowledge or experience",
+        "maxLength": 250,
+        "description": "What participants need to know beforehand"
+      },
+      {
+        "key": "{{content_outline}}",
+        "label": "Content Outline",
+        "type": "text",
+        "required": true,
+        "placeholder": "Main topics and modules to cover",
+        "maxLength": 700,
+        "description": "Detailed content structure"
+      },
+      {
+        "key": "{{activities}}",
+        "label": "Activities & Exercises",
+        "type": "text",
+        "required": true,
+        "placeholder": "Hands-on activities, case studies, role plays",
+        "maxLength": 500,
+        "description": "Interactive learning activities"
+      },
+      {
+        "key": "{{assessment}}",
+        "label": "Assessment Method",
+        "type": "text",
+        "required": true,
+        "placeholder": "How will you measure learning?",
+        "maxLength": 300,
+        "description": "How to evaluate participant learning"
+      },
+      {
+        "key": "{{resources}}",
+        "label": "Resources Needed",
+        "type": "text",
+        "required": false,
+        "placeholder": "Materials, tools, software, space",
+        "maxLength": 300,
+        "description": "What resources are required?"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Follow-up, support, references",
+        "maxLength": 250,
+        "description": "Other relevant information"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "presentation-outline",
+    "category": "communication",
+    "title": "Presentation Outline",
+    "description": "Structure an engaging presentation with clear narrative flow, key messages, supporting points, and visual recommendations.",
+    "tags": [
+      "presentation",
+      "slides",
+      "public-speaking",
+      "pitch",
+      "storytelling"
+    ],
+    "difficulty": "intermediate",
+    "estimatedTime": "4 minutes",
+    "basePrompt": "Create a presentation outline for: {{presentation_title}}\nAudience: {{audience}}\nDuration: {{duration}}\nObjective: {{objective}}\n\nKey Message:\n{{key_message}}\n\nOpening Hook:\n{{opening_hook}}\n\nMain Points:\n{{main_points}}\n\nSupporting Evidence:\n{{supporting_evidence}}\n\nCall to Action:\n{{call_to_action}}\n\nVisual Recommendations:\n{{visual_recommendations}}\n\n{{additional_notes}}",
+    "variables": [
+      {
+        "key": "{{presentation_title}}",
+        "label": "Presentation Title",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Q4 Results and 2026 Strategy",
+        "maxLength": 200,
+        "description": "Title of your presentation"
+      },
+      {
+        "key": "{{audience}}",
+        "label": "Audience",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Board of Directors, potential investors, team members",
+        "maxLength": 150,
+        "description": "Who will be watching?"
+      },
+      {
+        "key": "{{duration}}",
+        "label": "Presentation Duration",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 20 minutes, 1 hour",
+        "maxLength": 50,
+        "description": "How long is the presentation?"
+      },
+      {
+        "key": "{{objective}}",
+        "label": "Presentation Objective",
+        "type": "text",
+        "required": true,
+        "placeholder": "What do you want the audience to do or understand?",
+        "maxLength": 300,
+        "description": "Goal of the presentation"
+      },
+      {
+        "key": "{{key_message}}",
+        "label": "Key Message",
+        "type": "text",
+        "required": true,
+        "placeholder": "The one thing you want the audience to remember",
+        "maxLength": 300,
+        "description": "Core message to convey"
+      },
+      {
+        "key": "{{opening_hook}}",
+        "label": "Opening Hook",
+        "type": "text",
+        "required": true,
+        "placeholder": "How will you grab attention in the first 30 seconds?",
+        "maxLength": 250,
+        "description": "Compelling opening to capture interest"
+      },
+      {
+        "key": "{{main_points}}",
+        "label": "Main Points",
+        "type": "text",
+        "required": true,
+        "placeholder": "List 3-5 main points to cover",
+        "maxLength": 500,
+        "description": "Key points you'll address"
+      },
+      {
+        "key": "{{supporting_evidence}}",
+        "label": "Supporting Evidence",
+        "type": "text",
+        "required": true,
+        "placeholder": "Data, examples, case studies, testimonials",
+        "maxLength": 500,
+        "description": "Evidence to support your points"
+      },
+      {
+        "key": "{{call_to_action}}",
+        "label": "Call to Action",
+        "type": "text",
+        "required": true,
+        "placeholder": "What should the audience do next?",
+        "maxLength": 250,
+        "description": "Desired action from audience"
+      },
+      {
+        "key": "{{visual_recommendations}}",
+        "label": "Visual Recommendations",
+        "type": "text",
+        "required": false,
+        "placeholder": "Suggested charts, images, diagrams",
+        "maxLength": 300,
+        "description": "Visual elements to include"
+      },
+      {
+        "key": "{{additional_notes}}",
+        "label": "Additional Notes (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Timing, transitions, Q&A approach",
+        "maxLength": 250,
+        "description": "Other presentation details"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.8,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  },
+  {
+    "id": "faq-generator",
+    "category": "communication",
+    "title": "FAQ Generator",
+    "description": "Create comprehensive FAQ sections with clear questions and answers to address common customer or user inquiries.",
+    "tags": [
+      "faq",
+      "help",
+      "documentation",
+      "support",
+      "knowledge-base"
+    ],
+    "difficulty": "beginner",
+    "estimatedTime": "3 minutes",
+    "basePrompt": "Create FAQ for: {{product_or_service}}\nTarget Audience: {{target_audience}}\nContext: {{context}}\n\nCommon Questions:\n{{common_questions}}\n\nKey Topics to Address:\n{{key_topics}}\n\nTone: {{tone}}\n\nLinks to Resources: {{resources}}\n\n{{additional_requirements}}",
+    "variables": [
+      {
+        "key": "{{product_or_service}}",
+        "label": "Product/Service Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., CloudSync Project Management Tool",
+        "maxLength": 200,
+        "description": "What is the FAQ about?"
+      },
+      {
+        "key": "{{target_audience}}",
+        "label": "Target Audience",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., New users, potential customers",
+        "maxLength": 150,
+        "description": "Who will read this FAQ?"
+      },
+      {
+        "key": "{{context}}",
+        "label": "Context/Purpose",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Product launch, website help section, onboarding",
+        "maxLength": 250,
+        "description": "Where and why will this be used?"
+      },
+      {
+        "key": "{{common_questions}}",
+        "label": "Common Questions",
+        "type": "text",
+        "required": true,
+        "placeholder": "List questions users frequently ask",
+        "maxLength": 600,
+        "description": "What questions do users ask most often?"
+      },
+      {
+        "key": "{{key_topics}}",
+        "label": "Key Topics to Address",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Pricing, features, support, getting started",
+        "maxLength": 300,
+        "description": "Main categories or topics to cover"
+      },
+      {
+        "key": "{{tone}}",
+        "label": "Response Tone",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Professional",
+          "Friendly & Conversational",
+          "Technical",
+          "Simple & Clear"
+        ],
+        "description": "Style of answers"
+      },
+      {
+        "key": "{{resources}}",
+        "label": "Links to Resources",
+        "type": "text",
+        "required": false,
+        "placeholder": "Documentation, tutorials, support channels",
+        "maxLength": 300,
+        "description": "Related resources to reference"
+      },
+      {
+        "key": "{{additional_requirements}}",
+        "label": "Additional Requirements (Optional)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Specific format, length constraints, must-include items",
+        "maxLength": 250,
+        "description": "Other specifications"
+      }
+    ],
+    "examples": [],
+    "usageCount": 0,
+    "rating": 4.7,
+    "lastUpdated": "2025-11-17T00:00:00.000Z",
+    "createdAt": "2025-11-17T00:00:00.000Z",
+    "author": "Alkholi Group",
+    "version": "1.0"
+  }
+]
