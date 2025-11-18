@@ -146,6 +146,165 @@ html[lang="ar"] body {
   background: linear-gradient(135deg, #000046 0%, #00002e 100%);
 }
 
+/* Consistent Transitions */
+.transition-colors-smooth {
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+
+.transition-transform-smooth {
+  transition: transform 200ms ease-in-out;
+}
+
+.transition-all-smooth {
+  transition: all 200ms ease-in-out;
+}
+
+.transition-shadow-smooth {
+  transition: box-shadow 200ms ease-in-out;
+}
+
+/* Consistent Hover States */
+.hover-lift {
+  transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform 200ms ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-brightness {
+  transition: filter 200ms ease-in-out;
+}
+
+.hover-brightness:hover {
+  filter: brightness(1.05);
+}
+
+/* Consistent Focus States */
+.focus-ring-emerald:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(69, 207, 123, 0.3);
+}
+
+.focus-ring-navy:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 70, 0.3);
+}
+
+.focus-ring-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Accessible focus-visible */
+.focus-visible-ring:focus-visible {
+  outline: 2px solid #45cf7b;
+  outline-offset: 2px;
+}
+
+/* Consistent Active States */
+.active-scale:active {
+  transform: scale(0.98);
+}
+
+.active-brightness:active {
+  filter: brightness(0.95);
+}
+
+/* Consistent Disabled States */
+.disabled-state {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.disabled-subtle {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Interactive Element Base Styles */
+.interactive-base {
+  cursor: pointer;
+  user-select: none;
+  transition: all 200ms ease-in-out;
+}
+
+.interactive-base:hover {
+  opacity: 0.9;
+}
+
+.interactive-base:active {
+  transform: scale(0.98);
+}
+
+.interactive-base:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Consistent Card Shadows */
+.card-shadow-sm {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.card-shadow-md {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+}
+
+.card-shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Consistent Padding Scale (8px grid) */
+.p-grid-1 { padding: 8px; }
+.p-grid-2 { padding: 16px; }
+.p-grid-3 { padding: 24px; }
+.p-grid-4 { padding: 32px; }
+.p-grid-5 { padding: 40px; }
+.p-grid-6 { padding: 48px; }
+
+.px-grid-1 { padding-left: 8px; padding-right: 8px; }
+.px-grid-2 { padding-left: 16px; padding-right: 16px; }
+.px-grid-3 { padding-left: 24px; padding-right: 24px; }
+.px-grid-4 { padding-left: 32px; padding-right: 32px; }
+
+.py-grid-1 { padding-top: 8px; padding-bottom: 8px; }
+.py-grid-2 { padding-top: 16px; padding-bottom: 16px; }
+.py-grid-3 { padding-top: 24px; padding-bottom: 24px; }
+.py-grid-4 { padding-top: 32px; padding-bottom: 32px; }
+
+/* Consistent Margin Scale (8px grid) */
+.m-grid-1 { margin: 8px; }
+.m-grid-2 { margin: 16px; }
+.m-grid-3 { margin: 24px; }
+.m-grid-4 { margin: 32px; }
+.m-grid-5 { margin: 40px; }
+.m-grid-6 { margin: 48px; }
+
+.mx-grid-1 { margin-left: 8px; margin-right: 8px; }
+.mx-grid-2 { margin-left: 16px; margin-right: 16px; }
+.mx-grid-3 { margin-left: 24px; margin-right: 24px; }
+.mx-grid-4 { margin-left: 32px; margin-right: 32px; }
+
+.my-grid-1 { margin-top: 8px; margin-bottom: 8px; }
+.my-grid-2 { margin-top: 16px; margin-bottom: 16px; }
+.my-grid-3 { margin-top: 24px; margin-bottom: 24px; }
+.my-grid-4 { margin-top: 32px; margin-bottom: 32px; }
+
 /* RTL Border Radius Adjustments */
 [dir="rtl"] .rounded-s {
   border-start-start-radius: 8px;
