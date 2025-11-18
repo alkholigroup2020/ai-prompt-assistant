@@ -258,6 +258,51 @@ html[lang="ar"] body {
   outline-offset: 2px;
 }
 
+/* Global focus-visible for all interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid #45cf7b;
+  outline-offset: 2px;
+}
+
+/* Dark mode focus visible */
+.dark button:focus-visible,
+.dark a:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark select:focus-visible,
+.dark [tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 2px;
+}
+
+/* Ensure keyboard-only focus (no focus on mouse click) */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip to main content link for keyboard navigation */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem;
+  background-color: #45cf7b;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.375rem;
+}
+
+.skip-to-main:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 /* Consistent Active States */
 .active-scale:active {
   transform: scale(0.98);

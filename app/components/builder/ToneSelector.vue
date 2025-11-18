@@ -6,11 +6,17 @@
     </label>
 
     <!-- Tone Options Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+      role="radiogroup"
+      :aria-label="$t('builder.tone.label')"
+    >
       <button
-        v-for="option in toneOptions"
+        v-for="(option, index) in toneOptions"
         :key="option.value"
         type="button"
+        role="radio"
+        :data-tone-option="index"
         :class="[
           'relative p-4 rounded-lg border-2 transition-all duration-200 text-left min-h-[88px]',
           'hover:shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
@@ -20,8 +26,10 @@
             : 'border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-700'
         ]"
         :aria-label="`${option.label}: ${option.description}`"
-        :aria-pressed="selectedTone === option.value"
+        :aria-checked="selectedTone === option.value"
+        :tabindex="selectedTone === option.value ? 0 : -1"
         @click="selectTone(option.value)"
+        @keydown="handleKeyDown($event, index)"
       >
         <!-- Selected Indicator -->
         <div
@@ -179,4 +187,46 @@ const selectTone = (tone: ToneOption) => {
   selectedTone.value = tone;
   formStore.updateField('tone', tone);
 };
-</script>
+
+// Keyboard navigation for tone grid
+const handleKeyDown = (event: KeyboardEvent, currentIndex: number) => {
+  const totalOptions = toneOptions.value.length;
+  const cols = 3; // Grid has 3 columns on large screens
+  let newIndex = currentIndex;
+
+  switch (event.key) {
+    case 'ArrowRight':
+      event.preventDefault();
+      newIndex = (currentIndex + 1) % totalOptions;
+      break;
+    case 'ArrowLeft':
+      event.preventDefault();
+      newIndex = (currentIndex - 1 + totalOptions) % totalOptions;
+      break;
+    case 'ArrowDown':
+      event.preventDefault();
+      newIndex = Math.min(currentIndex + cols, totalOptions - 1);
+      break;
+    case 'ArrowUp':
+      event.preventDefault();
+      newIndex = Math.max(currentIndex - cols, 0);
+      break;
+    case 'Home':
+      event.preventDefault();
+      newIndex = 0;
+      break;
+    case 'End':
+      event.preventDefault();
+      newIndex = totalOptions - 1;
+      break;
+    default:
+      return;
+  }
+
+  // Focus the new button
+  const buttons = document.querySelectorAll('[data-tone-option]');
+  if (buttons[newIndex]) {
+    (buttons[newIndex] as HTMLElement).focus();
+  }
+};
+

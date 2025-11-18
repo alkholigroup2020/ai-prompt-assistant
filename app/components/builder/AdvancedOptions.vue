@@ -3,8 +3,12 @@
     <!-- Collapsible Header -->
     <button
       type="button"
-      class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+      class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+      :aria-expanded="isExpanded"
+      :aria-label="$t('builder.advanced.title')"
       @click="toggleCollapse"
+      @keydown.enter.prevent="toggleCollapse"
+      @keydown.space.prevent="toggleCollapse"
     >
       <div class="flex items-center gap-3">
         <UIcon
@@ -38,29 +42,45 @@
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
           {{ $t('builder.advanced.enhancementLevel.label') }}
         </label>
-        <div class="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <div
+          class="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+          role="radiogroup"
+          :aria-label="$t('builder.advanced.enhancementLevel.label')"
+        >
           <button
             type="button"
+            role="radio"
+            :aria-checked="enhancementLevel === 'quick'"
+            :tabindex="enhancementLevel === 'quick' ? 0 : -1"
             :class="[
               'flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all',
+              'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
               enhancementLevel === 'quick'
                 ? 'bg-emerald-500 text-white shadow-md'
                 : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
             ]"
             @click="setEnhancementLevel('quick')"
+            @keydown.enter.prevent="setEnhancementLevel('quick')"
+            @keydown.space.prevent="setEnhancementLevel('quick')"
           >
             <UIcon name="i-heroicons-bolt" class="w-4 h-4 inline mr-1" />
             {{ $t('builder.advanced.enhancementLevel.quick') }}
           </button>
           <button
             type="button"
+            role="radio"
+            :aria-checked="enhancementLevel === 'detailed'"
+            :tabindex="enhancementLevel === 'detailed' ? 0 : -1"
             :class="[
               'flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all',
+              'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
               enhancementLevel === 'detailed'
                 ? 'bg-emerald-500 text-white shadow-md'
                 : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
             ]"
             @click="setEnhancementLevel('detailed')"
+            @keydown.enter.prevent="setEnhancementLevel('detailed')"
+            @keydown.space.prevent="setEnhancementLevel('detailed')"
           >
             <UIcon name="i-heroicons-sparkles" class="w-4 h-4 inline mr-1" />
             {{ $t('builder.advanced.enhancementLevel.detailed') }}

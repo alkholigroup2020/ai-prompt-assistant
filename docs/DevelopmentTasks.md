@@ -633,12 +633,12 @@ This document contains a comprehensive checklist of all development tasks requir
 - [x] Use alt text for images
 
 ### 10.2 Keyboard Navigation
-- [ ] All interactive elements focusable (no tabindex=-1 on functional elements)
-- [ ] Logical tab order (follows visual flow)
-- [ ] Visible focus indicators (outline or ring)
-- [ ] Escape key to close modals/dropdowns
-- [ ] Enter/Space to activate buttons
-- [ ] Arrow keys for radio groups and comboboxes
+- [x] All interactive elements focusable (no tabindex=-1 on functional elements)
+- [x] Logical tab order (follows visual flow)
+- [x] Visible focus indicators (outline or ring)
+- [x] Escape key to close modals/dropdowns
+- [x] Enter/Space to activate buttons
+- [x] Arrow keys for radio groups and comboboxes
 
 ### 10.3 Basic Screen Reader Support
 - [ ] ARIA roles applied correctly (button, dialog, alert)
