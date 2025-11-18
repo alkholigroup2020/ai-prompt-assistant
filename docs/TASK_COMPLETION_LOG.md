@@ -164,3 +164,11 @@ Implemented comprehensive RTL (Right-to-Left) support for Arabic language across
 
 ---
 
+## Phase 8.3: Language Switcher
+
+**Status**: ✅ Completed | **Date**: 2025-11-18
+
+Implemented complete language switching functionality with localStorage persistence and URL prefix updates. Created preferences.client.ts plugin (~25 lines) to initialize preferences store on client-side, sync i18n locale with stored preference on mount, and watch for locale changes from i18n (handles URL-based locale changes), ensuring bidirectional synchronization between preferences store and i18n. Updated Header.vue toggleLanguage method to use switchLocalePath composable (from @nuxtjs/i18n) and router.push for proper URL updates with locale prefix (/ar/path format), with preference saved to localStorage via preferencesStore.setLanguage. Fixed app.vue to wrap NuxtPage with NuxtLayout component (previously missing, causing layouts not to render). Language switcher now provides complete functionality: toggle between EN/AR languages, save preference to localStorage (persists across sessions), update URL with locale prefix (/builder → /ar/builder), reload content with new translations via i18n, update HTML dir/lang attributes for RTL support, and maintain current route when switching languages. Integration points: preferences plugin auto-runs on client mount, Header component uses useSwitchLocalePath and useRouter composables, preferences store handles localStorage I/O with setLanguage action, and i18n module manages URL routing with prefix_except_default strategy. Validation: TypeScript typecheck passed, ESLint passed with zero errors.
+
+---
+

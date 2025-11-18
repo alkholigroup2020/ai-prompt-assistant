@@ -27,7 +27,8 @@
       "Bash(cat:*)",
       "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates.json\")",
       "Bash(node:*)",
-      "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates_fixed.json\")"
+      "Bash(\"D:\\WebDev\\AKG_Websites\\ai-prompt-assistant\\server\\data\\templates_fixed.json\")",
+      "mcp__puppeteer__puppeteer_evaluate"
     ],
     "deny": [],
     "ask": []

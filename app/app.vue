@@ -23,6 +23,8 @@ useHead({
 
 <template>
   <UApp>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </UApp>
 </template>

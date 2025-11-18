@@ -112,6 +112,8 @@ import { usePreferencesStore } from '~/stores/preferences'
 
 // i18n
 const { t, locale } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const router = useRouter()
 
 // Store
 const preferencesStore = usePreferencesStore()
@@ -134,10 +136,19 @@ const navigationItems = [
 ]
 
 // Methods
-const toggleLanguage = () => {
+const toggleLanguage = async () => {
   const newLocale = currentLocale.value === 'en' ? 'ar' : 'en'
+
+  // Update preference in store (saves to localStorage)
   preferencesStore.setLanguage(newLocale)
-  locale.value = newLocale
+
+  // Get the localized path for the new locale
+  const localizedPath = switchLocalePath(newLocale)
+
+  // Navigate to the localized path
+  // This will update the URL with locale prefix and reload content
+  await router.push(localizedPath)
+
   closeMobileMenu()
 }
 

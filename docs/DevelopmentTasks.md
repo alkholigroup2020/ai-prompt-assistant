@@ -569,11 +569,11 @@ This document contains a comprehensive checklist of all development tasks requir
 - [x] Test form validation in Arabic
 
 ### 8.3 Language Switcher
-- [ ] Implement language toggle
-- [ ] Save preference to localStorage
-- [ ] Persist across sessions
-- [ ] Update URL with locale prefix
-- [ ] Reload content on switch
+- [x] Implement language toggle
+- [x] Save preference to localStorage
+- [x] Persist across sessions
+- [x] Update URL with locale prefix
+- [x] Reload content on switch
 
 ---
 
