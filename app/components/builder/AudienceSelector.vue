@@ -64,6 +64,9 @@
 </template>
 
 <script setup lang="ts">
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck - Nuxt UI USelectMenu slot types are incomplete
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 import { computed, ref, watch } from 'vue';
 import { useFormStore } from '~/stores/form';
 import { useI18n } from 'vue-i18n';

@@ -463,5 +463,84 @@
       "empty": "No alternative versions available",
       "emptyDescription": "Alternative versions are generated with Deep Enhancement mode"
     }
+  },
+  "templates": {
+    "title": "Template Library",
+    "description": "Browse our collection of ready-to-use prompt templates",
+    "search": "Search templates...",
+    "searchPlaceholder": "Type to search templates by title, category, or tags",
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "allCategories": "All Categories",
+      "difficulty": "Difficulty",
+      "allDifficulties": "All Difficulties",
+      "sortBy": "Sort By",
+      "popular": "Most Popular",
+      "recent": "Recently Added",
+      "rating": "Highest Rated",
+      "titleAsc": "Title (A-Z)",
+      "clear": "Clear Filters"
+    },
+    "categories": {
+      "business": "Business",
+      "technical": "Technical",
+      "creative": "Creative",
+      "analysis": "Analysis",
+      "communication": "Communication",
+      "research": "Research",
+      "marketing": "Marketing",
+      "hr": "HR",
+      "sales": "Sales",
+      "customer_service": "Customer Service"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "card": {
+      "useTemplate": "Use Template",
+      "viewDetails": "View Details",
+      "estimatedTime": "~{time}",
+      "rating": "{rating} stars",
+      "used": "Used {count} times",
+      "new": "New",
+      "popular": "Popular"
+    },
+    "grid": {
+      "showing": "Showing {start}-{end} of {total} templates",
+      "noResults": "No templates found",
+      "noResultsDescription": "Try adjusting your filters or search terms",
+      "loading": "Loading templates...",
+      "loadMore": "Load More",
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}"
+    },
+    "detail": {
+      "title": "Template Details",
+      "description": "Description",
+      "category": "Category",
+      "difficulty": "Difficulty",
+      "estimatedTime": "Estimated Time",
+      "rating": "Rating",
+      "usageCount": "Times Used",
+      "lastUpdated": "Last Updated",
+      "variables": "Required Fields",
+      "variablesDescription": "Fill in these fields to customize your template",
+      "examples": "Examples",
+      "examplesDescription": "See how others have used this template",
+      "exampleTitle": "Example: {title}",
+      "exampleInput": "Input Variables",
+      "exampleOutput": "Expected Output",
+      "applyTemplate": "Apply Template",
+      "backToGallery": "Back to Templates",
+      "preview": "Preview",
+      "previewDescription": "This is how your prompt will look",
+      "fillRequired": "Please fill in all required fields",
+      "applied": "Template Applied",
+      "appliedDescription": "The template has been applied to the prompt builder"
+    }
   }
 }

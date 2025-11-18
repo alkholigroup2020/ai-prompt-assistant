@@ -16,6 +16,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   showShare: true,
+  originalInput: undefined,
+  response: undefined,
 });
 
 const { t } = useI18n();

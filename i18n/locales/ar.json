@@ -463,5 +463,84 @@
       "empty": "لا توجد إصدارات بديلة متاحة",
       "emptyDescription": "يتم إنشاء الإصدارات البديلة مع وضع التحسين العميق"
     }
+  },
+  "templates": {
+    "title": "مكتبة القوالب",
+    "description": "تصفح مجموعتنا من قوالب الأوامر الجاهزة للاستخدام",
+    "search": "بحث في القوالب...",
+    "searchPlaceholder": "اكتب للبحث في القوالب حسب العنوان أو الفئة أو العلامات",
+    "filters": {
+      "title": "الفلاتر",
+      "category": "الفئة",
+      "allCategories": "جميع الفئات",
+      "difficulty": "مستوى الصعوبة",
+      "allDifficulties": "جميع المستويات",
+      "sortBy": "ترتيب حسب",
+      "popular": "الأكثر شعبية",
+      "recent": "المضافة مؤخراً",
+      "rating": "الأعلى تقييماً",
+      "titleAsc": "العنوان (أ-ي)",
+      "clear": "مسح الفلاتر"
+    },
+    "categories": {
+      "business": "أعمال",
+      "technical": "تقني",
+      "creative": "إبداعي",
+      "analysis": "تحليل",
+      "communication": "تواصل",
+      "research": "بحث",
+      "marketing": "تسويق",
+      "hr": "موارد بشرية",
+      "sales": "مبيعات",
+      "customer_service": "خدمة العملاء"
+    },
+    "difficulty": {
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "advanced": "متقدم"
+    },
+    "card": {
+      "useTemplate": "استخدم القالب",
+      "viewDetails": "عرض التفاصيل",
+      "estimatedTime": "~{time}",
+      "rating": "{rating} نجوم",
+      "used": "مستخدم {count} مرة",
+      "new": "جديد",
+      "popular": "شائع"
+    },
+    "grid": {
+      "showing": "عرض {start}-{end} من {total} قالب",
+      "noResults": "لم يتم العثور على قوالب",
+      "noResultsDescription": "حاول تعديل الفلاتر أو مصطلحات البحث",
+      "loading": "جاري تحميل القوالب...",
+      "loadMore": "تحميل المزيد",
+      "previous": "السابق",
+      "next": "التالي",
+      "page": "صفحة {current} من {total}"
+    },
+    "detail": {
+      "title": "تفاصيل القالب",
+      "description": "الوصف",
+      "category": "الفئة",
+      "difficulty": "مستوى الصعوبة",
+      "estimatedTime": "الوقت المقدر",
+      "rating": "التقييم",
+      "usageCount": "مرات الاستخدام",
+      "lastUpdated": "آخر تحديث",
+      "variables": "الحقول المطلوبة",
+      "variablesDescription": "املأ هذه الحقول لتخصيص قالبك",
+      "examples": "أمثلة",
+      "examplesDescription": "شاهد كيف استخدم الآخرون هذا القالب",
+      "exampleTitle": "مثال: {title}",
+      "exampleInput": "متغيرات الإدخال",
+      "exampleOutput": "الناتج المتوقع",
+      "applyTemplate": "تطبيق القالب",
+      "backToGallery": "العودة إلى القوالب",
+      "preview": "معاينة",
+      "previewDescription": "هكذا ستبدو مطالبتك",
+      "fillRequired": "يرجى ملء جميع الحقول المطلوبة",
+      "applied": "تم تطبيق القالب",
+      "appliedDescription": "تم تطبيق القالب على منشئ الأوامر"
+    }
   }
 }
