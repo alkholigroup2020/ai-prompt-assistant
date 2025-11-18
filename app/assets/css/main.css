@@ -1,8 +1,25 @@
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom CSS Variables */
 :root {
   --primary-emerald: #45cf7b;
   --primary-navy: #000046;
+  --secondary-emerald: #16a34a;
+  --secondary-navy: #00002e;
   --transition-speed: 0.3s;
+  --transition-slow: 0.5s;
+  --transition-fast: 0.15s;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
 /* RTL Support */

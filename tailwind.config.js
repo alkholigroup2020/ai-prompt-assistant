@@ -14,6 +14,15 @@ export default {
     hoverOnlyWhenSupported: true,
   },
   theme: {
+    // Custom responsive breakpoints
+    screens: {
+      xs: '375px', // Small mobile
+      sm: '640px', // Mobile landscape
+      md: '768px', // Tablet
+      lg: '1024px', // Desktop
+      xl: '1280px', // Large desktop
+      '2xl': '1536px', // Extra large desktop
+    },
     extend: {
       colors: {
         // Custom Navy Color Palette
@@ -47,6 +56,19 @@ export default {
         sans: ['Inter', 'IBM Plex Sans Arabic', 'sans-serif'],
         arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
       },
+      fontSize: {
+        // Custom typography scale
+        xs: ['0.75rem', { lineHeight: '1rem' }], // 12px
+        sm: ['0.875rem', { lineHeight: '1.25rem' }], // 14px
+        base: ['1rem', { lineHeight: '1.5rem' }], // 16px
+        lg: ['1.125rem', { lineHeight: '1.75rem' }], // 18px
+        xl: ['1.25rem', { lineHeight: '1.75rem' }], // 20px
+        '2xl': ['1.5rem', { lineHeight: '2rem' }], // 24px
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 30px
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }], // 36px
+        '5xl': ['3rem', { lineHeight: '1' }], // 48px
+        '6xl': ['3.75rem', { lineHeight: '1' }], // 60px
+      },
       spacing: {
         // 8px grid system
         0: '0',
@@ -69,6 +91,7 @@ export default {
         'slide-down': 'slideDown 0.4s ease-out',
         'scale-in': 'scaleIn 0.2s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 2s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -96,6 +119,21 @@ export default {
         xl: '16px',
         '2xl': '24px',
         full: '9999px',
+      },
+      boxShadow: {
+        sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+        DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+        inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+        none: 'none',
+      },
+      transitionDuration: {
+        fast: '150ms',
+        DEFAULT: '300ms',
+        slow: '500ms',
       },
     },
   },
