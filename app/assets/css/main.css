@@ -26,6 +26,96 @@ html[lang="ar"] body {
   font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
 
+/* RTL Animations - Flip horizontal animations for RTL */
+[dir="rtl"] .slide-in-left {
+  animation: slideInRight 0.4s ease-out;
+}
+
+[dir="rtl"] .slide-in-right {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+[dir="ltr"] .slide-in-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+[dir="ltr"] .slide-in-right {
+  animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* RTL Icon Flip - Flip directional icons in RTL */
+[dir="rtl"] .icon-flip {
+  transform: scaleX(-1);
+}
+
+/* RTL Text Alignment */
+[dir="rtl"] .text-start {
+  text-align: right;
+}
+
+[dir="rtl"] .text-end {
+  text-align: left;
+}
+
+[dir="ltr"] .text-start {
+  text-align: left;
+}
+
+[dir="ltr"] .text-end {
+  text-align: right;
+}
+
+/* RTL Spacing - Logical properties support */
+.ms-auto {
+  margin-inline-start: auto;
+}
+
+.me-auto {
+  margin-inline-end: auto;
+}
+
+.ps-1 { padding-inline-start: 8px; }
+.ps-2 { padding-inline-start: 16px; }
+.ps-3 { padding-inline-start: 24px; }
+.ps-4 { padding-inline-start: 32px; }
+
+.pe-1 { padding-inline-end: 8px; }
+.pe-2 { padding-inline-end: 16px; }
+.pe-3 { padding-inline-end: 24px; }
+.pe-4 { padding-inline-end: 32px; }
+
+.ms-1 { margin-inline-start: 8px; }
+.ms-2 { margin-inline-start: 16px; }
+.ms-3 { margin-inline-start: 24px; }
+.ms-4 { margin-inline-start: 32px; }
+
+.me-1 { margin-inline-end: 8px; }
+.me-2 { margin-inline-end: 16px; }
+.me-3 { margin-inline-end: 24px; }
+.me-4 { margin-inline-end: 32px; }
+
 /* Custom utility classes */
 .transition-default {
   transition: all var(--transition-speed) ease-in-out;
@@ -37,4 +127,19 @@ html[lang="ar"] body {
 
 .bg-gradient-navy {
   background: linear-gradient(135deg, #000046 0%, #00002e 100%);
+}
+
+/* RTL Border Radius Adjustments */
+[dir="rtl"] .rounded-s {
+  border-start-start-radius: 8px;
+  border-end-start-radius: 8px;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+[dir="rtl"] .rounded-e {
+  border-start-end-radius: 8px;
+  border-end-end-radius: 8px;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
 }

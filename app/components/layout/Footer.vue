@@ -59,7 +59,7 @@
             >
               {{ t('footer.companyWebsite') }}
               <svg
-                class="h-3 w-3"
+                :class="['h-3 w-3', iconFlipClass]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -117,6 +117,9 @@
 <script setup lang="ts">
 // i18n
 const { t } = useI18n()
+
+// RTL support
+const { iconFlipClass } = useRTL()
 
 // Computed
 const currentYear = computed(() => new Date().getFullYear())

@@ -9,6 +9,10 @@ export default {
     './app/app.vue',
     './app/error.vue',
   ],
+  // Enable RTL support with directionality variants
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
