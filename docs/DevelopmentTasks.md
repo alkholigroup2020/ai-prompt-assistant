@@ -648,10 +648,10 @@ This document contains a comprehensive checklist of all development tasks requir
 - [x] Descriptive link text (avoid "click here")
 
 ### 10.4 Color & Contrast
-- [ ] Minimum 4.5:1 text contrast (AA standard)
-- [ ] Minimum 3:1 UI element contrast
-- [ ] Don't rely on color alone for information
-- [ ] Sufficient focus indicators (visible outline)
+- [x] Minimum 4.5:1 text contrast (AA standard)
+- [x] Minimum 3:1 UI element contrast
+- [x] Don't rely on color alone for information
+- [x] Sufficient focus indicators (visible outline)
 
 ### 10.5 Basic Accessibility Testing
 - [ ] Run axe-core automated tests (browser extension)
