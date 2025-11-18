@@ -19,6 +19,8 @@
             ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
             : 'border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-700'
         ]"
+        :aria-label="`${option.label}: ${option.description}`"
+        :aria-pressed="selectedTone === option.value"
         @click="selectTone(option.value)"
       >
         <!-- Selected Indicator -->

@@ -625,12 +625,12 @@ This document contains a comprehensive checklist of all development tasks requir
 **Focus**: Essential accessibility features for WCAG 2.1 AA compliance
 
 ### 10.1 Semantic HTML
-- [ ] Use proper heading hierarchy (h1 -> h2 -> h3)
-- [ ] Use semantic landmarks (header, nav, main, footer)
-- [ ] Use button elements for actions (not divs)
-- [ ] Use proper form labels (label with for attribute)
-- [ ] Use aria-labels for icon buttons
-- [ ] Use alt text for images
+- [x] Use proper heading hierarchy (h1 -> h2 -> h3)
+- [x] Use semantic landmarks (header, nav, main, footer)
+- [x] Use button elements for actions (not divs)
+- [x] Use proper form labels (label with for attribute)
+- [x] Use aria-labels for icon buttons
+- [x] Use alt text for images
 
 ### 10.2 Keyboard Navigation
 - [ ] All interactive elements focusable (no tabindex=-1 on functional elements)
