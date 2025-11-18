@@ -40,13 +40,14 @@
       </div>
 
       <!-- Right Side Actions -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
         <!-- Language Switcher -->
         <UButton
           :icon="currentLocale === 'en' ? 'i-heroicons-language' : 'i-heroicons-language'"
           color="neutral"
           variant="ghost"
           size="sm"
+          class="min-h-[44px] min-w-[44px] touch-manipulation"
           :aria-label="t('header.switchLanguage')"
           @click="toggleLanguage"
         >
@@ -59,6 +60,7 @@
           color="neutral"
           variant="ghost"
           size="sm"
+          class="min-h-[44px] min-w-[44px] touch-manipulation"
           :aria-label="t('header.toggleTheme')"
           @click="toggleTheme"
         />
@@ -69,7 +71,7 @@
           color="neutral"
           variant="ghost"
           size="sm"
-          class="md:hidden"
+          class="md:hidden min-h-[44px] min-w-[44px] touch-manipulation"
           :aria-label="mobileMenuOpen ? t('header.closeMenu') : t('header.openMenu')"
           :aria-expanded="mobileMenuOpen"
           @click="toggleMobileMenu"
@@ -90,12 +92,12 @@
         v-if="mobileMenuOpen"
         class="border-t border-gray-200 bg-white px-4 py-4 dark:border-gray-800 dark:bg-gray-950 md:hidden"
       >
-        <nav class="flex flex-col gap-3" role="navigation" aria-label="Mobile navigation">
+        <nav class="flex flex-col gap-2" role="navigation" aria-label="Mobile navigation">
           <NuxtLink
             v-for="item in navigationItems"
             :key="item.to"
             :to="item.to"
-            class="rounded-md px-3 py-2 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-emerald-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-emerald-400"
+            class="rounded-md px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-emerald-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-emerald-400 min-h-[44px] flex items-center touch-manipulation"
             :aria-current="isActive(item.to) ? 'page' : undefined"
             @click="closeMobileMenu"
           >

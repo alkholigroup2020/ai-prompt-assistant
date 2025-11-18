@@ -36,7 +36,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(taskkill:*)",
-      "WebFetch(domain:ui.nuxt.com)"
+      "WebFetch(domain:ui.nuxt.com)",
+      "mcp__playwright__browser_navigate"
     ],
     "deny": [],
     "ask": []

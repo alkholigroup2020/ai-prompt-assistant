@@ -96,42 +96,43 @@ const handleTemplateClick = (templateId: string): void => {
       id="hero"
       class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-emerald-900 text-white"
     >
-      <div class="container mx-auto px-4 py-24 sm:py-32 md:py-40">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
         <div class="text-center">
           <!-- Animated Icon -->
-          <div class="mb-8 flex justify-center">
+          <div class="mb-6 sm:mb-8 flex justify-center">
             <div
-              class="animate-bounce rounded-full bg-emerald-500/20 p-6 backdrop-blur-sm"
+              class="animate-bounce rounded-full bg-emerald-500/20 p-4 sm:p-6 backdrop-blur-sm"
             >
               <UIcon
                 name="i-heroicons-sparkles"
-                class="h-16 w-16 text-emerald-400"
+                class="h-12 w-12 sm:h-16 sm:w-16 text-emerald-400"
               />
             </div>
           </div>
 
           <!-- Headline -->
           <h1
-            class="mb-6 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            class="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-2"
           >
             {{ t('landing.hero.headline') }}
           </h1>
 
           <!-- Subheadline -->
           <p
-            class="mx-auto mb-8 max-w-3xl text-lg text-gray-200 sm:text-xl md:text-2xl"
+            class="mx-auto mb-6 sm:mb-8 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 px-4"
           >
             {{ t('landing.hero.subheadline') }}
           </p>
 
           <!-- CTA Buttons -->
           <div
-            class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            class="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row px-4"
           >
             <UButton
               size="xl"
               color="emerald"
               variant="solid"
+              class="w-full sm:w-auto min-h-[44px]"
               @click="handleGetStarted"
             >
               <template #leading>
@@ -144,6 +145,7 @@ const handleTemplateClick = (templateId: string): void => {
               size="xl"
               color="neutral"
               variant="outline"
+              class="w-full sm:w-auto min-h-[44px]"
               @click="handleViewTemplates"
             >
               <template #leading>
@@ -173,22 +175,22 @@ const handleTemplateClick = (templateId: string): void => {
     </section>
 
     <!-- Value Propositions Section -->
-    <section id="value-props" class="bg-white py-16 dark:bg-gray-900 sm:py-24">
-      <div class="container mx-auto px-4">
+    <section id="value-props" class="bg-white py-12 sm:py-16 md:py-20 lg:py-24 dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="mb-12 text-center">
+        <div class="mb-8 sm:mb-10 md:mb-12 text-center">
           <h2
-            class="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            class="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
           >
             {{ t('landing.valueProps.title') }}
           </h2>
-          <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+          <p class="mx-auto max-w-2xl text-base sm:text-lg text-gray-600 dark:text-gray-400 px-4">
             {{ t('landing.valueProps.subtitle') }}
           </p>
         </div>
 
         <!-- Value Cards -->
-        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <!-- Card 1: Better Results -->
           <div
             class="group rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"

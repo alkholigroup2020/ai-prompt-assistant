@@ -12,8 +12,9 @@
         :key="option.value"
         type="button"
         :class="[
-          'relative p-4 rounded-lg border-2 transition-all duration-200 text-left',
+          'relative p-4 rounded-lg border-2 transition-all duration-200 text-left min-h-[88px]',
           'hover:shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
+          'touch-manipulation cursor-pointer',
           selectedTone === option.value
             ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
             : 'border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-700'

@@ -12,12 +12,12 @@
       </div>
 
       <!-- Progress Indicator -->
-      <div class="mb-8">
+      <div class="mb-6 md:mb-8">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <span class="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
             {{ t('builder.progress.label') }}
           </span>
-          <span class="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+          <span class="text-sm md:text-base font-medium text-emerald-600 dark:text-emerald-400">
             {{ completionPercentage }}%
           </span>
         </div>
@@ -31,7 +31,7 @@
       </div>
 
       <!-- Two-Column Layout: Form + Preview -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
         <!-- Left Column: Form Sections -->
         <div class="space-y-6">
           <!-- Basic Information Section -->
@@ -178,11 +178,12 @@
           </Card>
 
           <!-- Enhancement Buttons -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
             <UButton
               color="primary"
               size="lg"
               block
+              class="min-h-[44px]"
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
               @click="handleEnhance('quick')"
@@ -197,6 +198,7 @@
               color="emerald"
               size="lg"
               block
+              class="min-h-[44px]"
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
               @click="handleEnhance('detailed')"
@@ -209,11 +211,12 @@
           </div>
 
           <!-- Action Buttons -->
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
             <UButton
               variant="outline"
               size="md"
               block
+              class="min-h-[44px]"
               :disabled="isEnhancing"
               @click="handleReset"
             >
@@ -227,6 +230,7 @@
               variant="outline"
               size="md"
               block
+              class="min-h-[44px]"
               :disabled="!formStore.formData.task || isEnhancing"
               @click="handleSaveDraft"
             >

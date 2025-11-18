@@ -8,7 +8,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   const preferencesStore = usePreferencesStore()
 
   // Access i18n through nuxtApp.$i18n instead of useI18n()
-  const i18n = nuxtApp.$i18n
+  const i18n = nuxtApp.$i18n as unknown as {
+    locale: { value: string }
+    setLocale: (locale: string) => void
+  }
 
   if (!i18n) {
     console.warn('i18n is not available in preferences plugin')

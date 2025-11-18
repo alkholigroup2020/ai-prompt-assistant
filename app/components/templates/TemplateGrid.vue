@@ -1,15 +1,16 @@
 <template>
   <div class="space-y-6">
     <!-- Filters and Search Section -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-5">
-      <div class="flex flex-col lg:flex-row gap-4">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 sm:p-5">
+      <div class="flex flex-col gap-3 sm:gap-4">
         <!-- Search Input -->
-        <div class="flex-1">
+        <div class="w-full">
           <UInput
             v-model="searchQuery"
             :placeholder="$t('templates.searchPlaceholder')"
             icon="i-heroicons-magnifying-glass"
             size="lg"
+            class="min-h-[44px]"
           >
             <template #trailing>
               <UButton
@@ -25,13 +26,14 @@
         </div>
 
         <!-- Filter Controls -->
-        <div class="flex gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- Category Filter -->
           <USelectMenu
             v-model="selectedCategory"
             :options="categoryOptions"
             :placeholder="$t('templates.filters.category')"
             size="lg"
+            class="min-h-[44px]"
           >
             <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
             <template #label>
@@ -50,6 +52,7 @@
             :options="difficultyOptions"
             :placeholder="$t('templates.filters.difficulty')"
             size="lg"
+            class="min-h-[44px]"
           >
             <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
             <template #label>
@@ -68,6 +71,7 @@
             :options="sortOptions"
             :placeholder="$t('templates.filters.sortBy')"
             size="lg"
+            class="min-h-[44px]"
           >
             <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
             <template #label>
@@ -82,6 +86,7 @@
             variant="outline"
             size="lg"
             icon="i-heroicons-x-mark"
+            class="min-h-[44px] sm:col-span-2 lg:col-span-1"
             @click="clearFilters"
           >
             {{ $t('templates.filters.clear') }}
@@ -148,11 +153,13 @@
     <!-- Pagination -->
     <div
       v-if="!loading && filteredTemplates.length > pageSize"
-      class="flex items-center justify-center gap-4"
+      class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
     >
       <UButton
         color="neutral"
         variant="outline"
+        size="md"
+        class="min-h-[44px] w-full sm:w-auto"
         :disabled="currentPage === 1"
         @click="currentPage--"
       >
@@ -160,13 +167,15 @@
         {{ $t('templates.grid.previous') }}
       </UButton>
 
-      <span class="text-sm text-gray-600 dark:text-gray-400">
+      <span class="text-sm sm:text-base text-gray-600 dark:text-gray-400 order-first sm:order-none">
         {{ $t('templates.grid.page', { current: currentPage, total: totalPages }) }}
       </span>
 
       <UButton
         color="neutral"
         variant="outline"
+        size="md"
+        class="min-h-[44px] w-full sm:w-auto"
         :disabled="currentPage === totalPages"
         @click="currentPage++"
       >

@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-    <div class="container mx-auto px-4">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Check if we have results -->
       <div v-if="!hasResult" class="max-w-2xl mx-auto">
         <!-- No Results State -->
@@ -17,6 +17,7 @@
               color="primary"
               size="lg"
               icon="i-heroicons-sparkles"
+              class="min-h-[44px]"
               @click="navigateToBuilder"
             >
               {{ t('results.noResults.goToBuilder', 'Go to Prompt Builder') }}
@@ -28,14 +29,14 @@
       <!-- Results Content -->
       <div v-else class="space-y-8">
         <!-- Success Message & Header -->
-        <div class="text-center max-w-3xl mx-auto">
-          <div class="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 dark:bg-emerald-950 rounded-full mb-4">
-            <UIcon name="i-heroicons-check-circle" class="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
+        <div class="text-center max-w-3xl mx-auto px-4">
+          <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 dark:bg-emerald-950 rounded-full mb-4">
+            <UIcon name="i-heroicons-check-circle" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             {{ t('results.success.title', 'Your Prompt is Ready!') }}
           </h1>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
+          <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400">
             {{ t('results.success.description', 'Your prompt has been enhanced and is ready to use with any AI tool.') }}
           </p>
         </div>
