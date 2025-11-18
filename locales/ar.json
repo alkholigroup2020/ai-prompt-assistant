@@ -1,0 +1,451 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "builder": "منشئ الأوامر",
+    "templates": "القوالب",
+    "results": "النتائج",
+    "language": "اللغة"
+  },
+  "common": {
+    "loading": "جارٍ التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "clear": "مسح",
+    "apply": "تطبيق",
+    "reset": "إعادة تعيين",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "download": "تحميل",
+    "share": "مشاركة",
+    "optional": "اختياري",
+    "required": "مطلوب"
+  },
+  "home": {
+    "hero": {
+      "title": "حوّل أفكارك إلى أوامر ذكاء اصطناعي قوية",
+      "subtitle": "قم ببناء أوامر أفضل لأي أداة ذكاء اصطناعي مع إرشادات ذكية وتحليل جودة فوري",
+      "cta": "ابدأ البناء",
+      "secondary": "تصفح القوالب"
+    },
+    "features": {
+      "title": "لماذا تستخدم مساعد أوامر الذكاء الاصطناعي؟",
+      "smart": {
+        "title": "إرشاد ذكي",
+        "description": "نموذج تفاعلي مع اقتراحات واعية بالسياق ونصائح فورية"
+      },
+      "quality": {
+        "title": "تحليل الجودة",
+        "description": "احصل على ملاحظات فورية مع درجات الجودة واقتراحات التحسين"
+      },
+      "enhance": {
+        "title": "التحسين بالذكاء الاصطناعي",
+        "description": "مدعوم بـ Google Gemini لتلميع وتحسين أوامرك"
+      },
+      "templates": {
+        "title": "قوالب جاهزة",
+        "description": "+20 قالبًا جاهزًا للمهام التجارية والإبداعية الشائعة"
+      }
+    },
+    "howItWorks": {
+      "title": "كيف يعمل",
+      "step1": {
+        "title": "املأ النموذج",
+        "description": "أدخل دورك والجمهور والمهمة والتفضيلات"
+      },
+      "step2": {
+        "title": "احصل على الملاحظات",
+        "description": "شاهد درجة الجودة الفورية ونصائح التحسين"
+      },
+      "step3": {
+        "title": "حسّن واستخدم",
+        "description": "لمّع أمرك بالذكاء الاصطناعي وانسخه إلى أي أداة ذكاء اصطناعي"
+      }
+    }
+  },
+  "builder": {
+    "title": "بناء أمرك",
+    "subtitle": "املأ التفاصيل لإنشاء أمر ذكاء اصطناعي فعال",
+    "progress": "التقدم",
+    "livePreview": "معاينة حية",
+    "qualityScore": "درجة الجودة",
+    "form": {
+      "role": {
+        "label": "دورك",
+        "placeholder": "حدد دورك",
+        "tooltip": "حدد دورك المهني أو وجهة نظرك لهذه المهمة",
+        "other": "أخرى (حدد)",
+        "options": {
+          "content_writer": "كاتب محتوى",
+          "marketing_manager": "مدير تسويق",
+          "software_developer": "مطور برمجيات",
+          "project_manager": "مدير مشروع",
+          "data_analyst": "محلل بيانات",
+          "sales_representative": "ممثل مبيعات",
+          "customer_support": "دعم العملاء",
+          "business_analyst": "محلل أعمال",
+          "designer": "مصمم",
+          "researcher": "باحث"
+        }
+      },
+      "audience": {
+        "label": "الجمهور المستهدف",
+        "placeholder": "لمن هذا؟",
+        "tooltip": "حدد من سيستخدم أو يستفيد من نتائج الذكاء الاصطناعي",
+        "other": "أخرى (حدد)",
+        "options": {
+          "general_public": "الجمهور العام",
+          "technical_experts": "خبراء تقنيون",
+          "business_professionals": "محترفو الأعمال",
+          "students": "طلاب",
+          "senior_management": "الإدارة العليا",
+          "customers": "عملاء",
+          "team_members": "أعضاء الفريق",
+          "children": "أطفال",
+          "educators": "معلمون",
+          "beginners": "مبتدئون"
+        }
+      },
+      "task": {
+        "label": "ماذا تريد من الذكاء الاصطناعي أن يفعل؟",
+        "placeholder": "اوصف مهمتك بالتفصيل (10-1000 حرف)",
+        "tooltip": "كن محددًا حول ما تريد أن ينجزه الذكاء الاصطناعي",
+        "counter": "{current} / {max} حرف",
+        "examples": "أمثلة: اكتب مقالة عن...، حلل هذه البيانات...، أنشئ خطة تسويقية لـ..."
+      },
+      "tone": {
+        "label": "النبرة المرغوبة",
+        "tooltip": "كيف يجب أن يستجيب الذكاء الاصطناعي؟",
+        "options": {
+          "professional": {
+            "label": "احترافي",
+            "description": "رسمي ومناسب للأعمال"
+          },
+          "casual": {
+            "label": "عادي",
+            "description": "ودود وحواري"
+          },
+          "technical": {
+            "label": "تقني",
+            "description": "دقيق مع مصطلحات تقنية"
+          },
+          "creative": {
+            "label": "إبداعي",
+            "description": "مبتكر وتخيلي"
+          },
+          "persuasive": {
+            "label": "مقنع",
+            "description": "مقنع ومؤثر"
+          },
+          "educational": {
+            "label": "تعليمي",
+            "description": "واضح وتوجيهي"
+          },
+          "empathetic": {
+            "label": "متعاطف",
+            "description": "متفهم وداعم"
+          },
+          "authoritative": {
+            "label": "موثوق",
+            "description": "خبير وواثق"
+          },
+          "humorous": {
+            "label": "فكاهي",
+            "description": "خفيف ومضحك"
+          }
+        }
+      },
+      "outputFormat": {
+        "label": "تنسيق الإخراج",
+        "placeholder": "حدد التنسيق المطلوب",
+        "tooltip": "كيف يجب أن يبني الذكاء الاصطناعي استجابته؟",
+        "other": "أخرى (حدد)",
+        "options": {
+          "paragraph": "فقرة",
+          "bullet_points": "نقاط",
+          "numbered_list": "قائمة مرقمة",
+          "table": "جدول",
+          "json": "JSON",
+          "code": "كود",
+          "markdown": "Markdown",
+          "html": "HTML",
+          "csv": "CSV",
+          "email": "بريد إلكتروني",
+          "report": "تقرير",
+          "presentation": "مخطط عرض تقديمي",
+          "article": "مقالة",
+          "essay": "مقال"
+        }
+      },
+      "constraints": {
+        "label": "القيود والمتطلبات",
+        "tooltip": "أضف قيودًا أو متطلبات محددة",
+        "other": "قيود أخرى",
+        "options": {
+          "word_limit": "حد الكلمات/الأحرف",
+          "specific_keywords": "استخدام كلمات رئيسية محددة",
+          "avoid_jargon": "تجنب المصطلحات التقنية",
+          "include_examples": "تضمين أمثلة",
+          "cite_sources": "الاستشهاد بالمصادر",
+          "step_by_step": "تعليمات خطوة بخطوة",
+          "concise": "كن موجزًا",
+          "detailed": "كن مفصلاً",
+          "beginner_friendly": "مناسب للمبتدئين",
+          "time_sensitive": "محتوى حساس للوقت"
+        }
+      },
+      "advanced": {
+        "title": "خيارات متقدمة",
+        "toggle": "إظهار الخيارات المتقدمة",
+        "examples": {
+          "label": "أمثلة",
+          "placeholder": "قدم أمثلة للإخراج المرغوب (اختياري)",
+          "tooltip": "أظهر للذكاء الاصطناعي أمثلة لما تريد",
+          "counter": "{current} / {max} حرف"
+        },
+        "context": {
+          "label": "سياق إضافي",
+          "placeholder": "قدم معلومات خلفية أو متطلبات أو مواصفات (اختياري)",
+          "tooltip": "امنح الذكاء الاصطناعي سياقًا أكثر للعمل به",
+          "counter": "{current} / {max} حرف"
+        },
+        "enhancementLevel": {
+          "label": "مستوى التحسين",
+          "quick": "تلميع سريع",
+          "deep": "تحسين عميق",
+          "tooltip": {
+            "quick": "تحسينات سريعة للوضوح والبنية",
+            "deep": "تحليل وتحسين شامل"
+          }
+        }
+      }
+    },
+    "actions": {
+      "enhance": "تحسين الأمر",
+      "enhancing": "جارٍ التحسين...",
+      "analyze": "تحليل الجودة",
+      "analyzing": "جارٍ التحليل...",
+      "save": "حفظ المسودة",
+      "saved": "تم حفظ المسودة",
+      "clear": "مسح النموذج",
+      "useTemplate": "استخدام القالب"
+    }
+  },
+  "quality": {
+    "title": "تحليل الجودة",
+    "score": "الدرجة",
+    "excellent": "ممتاز",
+    "good": "جيد",
+    "fair": "مقبول",
+    "poor": "ضعيف",
+    "breakdown": {
+      "title": "تفصيل الدرجة",
+      "clarity": "الوضوح",
+      "specificity": "التحديد",
+      "context": "السياق",
+      "structure": "البنية",
+      "completeness": "الاكتمال"
+    },
+    "suggestions": {
+      "title": "اقتراحات التحسين",
+      "empty": "لا توجد اقتراحات - أمرك يبدو رائعًا!",
+      "addRole": "أضف دورك للحصول على سياق أفضل",
+      "addAudience": "حدد الجمهور المستهدف",
+      "moreDetail": "قدم المزيد من التفاصيل حول المهمة",
+      "addTone": "حدد نبرة للإخراج",
+      "addFormat": "حدد تنسيق الإخراج المرغوب",
+      "addConstraints": "أضف قيودًا أو متطلبات",
+      "addExamples": "قم بتضمين أمثلة للوضوح",
+      "addContext": "قدم سياقًا إضافيًا"
+    }
+  },
+  "results": {
+    "title": "أمرك المحسّن",
+    "subtitle": "تم تحسين أمرك وهو جاهز للاستخدام",
+    "comparison": {
+      "title": "قبل وبعد",
+      "original": "الأمر الأصلي",
+      "enhanced": "الأمر المحسّن",
+      "showDifferences": "إظهار الاختلافات"
+    },
+    "improvements": {
+      "title": "التحسينات المنفذة",
+      "empty": "لا توجد تحسينات محددة للعرض",
+      "categories": {
+        "clarity": "تحسين الوضوح",
+        "structure": "بنية أفضل",
+        "context": "سياق مضاف",
+        "specificity": "أكثر تحديدًا",
+        "tone": "نبرة معدلة"
+      }
+    },
+    "actions": {
+      "copy": "نسخ إلى الحافظة",
+      "download": "تحميل",
+      "share": "مشاركة",
+      "newPrompt": "إنشاء أمر جديد",
+      "backToBuilder": "العودة إلى المنشئ"
+    },
+    "export": {
+      "title": "تنسيق التصدير",
+      "txt": "نص عادي (.txt)",
+      "markdown": "Markdown (.md)",
+      "json": "JSON (.json)"
+    },
+    "alternatives": {
+      "title": "نسخ بديلة",
+      "concise": "نسخة موجزة",
+      "detailed": "نسخة مفصلة",
+      "technical": "نسخة تقنية"
+    },
+    "metadata": {
+      "qualityScore": "درجة الجودة",
+      "createdAt": "تم الإنشاء",
+      "enhancementLevel": "مستوى التحسين",
+      "wordCount": "عدد الكلمات"
+    }
+  },
+  "templates": {
+    "title": "قوالب الأوامر",
+    "subtitle": "ابدأ بقالب جاهز وخصصه حسب احتياجاتك",
+    "search": "البحث عن القوالب...",
+    "filters": {
+      "category": "الفئة",
+      "difficulty": "الصعوبة",
+      "all": "الكل"
+    },
+    "categories": {
+      "all": "جميع القوالب",
+      "business": "أعمال",
+      "technical": "تقني",
+      "creative": "إبداعي",
+      "analysis": "تحليل",
+      "communication": "تواصل"
+    },
+    "difficulty": {
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "advanced": "متقدم"
+    },
+    "card": {
+      "useTemplate": "استخدام القالب",
+      "preview": "معاينة",
+      "estimatedTime": "الوقت المقدر {time} دقيقة",
+      "variables": "{count} متغيرات"
+    },
+    "detail": {
+      "title": "تفاصيل القالب",
+      "description": "الوصف",
+      "variables": "المتغيرات المطلوبة",
+      "examples": "أمثلة الإخراج",
+      "tips": "نصائح لأفضل النتائج",
+      "apply": "تطبيق القالب",
+      "backToGallery": "العودة إلى القوالب"
+    },
+    "empty": {
+      "title": "لم يتم العثور على قوالب",
+      "description": "حاول تعديل البحث أو المرشحات"
+    }
+  },
+  "errors": {
+    "title": "عذرًا! حدث خطأ ما",
+    "404": {
+      "title": "الصفحة غير موجودة",
+      "message": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+      "action": "الذهاب إلى الصفحة الرئيسية"
+    },
+    "500": {
+      "title": "خطأ في الخادم",
+      "message": "نواجه صعوبات تقنية. يرجى المحاولة مرة أخرى لاحقًا.",
+      "action": "إعادة تحميل الصفحة"
+    },
+    "network": {
+      "title": "خطأ في الشبكة",
+      "message": "غير قادر على الاتصال بالخادم. تحقق من اتصال الإنترنت."
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "minLength": "الحد الأدنى {min} حرف مطلوب",
+      "maxLength": "الحد الأقصى {max} حرف مسموح",
+      "invalid": "إدخال غير صالح"
+    },
+    "api": {
+      "rateLimitExceeded": "تم تجاوز حد الطلبات. يرجى المحاولة مرة أخرى بعد لحظات.",
+      "timeout": "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.",
+      "invalidRequest": "طلب غير صالح. يرجى التحقق من إدخالك.",
+      "serverError": "خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.",
+      "unknown": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+    },
+    "form": {
+      "roleRequired": "يرجى تحديد أو إدخال دورك",
+      "audienceRequired": "يرجى تحديد الجمهور المستهدف",
+      "taskRequired": "يرجى وصف ما تريد من الذكاء الاصطناعي فعله",
+      "taskTooShort": "وصف المهمة قصير جدًا (الحد الأدنى 10 أحرف)",
+      "taskTooLong": "وصف المهمة طويل جدًا (الحد الأقصى 1000 حرف)"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} مجموعة الخولي. جميع الحقوق محفوظة.",
+    "links": {
+      "privacy": "سياسة الخصوصية",
+      "terms": "شروط الخدمة",
+      "company": "موقع الشركة",
+      "support": "الدعم"
+    }
+  },
+  "toast": {
+    "success": {
+      "saved": "تم الحفظ بنجاح",
+      "copied": "تم النسخ إلى الحافظة",
+      "enhanced": "تم تحسين الأمر بنجاح",
+      "exported": "تم التصدير بنجاح"
+    },
+    "error": {
+      "saveFailed": "فشل الحفظ",
+      "copyFailed": "فشل النسخ إلى الحافظة",
+      "enhanceFailed": "فشل تحسين الأمر",
+      "exportFailed": "فشل التصدير"
+    },
+    "info": {
+      "autoSaved": "تم حفظ المسودة تلقائيًا",
+      "loading": "جارٍ التحميل..."
+    }
+  },
+  "shortcuts": {
+    "title": "اختصارات لوحة المفاتيح",
+    "enhance": "تحسين الأمر",
+    "save": "حفظ المسودة",
+    "clear": "مسح النموذج",
+    "copy": "نسخ النتيجة",
+    "search": "التركيز على البحث"
+  },
+  "preferences": {
+    "title": "التفضيلات",
+    "language": {
+      "title": "اللغة",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "theme": {
+      "title": "المظهر",
+      "light": "فاتح",
+      "dark": "داكن",
+      "auto": "تلقائي"
+    }
+  },
+  "history": {
+    "title": "الأوامر الأخيرة",
+    "empty": "لا توجد أوامر حديثة",
+    "clear": "مسح السجل",
+    "load": "تحميل"
+  }
+}

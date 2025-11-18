@@ -1,0 +1,451 @@
+{
+  "nav": {
+    "home": "Home",
+    "builder": "Prompt Builder",
+    "templates": "Templates",
+    "results": "Results",
+    "language": "Language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "apply": "Apply",
+    "reset": "Reset",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "share": "Share",
+    "optional": "Optional",
+    "required": "Required"
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Your Ideas Into Powerful AI Prompts",
+      "subtitle": "Build better prompts for any AI tool with intelligent guidance and real-time quality analysis",
+      "cta": "Start Building",
+      "secondary": "Browse Templates"
+    },
+    "features": {
+      "title": "Why Use AI Prompt Assistant?",
+      "smart": {
+        "title": "Smart Guidance",
+        "description": "Interactive form with context-aware suggestions and real-time tips"
+      },
+      "quality": {
+        "title": "Quality Analysis",
+        "description": "Get instant feedback with quality scores and improvement suggestions"
+      },
+      "enhance": {
+        "title": "AI Enhancement",
+        "description": "Powered by Google Gemini to polish and optimize your prompts"
+      },
+      "templates": {
+        "title": "Ready Templates",
+        "description": "20+ pre-built templates for common business and creative tasks"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Fill the Form",
+        "description": "Enter your role, audience, task, and preferences"
+      },
+      "step2": {
+        "title": "Get Feedback",
+        "description": "See real-time quality score and improvement tips"
+      },
+      "step3": {
+        "title": "Enhance & Use",
+        "description": "AI-polish your prompt and copy it to any AI tool"
+      }
+    }
+  },
+  "builder": {
+    "title": "Build Your Prompt",
+    "subtitle": "Fill in the details to create an effective AI prompt",
+    "progress": "Progress",
+    "livePreview": "Live Preview",
+    "qualityScore": "Quality Score",
+    "form": {
+      "role": {
+        "label": "Your Role",
+        "placeholder": "Select your role",
+        "tooltip": "Define your professional role or perspective for this task",
+        "other": "Other (specify)",
+        "options": {
+          "content_writer": "Content Writer",
+          "marketing_manager": "Marketing Manager",
+          "software_developer": "Software Developer",
+          "project_manager": "Project Manager",
+          "data_analyst": "Data Analyst",
+          "sales_representative": "Sales Representative",
+          "customer_support": "Customer Support",
+          "business_analyst": "Business Analyst",
+          "designer": "Designer",
+          "researcher": "Researcher"
+        }
+      },
+      "audience": {
+        "label": "Target Audience",
+        "placeholder": "Who is this for?",
+        "tooltip": "Define who will use or benefit from the AI output",
+        "other": "Other (specify)",
+        "options": {
+          "general_public": "General Public",
+          "technical_experts": "Technical Experts",
+          "business_professionals": "Business Professionals",
+          "students": "Students",
+          "senior_management": "Senior Management",
+          "customers": "Customers",
+          "team_members": "Team Members",
+          "children": "Children",
+          "educators": "Educators",
+          "beginners": "Beginners"
+        }
+      },
+      "task": {
+        "label": "What Do You Want the AI to Do?",
+        "placeholder": "Describe your task in detail (10-1000 characters)",
+        "tooltip": "Be specific about what you want the AI to accomplish",
+        "counter": "{current} / {max} characters",
+        "examples": "Examples: Write a blog post about..., Analyze this data..., Create a marketing plan for..."
+      },
+      "tone": {
+        "label": "Desired Tone",
+        "tooltip": "How should the AI respond?",
+        "options": {
+          "professional": {
+            "label": "Professional",
+            "description": "Formal and business-appropriate"
+          },
+          "casual": {
+            "label": "Casual",
+            "description": "Friendly and conversational"
+          },
+          "technical": {
+            "label": "Technical",
+            "description": "Precise with technical terminology"
+          },
+          "creative": {
+            "label": "Creative",
+            "description": "Innovative and imaginative"
+          },
+          "persuasive": {
+            "label": "Persuasive",
+            "description": "Convincing and compelling"
+          },
+          "educational": {
+            "label": "Educational",
+            "description": "Clear and instructive"
+          },
+          "empathetic": {
+            "label": "Empathetic",
+            "description": "Understanding and supportive"
+          },
+          "authoritative": {
+            "label": "Authoritative",
+            "description": "Expert and confident"
+          },
+          "humorous": {
+            "label": "Humorous",
+            "description": "Light-hearted and funny"
+          }
+        }
+      },
+      "outputFormat": {
+        "label": "Output Format",
+        "placeholder": "Select desired format",
+        "tooltip": "How should the AI structure its response?",
+        "other": "Other (specify)",
+        "options": {
+          "paragraph": "Paragraph",
+          "bullet_points": "Bullet Points",
+          "numbered_list": "Numbered List",
+          "table": "Table",
+          "json": "JSON",
+          "code": "Code",
+          "markdown": "Markdown",
+          "html": "HTML",
+          "csv": "CSV",
+          "email": "Email",
+          "report": "Report",
+          "presentation": "Presentation Outline",
+          "article": "Article",
+          "essay": "Essay"
+        }
+      },
+      "constraints": {
+        "label": "Constraints & Requirements",
+        "tooltip": "Add specific limitations or requirements",
+        "other": "Other constraints",
+        "options": {
+          "word_limit": "Word/Character Limit",
+          "specific_keywords": "Use Specific Keywords",
+          "avoid_jargon": "Avoid Jargon",
+          "include_examples": "Include Examples",
+          "cite_sources": "Cite Sources",
+          "step_by_step": "Step-by-Step Instructions",
+          "concise": "Be Concise",
+          "detailed": "Be Detailed",
+          "beginner_friendly": "Beginner-Friendly",
+          "time_sensitive": "Time-Sensitive Content"
+        }
+      },
+      "advanced": {
+        "title": "Advanced Options",
+        "toggle": "Show Advanced Options",
+        "examples": {
+          "label": "Examples",
+          "placeholder": "Provide examples of desired output (optional)",
+          "tooltip": "Show the AI examples of what you want",
+          "counter": "{current} / {max} characters"
+        },
+        "context": {
+          "label": "Additional Context",
+          "placeholder": "Provide background information, requirements, or specifications (optional)",
+          "tooltip": "Give the AI more context to work with",
+          "counter": "{current} / {max} characters"
+        },
+        "enhancementLevel": {
+          "label": "Enhancement Level",
+          "quick": "Quick Polish",
+          "deep": "Deep Enhancement",
+          "tooltip": {
+            "quick": "Fast improvements to clarity and structure",
+            "deep": "Comprehensive analysis and optimization"
+          }
+        }
+      }
+    },
+    "actions": {
+      "enhance": "Enhance Prompt",
+      "enhancing": "Enhancing...",
+      "analyze": "Analyze Quality",
+      "analyzing": "Analyzing...",
+      "save": "Save Draft",
+      "saved": "Draft Saved",
+      "clear": "Clear Form",
+      "useTemplate": "Use Template"
+    }
+  },
+  "quality": {
+    "title": "Quality Analysis",
+    "score": "Score",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "poor": "Poor",
+    "breakdown": {
+      "title": "Score Breakdown",
+      "clarity": "Clarity",
+      "specificity": "Specificity",
+      "context": "Context",
+      "structure": "Structure",
+      "completeness": "Completeness"
+    },
+    "suggestions": {
+      "title": "Improvement Suggestions",
+      "empty": "No suggestions - your prompt looks great!",
+      "addRole": "Add your role for better context",
+      "addAudience": "Specify the target audience",
+      "moreDetail": "Provide more details about the task",
+      "addTone": "Select a tone for the output",
+      "addFormat": "Specify the desired output format",
+      "addConstraints": "Add constraints or requirements",
+      "addExamples": "Include examples for clarity",
+      "addContext": "Provide additional context"
+    }
+  },
+  "results": {
+    "title": "Your Enhanced Prompt",
+    "subtitle": "Your prompt has been optimized and is ready to use",
+    "comparison": {
+      "title": "Before & After",
+      "original": "Original Prompt",
+      "enhanced": "Enhanced Prompt",
+      "showDifferences": "Highlight Differences"
+    },
+    "improvements": {
+      "title": "Improvements Made",
+      "empty": "No specific improvements to display",
+      "categories": {
+        "clarity": "Improved Clarity",
+        "structure": "Better Structure",
+        "context": "Added Context",
+        "specificity": "More Specific",
+        "tone": "Adjusted Tone"
+      }
+    },
+    "actions": {
+      "copy": "Copy to Clipboard",
+      "download": "Download",
+      "share": "Share",
+      "newPrompt": "Create New Prompt",
+      "backToBuilder": "Back to Builder"
+    },
+    "export": {
+      "title": "Export Format",
+      "txt": "Plain Text (.txt)",
+      "markdown": "Markdown (.md)",
+      "json": "JSON (.json)"
+    },
+    "alternatives": {
+      "title": "Alternative Versions",
+      "concise": "Concise Version",
+      "detailed": "Detailed Version",
+      "technical": "Technical Version"
+    },
+    "metadata": {
+      "qualityScore": "Quality Score",
+      "createdAt": "Created",
+      "enhancementLevel": "Enhancement Level",
+      "wordCount": "Word Count"
+    }
+  },
+  "templates": {
+    "title": "Prompt Templates",
+    "subtitle": "Start with a pre-built template and customize it to your needs",
+    "search": "Search templates...",
+    "filters": {
+      "category": "Category",
+      "difficulty": "Difficulty",
+      "all": "All"
+    },
+    "categories": {
+      "all": "All Templates",
+      "business": "Business",
+      "technical": "Technical",
+      "creative": "Creative",
+      "analysis": "Analysis",
+      "communication": "Communication"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "card": {
+      "useTemplate": "Use Template",
+      "preview": "Preview",
+      "estimatedTime": "Est. {time} min",
+      "variables": "{count} variables"
+    },
+    "detail": {
+      "title": "Template Details",
+      "description": "Description",
+      "variables": "Required Variables",
+      "examples": "Example Outputs",
+      "tips": "Tips for Best Results",
+      "apply": "Apply Template",
+      "backToGallery": "Back to Templates"
+    },
+    "empty": {
+      "title": "No Templates Found",
+      "description": "Try adjusting your search or filters"
+    }
+  },
+  "errors": {
+    "title": "Oops! Something Went Wrong",
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist or has been moved.",
+      "action": "Go to Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "message": "We're experiencing technical difficulties. Please try again later.",
+      "action": "Reload Page"
+    },
+    "network": {
+      "title": "Network Error",
+      "message": "Unable to connect to the server. Check your internet connection."
+    },
+    "validation": {
+      "required": "This field is required",
+      "minLength": "Minimum {min} characters required",
+      "maxLength": "Maximum {max} characters allowed",
+      "invalid": "Invalid input"
+    },
+    "api": {
+      "rateLimitExceeded": "Rate limit exceeded. Please try again in a few moments.",
+      "timeout": "Request timed out. Please try again.",
+      "invalidRequest": "Invalid request. Please check your input.",
+      "serverError": "Server error. Please try again later.",
+      "unknown": "An unexpected error occurred. Please try again."
+    },
+    "form": {
+      "roleRequired": "Please select or enter your role",
+      "audienceRequired": "Please specify the target audience",
+      "taskRequired": "Please describe what you want the AI to do",
+      "taskTooShort": "Task description is too short (minimum 10 characters)",
+      "taskTooLong": "Task description is too long (maximum 1000 characters)"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Alkholi Group. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "company": "Company Website",
+      "support": "Support"
+    }
+  },
+  "toast": {
+    "success": {
+      "saved": "Saved successfully",
+      "copied": "Copied to clipboard",
+      "enhanced": "Prompt enhanced successfully",
+      "exported": "Exported successfully"
+    },
+    "error": {
+      "saveFailed": "Failed to save",
+      "copyFailed": "Failed to copy to clipboard",
+      "enhanceFailed": "Failed to enhance prompt",
+      "exportFailed": "Failed to export"
+    },
+    "info": {
+      "autoSaved": "Draft auto-saved",
+      "loading": "Loading..."
+    }
+  },
+  "shortcuts": {
+    "title": "Keyboard Shortcuts",
+    "enhance": "Enhance prompt",
+    "save": "Save draft",
+    "clear": "Clear form",
+    "copy": "Copy result",
+    "search": "Focus search"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "language": {
+      "title": "Language",
+      "english": "English",
+      "arabic": "Arabic"
+    },
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Auto"
+    }
+  },
+  "history": {
+    "title": "Recent Prompts",
+    "empty": "No recent prompts",
+    "clear": "Clear History",
+    "load": "Load"
+  }
+}
