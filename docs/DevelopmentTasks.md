@@ -466,20 +466,20 @@ This document contains a comprehensive checklist of all development tasks requir
   - [x] Save to history
 
 ### 6.4 Templates Page
-- [ ] Create `/app/pages/templates/index.vue`
-  - [ ] Category filters
-  - [ ] Search bar
-  - [ ] Template grid
-  - [ ] Pagination
-  - [ ] Sort options
-  - [ ] Loading states
-  - [ ] Empty states
-- [ ] Create `/app/pages/templates/[id].vue`
-  - [ ] Template details
-  - [ ] Variable inputs
-  - [ ] Example gallery
-  - [ ] Apply to builder
-  - [ ] Breadcrumb navigation
+- [x] Create `/app/pages/templates/index.vue`
+  - [x] Category filters
+  - [x] Search bar
+  - [x] Template grid
+  - [x] Pagination
+  - [x] Sort options
+  - [x] Loading states
+  - [x] Empty states
+- [x] Create `/app/pages/templates/[id].vue`
+  - [x] Template details
+  - [x] Variable inputs
+  - [x] Example gallery
+  - [x] Apply to builder
+  - [x] Breadcrumb navigation
 
 ### 6.5 Error Pages
 - [ ] Create `/app/pages/error.vue`
