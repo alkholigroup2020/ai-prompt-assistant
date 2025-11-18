@@ -275,28 +275,14 @@ This project has the following MCP servers installed and configured:
    - **Usage**: Read, write, search, and modify files safely
    - **Scope**: `D:/WebDev/AKG_Websites/ai-prompt-assistant`
 
-2. **Memory MCP** (`@modelcontextprotocol/server-memory`)
-
-   - **Status**: ✓ Connected
-   - **Purpose**: Knowledge graph-based persistent memory system
-   - **Usage**: Store and retrieve project context, prompt templates, user preferences across sessions
-   - **Storage**: JSON-based with nodes and relationships
-
-3. **Fetch MCP** (`mcp-server-fetch-typescript`)
-
-   - **Status**: ✓ Connected
-   - **Purpose**: Web content fetching and conversion
-   - **Usage**: Fetch API documentation, example prompts, research materials
-   - **Formats**: HTML, JSON, Markdown, plain text
-
-4. **Puppeteer MCP** (`@modelcontextprotocol/server-puppeteer`)
+2. **Puppeteer MCP** (`@modelcontextprotocol/server-puppeteer`)
 
    - **Status**: ✓ Connected
    - **Purpose**: Browser automation for testing and web scraping
    - **Usage**: Automated testing, screenshots, form filling, data extraction
    - **Features**: Full-page/element screenshots, JS execution, console monitoring
 
-5. **Nuxt MCP** (`nuxt-mcp`)
+3. **Nuxt MCP** (`nuxt-mcp`)
    - **Status**: ✓ Installed as npm module
    - **Purpose**: Helps AI understand Nuxt app structure and auto-imports
    - **Endpoint**: `http://localhost:3000/__mcp/sse` (when dev server is running)

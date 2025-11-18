@@ -387,5 +387,81 @@
       "important": "Important",
       "minor": "Minor Improvements"
     }
+  },
+  "results": {
+    "comparison": {
+      "title": "Before & After Comparison",
+      "description": "See how your prompt has been enhanced for better AI results",
+      "original": "Original Prompt",
+      "enhanced": "Enhanced Prompt",
+      "before": "Before",
+      "after": "After",
+      "words": "words",
+      "chars": "characters",
+      "improved": "Enhanced by {percentage}%",
+      "improvedDescription": "Your prompt has been significantly improved with more context, clarity, and structure"
+    },
+    "improvements": {
+      "title": "Improvements Made",
+      "description": "{count} improvement(s) applied to your prompt",
+      "empty": "No specific improvements to display",
+      "showMore": "Show details",
+      "showLess": "Hide details",
+      "categories": {
+        "clarity": "Clarity Improvements",
+        "specificity": "Specificity Enhancements",
+        "context": "Context Additions",
+        "structure": "Structure Refinements",
+        "completeness": "Completeness Updates",
+        "uncategorized": "General Improvements"
+      }
+    },
+    "actions": {
+      "copy": "Copy Prompt",
+      "copied": "Copied!",
+      "copySuccess": "Prompt Copied",
+      "copySuccessDescription": "The enhanced prompt has been copied to your clipboard",
+      "copyError": "Copy Failed",
+      "copyErrorDescription": "Unable to copy to clipboard. Please try again.",
+      "download": "Download",
+      "downloadSuccess": "Downloaded Successfully",
+      "downloadSuccessDescription": "Your prompt has been downloaded as {format}",
+      "downloadError": "Download Failed",
+      "downloadErrorDescription": "Unable to download the file. Please try again.",
+      "downloadTxt": "Plain Text (.txt)",
+      "downloadTxtDescription": "Simple text file for easy sharing",
+      "downloadMd": "Markdown (.md)",
+      "downloadMdDescription": "Formatted markdown with metadata",
+      "downloadJson": "JSON (.json)",
+      "downloadJsonDescription": "Complete data structure for developers",
+      "share": "Share",
+      "shareSuccess": "Link Copied",
+      "shareSuccessDescription": "The share link has been copied to your clipboard",
+      "shareError": "Share Failed",
+      "shareErrorDescription": "Unable to generate share link. Please try again.",
+      "newPrompt": "New Prompt",
+      "helpText": "Your enhanced prompt is ready! Copy it to your AI tool or download it for later use."
+    },
+    "versions": {
+      "title": "Alternative Versions",
+      "description": "Choose from different versions of your enhanced prompt based on your needs",
+      "concise": "Concise",
+      "conciseDescription": "Shorter version focusing on key points",
+      "detailed": "Detailed",
+      "detailedDescription": "Comprehensive version with full context",
+      "technical": "Technical",
+      "technicalDescription": "Highly detailed with technical specifications",
+      "words": "words",
+      "chars": "characters",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "quickCopy": "Copy {version}",
+      "copySuccess": "Version Copied",
+      "copySuccessDescription": "{version} version has been copied to your clipboard",
+      "copyError": "Copy Failed",
+      "copyErrorDescription": "Unable to copy to clipboard. Please try again.",
+      "empty": "No alternative versions available",
+      "emptyDescription": "Alternative versions are generated with Deep Enhancement mode"
+    }
   }
 }

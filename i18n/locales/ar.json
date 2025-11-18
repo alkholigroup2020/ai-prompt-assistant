@@ -387,5 +387,81 @@
       "important": "مهم",
       "minor": "تحسينات بسيطة"
     }
+  },
+  "results": {
+    "comparison": {
+      "title": "مقارنة قبل وبعد",
+      "description": "شاهد كيف تم تحسين مطالبك للحصول على نتائج أفضل من الذكاء الاصطناعي",
+      "original": "المطالبة الأصلية",
+      "enhanced": "المطالبة المحسّنة",
+      "before": "قبل",
+      "after": "بعد",
+      "words": "كلمات",
+      "chars": "حروف",
+      "improved": "تم التحسين بنسبة {percentage}%",
+      "improvedDescription": "تم تحسين مطالبك بشكل كبير من خلال إضافة المزيد من السياق والوضوح والبنية"
+    },
+    "improvements": {
+      "title": "التحسينات المطبقة",
+      "description": "{count} تحسين(ات) مطبقة على مطالبك",
+      "empty": "لا توجد تحسينات محددة للعرض",
+      "showMore": "عرض التفاصيل",
+      "showLess": "إخفاء التفاصيل",
+      "categories": {
+        "clarity": "تحسينات الوضوح",
+        "specificity": "تحسينات التحديد",
+        "context": "إضافات السياق",
+        "structure": "تحسينات البنية",
+        "completeness": "تحديثات الاكتمال",
+        "uncategorized": "تحسينات عامة"
+      }
+    },
+    "actions": {
+      "copy": "نسخ المطالبة",
+      "copied": "تم النسخ!",
+      "copySuccess": "تم نسخ المطالبة",
+      "copySuccessDescription": "تم نسخ المطالبة المحسّنة إلى الحافظة",
+      "copyError": "فشل النسخ",
+      "copyErrorDescription": "تعذر النسخ إلى الحافظة. يرجى المحاولة مرة أخرى.",
+      "download": "تحميل",
+      "downloadSuccess": "تم التحميل بنجاح",
+      "downloadSuccessDescription": "تم تحميل مطالبك بتنسيق {format}",
+      "downloadError": "فشل التحميل",
+      "downloadErrorDescription": "تعذر تحميل الملف. يرجى المحاولة مرة أخرى.",
+      "downloadTxt": "نص عادي (.txt)",
+      "downloadTxtDescription": "ملف نصي بسيط للمشاركة السهلة",
+      "downloadMd": "ماركداون (.md)",
+      "downloadMdDescription": "ماركداون منسق مع البيانات الوصفية",
+      "downloadJson": "JSON (.json)",
+      "downloadJsonDescription": "بنية بيانات كاملة للمطورين",
+      "share": "مشاركة",
+      "shareSuccess": "تم نسخ الرابط",
+      "shareSuccessDescription": "تم نسخ رابط المشاركة إلى الحافظة",
+      "shareError": "فشلت المشاركة",
+      "shareErrorDescription": "تعذر إنشاء رابط المشاركة. يرجى المحاولة مرة أخرى.",
+      "newPrompt": "مطالبة جديدة",
+      "helpText": "مطالبتك المحسّنة جاهزة! انسخها إلى أداة الذكاء الاصطناعي الخاصة بك أو قم بتحميلها للاستخدام لاحقاً."
+    },
+    "versions": {
+      "title": "إصدارات بديلة",
+      "description": "اختر من بين إصدارات مختلفة من مطالبتك المحسّنة بناءً على احتياجاتك",
+      "concise": "موجز",
+      "conciseDescription": "نسخة أقصر تركز على النقاط الرئيسية",
+      "detailed": "مفصّل",
+      "detailedDescription": "نسخة شاملة مع السياق الكامل",
+      "technical": "تقني",
+      "technicalDescription": "نسخة مفصلة للغاية مع المواصفات التقنية",
+      "words": "كلمات",
+      "chars": "حروف",
+      "copy": "نسخ",
+      "copied": "تم النسخ!",
+      "quickCopy": "نسخ {version}",
+      "copySuccess": "تم نسخ الإصدار",
+      "copySuccessDescription": "تم نسخ إصدار {version} إلى الحافظة",
+      "copyError": "فشل النسخ",
+      "copyErrorDescription": "تعذر النسخ إلى الحافظة. يرجى المحاولة مرة أخرى.",
+      "empty": "لا توجد إصدارات بديلة متاحة",
+      "emptyDescription": "يتم إنشاء الإصدارات البديلة مع وضع التحسين العميق"
+    }
   }
 }
