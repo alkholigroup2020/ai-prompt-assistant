@@ -634,3 +634,6 @@ Refer to these files for detailed specifications:
 - `docs/DataSchema.md`: TypeScript interfaces and data models
 - `docs/ConfigurationRequirements.md`: Environment setup, dependencies, deployment config
 - `docs/UIUXWireframes.md`: Interface design specifications
+- `docs/DevelopmentTasks.md`: MVP development phases (Phases 1-15)
+- `docs/PostReleaseEnhancements.md`: Post-MVP enhancements and future features
+- `docs/TASK_COMPLETION_LOG.md`: Completed tasks and implementation history
