@@ -37,11 +37,13 @@ eslint .
 ### Validation Commands (Run in Order)
 
 1. **TypeScript Type Checking** (MUST pass with zero errors)
+
    ```bash
    npx nuxt typecheck
    ```
 
 2. **ESLint Validation** (MUST pass with zero errors)
+
    ```bash
    npx eslint server/ app/
    ```
@@ -54,36 +56,42 @@ eslint .
 ### Common TypeScript/ESLint Errors & Solutions
 
 #### 1. **Avoid `any` Type** ❌
+
 **Error**: `Unexpected any. Specify a different type @typescript-eslint/no-explicit-any`
 
 **Bad**:
+
 ```typescript
-function processData(data: any) { }
-function parseResponse(response: any): any { }
+function processData(data: any) {}
+function parseResponse(response: any): any {}
 ```
 
 **Good**:
+
 ```typescript
-function processData(data: unknown) { }
-function parseResponse(response: string): ParsedResponse { }
+function processData(data: unknown) {}
+function parseResponse(response: string): ParsedResponse {}
 
 // For complex objects, use Record or create an interface
 function validateInput(data: unknown) {
-  const input = data as Record<string, unknown>;
+  const input = data as Record<string, unknown>
   // ... validation
 }
 ```
 
 **Solution Pattern**:
+
 - Use `unknown` for truly unknown types
 - Use `Record<string, unknown>` for object types
 - Create proper interfaces for complex structures
 - Use type guards to narrow types
 
 #### 2. **Unused Variables** ❌
+
 **Error**: `'variable' is defined but never used @typescript-eslint/no-unused-vars`
 
 **Bad**:
+
 ```typescript
 const startTime = Date.now();
 // variable never used
@@ -95,6 +103,7 @@ catch (error) {
 ```
 
 **Good**:
+
 ```typescript
 // Actually use the variable
 const startTime = Date.now();
@@ -112,90 +121,104 @@ catch {
 ```
 
 #### 3. **Type Assertions** ❌
+
 **Error**: `Conversion of type X to type Y may be a mistake`
 
 **Bad**:
+
 ```typescript
-return sanitized as FormInput; // Direct assertion may fail
+return sanitized as FormInput // Direct assertion may fail
 ```
 
 **Good**:
+
 ```typescript
-return sanitized as unknown as FormInput; // Double assertion for complex types
+return sanitized as unknown as FormInput // Double assertion for complex types
 ```
 
 **Pattern**: When converting between incompatible types, use double assertion through `unknown`
 
 #### 4. **Property Access on Union Types** ❌
+
 **Error**: `Property 'code' does not exist on type 'Error'`
 
 **Bad**:
+
 ```typescript
 function logError(error: Error | { code?: string }) {
-  console.log(error.code); // Error: Property doesn't exist on Error
+  console.log(error.code) // Error: Property doesn't exist on Error
 }
 ```
 
 **Good**:
+
 ```typescript
 function logError(error: Error | { code?: string }) {
-  const code = 'code' in error ? error.code : 'UNKNOWN';
-  console.log(code);
+  const code = 'code' in error ? error.code : 'UNKNOWN'
+  console.log(code)
 }
 ```
 
 **Pattern**: Use `in` operator or type guards to safely access properties
 
 #### 5. **Array/Object Access with Potential Undefined** ❌
+
 **Error**: `Object is possibly 'undefined'`
 
 **Bad**:
-```typescript
-const match = text.match(/pattern/);
-return match[1]; // match could be null
 
-const item = array[0];
-return item.property; // item could be undefined
+```typescript
+const match = text.match(/pattern/)
+return match[1] // match could be null
+
+const item = array[0]
+return item.property // item could be undefined
 ```
 
 **Good**:
+
 ```typescript
-const match = text.match(/pattern/);
+const match = text.match(/pattern/)
 if (match && match[1]) {
-  return match[1];
+  return match[1]
 }
 
-const item = array[0];
+const item = array[0]
 if (item) {
-  return item.property;
+  return item.property
 }
 
 // Or use optional chaining
-return array[0]?.property;
+return array[0]?.property
 ```
 
 #### 6. **String vs Number in Headers** ❌
+
 **Error**: `Argument of type 'string' is not assignable to parameter of type 'number'`
 
 **Bad**:
+
 ```typescript
-setHeader(event, 'Access-Control-Max-Age', '86400'); // String instead of number
+setHeader(event, 'Access-Control-Max-Age', '86400') // String instead of number
 ```
 
 **Good**:
+
 ```typescript
-setHeader(event, 'Access-Control-Max-Age', 86400); // Correct number type
+setHeader(event, 'Access-Control-Max-Age', 86400) // Correct number type
 ```
 
 #### 7. **Missing Return Type Annotations** ⚠️
+
 **Best Practice**: Always define return types for exported functions
 
 **Good**:
+
 ```typescript
 export function validateInput(data: unknown): {
-  valid: boolean;
-  sanitized?: FormInput;
-  error?: ValidationError;
+  valid: boolean
+  sanitized?: FormInput
+  error?: ValidationError
 } {
   // implementation
 }
@@ -204,37 +227,41 @@ export function validateInput(data: unknown): {
 ### TypeScript Best Practices for This Project
 
 1. **Create Interfaces for Complex Types**
+
    ```typescript
    interface ExportMetadata {
-     title?: string;
-     timestamp?: boolean;
-     qualityScore?: number;
+     title?: string
+     timestamp?: boolean
+     qualityScore?: number
    }
 
-   function exportData(data: string, metadata?: ExportMetadata) { }
+   function exportData(data: string, metadata?: ExportMetadata) {}
    ```
 
 2. **Use Type Guards**
+
    ```typescript
    function isFormInput(data: unknown): data is FormInput {
-     return typeof data === 'object' && data !== null && 'role' in data;
+     return typeof data === 'object' && data !== null && 'role' in data
    }
    ```
 
 3. **Prefer `unknown` over `any`**
+
    - `unknown` is type-safe and requires type checking
    - `any` bypasses type checking (avoid at all costs)
 
 4. **Use Proper Type Imports**
+
    ```typescript
-   import type { FormInput, EnhancementResponse } from '~/types';
+   import type { FormInput, EnhancementResponse } from '~/types'
    ```
 
 5. **Handle Nullable Values**
    ```typescript
    // Use optional chaining and nullish coalescing
-   const value = config.public.appUrl ?? 'http://localhost:3000';
-   const header = getHeader(event, 'x-session-id') ?? 'anonymous';
+   const value = config.public.appUrl ?? 'http://localhost:3000'
+   const header = getHeader(event, 'x-session-id') ?? 'anonymous'
    ```
 
 ### Error Fixing Workflow
@@ -261,6 +288,91 @@ Before considering ANY task complete:
 - [ ] All property accesses are safe (use `in` operator or optional chaining)
 
 **REMEMBER**: TypeScript errors = Production bugs. Zero tolerance for type errors!
+
+## 📝 MANDATORY: Task Completion Logging
+
+**CRITICAL**: After completing ANY significant task (features, components, pages, utilities, fixes), you MUST update the task completion log with a concise summary.
+
+### When to Update the Log
+
+Update `docs/TASK_COMPLETION_LOG.md` after completing:
+
+- ✅ New features or major functionality
+- ✅ Component development (one or more components)
+- ✅ Page creation or major updates
+- ✅ API endpoint implementation
+- ✅ Utility function creation
+- ✅ Major bug fixes or refactoring
+- ✅ Configuration changes affecting the project
+
+**DO NOT** log minor changes like:
+
+- ❌ Small typo fixes
+- ❌ Minor formatting adjustments
+- ❌ Documentation-only updates (unless major)
+- ❌ Dependency updates alone
+
+### Log Entry Format
+
+Each log entry MUST follow this **highly condensed** format (1-2 paragraphs maximum):
+
+```markdown
+## Phase X.Y: [Phase Name]
+
+**Status**: ✅ Completed | **Date**: YYYY-MM-DD
+
+[Single comprehensive paragraph summarizing: what was built (~line count), key components/files with main features in parentheses, technical implementation highlights, and notable features. Include specific numbers, file names, and technologies. Mention any important notes like TypeScript errors, validation results, or known limitations at the end.]
+```
+
+### Log Entry Template
+
+```markdown
+## Phase X.Y: [Descriptive Phase Name]
+
+**Status**: ✅ Completed | **Date**: 2025-MM-DD
+
+Built [X components/pages/utilities] (~Y lines total) with [Z+ translations if applicable]: ComponentName1 (feature1, feature2, feature3 with specific details), ComponentName2 (feature1 with numbers/specs, feature2), and ComponentName3 (feature1, feature2). [Add technical implementation: integrates X composables, uses Y technology, includes Z features]. [Add key features: responsive design, dark mode, RTL support, accessibility, etc.]. [Add any notes: TypeScript errors, validation results, known limitations].
+```
+
+### Examples of Good Log Entries
+
+**Example 1 - Components:**
+
+```markdown
+## Phase 5.2: Form Components
+
+**Status**: ✅ Completed | **Date**: 2025-11-17
+
+Built 7 form components (~1,300 lines) with 600+ bilingual translations: RoleSelector (10 roles + "Other", custom icons), AudienceSelector (10 audiences + "Other"), TaskInput (auto-resize textarea, character counter 10-1000, color-coded progress), ToneSelector (9 tone cards with responsive grid), OutputFormatSelector (14 formats + "Other"), ConstraintsSelector (10 checkboxes with multi-select, "Other" textarea), and AdvancedOptions (collapsible, enhancement level toggle, examples/context textareas with character limits). All components feature real-time validation, Pinia store integration, dark mode, RTL support, and accessibility. Note: 6 TypeScript errors from Nuxt UI slot typing limitations (framework-specific, no runtime impact).
+```
+
+### Writing Guidelines for Token Optimization
+
+1. **Use parentheses for details** instead of bullet points or separate lines
+2. **Combine related information** using commas and conjunctions
+3. **Use specific numbers** (~X lines, Y+ translations, Z components)
+4. **Abbreviate where clear** (EN/AR, TXT/MD/JSON, RTL, SEO, ARIA)
+5. **Group features** by category (all components, all features, all tech)
+6. **Avoid redundant words** like "successfully", "implemented", "created" when "built" suffices
+7. **Use forward slashes** for alternatives (light/dark, EN/AR)
+8. **Keep to 1-2 paragraphs** maximum per phase
+9. **Mention file names** with extensions (ComponentName.vue, utils.ts)
+10. **End with notable info** (validation results, known issues, TypeScript errors)
+
+### Update Workflow
+
+After completing a task:
+
+1. ✅ **Validate code** (TypeScript + ESLint checks pass)
+2. ✅ **Open** `docs/TASK_COMPLETION_LOG.md`
+3. ✅ **Add new phase section** at the end of the file (before any existing "Next Steps")
+4. ✅ **Write 1-2 paragraph summary** following the format above
+5. ✅ **Include key metrics**: line counts, file counts, translation counts
+6. ✅ **List main files/components** created or modified
+7. ✅ **Mention key technologies** and integration points
+8. ✅ **Note validation results** or known limitations
+9. ✅ **Add horizontal separator** (`---`) after entry
+10. ✅ **Save file** and confirm update
 
 ## MCP Servers (Model Context Protocol)
 
