@@ -58,6 +58,18 @@
   --radius-xl: 16px;
 }
 
+/* Dark Mode Variables */
+.dark {
+  --primary-emerald: #4ade80;
+  --primary-navy: #1e3a8a;
+  --secondary-emerald: #22c55e;
+  --secondary-navy: #1e40af;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+}
+
 /* RTL Support */
 [dir="rtl"] {
   direction: rtl;

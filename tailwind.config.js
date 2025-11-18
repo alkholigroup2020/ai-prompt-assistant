@@ -9,6 +9,8 @@ export default {
     './app/app.vue',
     './app/error.vue',
   ],
+  // Enable dark mode with class strategy
+  darkMode: 'class',
   // Enable RTL support with directionality variants
   future: {
     hoverOnlyWhenSupported: true,
