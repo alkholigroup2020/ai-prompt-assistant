@@ -33,6 +33,74 @@
   "a11y": {
     "skipToMain": "Skip to main content"
   },
+  "landing": {
+    "meta": {
+      "title": "AI Prompt Assistant - Transform Ideas into Powerful AI Prompts",
+      "description": "Create better prompts for ChatGPT, Claude, and Gemini. Get 80% better results with our AI-powered prompt builder and 20+ ready-to-use templates.",
+      "keywords": "AI prompts, ChatGPT, Claude, Gemini, prompt engineering, AI assistant, prompt builder, AI tools"
+    },
+    "hero": {
+      "headline": "Transform Your Ideas into Powerful AI Prompts",
+      "subheadline": "Get better results from ChatGPT, Claude & Gemini by crafting precise, effective prompts in seconds.",
+      "ctaStart": "Start Building",
+      "ctaTemplates": "View Templates",
+      "trust": "Free • No Login Required • Privacy Focused"
+    },
+    "valueProps": {
+      "title": "Why Better Prompts Matter",
+      "subtitle": "Well-crafted prompts are the key to unlocking AI's full potential",
+      "betterResults": {
+        "title": "Better Results",
+        "description": "Get more accurate, relevant responses from any AI tool"
+      },
+      "fasterWriting": {
+        "title": "Faster Writing",
+        "description": "Create effective prompts in seconds, not minutes"
+      },
+      "templates": {
+        "title": "Ready Templates",
+        "description": "20+ pre-built templates for common use cases"
+      },
+      "bilingual": {
+        "title": "Languages",
+        "description": "Full support for English and Arabic (EN | AR)"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Three simple steps to better AI prompts",
+      "step": "Step",
+      "step1": {
+        "title": "Tell Us Your Goal",
+        "description": "Fill in the prompt builder with your role, audience, and task. We'll guide you through every step."
+      },
+      "step2": {
+        "title": "We Enhance Your Prompt",
+        "description": "Our AI analyzes your input and creates an optimized, production-ready prompt with quality scoring."
+      },
+      "step3": {
+        "title": "Copy & Use Anywhere",
+        "description": "Copy your enhanced prompt and paste it into ChatGPT, Claude, Gemini, or any AI tool you prefer."
+      },
+      "cta": "Get Started Now"
+    },
+    "templatesPreview": {
+      "title": "Popular Templates",
+      "subtitle": "Start with a template and customize it to your needs",
+      "viewAll": "View All Templates"
+    },
+    "templates": {
+      "emailReply": "Email Reply",
+      "dataAnalysis": "Data Analysis",
+      "codeReview": "Code Review",
+      "salesPitch": "Sales Pitch"
+    },
+    "finalCta": {
+      "title": "Ready to Create Better AI Prompts?",
+      "subtitle": "Join Alkholi Group employees in creating more effective prompts for any AI tool. Start building now - it's free!",
+      "cta": "Start Building for Free"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
