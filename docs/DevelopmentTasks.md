@@ -807,12 +807,12 @@ This document contains a comprehensive checklist of all development tasks requir
 
 ### 13.2 Security Headers
 
-- [ ] Set Content Security Policy (CSP)
-- [ ] Set X-Frame-Options (DENY)
-- [ ] Set X-Content-Type-Options (nosniff)
-- [ ] Set Referrer-Policy (strict-origin-when-cross-origin)
-- [ ] Set Permissions-Policy (camera=(), microphone=())
-- [ ] Test with Mozilla Observatory
+- [x] Set Content Security Policy (CSP)
+- [x] Set X-Frame-Options (DENY)
+- [x] Set X-Content-Type-Options (nosniff)
+- [x] Set Referrer-Policy (strict-origin-when-cross-origin)
+- [x] Set Permissions-Policy (camera=(), microphone=())
+- [x] Test with Mozilla Observatory
 
 ### 13.3 Rate Limiting
 
