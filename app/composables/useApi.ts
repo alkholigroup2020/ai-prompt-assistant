@@ -8,12 +8,15 @@ import type {
   APIError,
   FormInput,
 } from '~/types'
+import { apiCache, CACHE_TIMES } from '~/utils/apiCache'
 
 interface FetchOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
   body?: Record<string, unknown>
   retry?: number
   timeout?: number
+  cache?: boolean
+  cacheTime?: number
 }
 
 interface ApiState {
@@ -29,13 +32,33 @@ export function useApi() {
   const baseURL = config.public.appUrl || ''
 
   /**
-   * Generic fetch wrapper with error handling and retry logic
+   * Generic fetch wrapper with error handling, retry logic, and caching
    */
   async function fetchWithRetry<T>(
     endpoint: string,
     options: FetchOptions = {}
   ): Promise<T> {
-    const { method = 'GET', body, retry = 3, timeout = 30000 } = options
+    const {
+      method = 'GET',
+      body,
+      retry = 3,
+      timeout = 30000,
+      cache = false,
+      cacheTime = CACHE_TIMES.FIVE_MINUTES,
+    } = options
+
+    // Generate cache key from endpoint and body
+    const cacheKey = cache
+      ? `${endpoint}:${body ? JSON.stringify(body) : ''}`
+      : ''
+
+    // Check cache first if caching is enabled
+    if (cache && cacheKey) {
+      const cached = apiCache.get<T>(cacheKey)
+      if (cached !== null) {
+        return cached
+      }
+    }
 
     let lastError: Error | null = null
 
@@ -55,6 +78,12 @@ export function useApi() {
         })
 
         clearTimeout(timeoutId)
+
+        // Cache the response if caching is enabled
+        if (cache && cacheKey && response) {
+          apiCache.set(cacheKey, response, cacheTime)
+        }
+
         return response as T
       } catch (error) {
         lastError = error as Error
@@ -158,10 +187,14 @@ export function useApi() {
   }
 
   /**
-   * Check API health status
+   * Check API health status (cached for 1 minute)
    */
   async function checkHealth(): Promise<HealthResponse> {
-    return await fetchWithRetry<HealthResponse>('/api/health', { retry: 1 })
+    return await fetchWithRetry<HealthResponse>('/api/health', {
+      retry: 1,
+      cache: true,
+      cacheTime: CACHE_TIMES.ONE_MINUTE,
+    })
   }
 
   return {

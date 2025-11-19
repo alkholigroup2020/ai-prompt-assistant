@@ -268,3 +268,11 @@ Implemented comprehensive asset optimization achieving production-ready bundle s
 
 ---
 
+## Phase 12.3: Basic Caching
+
+**Status**: ✅ Completed | **Date**: 2025-11-19
+
+Implemented comprehensive caching system across HTTP, localStorage, and in-memory layers (~350 lines). Created server/middleware/cache.ts (90 lines) with HTTP caching headers for static assets (1 year immutable), JS/CSS bundles (1 year immutable), templates API (1 hour with stale-while-revalidate), health endpoint (1 minute), and enhancement APIs (no-cache for user-specific content). Created vercel.json (20 lines) for Vercel platform-level caching with DNS prefetch control and edge caching rules. Enhanced app/composables/useTemplates.ts (+65 lines) with localStorage template caching (getCachedTemplates/setCachedTemplates functions, 24-hour expiration, cache check before API calls for unfiltered requests, automatic cache population after successful fetch). Created app/utils/apiCache.ts (111 lines) with in-memory API response caching class (Map-based storage, expiration tracking, get/set/delete/clear methods, clearExpired automatic cleanup every 5 minutes, 6 cache time presets from 1 minute to 1 day). Enhanced app/composables/useApi.ts (+30 lines) with cache-aware fetchWithRetry function (cache key generation from endpoint+body, cache check before API calls, response caching after successful fetch, configurable cache time) and applied caching to checkHealth endpoint (1 minute cache). All caching layers work together: HTTP headers reduce server load via browser/CDN caching, localStorage persists templates across sessions reducing API calls, in-memory cache speeds up repeated API requests within same session. ESLint validation passed with zero errors on all modified files.
+
+---
+

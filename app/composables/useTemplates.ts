@@ -23,6 +23,62 @@ interface TemplatesState {
   }
 }
 
+interface TemplateCache {
+  templates: PromptTemplate[]
+  total: number
+  timestamp: number
+}
+
+// Cache expiration time: 24 hours in milliseconds
+const CACHE_EXPIRATION = 24 * 60 * 60 * 1000
+const CACHE_KEY = 'prompt-templates-cache'
+
+/**
+ * Get cached templates from localStorage
+ */
+function getCachedTemplates(): TemplateCache | null {
+  if (import.meta.client) {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY)
+      if (!cached) return null
+
+      const data: TemplateCache = JSON.parse(cached)
+      const now = Date.now()
+
+      // Check if cache is still valid
+      if (now - data.timestamp < CACHE_EXPIRATION) {
+        return data
+      }
+
+      // Cache expired, remove it
+      localStorage.removeItem(CACHE_KEY)
+    } catch {
+      // Invalid cache data, remove it
+      localStorage.removeItem(CACHE_KEY)
+    }
+  }
+  return null
+}
+
+/**
+ * Save templates to localStorage cache
+ */
+function setCachedTemplates(templates: PromptTemplate[], total: number): void {
+  if (import.meta.client) {
+    try {
+      const cache: TemplateCache = {
+        templates,
+        total,
+        timestamp: Date.now(),
+      }
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cache))
+    } catch (error) {
+      // localStorage might be full or unavailable
+      console.warn('Failed to cache templates:', error)
+    }
+  }
+}
+
 /**
  * Composable for managing prompt templates
  */
@@ -56,6 +112,28 @@ export function useTemplates() {
     state.error = null
 
     try {
+      // Check if we can use cached data (no filters, first page)
+      const noFilters =
+        !state.filters.category &&
+        !state.filters.difficulty &&
+        !state.filters.search &&
+        state.pagination.page === 1
+
+      if (noFilters) {
+        const cached = getCachedTemplates()
+        if (cached) {
+          // Use cached data
+          state.templates = cached.templates
+          state.pagination.total = cached.total
+          state.pagination.totalPages = Math.ceil(
+            cached.total / state.pagination.limit
+          )
+          state.loading = false
+          return
+        }
+      }
+
+      // Fetch from API
       const response = await api.fetchTemplates(
         state.filters.category || undefined,
         state.filters.difficulty || undefined,
@@ -67,7 +145,14 @@ export function useTemplates() {
       if (response.data) {
         state.templates = response.data.templates
         state.pagination.total = response.data.total
-        state.pagination.totalPages = Math.ceil(response.data.total / response.data.pageSize)
+        state.pagination.totalPages = Math.ceil(
+          response.data.total / response.data.pageSize
+        )
+
+        // Cache the templates if no filters (base template list)
+        if (noFilters) {
+          setCachedTemplates(response.data.templates, response.data.total)
+        }
       }
     } catch (error) {
       state.error = error as APIError
