@@ -64,7 +64,9 @@
       "Bash(npx tsx:*)",
       "Bash(node test-reconciliation.mjs:*)",
       "Bash(npx nuxt typecheck)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(move testssecurity.spec.ts testse2esecurity.spec.ts)"
     ],
     "deny": [],
     "ask": []
