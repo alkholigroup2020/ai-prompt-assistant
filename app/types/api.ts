@@ -155,7 +155,7 @@ export interface RateLimitError extends APIError {
  * Validation error details
  */
 export interface ValidationError extends APIError {
-  code: 'VALIDATION_ERROR';
+  code: 'VALIDATION_ERROR' | 'PAYLOAD_TOO_LARGE' | 'INVALID_PAYLOAD';
   fields: {
     field: string;
     message: string;

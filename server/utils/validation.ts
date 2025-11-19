@@ -5,6 +5,7 @@
 
 import type { FormInput } from '~/types/form';
 import type { ValidationError } from '~/types/api';
+import { sanitizeInput, validateSecurity } from './security';
 
 /**
  * Validation rules
@@ -23,31 +24,23 @@ const VALIDATION_RULES = {
 };
 
 /**
+ * Maximum payload size (1MB)
+ */
+const MAX_PAYLOAD_SIZE = 1048576;
+
+/**
  * Sanitize string input to prevent XSS attacks
+ * Uses enhanced security sanitization
  */
 export function sanitizeString(input: string): string {
   if (typeof input !== 'string') {
     return '';
   }
 
-  return input
-    // Remove any HTML tags
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
-    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '')
-    .replace(/<embed\b[^<]*(?:(?!<\/embed>)<[^<]*)*<\/embed>/gi, '')
-    .replace(/<img\b[^>]*>/gi, '')
-    .replace(/<link\b[^>]*>/gi, '')
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-    // Remove javascript: and data: URLs
-    .replace(/javascript:/gi, '')
-    .replace(/data:text\/html/gi, '')
-    // Remove event handlers
-    .replace(/on\w+\s*=/gi, '')
-    // Normalize whitespace but preserve newlines
-    .replace(/\t/g, ' ')
-    .replace(/ {2,}/g, ' ')
-    .trim();
+  return sanitizeInput(input, {
+    escapeHtml: false,
+    allowNewlines: true,
+  });
 }
 
 /**
@@ -151,6 +144,31 @@ export function validateFormInput(data: unknown): {
   // Type guard for data object
   const input = data as Record<string, unknown>;
 
+  // Validate payload size
+  try {
+    const payloadSize = new Blob([JSON.stringify(data)]).size;
+    if (payloadSize > MAX_PAYLOAD_SIZE) {
+      return {
+        valid: false,
+        error: {
+          code: 'PAYLOAD_TOO_LARGE',
+          message: 'Request payload exceeds maximum size limit',
+          fields: [{ field: 'payload', message: `Payload size ${payloadSize} exceeds ${MAX_PAYLOAD_SIZE} bytes` }]
+        }
+      };
+    }
+  } catch {
+    // If JSON.stringify fails, reject the request
+    return {
+      valid: false,
+      error: {
+        code: 'INVALID_PAYLOAD',
+        message: 'Invalid request payload',
+        fields: [{ field: 'payload', message: 'Unable to parse payload' }]
+      }
+    };
+  }
+
   // Validate required fields
   const requiredChecks = [
     validateRequired(input.role, 'role'),
@@ -188,16 +206,22 @@ export function validateFormInput(data: unknown): {
   const sanitized: Record<string, unknown> = {};
 
   // Role
+  const roleStr = input.role as string;
+  const roleSecurityCheck = validateSecurity(roleStr);
+  if (!roleSecurityCheck.valid) {
+    errors.push({ field: 'role', message: `Security threat detected: ${roleSecurityCheck.threats.join(', ')}` });
+  }
+
   const roleValidation = validateLength(
-    input.role as string,
+    roleStr,
     'role',
     VALIDATION_RULES.role.min,
     VALIDATION_RULES.role.max
   );
   if (!roleValidation.valid) {
     errors.push({ field: 'role', message: roleValidation.error! });
-  } else {
-    sanitized.role = sanitizeString(input.role as string);
+  } else if (roleSecurityCheck.valid) {
+    sanitized.role = sanitizeString(roleStr);
   }
 
   // Role Other (if provided)
@@ -244,16 +268,22 @@ export function validateFormInput(data: unknown): {
   }
 
   // Task
+  const taskStr = input.task as string;
+  const taskSecurityCheck = validateSecurity(taskStr);
+  if (!taskSecurityCheck.valid) {
+    errors.push({ field: 'task', message: `Security threat detected: ${taskSecurityCheck.threats.join(', ')}` });
+  }
+
   const taskValidation = validateLength(
-    input.task as string,
+    taskStr,
     'task',
     VALIDATION_RULES.task.min,
     VALIDATION_RULES.task.max
   );
   if (!taskValidation.valid) {
     errors.push({ field: 'task', message: taskValidation.error! });
-  } else {
-    sanitized.task = sanitizeString(input.task as string);
+  } else if (taskSecurityCheck.valid) {
+    sanitized.task = sanitizeString(taskStr);
   }
 
   // Tone
@@ -306,31 +336,43 @@ export function validateFormInput(data: unknown): {
 
   // Examples (optional)
   if (input.examples) {
+    const examplesStr = input.examples as string;
+    const examplesSecurityCheck = validateSecurity(examplesStr);
+    if (!examplesSecurityCheck.valid) {
+      errors.push({ field: 'examples', message: `Security threat detected: ${examplesSecurityCheck.threats.join(', ')}` });
+    }
+
     const examplesValidation = validateLength(
-      input.examples as string,
+      examplesStr,
       'examples',
       VALIDATION_RULES.examples.min,
       VALIDATION_RULES.examples.max
     );
     if (!examplesValidation.valid) {
       errors.push({ field: 'examples', message: examplesValidation.error! });
-    } else {
-      sanitized.examples = sanitizeString(input.examples as string);
+    } else if (examplesSecurityCheck.valid) {
+      sanitized.examples = sanitizeString(examplesStr);
     }
   }
 
   // Context (optional)
   if (input.context) {
+    const contextStr = input.context as string;
+    const contextSecurityCheck = validateSecurity(contextStr);
+    if (!contextSecurityCheck.valid) {
+      errors.push({ field: 'context', message: `Security threat detected: ${contextSecurityCheck.threats.join(', ')}` });
+    }
+
     const contextValidation = validateLength(
-      input.context as string,
+      contextStr,
       'context',
       VALIDATION_RULES.context.min,
       VALIDATION_RULES.context.max
     );
     if (!contextValidation.valid) {
       errors.push({ field: 'context', message: contextValidation.error! });
-    } else {
-      sanitized.context = sanitizeString(input.context as string);
+    } else if (contextSecurityCheck.valid) {
+      sanitized.context = sanitizeString(contextStr);
     }
   }
 
