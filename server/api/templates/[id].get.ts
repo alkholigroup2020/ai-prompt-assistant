@@ -44,14 +44,21 @@ export default defineEventHandler(async (event): Promise<TemplateDetailResponse>
     };
 
   } catch (error) {
-    console.error('Template retrieval error:', error);
+    // SECURITY: Log errors securely without sensitive data or stack traces
+    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Template retrieval error:', {
+      // Only log error type, never the full error object or stack trace
+      errorType: sanitizedError.split(':')[0],
+      timestamp: new Date().toISOString()
+    });
 
     setResponseStatus(event, 500);
+    // SECURITY: Return generic error message to client (never expose internal details)
     return {
       success: false,
       error: {
         code: 'INTERNAL_ERROR',
-        message: 'Failed to retrieve template'
+        message: 'Failed to retrieve template. Please try again.'
       }
     };
   }

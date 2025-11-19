@@ -69,7 +69,14 @@ export default defineEventHandler(async (event): Promise<EnhancementResponse> =>
     return response;
 
   } catch (error) {
-    console.error('Enhancement error:', error);
+    // SECURITY: Log errors securely without sensitive data or stack traces
+    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Enhancement error:', {
+      requestId,
+      // Only log error type, never the full error object or stack trace
+      errorType: sanitizedError.split(':')[0],
+      timestamp: new Date().toISOString()
+    });
 
     // Determine error type and status code
     let statusCode = 500;
@@ -95,7 +102,7 @@ export default defineEventHandler(async (event): Promise<EnhancementResponse> =>
     // Set error status
     setResponseStatus(event, statusCode);
 
-    // Return error response
+    // SECURITY: Return generic error message to client (never expose internal details)
     return {
       success: false,
       error: {

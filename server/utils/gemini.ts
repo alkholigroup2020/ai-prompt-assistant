@@ -162,7 +162,12 @@ function parseGeminiResponse(responseText: string): ParsedGeminiResponse {
 
     throw new Error('Could not parse JSON from response');
   } catch {
-    console.error('Failed to parse Gemini response:', responseText);
+    // SECURITY: Don't log the full response text (could contain user data)
+    console.error('Failed to parse Gemini response:', {
+      responseLength: responseText.length,
+      startsWithBrace: responseText.trim().startsWith('{'),
+      timestamp: new Date().toISOString()
+    });
     throw new Error('Invalid response format from AI');
   }
 }
@@ -307,13 +312,20 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
     return enhancementData;
 
   } catch (error) {
-    console.error('Gemini API error:', error);
+    // SECURITY: Log errors securely without sensitive data or stack traces
+    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Gemini API error:', {
+      // Only log error type, never the full error object or stack trace
+      errorType: sanitizedError.split(':')[0],
+      timestamp: new Date().toISOString()
+    });
 
     if (error instanceof Error) {
-      if (error.message.includes('API key')) {
-        throw new Error('GEMINI_API_ERROR: Invalid API key');
+      // SECURITY: Never log the actual API key or sensitive error details
+      if (error.message.includes('API key') || error.message.includes('invalid_api_key')) {
+        throw new Error('GEMINI_API_ERROR: Invalid API key configuration');
       }
-      if (error.message.includes('quota')) {
+      if (error.message.includes('quota') || error.message.includes('429')) {
         throw new Error('GEMINI_API_ERROR: API quota exceeded');
       }
     }
@@ -460,7 +472,13 @@ export async function checkGeminiConnection(): Promise<boolean> {
     const result = await model.generateContent('Hello');
     return !!result.response.text();
   } catch (error) {
-    console.error('Gemini connection check failed:', error);
+    // SECURITY: Log errors securely without sensitive data or stack traces
+    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Gemini connection check failed:', {
+      // Only log error type, never the full error object or stack trace
+      errorType: sanitizedError.split(':')[0],
+      timestamp: new Date().toISOString()
+    });
     return false;
   }
 }

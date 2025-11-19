@@ -11,12 +11,37 @@ import { randomUUID } from 'crypto';
 function sanitizeErrorMessage(error: Error | { message?: string }): string {
   const message = error.message || 'An unexpected error occurred';
 
-  // Remove file paths and sensitive information
+  // Remove sensitive information patterns
   return message
+    // Remove file paths (Windows and Unix)
+    .replace(/[A-Za-z]:\\[^\s]+/g, '[path]')
     .replace(/\/[^\s]+/g, '[path]')
+    // Remove URLs
+    .replace(/https?:\/\/[^\s]+/g, '[url]')
+    // Remove API keys (common patterns)
+    .replace(/[A-Za-z0-9]{32,}/g, '[redacted]')
+    // Remove stack trace references
     .replace(/at\s+.+\(.+\)/g, '')
     .replace(/Error:\s*/g, '')
+    // Remove IP addresses
+    .replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, '[ip]')
+    // Remove email addresses
+    .replace(/[\w.-]+@[\w.-]+\.\w+/g, '[email]')
     .trim();
+}
+
+/**
+ * Sanitize log path (remove query parameters that might contain sensitive data)
+ */
+function sanitizePath(path: string): string {
+  try {
+    const url = new URL(path, 'http://localhost');
+    // Remove query parameters to avoid logging sensitive data
+    return url.pathname;
+  } catch {
+    // If path is not a valid URL, just return the first part before ?
+    return path.split('?')[0] || path;
+  }
 }
 
 /**
@@ -29,6 +54,7 @@ function shouldLogError(statusCode: number): boolean {
 
 /**
  * Log error securely (without sensitive data)
+ * SECURITY: Never logs stack traces, API keys, or sensitive information
  */
 function logError(requestId: string, statusCode: number, error: Error | { message?: string; code?: string; stack?: string }, path: string): void {
   if (!shouldLogError(statusCode)) {
@@ -38,13 +64,13 @@ function logError(requestId: string, statusCode: number, error: Error | { messag
   const logEntry = {
     requestId,
     statusCode,
-    path,
+    path: sanitizePath(path),
     timestamp: new Date().toISOString(),
     error: {
       message: sanitizeErrorMessage(error),
-      code: 'code' in error ? error.code : 'UNKNOWN_ERROR',
-      // Don't log stack traces in production
-      stack: process.env.NODE_ENV === 'development' && 'stack' in error ? error.stack : undefined
+      code: 'code' in error ? error.code : 'UNKNOWN_ERROR'
+      // SECURITY: Stack traces are NEVER included in logs, even in development
+      // Use debugger or local development tools to view stack traces
     }
   };
 
