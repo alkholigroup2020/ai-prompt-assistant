@@ -24,3 +24,5 @@ logs
 !.env.example
 
 NUL
+.vercel
+.playwright-mcp

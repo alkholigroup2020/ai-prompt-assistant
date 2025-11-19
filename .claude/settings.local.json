@@ -74,7 +74,14 @@
       "mcp__filesystem__list_directory_with_sizes",
       "mcp__filesystem__get_file_info",
       "Bash(npm run test:*)",
-      "Bash(npx vitest:*)"
+      "Bash(npx vitest:*)",
+      "Bash(vercel --version:*)",
+      "Bash(vercel --yes:*)",
+      "Bash(vercel logs:*)",
+      "Bash(vercel inspect:*)",
+      "Bash(vercel project ls:*)",
+      "Bash(vercel env:*)",
+      "Bash(vercel:*)"
     ],
     "deny": [],
     "ask": []
