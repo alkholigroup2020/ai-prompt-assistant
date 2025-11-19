@@ -98,5 +98,61 @@ export default defineNuxtConfig({
     // Disable type checking in dev mode to avoid Nuxt UI slot typing errors
     // Type checking still runs during build and via `nuxt typecheck` command
     typeCheck: process.env.NODE_ENV === 'production' ? true : false
+  },
+
+  // Vite Configuration for Code Splitting
+  vite: {
+    build: {
+      // Optimize chunk splitting
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // Split node_modules into vendor chunks
+            if (id.includes('node_modules')) {
+              // VueUse utilities
+              if (id.includes('@vueuse')) {
+                return 'vueuse-vendor'
+              }
+              // Core Vue packages
+              if (id.includes('vue-router') || id.includes('vue-i18n')) {
+                return 'vue-vendor'
+              }
+              // Don't manually chunk @nuxt packages (they're handled by Nuxt)
+              if (id.includes('@nuxt')) {
+                return undefined
+              }
+            }
+          }
+        }
+      },
+      // Set chunk size warnings
+      chunkSizeWarningLimit: 500
+    },
+    optimizeDeps: {
+      include: ['vue', 'vue-router', 'vue-i18n']
+    }
+  },
+
+  // Route Rules for static generation and caching
+  routeRules: {
+    // Static pages - prerender at build time
+    '/': { prerender: true },
+
+    // Templates can be cached client-side
+    '/templates': { swr: 3600 }, // Cache for 1 hour
+    '/templates/**': { swr: 3600 },
+
+    // Builder and results are dynamic, no caching
+    '/builder': { ssr: true },
+    '/results': { ssr: true }
+  },
+
+  // Experimental features
+  experimental: {
+    // Enable payload extraction for better performance
+    payloadExtraction: true,
+
+    // Component islands for partial hydration
+    componentIslands: true
   }
 })

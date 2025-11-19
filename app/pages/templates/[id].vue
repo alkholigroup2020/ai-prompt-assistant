@@ -30,13 +30,24 @@
         </div>
       </div>
 
-      <!-- Template Detail -->
-      <TemplateDetail
-        v-else-if="template"
-        :template="template"
-        @apply="handleApplyTemplate"
-        @back="handleBack"
-      />
+      <!-- Template Detail - Lazy Loaded -->
+      <ClientOnly>
+        <LazyTemplateDetail
+          v-if="template"
+          :template="template"
+          @apply="handleApplyTemplate"
+          @back="handleBack"
+        />
+        <template #fallback>
+          <!-- Loading skeleton -->
+          <div class="animate-pulse space-y-6">
+            <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+            <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full" />
+            <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6" />
+            <div class="h-64 bg-gray-200 dark:bg-gray-700 rounded" />
+          </div>
+        </template>
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -49,7 +60,6 @@ import { useFormStore } from '~/stores/form';
 import { useToast } from '#ui/composables/useToast';
 import type { PromptTemplate } from '~/types/template';
 import { ToneOption } from '~/types/form';
-import TemplateDetail from '~/components/templates/TemplateDetail.vue';
 
 const route = useRoute();
 const router = useRouter();

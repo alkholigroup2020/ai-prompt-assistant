@@ -39,7 +39,8 @@
       "WebFetch(domain:ui.nuxt.com)",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_run_code",
-      "Bash(del fix-contrast.cjs)"
+      "Bash(del fix-contrast.cjs)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

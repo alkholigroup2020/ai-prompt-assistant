@@ -11,15 +11,25 @@
         </p>
       </div>
 
-      <!-- Template Grid Component -->
-      <TemplateGrid
-        :templates="templates"
-        :loading="loading"
-        :page-size="12"
-        @use-template="handleUseTemplate"
-        @view-details="handleViewDetails"
-        @template-click="handleTemplateClick"
-      />
+      <!-- Template Grid Component - Lazy Loaded -->
+      <ClientOnly>
+        <LazyTemplateGrid
+          :templates="templates"
+          :loading="loading"
+          :page-size="12"
+          @use-template="handleUseTemplate"
+          @view-details="handleViewDetails"
+          @template-click="handleTemplateClick"
+        />
+        <template #fallback>
+          <!-- Loading skeleton while component loads -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div v-for="i in 6" :key="i" class="animate-pulse">
+              <div class="bg-gray-200 dark:bg-gray-700 h-64 rounded-lg" />
+            </div>
+          </div>
+        </template>
+      </ClientOnly>
     </div>
   </div>
 </template>

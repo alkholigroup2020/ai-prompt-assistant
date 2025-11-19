@@ -84,29 +84,44 @@
           />
         </div>
 
-        <!-- Comparison View -->
+        <!-- Comparison View - Lazy Loaded -->
         <div class="max-w-6xl mx-auto">
-          <Comparison
-            :original-prompt="originalPrompt"
-            :enhanced-prompt="enhancedPrompt"
-            :show-differences="true"
-          />
+          <ClientOnly>
+            <LazyComparison
+              :original-prompt="originalPrompt"
+              :enhanced-prompt="enhancedPrompt"
+              :show-differences="true"
+            />
+            <template #fallback>
+              <div class="animate-pulse h-64 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+            </template>
+          </ClientOnly>
         </div>
 
-        <!-- Improvements List -->
+        <!-- Improvements List - Lazy Loaded -->
         <div class="max-w-4xl mx-auto">
-          <ImprovementsList
-            :improvements="improvements"
-            :show-categories="true"
-            :expandable="true"
-          />
+          <ClientOnly>
+            <LazyImprovementsList
+              :improvements="improvements"
+              :show-categories="true"
+              :expandable="true"
+            />
+            <template #fallback>
+              <div class="animate-pulse h-48 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+            </template>
+          </ClientOnly>
         </div>
 
-        <!-- Alternative Versions -->
+        <!-- Alternative Versions - Lazy Loaded -->
         <div v-if="alternativeVersions" class="max-w-4xl mx-auto">
-          <AlternativeVersions
-            :versions="alternativeVersions"
-          />
+          <ClientOnly>
+            <LazyAlternativeVersions
+              :versions="alternativeVersions"
+            />
+            <template #fallback>
+              <div class="animate-pulse h-40 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+            </template>
+          </ClientOnly>
         </div>
 
         <!-- Additional Actions -->
