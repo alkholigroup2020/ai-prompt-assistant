@@ -200,8 +200,14 @@ export function enforceRateLimit(
   // Set rate limit headers
   setRateLimitHeaders(event, result.limit, result.remaining, result.resetAt);
 
-  // If rate limit exceeded, throw error
+  // If rate limit exceeded, log and throw error
   if (!result.allowed) {
+    const clientId = getClientId(event);
+    const path = event.path || 'unknown';
+
+    // Log rate limit violation (sanitized - no sensitive data)
+    console.warn(`[RATE_LIMIT_EXCEEDED] Client: ${clientId.split(':')[0]}:*** | Path: ${path} | Limit: ${result.limit} | Retry After: ${result.retryAfter}s`);
+
     const error = createRateLimitError(
       result.limit,
       result.remaining,

@@ -5,6 +5,7 @@
 
 import type { ExportResponse } from '~/types/api';
 import { validateExportRequest } from '../utils/validation';
+import { enforceRateLimit } from '../utils/rate-limit';
 
 /**
  * Generate filename based on format and timestamp
@@ -113,6 +114,9 @@ function exportToJson(prompt: string, metadata?: ExportMetadata): string {
 
 export default defineEventHandler(async (event): Promise<ExportResponse> => {
   try {
+    // Apply rate limiting (higher limit for export)
+    enforceRateLimit(event, { maxRequests: 100 }); // 100 exports per minute
+
     // Parse request body
     const body = await readBody(event);
 
