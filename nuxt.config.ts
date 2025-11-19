@@ -103,6 +103,12 @@ export default defineNuxtConfig({
   // Vite Configuration for Code Splitting
   vite: {
     build: {
+      // Enable minification (esbuild is default and faster than terser)
+      minify: 'esbuild',
+      // Target modern browsers for smaller bundle sizes
+      target: 'es2020',
+      // Enable CSS code splitting
+      cssCodeSplit: true,
       // Optimize chunk splitting
       rollupOptions: {
         output: {
@@ -123,10 +129,20 @@ export default defineNuxtConfig({
               }
             }
           }
+        },
+        // Tree-shaking optimization
+        treeshake: {
+          moduleSideEffects: 'no-external',
+          propertyReadSideEffects: false,
+          tryCatchDeoptimization: false
         }
       },
       // Set chunk size warnings
-      chunkSizeWarningLimit: 500
+      chunkSizeWarningLimit: 500,
+      // Report compressed size for better bundle analysis
+      reportCompressedSize: true,
+      // Source maps for production debugging (set to false for smaller bundles)
+      sourcemap: false
     },
     optimizeDeps: {
       include: ['vue', 'vue-router', 'vue-i18n']

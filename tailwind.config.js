@@ -1,13 +1,30 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Content configuration for PurgeCSS - removes unused styles in production
   content: [
     './app/components/**/*.{js,vue,ts}',
+    './app/composables/**/*.{js,ts}',
     './app/layouts/**/*.vue',
     './app/pages/**/*.vue',
     './app/plugins/**/*.{js,ts}',
+    './app/utils/**/*.{js,ts}',
     './app.vue',
     './app/app.vue',
     './app/error.vue',
+    './nuxt.config.{js,ts}',
+  ],
+  // Safelist for dynamic classes that might be purged incorrectly
+  safelist: [
+    // Color variants for dynamic quality scores
+    'text-red-500',
+    'text-yellow-500',
+    'text-green-500',
+    'bg-red-50',
+    'bg-yellow-50',
+    'bg-green-50',
+    // RTL-specific classes
+    'rtl',
+    'ltr',
   ],
   // Enable dark mode with class strategy
   darkMode: 'class',
