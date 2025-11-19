@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Build output
+.nuxt
+.output
+dist
+.vercel
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage
+*.log
+test-results
+
+# Misc
+.git
+.gitignore
+README.md
+CLAUDE.md
+docs/
+project-docs/
+
+# Development files
+*.test.ts
+*.spec.ts
+*.test.js
+*.spec.js
+playwright-report/
+playwright/.cache/
