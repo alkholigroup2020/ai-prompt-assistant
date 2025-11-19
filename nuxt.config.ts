@@ -170,5 +170,39 @@ export default defineNuxtConfig({
 
     // Component islands for partial hydration
     componentIslands: true
+  },
+
+  // App Configuration
+  app: {
+    head: {
+      // Charset and viewport meta tags
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+
+      // Resource hints for better loading performance
+      link: [
+        // Preconnect to Google Fonts
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+
+        // DNS prefetch for Gemini API (for faster API connections)
+        { rel: 'dns-prefetch', href: 'https://generativelanguage.googleapis.com' }
+      ],
+
+      // Script loading configuration
+      script: [
+        // Scripts will be automatically deferred by Nuxt 4
+        // This is just a placeholder for any future third-party scripts
+      ]
+    }
+  },
+
+  // Build configuration for script optimization
+  build: {
+    // Analyze bundle size (set to true for development analysis)
+    analyze: false,
+
+    // Transpile configuration
+    transpile: []
   }
 })
