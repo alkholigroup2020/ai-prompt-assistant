@@ -67,7 +67,12 @@
       "Bash(npx eslint:*)",
       "Bash(npx playwright test:*)",
       "Bash(move testssecurity.spec.ts testse2esecurity.spec.ts)",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(nul)",
+      "Bash(npm run build:*)",
+      "mcp__filesystem__directory_tree",
+      "mcp__filesystem__list_directory_with_sizes",
+      "mcp__filesystem__get_file_info"
     ],
     "deny": [],
     "ask": []
