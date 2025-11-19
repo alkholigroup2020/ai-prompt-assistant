@@ -1,0 +1,80 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - link "Navigate to home page" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - text: AI Prompt Assistant
+      - generic [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Prompt Builder" [ref=e12] [cursor=pointer]:
+          - /url: /builder
+        - link "Templates" [ref=e13] [cursor=pointer]:
+          - /url: /templates
+      - generic [ref=e14]:
+        - button "Switch language" [ref=e15]: EN
+        - button "Toggle dark mode" [ref=e17]
+        - button "Open navigation menu" [ref=e19]
+  - main [ref=e21]:
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - heading "Prompt Builder" [level=1] [ref=e25]
+        - paragraph [ref=e26]: Build your perfect AI prompt with real-time quality feedback and smart suggestions
+      - generic [ref=e28]: Completion Progress0%
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - button "Quick Polish" [ref=e32]: Quick Polish
+          - button "Deep Enhancement" [ref=e34]: Deep Enhancement
+        - generic [ref=e36]:
+          - button "Reset Form" [ref=e37]: Reset Form
+          - button "Save Draft" [disabled] [ref=e39]: Save Draft
+      - generic [ref=e44]:
+        - heading "Keyboard Shortcuts" [level=3] [ref=e45]
+        - generic [ref=e46]:
+          - generic [ref=e47]: Ctrl+Enter Quick Enhance
+          - generic [ref=e48]: Ctrl+Shift+Enter Deep Enhancement
+          - generic [ref=e49]: Ctrl+S Save Draft
+          - generic [ref=e50]: Ctrl+R Reset Form (prevents browser refresh)
+          - generic [ref=e51]: Esc Clear Focus
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - text: AI Prompt Assistant
+          - paragraph [ref=e59]: Transform rough ideas into powerful, production-ready AI prompts for any AI tool.
+        - generic [ref=e60]:
+          - heading "Quick Links" [level=3] [ref=e61]
+          - navigation "Footer navigation" [ref=e62]:
+            - link "Home" [ref=e63] [cursor=pointer]:
+              - /url: /
+            - link "Prompt Builder" [ref=e64] [cursor=pointer]:
+              - /url: /builder
+            - link "Templates" [ref=e65] [cursor=pointer]:
+              - /url: /templates
+            - link "About" [ref=e66] [cursor=pointer]:
+              - /url: /about
+        - generic [ref=e67]:
+          - heading "Company" [level=3] [ref=e68]
+          - navigation "Company links" [ref=e69]:
+            - link "Alkholi Group Website" [ref=e70] [cursor=pointer]:
+              - /url: https://alkholigroup.com
+              - text: Alkholi Group Website
+              - img [ref=e71]
+            - link "Privacy Policy" [ref=e73] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Use" [ref=e74] [cursor=pointer]:
+              - /url: /terms
+      - generic [ref=e76]:
+        - paragraph [ref=e77]: © 2025 Alkholi Group. All rights reserved.
+        - generic [ref=e78]:
+          - text: v1.0.0
+          - generic [ref=e79]: Powered by Google Gemini AI
+  - link "Skip to main content" [ref=e80] [cursor=pointer]:
+    - /url: "#main-content"
+```

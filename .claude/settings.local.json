@@ -72,7 +72,9 @@
       "Bash(npm run build:*)",
       "mcp__filesystem__directory_tree",
       "mcp__filesystem__list_directory_with_sizes",
-      "mcp__filesystem__get_file_info"
+      "mcp__filesystem__get_file_info",
+      "Bash(npm run test:*)",
+      "Bash(npx vitest:*)"
     ],
     "deny": [],
     "ask": []

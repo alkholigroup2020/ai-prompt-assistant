@@ -1,0 +1,82 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Navigate to home page" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: AI Prompt Assistant
+        - generic [ref=e11]:
+          - link "Home" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Prompt Builder" [ref=e13] [cursor=pointer]:
+            - /url: /builder
+          - link "Templates" [ref=e14] [cursor=pointer]:
+            - /url: /templates
+        - generic [ref=e15]:
+          - button "Switch language" [ref=e16]:
+            - generic [ref=e18]: EN
+          - button "Toggle dark mode" [ref=e19]
+    - main [ref=e21]:
+      - generic [ref=e24]:
+        - heading "Template Library" [level=1] [ref=e25]
+        - paragraph [ref=e26]: Browse our collection of ready-to-use prompt templates
+    - contentinfo [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - img [ref=e32]
+              - generic [ref=e34]: AI Prompt Assistant
+            - paragraph [ref=e35]: Transform rough ideas into powerful, production-ready AI prompts for any AI tool.
+          - generic [ref=e36]:
+            - heading "Quick Links" [level=3] [ref=e37]
+            - navigation "Footer navigation" [ref=e38]:
+              - link "Home" [ref=e39] [cursor=pointer]:
+                - /url: /
+              - link "Prompt Builder" [ref=e40] [cursor=pointer]:
+                - /url: /builder
+              - link "Templates" [ref=e41] [cursor=pointer]:
+                - /url: /templates
+              - link "About" [ref=e42] [cursor=pointer]:
+                - /url: /about
+          - generic [ref=e43]:
+            - heading "Company" [level=3] [ref=e44]
+            - navigation "Company links" [ref=e45]:
+              - link "Alkholi Group Website" [ref=e46] [cursor=pointer]:
+                - /url: https://alkholigroup.com
+                - text: Alkholi Group Website
+                - img [ref=e47]
+              - link "Privacy Policy" [ref=e49] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Use" [ref=e50] [cursor=pointer]:
+                - /url: /terms
+        - generic [ref=e52]:
+          - paragraph [ref=e53]: © 2025 Alkholi Group. All rights reserved.
+          - generic [ref=e54]:
+            - generic [ref=e55]: v1.0.0
+            - generic [ref=e56]: Powered by Google Gemini AI
+    - link "Skip to main content" [ref=e57] [cursor=pointer]:
+      - /url: "#main-content"
+  - generic:
+    - img
+  - generic:
+    - generic:
+      - generic:
+        - button "Go to parent" [disabled]
+        - button "Open in editor"
+        - button "Close"
+  - generic [ref=e58]:
+    - button "Toggle Nuxt DevTools" [ref=e59] [cursor=pointer]:
+      - img [ref=e60]
+    - generic "Page load time" [ref=e63]:
+      - generic [ref=e64]: "227"
+      - generic [ref=e65]: ms
+    - button "Toggle Component Inspector" [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+  - region "Notifications (F8)":
+    - list
+```

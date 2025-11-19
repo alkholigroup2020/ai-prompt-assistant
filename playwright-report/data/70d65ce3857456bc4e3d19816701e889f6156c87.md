@@ -1,0 +1,94 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Navigate to home page" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+        - generic [ref=e10]:
+          - button "Switch language" [ref=e11]
+          - button "Toggle dark mode" [ref=e13]
+          - button "Open navigation menu" [ref=e15]
+    - main [ref=e17]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - heading "Prompt Builder" [level=1] [ref=e21]
+          - paragraph [ref=e22]: Build your perfect AI prompt with real-time quality feedback and smart suggestions
+        - generic [ref=e24]:
+          - generic [ref=e25]: Completion Progress
+          - generic [ref=e26]: 0%
+        - generic [ref=e28]:
+          - paragraph [ref=e33]: Start filling out the form to see a preview of your prompt
+          - generic [ref=e34]:
+            - button "Quick Polish" [ref=e35]: Quick Polish
+            - button "Deep Enhancement" [ref=e37]: Deep Enhancement
+          - generic [ref=e39]:
+            - button "Reset Form" [ref=e40]: Reset Form
+            - button "Save Draft" [disabled] [ref=e42]: Save Draft
+        - generic [ref=e47]:
+          - heading "Keyboard Shortcuts" [level=3] [ref=e48]
+          - generic [ref=e49]:
+            - generic [ref=e50]: Ctrl+Enter Quick Enhance
+            - generic [ref=e51]: Ctrl+Shift+Enter Deep Enhancement
+            - generic [ref=e52]: Ctrl+S Save Draft
+            - generic [ref=e53]: Ctrl+R Reset Form (prevents browser refresh)
+            - generic [ref=e54]: Esc Clear Focus
+    - contentinfo [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - img [ref=e60]
+              - generic [ref=e62]: AI Prompt Assistant
+            - paragraph [ref=e63]: Transform rough ideas into powerful, production-ready AI prompts for any AI tool.
+          - generic [ref=e64]:
+            - heading "Quick Links" [level=3] [ref=e65]
+            - navigation "Footer navigation" [ref=e66]:
+              - link "Home" [ref=e67] [cursor=pointer]:
+                - /url: /
+              - link "Prompt Builder" [ref=e68] [cursor=pointer]:
+                - /url: /builder
+              - link "Templates" [ref=e69] [cursor=pointer]:
+                - /url: /templates
+              - link "About" [ref=e70] [cursor=pointer]:
+                - /url: /about
+          - generic [ref=e71]:
+            - heading "Company" [level=3] [ref=e72]
+            - navigation "Company links" [ref=e73]:
+              - link "Alkholi Group Website" [ref=e74] [cursor=pointer]:
+                - /url: https://alkholigroup.com
+                - text: Alkholi Group Website
+                - img [ref=e75]
+              - link "Privacy Policy" [ref=e77] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Use" [ref=e78] [cursor=pointer]:
+                - /url: /terms
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: © 2025 Alkholi Group. All rights reserved.
+          - generic [ref=e82]:
+            - generic [ref=e83]: v1.0.0
+            - generic [ref=e84]: Powered by Google Gemini AI
+    - link "Skip to main content" [ref=e85] [cursor=pointer]:
+      - /url: "#main-content"
+  - generic:
+    - img
+  - generic:
+    - generic:
+      - generic:
+        - button "Go to parent" [disabled]
+        - button "Open in editor"
+        - button "Close"
+  - generic [ref=e86]:
+    - button "Toggle Nuxt DevTools" [ref=e87] [cursor=pointer]:
+      - img [ref=e88]
+    - generic "Page load time" [ref=e91]:
+      - generic [ref=e92]: "123"
+      - generic [ref=e93]: ms
+    - button "Toggle Component Inspector" [ref=e95] [cursor=pointer]:
+      - img [ref=e96]
+  - region "Notifications (F8)":
+    - list
+```
