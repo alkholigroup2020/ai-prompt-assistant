@@ -87,7 +87,10 @@
       "Bash(claude mcp list)",
       "Bash(npm install:*)",
       "Bash(npx playwright install chromium)",
-      "Bash(npx -y @playwright/mcp)"
+      "Bash(npx -y @playwright/mcp)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(npx:*)",
+      "Bash(netstat:*)"
     ],
     "deny": [],
     "ask": []

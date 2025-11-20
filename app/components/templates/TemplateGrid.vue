@@ -28,56 +28,37 @@
         <!-- Filter Controls -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- Category Filter -->
-          <USelectMenu
+          <USelect
             v-model="selectedCategory"
             :options="categoryOptions"
-            :placeholder="$t('templates.filters.category')"
+            option-attribute="label"
+            value-attribute="value"
+            :placeholder="$t('templates.filters.allCategories')"
             size="lg"
             class="min-h-[44px]"
-          >
-            <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
-            <template #label>
-              <span v-if="selectedCategory">
-                {{ $t(`templates.categories.${selectedCategory}`) }}
-              </span>
-              <span v-else class="text-gray-500">
-                {{ $t('templates.filters.allCategories') }}
-              </span>
-            </template>
-          </USelectMenu>
+          />
 
           <!-- Difficulty Filter -->
-          <USelectMenu
+          <USelect
             v-model="selectedDifficulty"
             :options="difficultyOptions"
-            :placeholder="$t('templates.filters.difficulty')"
+            option-attribute="label"
+            value-attribute="value"
+            :placeholder="$t('templates.filters.allDifficulties')"
             size="lg"
             class="min-h-[44px]"
-          >
-            <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
-            <template #label>
-              <span v-if="selectedDifficulty">
-                {{ $t(`templates.difficulty.${selectedDifficulty}`) }}
-              </span>
-              <span v-else class="text-gray-500">
-                {{ $t('templates.filters.allDifficulties') }}
-              </span>
-            </template>
-          </USelectMenu>
+          />
 
           <!-- Sort By -->
-          <USelectMenu
+          <USelect
             v-model="sortBy"
             :options="sortOptions"
+            option-attribute="label"
+            value-attribute="value"
             :placeholder="$t('templates.filters.sortBy')"
             size="lg"
             class="min-h-[44px]"
-          >
-            <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
-            <template #label>
-              {{ getSortLabel(sortBy) }}
-            </template>
-          </USelectMenu>
+          />
 
           <!-- Clear Filters Button -->
           <UButton
@@ -251,12 +232,6 @@ const sortOptions = computed(() => [
   { value: 'rating', label: t('templates.filters.rating') },
   { value: 'title', label: t('templates.filters.titleAsc') },
 ]);
-
-// Get sort label
-const getSortLabel = (value: string): string => {
-  const option = sortOptions.value.find(opt => opt.value === value);
-  return option ? option.label : t('templates.filters.popular');
-};
 
 // Check if any filters are active
 const hasActiveFilters = computed(() => {

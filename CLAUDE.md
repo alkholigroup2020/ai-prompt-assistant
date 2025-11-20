@@ -459,12 +459,12 @@ This project has the following MCP servers installed and configured:
    - **Usage**: Read, write, search, and modify files safely
    - **Scope**: `D:/WebDev/AKG_Websites/ai-prompt-assistant`
 
-2. **Playwright MCP** (`@playwright/mcp`)
+2. **Puppeteer MCP** (`puppeteer-mcp-server`)
 
    - **Status**: ✓ Connected
    - **Purpose**: Browser automation for testing and web scraping
-   - **Usage**: Automated testing, screenshots, form filling, data extraction
-   - **Features**: Full-page/element screenshots, JS execution, console monitoring, multi-browser support
+   - **Usage**: Web automation, screenshots, form filling, data extraction, page navigation
+   - **Features**: Browser control, screenshot capture, element interaction, JavaScript execution, console monitoring
 
 3. **Nuxt MCP** (`nuxt-mcp`)
    - **Status**: ✓ Installed as npm module

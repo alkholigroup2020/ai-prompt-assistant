@@ -12,39 +12,39 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: computed(() => t('landing.meta.description'))
+      content: computed(() => t('landing.meta.description')),
     },
     {
       name: 'keywords',
-      content: computed(() => t('landing.meta.keywords'))
+      content: computed(() => t('landing.meta.keywords')),
     },
     // Open Graph
     {
       property: 'og:title',
-      content: computed(() => t('landing.meta.title'))
+      content: computed(() => t('landing.meta.title')),
     },
     {
       property: 'og:description',
-      content: computed(() => t('landing.meta.description'))
+      content: computed(() => t('landing.meta.description')),
     },
     {
       property: 'og:type',
-      content: 'website'
+      content: 'website',
     },
     // Twitter Card
     {
       name: 'twitter:card',
-      content: 'summary_large_image'
+      content: 'summary_large_image',
     },
     {
       name: 'twitter:title',
-      content: computed(() => t('landing.meta.title'))
+      content: computed(() => t('landing.meta.title')),
     },
     {
       name: 'twitter:description',
-      content: computed(() => t('landing.meta.description'))
-    }
-  ]
+      content: computed(() => t('landing.meta.description')),
+    },
+  ],
 })
 
 // Popular templates data (preview)
@@ -53,26 +53,26 @@ const popularTemplates = computed(() => [
     id: 'email-reply',
     title: t('landing.templates.emailReply'),
     icon: 'envelope',
-    category: 'business'
+    category: 'business',
   },
   {
     id: 'data-analysis',
     title: t('landing.templates.dataAnalysis'),
     icon: 'chart-bar',
-    category: 'analysis'
+    category: 'analysis',
   },
   {
     id: 'code-review',
     title: t('landing.templates.codeReview'),
     icon: 'code-bracket',
-    category: 'technical'
+    category: 'technical',
   },
   {
     id: 'sales-pitch',
     title: t('landing.templates.salesPitch'),
     icon: 'presentation-chart-line',
-    category: 'business'
-  }
+    category: 'business',
+  },
 ])
 
 // Navigation handlers
@@ -94,15 +94,15 @@ const handleTemplateClick = (templateId: string): void => {
     <!-- Hero Section -->
     <section
       id="hero"
-      class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-emerald-900 text-white"
+      class="relative overflow-hidden bg-linear-to-br from-navy-900 via-navy-800 to-emerald-900 text-white"
     >
-      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
+      <div
+        class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40"
+      >
         <div class="text-center">
           <!-- Animated Icon -->
           <div class="mb-6 sm:mb-8 flex justify-center">
-            <div
-              class="animate-bounce rounded-full bg-emerald-500/20 p-4 sm:p-6 backdrop-blur-sm"
-            >
+            <div class="animate-bounce bg-emerald-500/20 p-4 sm:p-6 backdrop-blur-sm rounded-[30%]">
               <UIcon
                 name="i-heroicons-sparkles"
                 class="h-12 w-12 sm:h-16 sm:w-16 text-emerald-400"
@@ -125,9 +125,7 @@ const handleTemplateClick = (templateId: string): void => {
           </p>
 
           <!-- CTA Buttons -->
-          <div
-            class="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row px-4"
-          >
+          <div class="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row px-4">
             <UButton
               size="xl"
               color="emerald"
@@ -200,11 +198,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon name="i-heroicons-arrow-trending-up" class="h-12 w-12" />
             </div>
-            <div
-              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
-            >
-              80%
-            </div>
+            <div class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400">80%</div>
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ t('landing.valueProps.betterResults.title') }}
             </h3>
@@ -222,11 +216,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon name="i-heroicons-bolt" class="h-12 w-12" />
             </div>
-            <div
-              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
-            >
-              3x
-            </div>
+            <div class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400">3x</div>
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ t('landing.valueProps.fasterWriting.title') }}
             </h3>
@@ -244,11 +234,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon name="i-heroicons-document-duplicate" class="h-12 w-12" />
             </div>
-            <div
-              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
-            >
-              20+
-            </div>
+            <div class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400">20+</div>
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ t('landing.valueProps.templates.title') }}
             </h3>
@@ -266,11 +252,7 @@ const handleTemplateClick = (templateId: string): void => {
             >
               <UIcon name="i-heroicons-language" class="h-12 w-12" />
             </div>
-            <div
-              class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400"
-            >
-              2
-            </div>
+            <div class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400">2</div>
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ t('landing.valueProps.bilingual.title') }}
             </h3>
@@ -287,9 +269,7 @@ const handleTemplateClick = (templateId: string): void => {
       <div class="container mx-auto max-w-7xl px-4">
         <!-- Section Header -->
         <div class="mb-12 text-center">
-          <h2
-            class="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
-          >
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
             {{ t('landing.howItWorks.title') }}
           </h2>
           <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
@@ -322,13 +302,8 @@ const handleTemplateClick = (templateId: string): void => {
             </p>
 
             <!-- Arrow for desktop -->
-            <div
-              class="absolute right-0 top-16 hidden translate-x-1/2 md:block"
-            >
-              <UIcon
-                name="i-heroicons-arrow-right"
-                class="h-8 w-8 text-emerald-400"
-              />
+            <div class="absolute right-0 top-16 hidden translate-x-1/2 md:block">
+              <UIcon name="i-heroicons-arrow-right" class="h-8 w-8 text-emerald-400" />
             </div>
           </div>
 
@@ -355,13 +330,8 @@ const handleTemplateClick = (templateId: string): void => {
             </p>
 
             <!-- Arrow for desktop -->
-            <div
-              class="absolute right-0 top-16 hidden translate-x-1/2 md:block"
-            >
-              <UIcon
-                name="i-heroicons-arrow-right"
-                class="h-8 w-8 text-emerald-400"
-              />
+            <div class="absolute right-0 top-16 hidden translate-x-1/2 md:block">
+              <UIcon name="i-heroicons-arrow-right" class="h-8 w-8 text-emerald-400" />
             </div>
           </div>
 
@@ -391,12 +361,7 @@ const handleTemplateClick = (templateId: string): void => {
 
         <!-- CTA Button -->
         <div class="mt-12 text-center">
-          <UButton
-            size="lg"
-            color="emerald"
-            variant="solid"
-            @click="handleGetStarted"
-          >
+          <UButton size="lg" color="emerald" variant="solid" @click="handleGetStarted">
             <template #leading>
               <UIcon name="i-heroicons-rocket-launch" />
             </template>
@@ -412,20 +377,14 @@ const handleTemplateClick = (templateId: string): void => {
         <!-- Section Header -->
         <div class="mb-12 flex items-center justify-between">
           <div>
-            <h2
-              class="mb-2 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
-            >
+            <h2 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
               {{ t('landing.templatesPreview.title') }}
             </h2>
             <p class="text-lg text-gray-600 dark:text-gray-400">
               {{ t('landing.templatesPreview.subtitle') }}
             </p>
           </div>
-          <UButton
-            color="emerald"
-            variant="outline"
-            @click="handleViewTemplates"
-          >
+          <UButton color="emerald" variant="outline" @click="handleViewTemplates">
             {{ t('landing.templatesPreview.viewAll') }}
             <template #trailing>
               <UIcon name="i-heroicons-arrow-right" />
@@ -449,7 +408,16 @@ const handleTemplateClick = (templateId: string): void => {
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ template.title }}
             </h3>
-            <UBadge :color="template.category === 'business' ? 'primary' : template.category === 'technical' ? 'navy' : 'emerald'" size="sm">
+            <UBadge
+              :color="
+                template.category === 'business'
+                  ? 'primary'
+                  : template.category === 'technical'
+                  ? 'navy'
+                  : 'emerald'
+              "
+              size="sm"
+            >
               {{ t(`templates.categories.${template.category}`) }}
             </UBadge>
           </div>
@@ -469,12 +437,7 @@ const handleTemplateClick = (templateId: string): void => {
         <p class="mx-auto mb-8 max-w-2xl text-lg text-emerald-100">
           {{ t('landing.finalCta.subtitle') }}
         </p>
-        <UButton
-          size="xl"
-          color="neutral"
-          variant="solid"
-          @click="handleGetStarted"
-        >
+        <UButton size="xl" color="neutral" variant="solid" @click="handleGetStarted">
           <template #leading>
             <UIcon name="i-heroicons-rocket-launch" />
           </template>

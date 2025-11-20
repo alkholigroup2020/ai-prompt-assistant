@@ -29,15 +29,16 @@ interface ApiState {
  */
 export function useApi() {
   const config = useRuntimeConfig()
-  const baseURL = config.public.appUrl || ''
+
+  // In development, use relative URLs (empty baseURL) to avoid CSP issues
+  // In production, use the full production URL for proper SSR/API routing
+  const isDevelopment = import.meta.dev || config.public.appUrl?.includes('localhost')
+  const baseURL = isDevelopment ? '' : config.public.appUrl || ''
 
   /**
    * Generic fetch wrapper with error handling, retry logic, and caching
    */
-  async function fetchWithRetry<T>(
-    endpoint: string,
-    options: FetchOptions = {}
-  ): Promise<T> {
+  async function fetchWithRetry<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
     const {
       method = 'GET',
       body,
@@ -48,9 +49,7 @@ export function useApi() {
     } = options
 
     // Generate cache key from endpoint and body
-    const cacheKey = cache
-      ? `${endpoint}:${body ? JSON.stringify(body) : ''}`
-      : ''
+    const cacheKey = cache ? `${endpoint}:${body ? JSON.stringify(body) : ''}` : ''
 
     // Check cache first if caching is enabled
     if (cache && cacheKey) {
@@ -98,9 +97,7 @@ export function useApi() {
 
         // Exponential backoff for retries
         if (attempt < retry - 1) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, Math.pow(2, attempt) * 1000)
-          )
+          await new Promise((resolve) => setTimeout(resolve, Math.pow(2, attempt) * 1000))
         }
       }
     }

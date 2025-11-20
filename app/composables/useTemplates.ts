@@ -31,7 +31,7 @@ interface TemplateCache {
 
 // Cache expiration time: 24 hours in milliseconds
 const CACHE_EXPIRATION = 24 * 60 * 60 * 1000
-const CACHE_KEY = 'prompt-templates-cache'
+const CACHE_KEY = 'prompt-templates-cache-v2'
 
 /**
  * Get cached templates from localStorage
@@ -98,7 +98,7 @@ export function useTemplates() {
     },
     pagination: {
       page: 1,
-      limit: 20,
+      limit: 50,
       total: 0,
       totalPages: 0,
     },
