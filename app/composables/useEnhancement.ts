@@ -124,7 +124,7 @@ export function useEnhancement() {
    * Get alternative versions
    */
   const alternativeVersions = computed(
-    () => state.result?.data?.alternativeVersions || []
+    () => state.result?.data?.alternativeVersions
   )
 
   return {

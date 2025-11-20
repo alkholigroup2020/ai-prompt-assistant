@@ -1,15 +1,5 @@
 <script setup lang="ts">
-interface Suggestion {
-  id: string
-  type: 'critical' | 'important' | 'minor'
-  category: 'clarity' | 'specificity' | 'context' | 'structure' | 'completeness'
-  message: string
-  action?: {
-    label: string
-    field: string
-    value: string
-  }
-}
+import type { Suggestion } from '~/composables/useQualityScore'
 
 interface Props {
   suggestions: Suggestion[]

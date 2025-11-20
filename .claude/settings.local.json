@@ -81,7 +81,13 @@
       "Bash(vercel inspect:*)",
       "Bash(vercel project ls:*)",
       "Bash(vercel env:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "Bash(npm run dev:*)",
+      "Bash(claude mcp remove:*)",
+      "Bash(claude mcp list)",
+      "Bash(npm install:*)",
+      "Bash(npx playwright install chromium)",
+      "Bash(npx -y @playwright/mcp)"
     ],
     "deny": [],
     "ask": []

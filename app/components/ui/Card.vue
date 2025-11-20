@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 });
 
 const cardClasses = computed(() => {
-  const classes = ['bg-white transition-all duration-200'];
+  const classes = ['bg-white dark:bg-gray-800 transition-all duration-200'];
 
   // Padding variants
   if (props.padding === 'sm') {
@@ -47,7 +47,7 @@ const cardClasses = computed(() => {
 
   // Border
   if (props.border) {
-    classes.push('border border-gray-200');
+    classes.push('border border-gray-200 dark:border-gray-700');
   }
 
   // Rounded corners
@@ -66,7 +66,7 @@ const cardClasses = computed(() => {
 
 const headerClasses = computed(() => {
   const classes = [];
-  
+
   if (props.padding === 'sm') {
     classes.push('-m-3 mb-3 p-3');
   } else if (props.padding === 'md') {
@@ -74,15 +74,15 @@ const headerClasses = computed(() => {
   } else if (props.padding === 'lg') {
     classes.push('-m-6 mb-6 p-6');
   }
-  
-  classes.push('border-b border-gray-200');
-  
+
+  classes.push('border-b border-gray-200 dark:border-gray-700');
+
   return classes.join(' ');
 });
 
 const footerClasses = computed(() => {
   const classes = [];
-  
+
   if (props.padding === 'sm') {
     classes.push('-m-3 mt-3 p-3');
   } else if (props.padding === 'md') {
@@ -90,9 +90,9 @@ const footerClasses = computed(() => {
   } else if (props.padding === 'lg') {
     classes.push('-m-6 mt-6 p-6');
   }
-  
-  classes.push('border-t border-gray-200');
-  
+
+  classes.push('border-t border-gray-200 dark:border-gray-700');
+
   return classes.join(' ');
 });
 </script>

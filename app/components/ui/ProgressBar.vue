@@ -61,7 +61,7 @@ const barClasses = computed(() => {
 });
 
 const containerClasses = computed(() => {
-  const classes = ['w-full bg-gray-200 rounded-full overflow-hidden'];
+  const classes = ['w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'];
 
   // Size variants
   if (props.size === 'sm') {
@@ -83,10 +83,10 @@ const containerClasses = computed(() => {
       v-if="label || showPercentage"
       class="flex items-center justify-between mb-2"
     >
-      <span v-if="label" class="text-sm font-medium text-gray-700">
+      <span v-if="label" class="text-sm font-medium text-gray-700 dark:text-gray-300">
         {{ label }}
       </span>
-      <span v-if="showPercentage" class="text-sm font-medium text-gray-600">
+      <span v-if="showPercentage" class="text-sm font-medium text-gray-600 dark:text-gray-400">
         {{ Math.round(percentage) }}%
       </span>
     </div>

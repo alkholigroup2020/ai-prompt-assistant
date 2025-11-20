@@ -321,6 +321,21 @@ export default defineNuxtPlugin((nuxtApp) => {
 - ✅ **In composables**: Use `useI18n()`, `useRouter()`, `useRoute()`
 - ❌ **In plugins**: Use `nuxtApp.$i18n`, `nuxtApp.$router`, etc.
 
+### 2. **Component Auto-Import Naming** ❌
+
+Nuxt auto-imports components from nested folders with **folder prefix**:
+
+```
+app/components/builder/RoleSelector.vue    → <BuilderRoleSelector />
+app/components/ui/Card.vue                 → <UiCard />
+app/components/TopLevel.vue                → <TopLevel />
+```
+
+**Bad** ❌: `<RoleSelector />` `<Card />` (won't work for nested components)
+**Good** ✅: `<BuilderRoleSelector />` `<UiCard />`
+
+**Rule**: Components in `app/components/[folder]/ComponentName.vue` must be referenced as `<FolderComponentName />`.
+
 ### Error Fixing Workflow
 
 1. **Run type check**: `npx nuxt typecheck`

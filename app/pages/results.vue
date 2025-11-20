@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Check if we have results -->
       <div v-if="!hasResult" class="max-w-2xl mx-auto">
         <!-- No Results State -->
-        <Card padding="lg" shadow="lg">
+        <UiCard padding="lg" shadow="lg">
           <div class="text-center py-12">
             <UIcon name="i-heroicons-exclamation-triangle" class="w-20 h-20 mx-auto text-gray-400 dark:text-gray-600 mb-6" />
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
@@ -23,7 +23,7 @@
               {{ t('results.noResults.goToBuilder', 'Go to Prompt Builder') }}
             </UButton>
           </div>
-        </Card>
+        </UiCard>
       </div>
 
       <!-- Results Content -->
@@ -43,7 +43,7 @@
 
         <!-- Quality Score Section -->
         <div class="max-w-4xl mx-auto">
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -62,7 +62,7 @@
             </template>
 
             <div class="flex flex-col items-center py-6">
-              <QualityScore
+              <BuilderQualityScore
                 :score="qualityScore"
                 size="lg"
                 :show-label="true"
@@ -71,12 +71,12 @@
                 {{ t('results.qualityScore.description', 'This score reflects the overall quality and effectiveness of your enhanced prompt.') }}
               </p>
             </div>
-          </Card>
+          </UiCard>
         </div>
 
         <!-- Action Buttons Section -->
         <div class="max-w-4xl mx-auto">
-          <ActionButtons
+          <ResultsActionButtons
             :enhanced-prompt="enhancedPrompt"
             :original-input="originalInput"
             :response="enhancementResponse"
@@ -87,7 +87,7 @@
         <!-- Comparison View - Lazy Loaded -->
         <div class="max-w-6xl mx-auto">
           <ClientOnly>
-            <LazyComparison
+            <LazyResultsComparison
               :original-prompt="originalPrompt"
               :enhanced-prompt="enhancedPrompt"
               :show-differences="true"
@@ -101,7 +101,7 @@
         <!-- Improvements List - Lazy Loaded -->
         <div class="max-w-4xl mx-auto">
           <ClientOnly>
-            <LazyImprovementsList
+            <LazyResultsImprovementsList
               :improvements="improvements"
               :show-categories="true"
               :expandable="true"
@@ -115,7 +115,7 @@
         <!-- Alternative Versions - Lazy Loaded -->
         <div v-if="alternativeVersions" class="max-w-4xl mx-auto">
           <ClientOnly>
-            <LazyAlternativeVersions
+            <LazyResultsAlternativeVersions
               :versions="alternativeVersions"
             />
             <template #fallback>
@@ -126,7 +126,7 @@
 
         <!-- Additional Actions -->
         <div class="max-w-4xl mx-auto">
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div class="flex items-center gap-3">
                 <UIcon name="i-heroicons-arrow-path" class="w-6 h-6 text-gray-600 dark:text-gray-400" />
@@ -161,7 +161,7 @@
                 </UButton>
               </div>
             </div>
-          </Card>
+          </UiCard>
         </div>
 
         <!-- Helpful Tips -->
@@ -242,8 +242,10 @@ useHead({
 // Get original input from form store
 const originalInput = computed<FormInput>(() => formStore.formData)
 
-// Get enhancement response
-const enhancementResponse = computed(() => enhancementState.result)
+// Get enhancement response (cast to remove readonly constraint)
+const enhancementResponse = computed(() =>
+  enhancementState.result as unknown as import('~/types').EnhancementResponse | undefined
+)
 
 // Get original prompt text for comparison
 const originalPrompt = computed(() => enhancementState.originalPrompt)

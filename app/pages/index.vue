@@ -96,7 +96,7 @@ const handleTemplateClick = (templateId: string): void => {
       id="hero"
       class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-emerald-900 text-white"
     >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
         <div class="text-center">
           <!-- Animated Icon -->
           <div class="mb-6 sm:mb-8 flex justify-center">
@@ -176,7 +176,7 @@ const handleTemplateClick = (templateId: string): void => {
 
     <!-- Value Propositions Section -->
     <section id="value-props" class="bg-white py-12 sm:py-16 md:py-20 lg:py-24 dark:bg-gray-900">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="mb-8 sm:mb-10 md:mb-12 text-center">
           <h2
@@ -284,7 +284,7 @@ const handleTemplateClick = (templateId: string): void => {
 
     <!-- How It Works Section -->
     <section id="how-it-works" class="bg-gray-50 py-16 dark:bg-gray-800 sm:py-24">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto max-w-7xl px-4">
         <!-- Section Header -->
         <div class="mb-12 text-center">
           <h2
@@ -408,7 +408,7 @@ const handleTemplateClick = (templateId: string): void => {
 
     <!-- Popular Templates Section -->
     <section id="templates-preview" class="bg-white py-16 dark:bg-gray-900 sm:py-24">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto max-w-7xl px-4">
         <!-- Section Header -->
         <div class="mb-12 flex items-center justify-between">
           <div>
@@ -462,7 +462,7 @@ const handleTemplateClick = (templateId: string): void => {
       id="final-cta"
       class="bg-gradient-to-r from-emerald-600 to-emerald-700 py-16 text-white dark:from-emerald-700 dark:to-emerald-800"
     >
-      <div class="container mx-auto px-4 text-center">
+      <div class="container mx-auto max-w-7xl px-4 text-center">
         <h2 class="mb-4 text-3xl font-bold sm:text-4xl">
           {{ t('landing.finalCta.title') }}
         </h2>

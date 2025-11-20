@@ -149,7 +149,7 @@ const sizeClasses = {
           <div
             ref="modalRef"
             :class="[
-              'bg-white rounded-lg shadow-xl w-full',
+              'bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full',
               sizeClasses[size],
               'transform transition-all'
             ]"
@@ -158,14 +158,14 @@ const sizeClasses = {
             <!-- Header -->
             <div
               v-if="title || showClose || $slots.header"
-              class="flex items-center justify-between p-6 border-b border-gray-200"
+              class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700"
             >
               <div class="flex-1">
                 <slot name="header">
                   <h3
                     v-if="title"
                     id="modal-title"
-                    class="text-xl font-semibold text-gray-900"
+                    class="text-xl font-semibold text-gray-900 dark:text-white"
                   >
                     {{ title }}
                   </h3>
@@ -176,7 +176,7 @@ const sizeClasses = {
               <button
                 v-if="showClose"
                 type="button"
-                class="ml-4 text-gray-400 hover:text-gray-600 transition-colors"
+                class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                 aria-label="Close modal"
                 @click="handleClose"
               >
@@ -205,7 +205,7 @@ const sizeClasses = {
             <!-- Footer -->
             <div
               v-if="$slots.footer"
-              class="flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50"
+              class="flex items-center justify-end gap-3 p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
             >
               <slot name="footer" />
             </div>

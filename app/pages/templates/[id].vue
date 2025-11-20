@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
       <!-- Loading State -->
       <div v-if="loading" class="flex items-center justify-center py-16">
         <div class="text-center">
@@ -32,7 +32,7 @@
 
       <!-- Template Detail - Lazy Loaded -->
       <ClientOnly>
-        <LazyTemplateDetail
+        <LazyTemplatesTemplateDetail
           v-if="template"
           :template="template"
           @apply="handleApplyTemplate"

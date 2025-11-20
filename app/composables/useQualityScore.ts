@@ -1,10 +1,22 @@
 import type { FormInput, QualityScoreBreakdown } from '~/types'
 
+export interface Suggestion {
+  id: string
+  type: 'critical' | 'important' | 'minor'
+  category: 'clarity' | 'specificity' | 'context' | 'structure' | 'completeness'
+  message: string
+  action?: {
+    label: string
+    field: string
+    value: string
+  }
+}
+
 interface QualityAnalysis {
   score: number
   breakdown: QualityScoreBreakdown
   completeness: number
-  suggestions: string[]
+  suggestions: Suggestion[]
   isComplete: boolean
 }
 
@@ -227,56 +239,112 @@ export function useQualityScore() {
     input: FormInput,
     breakdown: QualityScoreBreakdown,
     completeness: number
-  ): string[] {
-    const suggestions: string[] = []
+  ): Suggestion[] {
+    const suggestions: Suggestion[] = []
+    let suggestionId = 1
 
     // Clarity suggestions
     if (breakdown.clarity < 0.7) {
       if (!input.role || input.role.length < 3) {
-        suggestions.push('Add a clear role to improve clarity')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'important',
+          category: 'clarity',
+          message: 'Add a clear role to improve clarity'
+        })
       }
       if (!input.audience || input.audience.length < 3) {
-        suggestions.push('Specify your target audience for better results')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'important',
+          category: 'clarity',
+          message: 'Specify your target audience for better results'
+        })
       }
       if (!input.tone) {
-        suggestions.push('Select a tone to guide the AI\'s response style')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'clarity',
+          message: 'Select a tone to guide the AI\'s response style'
+        })
       }
       if (!input.outputFormat) {
-        suggestions.push('Choose an output format to structure the response')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'clarity',
+          message: 'Choose an output format to structure the response'
+        })
       }
     }
 
     // Specificity suggestions
     if (breakdown.specificity < 0.7) {
       if (!input.task || input.task.length < 50) {
-        suggestions.push('Add more details to your task description')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'critical',
+          category: 'specificity',
+          message: 'Add more details to your task description'
+        })
       }
       if (!input.constraints || input.constraints.length === 0) {
-        suggestions.push('Add constraints to better define the scope')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'specificity',
+          message: 'Add constraints to better define the scope'
+        })
       }
       if (!input.examples) {
-        suggestions.push('Include examples to clarify your expectations')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'specificity',
+          message: 'Include examples to clarify your expectations'
+        })
       }
     }
 
     // Context suggestions
     if (breakdown.context < 0.7) {
       if (!input.context || input.context.length < 50) {
-        suggestions.push('Provide additional context or background information')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'context',
+          message: 'Provide additional context or background information'
+        })
       }
       if (!input.examples || input.examples.length < 50) {
-        suggestions.push('Add more detailed examples to improve context')
+        suggestions.push({
+          id: `suggestion-${suggestionId++}`,
+          type: 'minor',
+          category: 'context',
+          message: 'Add more detailed examples to improve context'
+        })
       }
     }
 
     // Structure suggestions
     if (breakdown.structure < 0.7) {
-      suggestions.push('Consider organizing your task with bullet points or numbering')
+      suggestions.push({
+        id: `suggestion-${suggestionId++}`,
+        type: 'minor',
+        category: 'structure',
+        message: 'Consider organizing your task with bullet points or numbering'
+      })
     }
 
     // Completeness suggestions
     if (completeness < 80) {
-      suggestions.push('Fill in more optional fields for a comprehensive prompt')
+      suggestions.push({
+        id: `suggestion-${suggestionId++}`,
+        type: 'minor',
+        category: 'completeness',
+        message: 'Fill in more optional fields for a comprehensive prompt'
+      })
     }
 
     // Limit to 5 most important suggestions

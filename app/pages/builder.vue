@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto max-w-7xl px-4">
       <!-- Page Header -->
       <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -21,7 +21,7 @@
             {{ completionPercentage }}%
           </span>
         </div>
-        <ProgressBar
+        <UiProgressBar
           :value="completionPercentage"
           color="primary"
           size="md"
@@ -35,7 +35,7 @@
         <!-- Left Column: Form Sections -->
         <div class="space-y-6">
           <!-- Basic Information Section -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-emerald-700" />
@@ -46,14 +46,14 @@
             </template>
 
             <div class="space-y-4">
-              <RoleSelector />
-              <AudienceSelector />
-              <TaskInput />
+              <BuilderRoleSelector />
+              <BuilderAudienceSelector />
+              <BuilderTaskInput />
             </div>
-          </Card>
+          </UiCard>
 
           <!-- Style & Format Section -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-paint-brush" class="w-5 h-5 text-emerald-700" />
@@ -64,13 +64,13 @@
             </template>
 
             <div class="space-y-4">
-              <ToneSelector />
-              <OutputFormatSelector />
+              <BuilderToneSelector />
+              <BuilderOutputFormatSelector />
             </div>
-          </Card>
+          </UiCard>
 
           <!-- Constraints Section -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-emerald-700" />
@@ -80,11 +80,11 @@
               </div>
             </template>
 
-            <ConstraintsSelector />
-          </Card>
+            <BuilderConstraintsSelector />
+          </UiCard>
 
           <!-- Advanced Options Section -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-adjustments-horizontal" class="w-5 h-5 text-emerald-700" />
@@ -94,14 +94,14 @@
               </div>
             </template>
 
-            <AdvancedOptions />
-          </Card>
+            <BuilderAdvancedOptions />
+          </UiCard>
         </div>
 
         <!-- Right Column: Live Preview Panel -->
         <div class="space-y-6 lg:sticky lg:top-8 lg:self-start">
           <!-- Quality Score Display -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -120,20 +120,20 @@
             </template>
 
             <div class="flex flex-col items-center space-y-4">
-              <QualityScore
+              <BuilderQualityScore
                 :score="qualityScore"
                 size="lg"
                 :show-label="true"
               />
 
               <div class="w-full">
-                <QualityBreakdown :breakdown="scoreBreakdown" />
+                <BuilderQualityBreakdown :breakdown="scoreBreakdown" />
               </div>
             </div>
-          </Card>
+          </UiCard>
 
           <!-- Real-time Suggestions -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-light-bulb" class="w-5 h-5 text-emerald-700" />
@@ -143,14 +143,14 @@
               </div>
             </template>
 
-            <Suggestions
+            <BuilderSuggestions
               :suggestions="suggestions"
               @apply="applySuggestion"
             />
-          </Card>
+          </UiCard>
 
           <!-- Live Preview -->
-          <Card padding="lg" shadow="md">
+          <UiCard padding="lg" shadow="md">
             <template #header>
               <div class="flex items-center gap-2">
                 <UIcon name="i-heroicons-eye" class="w-5 h-5 text-emerald-700" />
@@ -175,7 +175,7 @@
                 <span>{{ t('builder.preview.chars') }}: {{ charCount }}</span>
               </div>
             </template>
-          </Card>
+          </UiCard>
 
           <!-- Enhancement Buttons -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
@@ -437,9 +437,9 @@ const handleSaveDraft = () => {
   })
 }
 
-const applySuggestion = (suggestion: { field?: string; value?: string }) => {
-  if (suggestion.field && suggestion.value) {
-    formStore.updateField(suggestion.field as keyof typeof formStore.formData, suggestion.value)
+const applySuggestion = (suggestion: { action?: { field: string; value: string } }) => {
+  if (suggestion.action?.field && suggestion.action?.value) {
+    formStore.updateField(suggestion.action.field as keyof typeof formStore.formData, suggestion.action.value)
     toast.add({
       title: t('builder.suggestions.applied'),
       description: t('builder.suggestions.appliedDescription'),

@@ -53,15 +53,15 @@ const buttonClasses = computed(() => {
     );
   } else if (props.variant === 'outline') {
     classes.push(
-      'border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-50',
+      'border-2 border-emerald-500 dark:border-emerald-400 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950',
       'focus:ring-emerald-500',
-      'active:bg-emerald-100'
+      'active:bg-emerald-100 dark:active:bg-emerald-900'
     );
   } else if (props.variant === 'ghost') {
     classes.push(
-      'text-gray-700 hover:bg-gray-100',
+      'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
       'focus:ring-gray-300',
-      'active:bg-gray-200'
+      'active:bg-gray-200 dark:active:bg-gray-700'
     );
   }
 

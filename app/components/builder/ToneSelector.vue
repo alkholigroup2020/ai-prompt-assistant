@@ -229,4 +229,4 @@ const handleKeyDown = (event: KeyboardEvent, currentIndex: number) => {
     (buttons[newIndex] as HTMLElement).focus();
   }
 };
-
+</script>

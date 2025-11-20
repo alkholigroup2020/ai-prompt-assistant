@@ -13,7 +13,7 @@
 
       <!-- Template Grid Component - Lazy Loaded -->
       <ClientOnly>
-        <LazyTemplateGrid
+        <LazyTemplatesTemplateGrid
           :templates="templates"
           :loading="loading"
           :page-size="12"
@@ -24,7 +24,7 @@
         <template #fallback>
           <!-- Loading skeleton while component loads -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <TemplateCardSkeleton v-for="i in 6" :key="i" />
+            <TemplatesTemplateCardSkeleton v-for="i in 6" :key="i" />
           </div>
         </template>
       </ClientOnly>
@@ -72,8 +72,8 @@ const router = useRouter();
 const toast = useToast();
 const { state, fetchTemplates } = useTemplates();
 
-// Template state
-const templates = computed(() => state.templates);
+// Template state (cast readonly to mutable for component compatibility)
+const templates = computed(() => state.templates as unknown as PromptTemplate[]);
 const loading = computed(() => state.loading);
 
 // Load templates on mount
