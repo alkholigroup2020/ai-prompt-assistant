@@ -6,7 +6,7 @@
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           {{ t('builder.title') }}
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400">
+        <p class="text-lg text-gray-600 dark:text-stone-300">
           {{ t('builder.subtitle') }}
         </p>
       </div>
@@ -120,11 +120,7 @@
             </template>
 
             <div class="flex flex-col items-center space-y-4">
-              <BuilderQualityScore
-                :score="qualityScore"
-                size="lg"
-                :show-label="true"
-              />
+              <BuilderQualityScore :score="qualityScore" size="lg" :show-label="true" />
 
               <div class="w-full">
                 <BuilderQualityBreakdown :breakdown="scoreBreakdown" />
@@ -143,10 +139,7 @@
               </div>
             </template>
 
-            <BuilderSuggestions
-              :suggestions="suggestions"
-              @apply="applySuggestion"
-            />
+            <BuilderSuggestions :suggestions="suggestions" @apply="applySuggestion" />
           </UiCard>
 
           <!-- Live Preview -->
@@ -170,7 +163,9 @@
             </div>
 
             <template #footer>
-              <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <div
+                class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400"
+              >
                 <span>{{ t('builder.preview.words') }}: {{ wordCount }}</span>
                 <span>{{ t('builder.preview.chars') }}: {{ charCount }}</span>
               </div>
@@ -187,7 +182,9 @@
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
               :aria-busy="isEnhancing"
-              :aria-label="isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')"
+              :aria-label="
+                isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
+              "
               @click="handleEnhance('quick')"
             >
               <template #leading>
@@ -204,7 +201,9 @@
               :loading="isEnhancing"
               :disabled="!formStore.isValid || isEnhancing"
               :aria-busy="isEnhancing"
-              :aria-label="isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.deepEnhance')"
+              :aria-label="
+                isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.deepEnhance')
+              "
               @click="handleEnhance('detailed')"
             >
               <template #leading>
@@ -250,17 +249,37 @@
       <!-- Keyboard Shortcuts Help -->
       <div class="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
         <div class="flex items-start gap-3">
-          <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+          <UIcon
+            name="i-heroicons-information-circle"
+            class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
+          />
           <div class="flex-1">
             <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
               {{ t('builder.shortcuts.title') }}
             </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300">
-              <div><kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd> {{ t('builder.shortcuts.quickEnhance') }}</div>
-              <div><kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd> {{ t('builder.shortcuts.deepEnhance') }}</div>
-              <div><kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd> {{ t('builder.shortcuts.saveDraft') }}</div>
-              <div><kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd> {{ t('builder.shortcuts.reset') }}</div>
-              <div><kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd> {{ t('builder.shortcuts.clearFocus') }}</div>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
+            >
+              <div>
+                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
+                {{ t('builder.shortcuts.quickEnhance') }}
+              </div>
+              <div>
+                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
+                {{ t('builder.shortcuts.deepEnhance') }}
+              </div>
+              <div>
+                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
+                {{ t('builder.shortcuts.saveDraft') }}
+              </div>
+              <div>
+                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
+                {{ t('builder.shortcuts.reset') }}
+              </div>
+              <div>
+                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
+                {{ t('builder.shortcuts.clearFocus') }}
+              </div>
             </div>
           </div>
         </div>
@@ -281,6 +300,7 @@ import { useLocalStorage } from '~/composables/useLocalStorage'
 // Composables
 const { t } = useI18n()
 const router = useRouter()
+const localePath = useLocalePath()
 const toast = useToast()
 const formStore = useFormStore()
 const { enhance, state: enhancementState, enhancedPrompt } = useEnhancement()
@@ -293,13 +313,13 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: computed(() => t('builder.meta.description'))
+      content: computed(() => t('builder.meta.description')),
     },
     {
       name: 'keywords',
-      content: computed(() => t('builder.meta.keywords'))
-    }
-  ]
+      content: computed(() => t('builder.meta.keywords')),
+    },
+  ],
 })
 
 // Auto-save status
@@ -363,7 +383,10 @@ const previewText = computed(() => {
 // Word and character count
 const wordCount = computed(() => {
   if (!previewText.value) return 0
-  return previewText.value.trim().split(/\s+/).filter(word => word.length > 0).length
+  return previewText.value
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length
 })
 
 const charCount = computed(() => {
@@ -377,7 +400,7 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
       title: t('builder.validation.error'),
       description: t('builder.validation.fixErrors'),
       color: 'primary',
-      icon: 'i-heroicons-exclamation-triangle'
+      icon: 'i-heroicons-exclamation-triangle',
     })
     return
   }
@@ -394,18 +417,18 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
         title: t('builder.enhancement.success'),
         description: t('builder.enhancement.successDescription'),
         color: 'emerald',
-        icon: 'i-heroicons-check-circle'
+        icon: 'i-heroicons-check-circle',
       })
 
       // Navigate to results page
-      router.push('/results')
+      router.push(localePath('/results'))
     }
   } catch {
     toast.add({
       title: t('builder.enhancement.error'),
       description: t('builder.enhancement.errorDescription'),
       color: 'primary',
-      icon: 'i-heroicons-x-circle'
+      icon: 'i-heroicons-x-circle',
     })
   }
 }
@@ -417,7 +440,7 @@ const handleReset = () => {
       title: t('builder.actions.resetSuccess'),
       description: t('builder.actions.resetSuccessDescription'),
       color: 'primary',
-      icon: 'i-heroicons-arrow-path'
+      icon: 'i-heroicons-arrow-path',
     })
   }
 }
@@ -426,25 +449,28 @@ const handleSaveDraft = () => {
   const draftData = {
     draft: formStore.formData,
     lastSaved: new Date(),
-    autoSaved: false
+    autoSaved: false,
   }
   saveDraft(draftData)
   toast.add({
     title: t('builder.actions.draftSaved'),
     description: t('builder.actions.draftSavedDescription'),
     color: 'emerald',
-    icon: 'i-heroicons-bookmark'
+    icon: 'i-heroicons-bookmark',
   })
 }
 
 const applySuggestion = (suggestion: { action?: { field: string; value: string } }) => {
   if (suggestion.action?.field && suggestion.action?.value) {
-    formStore.updateField(suggestion.action.field as keyof typeof formStore.formData, suggestion.action.value)
+    formStore.updateField(
+      suggestion.action.field as keyof typeof formStore.formData,
+      suggestion.action.value
+    )
     toast.add({
       title: t('builder.suggestions.applied'),
       description: t('builder.suggestions.appliedDescription'),
       color: 'emerald',
-      icon: 'i-heroicons-check-circle'
+      icon: 'i-heroicons-check-circle',
     })
   }
 }
@@ -519,7 +545,7 @@ onMounted(() => {
   startAutoSave(() => ({
     draft: formStore.formData,
     lastSaved: new Date(),
-    autoSaved: true
+    autoSaved: true,
   }))
 
   // Add keyboard shortcut listener

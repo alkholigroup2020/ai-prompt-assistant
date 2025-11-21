@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
 const router = useRouter()
+const localePath = useLocalePath()
 
 // SEO meta tags
 useHead({
@@ -77,15 +78,15 @@ const popularTemplates = computed(() => [
 
 // Navigation handlers
 const handleGetStarted = (): void => {
-  router.push('/builder')
+  router.push(localePath('/builder'))
 }
 
 const handleViewTemplates = (): void => {
-  router.push('/templates')
+  router.push(localePath('/templates'))
 }
 
 const handleTemplateClick = (templateId: string): void => {
-  router.push(`/templates/${templateId}`)
+  router.push(localePath(`/templates/${templateId}`))
 }
 </script>
 

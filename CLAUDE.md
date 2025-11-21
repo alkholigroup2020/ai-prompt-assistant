@@ -336,6 +336,44 @@ app/components/TopLevel.vue                → <TopLevel />
 
 **Rule**: Components in `app/components/[folder]/ComponentName.vue` must be referenced as `<FolderComponentName />`.
 
+### 3. **Always Use `localePath()` for Navigation** ❌
+
+**CRITICAL**: All navigation links must use `localePath()` to maintain the current language when navigating between pages.
+
+**Problem**: Using plain paths causes the app to switch to the default language (English) when navigating.
+
+**Bad** ❌:
+```vue
+<!-- Components -->
+<NuxtLink to="/builder">Builder</NuxtLink>
+
+<!-- JavaScript -->
+router.push('/templates')
+await navigateTo('/builder')
+```
+
+**Good** ✅:
+```vue
+<!-- Components -->
+<NuxtLink :to="localePath('/builder')">Builder</NuxtLink>
+
+<!-- JavaScript -->
+const localePath = useLocalePath()
+router.push(localePath('/templates'))
+await navigateTo(localePath('/builder'))
+```
+
+**Where to use**:
+- ✅ All `<NuxtLink>` components (`:to="localePath('/path')"`)
+- ✅ All `router.push()` calls
+- ✅ All `navigateTo()` calls
+- ✅ Logo/home links
+
+**Why This Matters**:
+- Prevents language switching when navigating between pages
+- Maintains user's language preference throughout the app
+- Required for proper bilingual (EN/AR) support
+
 ### Error Fixing Workflow
 
 1. **Run type check**: `npx nuxt typecheck`

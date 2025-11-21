@@ -212,6 +212,7 @@ import type { FormInput } from '~/types'
 // Composables
 const { t } = useI18n()
 const router = useRouter()
+const localePath = useLocalePath()
 const toast = useToast()
 const formStore = useFormStore()
 const {
@@ -255,13 +256,13 @@ const enhancementLevel = computed(() => originalInput.value.enhancementLevel || 
 
 // Navigation handlers
 const navigateToBuilder = (): void => {
-  router.push('/builder')
+  router.push(localePath('/builder'))
 }
 
 const createNewPrompt = (): void => {
   // Reset form and navigate to builder
   formStore.resetForm()
-  router.push('/builder')
+  router.push(localePath('/builder'))
 
   toast.add({
     title: t('results.newPrompt.title', 'Ready for New Prompt'),
@@ -272,7 +273,7 @@ const createNewPrompt = (): void => {
 }
 
 const navigateToTemplates = (): void => {
-  router.push('/templates')
+  router.push(localePath('/templates'))
 }
 
 // Save to history on mount

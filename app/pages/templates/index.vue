@@ -6,7 +6,7 @@
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
           {{ $t('templates.title') }}
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400">
+        <p class="text-lg text-gray-600 dark:text-stone-300">
           {{ $t('templates.description') }}
         </p>
       </div>
@@ -33,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useTemplates } from '~/composables/useTemplates';
-import { useToast } from '#ui/composables/useToast';
-import type { PromptTemplate } from '~/types/template';
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useTemplates } from '~/composables/useTemplates'
+import { useToast } from '#ui/composables/useToast'
+import type { PromptTemplate } from '~/types/template'
 
 // SEO Meta Tags
 useHead({
@@ -45,11 +45,13 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Browse our collection of 20+ ready-to-use AI prompt templates. Find templates for business, technical writing, creative content, data analysis, and more.',
+      content:
+        'Browse our collection of 20+ ready-to-use AI prompt templates. Find templates for business, technical writing, creative content, data analysis, and more.',
     },
     {
       name: 'keywords',
-      content: 'AI prompt templates, ChatGPT templates, Claude templates, prompt library, business templates, technical templates',
+      content:
+        'AI prompt templates, ChatGPT templates, Claude templates, prompt library, business templates, technical templates',
     },
     // Open Graph
     { property: 'og:title', content: 'Templates - AI Prompt Assistant' },
@@ -66,28 +68,29 @@ useHead({
       content: 'Browse our collection of 20+ ready-to-use AI prompt templates.',
     },
   ],
-});
+})
 
-const router = useRouter();
-const toast = useToast();
-const { state, fetchTemplates } = useTemplates();
+const router = useRouter()
+const localePath = useLocalePath()
+const toast = useToast()
+const { state, fetchTemplates } = useTemplates()
 
 // Template state (cast readonly to mutable for component compatibility)
-const templates = computed(() => state.templates as unknown as PromptTemplate[]);
-const loading = computed(() => state.loading);
+const templates = computed(() => state.templates as unknown as PromptTemplate[])
+const loading = computed(() => state.loading)
 
 // Load templates on mount
 onMounted(async () => {
   try {
-    await fetchTemplates();
+    await fetchTemplates()
   } catch {
     toast.add({
       title: 'Error',
       description: 'Failed to load templates. Please try again.',
       color: 'primary',
-    });
+    })
   }
-});
+})
 
 /**
  * Handle use template - Apply template to form and navigate to builder
@@ -95,35 +98,35 @@ onMounted(async () => {
 const handleUseTemplate = async (template: PromptTemplate) => {
   try {
     // Navigate to template detail page for customization
-    await router.push(`/templates/${template.id}`);
+    await router.push(localePath(`/templates/${template.id}`))
   } catch {
     toast.add({
       title: 'Error',
       description: 'Failed to load template. Please try again.',
       color: 'primary',
-    });
+    })
   }
-};
+}
 
 /**
  * Handle view details - Navigate to template detail page
  */
 const handleViewDetails = async (template: PromptTemplate) => {
   try {
-    await router.push(`/templates/${template.id}`);
+    await router.push(localePath(`/templates/${template.id}`))
   } catch {
     toast.add({
       title: 'Error',
       description: 'Failed to load template details. Please try again.',
       color: 'primary',
-    });
+    })
   }
-};
+}
 
 /**
  * Handle template click - Navigate to detail page
  */
 const handleTemplateClick = async (template: PromptTemplate) => {
-  await handleViewDetails(template);
-};
+  await handleViewDetails(template)
+}
 </script>

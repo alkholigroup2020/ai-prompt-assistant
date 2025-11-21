@@ -19,7 +19,7 @@
           Failed to load template. The template may not exist or there was a server error.
         </p>
         <div class="flex gap-3">
-          <UButton color="neutral" variant="outline" @click="router.push('/templates')">
+          <UButton color="neutral" variant="outline" @click="router.push(localePath('/templates'))">
             <UIcon name="i-heroicons-arrow-left" class="w-5 h-5" />
             {{ $t('templates.detail.backToGallery') }}
           </UButton>
@@ -63,6 +63,7 @@ import { ToneOption } from '~/types/form';
 
 const route = useRoute();
 const router = useRouter();
+const localePath = useLocalePath();
 const toast = useToast();
 const formStore = useFormStore();
 const { state, fetchTemplate } = useTemplates();
@@ -180,7 +181,7 @@ const handleApplyTemplate = async (
     });
 
     // Navigate to builder page
-    await router.push('/builder');
+    await router.push(localePath('/builder'));
   } catch (err) {
     console.error('Failed to apply template:', err);
     toast.add({
@@ -195,6 +196,6 @@ const handleApplyTemplate = async (
  * Handle back button - Navigate to templates page
  */
 const handleBack = async (): Promise<void> => {
-  await router.push('/templates');
+  await router.push(localePath('/templates'));
 };
 </script>

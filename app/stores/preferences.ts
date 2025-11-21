@@ -216,17 +216,8 @@ export const usePreferencesStore = defineStore('preferences', {
      * Toggle theme between light and dark
      */
     toggleTheme(): void {
-      const currentTheme = this.preferences.theme;
-      let newTheme: Theme;
-
-      if (currentTheme === 'light') {
-        newTheme = 'dark';
-      } else if (currentTheme === 'dark') {
-        newTheme = 'auto';
-      } else {
-        newTheme = 'light';
-      }
-
+      // Simple toggle between light and dark only
+      const newTheme: Theme = this.isDarkMode ? 'light' : 'dark';
       this.setTheme(newTheme);
     },
 

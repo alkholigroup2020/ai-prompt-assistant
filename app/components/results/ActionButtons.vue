@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useI18n();
 const router = useRouter();
+const localePath = useLocalePath();
 const toast = useToast();
 
 // State
@@ -134,7 +135,7 @@ const handleShare = async (): Promise<void> => {
  * Navigate to create a new prompt
  */
 const handleNewPrompt = (): void => {
-  router.push('/builder');
+  router.push(localePath('/builder'));
 };
 
 // Export menu options

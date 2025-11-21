@@ -160,6 +160,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const router = useRouter();
+const localePath = useLocalePath();
 const { t } = useI18n();
 
 // Determine error type based on status code
@@ -251,7 +252,7 @@ useHead(() => ({
  * Navigate to home page
  */
 const handleGoHome = async (): Promise<void> => {
-  await navigateTo('/');
+  await navigateTo(localePath('/'));
 };
 
 /**
@@ -261,7 +262,7 @@ const handleGoBack = (): void => {
   if (window.history.length > 1) {
     router.back();
   } else {
-    navigateTo('/');
+    navigateTo(localePath('/'));
   }
 };
 
@@ -276,14 +277,14 @@ const handleTryAgain = (): void => {
  * Navigate to templates page
  */
 const handleViewTemplates = async (): Promise<void> => {
-  await navigateTo('/templates');
+  await navigateTo(localePath('/templates'));
 };
 
 /**
  * Navigate to prompt builder
  */
 const handleStartBuilder = async (): Promise<void> => {
-  await navigateTo('/builder');
+  await navigateTo(localePath('/builder'));
 };
 
 // Clear error on unmount (Nuxt error handling)

@@ -1,28 +1,24 @@
 <template>
-  <header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-gray-800 dark:bg-gray-950/95">
-    <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+  <header
+    class="sticky shadow-md top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-gray-800 dark:bg-gray-950/95"
+  >
+    <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between">
       <!-- Logo and Branding -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 px-3">
         <NuxtLink
-          to="/"
+          :to="localePath('/')"
           class="flex items-center gap-2 text-xl font-bold text-navy-900 transition-colors hover:text-emerald-700 dark:text-white dark:hover:text-emerald-400"
           :aria-label="t('header.logoAria')"
         >
-          <svg
-            class="h-8 w-8 text-emerald-700"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <img
+            src="https://ik.imagekit.io/vrjsolbznpr/Group_Logos/AKG_29UglKTPUw.png?updatedAt=1749017913788"
+            alt="AKG Logo"
+            class="h-8 w-auto"
             aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-            />
-          </svg>
-          <span class="hidden sm:inline">{{ t('header.title') }}</span>
+          />
+          <span class="px-1 md:px-2 hidden sm:inline text-emerald-700 dark:text-white">{{
+            t('header.title')
+          }}</span>
         </NuxtLink>
       </div>
 
@@ -31,7 +27,7 @@
         <NuxtLink
           v-for="item in navigationItems"
           :key="item.to"
-          :to="item.to"
+          :to="localePath(item.to)"
           class="text-sm font-medium text-gray-700 transition-colors hover:text-emerald-700 dark:text-gray-300 dark:hover:text-emerald-400"
           :aria-current="isActive(item.to) ? 'page' : undefined"
         >
@@ -43,31 +39,31 @@
       <div class="flex items-center gap-2 sm:gap-3">
         <!-- Language Switcher -->
         <UButton
-          :icon="currentLocale === 'en' ? 'i-heroicons-language' : 'i-heroicons-language'"
+          :icon="'i-heroicons-language-20-solid'"
           color="neutral"
           variant="ghost"
           size="sm"
-          class="min-h-[44px] min-w-[44px] touch-manipulation"
+          class="header-action-btn min-h-[44px] min-w-[44px] touch-manipulation cursor-pointer !bg-transparent hover:!bg-transparent active:!bg-transparent focus:!bg-transparent"
           :aria-label="t('header.switchLanguage')"
           @click="toggleLanguage"
         >
           <span class="hidden sm:inline">{{ currentLocale.toUpperCase() }}</span>
         </UButton>
 
-        <!-- Theme Toggle (optional) -->
+        <!-- Theme Toggle -->
         <UButton
-          :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'"
-          color="neutral"
-          variant="ghost"
+          :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
           size="sm"
-          class="min-h-[44px] min-w-[44px] touch-manipulation"
+          color="neutral"
+          variant="link"
+          class="header-action-btn min-h-11 min-w-11 cursor-pointer bg-transparent! hover:bg-transparent! active:bg-transparent! focus:bg-transparent!"
           :aria-label="t('header.toggleTheme')"
           @click="toggleTheme"
         />
 
         <!-- Mobile Menu Button -->
         <UButton
-          :icon="mobileMenuOpen ? 'i-heroicons-x-mark' : 'i-heroicons-bars-3'"
+          :icon="mobileMenuOpen ? 'i-heroicons-x-mark-20-solid' : 'i-heroicons-bars-3-20-solid'"
           color="neutral"
           variant="ghost"
           size="sm"
@@ -96,7 +92,7 @@
           <NuxtLink
             v-for="item in navigationItems"
             :key="item.to"
-            :to="item.to"
+            :to="localePath(item.to)"
             class="rounded-md px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-emerald-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-emerald-400 min-h-[44px] flex items-center touch-manipulation"
             :aria-current="isActive(item.to) ? 'page' : undefined"
             @click="closeMobileMenu"
@@ -114,6 +110,7 @@ import { usePreferencesStore } from '~/stores/preferences'
 
 // i18n
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const router = useRouter()
 
@@ -134,7 +131,7 @@ const isDark = computed(() => preferencesStore.isDarkMode)
 const navigationItems = [
   { to: '/', label: 'nav.home' },
   { to: '/builder', label: 'nav.builder' },
-  { to: '/templates', label: 'nav.templates' }
+  { to: '/templates', label: 'nav.templates' },
 ]
 
 // Methods
@@ -172,9 +169,12 @@ const isActive = (path: string): boolean => {
 }
 
 // Close mobile menu on route change
-watch(() => route.path, () => {
-  closeMobileMenu()
-})
+watch(
+  () => route.path,
+  () => {
+    closeMobileMenu()
+  }
+)
 
 // Close mobile menu on escape key
 onMounted(() => {
@@ -197,11 +197,11 @@ header {
 }
 
 /* Active link styling */
-a[aria-current="page"] {
+a[aria-current='page'] {
   color: #16a34a;
 }
 
-:deep(.dark) a[aria-current="page"] {
+:deep(.dark) a[aria-current='page'] {
   color: #4ade80;
 }
 
@@ -210,5 +210,22 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid #16a34a;
   outline-offset: 2px;
+}
+
+/* Header action buttons - icon and text colors */
+.header-action-btn :deep(svg) {
+  color: #374151 !important; /* gray-700 for light mode */
+}
+
+.dark .header-action-btn :deep(svg) {
+  color: #d1d5db !important; /* gray-300 for dark mode */
+}
+
+.header-action-btn :deep(span) {
+  color: #374151 !important; /* gray-700 for light mode */
+}
+
+.dark .header-action-btn :deep(span) {
+  color: #d1d5db !important; /* gray-300 for dark mode */
 }
 </style>

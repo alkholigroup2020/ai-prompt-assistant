@@ -37,7 +37,7 @@
             <NuxtLink
               v-for="link in footerLinks"
               :key="link.to"
-              :to="link.to"
+              :to="localePath(link.to)"
               class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t(link.label) }}
@@ -74,13 +74,13 @@
               </svg>
             </a>
             <NuxtLink
-              to="/privacy"
+              :to="localePath('/privacy')"
               class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t('footer.privacyPolicy') }}
             </NuxtLink>
             <NuxtLink
-              to="/terms"
+              :to="localePath('/terms')"
               class="text-sm text-gray-600 transition-colors hover:text-emerald-700 dark:text-gray-400 dark:hover:text-emerald-400"
             >
               {{ t('footer.termsOfUse') }}
@@ -117,6 +117,7 @@
 <script setup lang="ts">
 // i18n
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 // RTL support
 const { iconFlipClass } = useRTL()
