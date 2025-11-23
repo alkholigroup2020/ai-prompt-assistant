@@ -43,8 +43,7 @@
       "headline": "Transform Your Ideas into Powerful AI Prompts",
       "subheadline": "Get better results from ChatGPT, Claude & Gemini by crafting precise, effective prompts in seconds.",
       "ctaStart": "Start Building",
-      "ctaTemplates": "View Templates",
-      "trust": "Free • No Login Required • Privacy Focused"
+      "ctaTemplates": "View Templates"
     },
     "valueProps": {
       "title": "Why Better Prompts Matter",
@@ -97,8 +96,8 @@
     },
     "finalCta": {
       "title": "Ready to Create Better AI Prompts?",
-      "subtitle": "Join Alkholi Group employees in creating more effective prompts for any AI tool. Start building now - it's free!",
-      "cta": "Start Building for Free"
+      "subtitle": "Join Alkholi Group employees in creating more effective prompts for any AI tool. Start building now!",
+      "cta": "Start Building"
     }
   },
   "common": {

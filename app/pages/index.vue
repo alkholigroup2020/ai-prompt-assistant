@@ -51,25 +51,25 @@ useHead({
 // Popular templates data (preview)
 const popularTemplates = computed(() => [
   {
-    id: 'email-reply',
+    id: 'email-reply-001',
     title: t('landing.templates.emailReply'),
     icon: 'envelope',
     category: 'business',
   },
   {
-    id: 'data-analysis',
+    id: 'data-analysis-001',
     title: t('landing.templates.dataAnalysis'),
     icon: 'chart-bar',
     category: 'analysis',
   },
   {
-    id: 'code-review',
+    id: 'code-review-001',
     title: t('landing.templates.codeReview'),
     icon: 'code-bracket',
     category: 'technical',
   },
   {
-    id: 'sales-pitch',
+    id: 'sales-pitch-001',
     title: t('landing.templates.salesPitch'),
     icon: 'presentation-chart-line',
     category: 'business',
@@ -120,56 +120,59 @@ const handleTemplateClick = (templateId: string): void => {
 
           <!-- Subheadline -->
           <p
-            class="mx-auto mb-6 sm:mb-8 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 px-4"
+            class="mx-auto mb-6 sm:mb-12 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 px-4"
           >
             {{ t('landing.hero.subheadline') }}
           </p>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row px-4">
-            <UButton
-              size="xl"
-              color="emerald"
-              variant="solid"
-              class="w-full sm:w-auto min-h-[44px]"
+          <div class="flex flex-col items-center justify-center gap-4 sm:gap-5 sm:flex-row px-4">
+            <!-- Primary CTA: Start Building -->
+            <button
+              type="button"
+              class="cursor-pointer group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 overflow-hidden px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 text-white font-semibold text-lg shadow-lg shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-400/60 transition-all duration-300 hover:scale-105 active:scale-95"
               @click="handleGetStarted"
             >
-              <template #leading>
-                <UIcon name="i-heroicons-rocket-launch" />
-              </template>
-              {{ t('landing.hero.ctaStart') }}
-            </UButton>
+              <!-- Icon -->
+              <UIcon
+                name="i-heroicons-rocket-launch"
+                class="relative z-10 h-6 w-6 transition-transform group-hover:rotate-12"
+              />
+              <!-- Text -->
+              <span class="relative z-10 whitespace-nowrap">{{ t('landing.hero.ctaStart') }}</span>
+              <!-- Shine effect -->
+              <div
+                class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
+              />
+            </button>
 
-            <UButton
-              size="xl"
-              color="neutral"
-              variant="outline"
-              class="w-full sm:w-auto min-h-[44px]"
+            <!-- Secondary CTA: View Templates -->
+            <button
+              type="button"
+              class="cursor-pointer group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 backdrop-blur-md text-white font-semibold text-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105 active:scale-95"
               @click="handleViewTemplates"
             >
-              <template #leading>
-                <UIcon name="i-heroicons-squares-2x2" />
-              </template>
-              {{ t('landing.hero.ctaTemplates') }}
-            </UButton>
-          </div>
-
-          <!-- Trust Indicators -->
-          <div class="mt-12 flex items-center justify-center gap-2 text-sm text-gray-300">
-            <UIcon name="i-heroicons-shield-check" class="h-5 w-5" />
-            <span>{{ t('landing.hero.trust') }}</span>
+              <!-- Button content -->
+              <div class="relative flex items-center justify-center gap-3">
+                <UIcon
+                  name="i-heroicons-squares-2x2"
+                  class="h-6 w-6 group-hover:rotate-6 transition-transform duration-300"
+                />
+                <span class="whitespace-nowrap">{{ t('landing.hero.ctaTemplates') }}</span>
+              </div>
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- Decorative Elements -->
-      <div class="absolute inset-0 -z-10 overflow-hidden">
-        <div
-          class="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-3xl"
-        />
-        <div
-          class="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-navy-500/10 blur-3xl"
-        />
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+          <div
+            class="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-3xl"
+          />
+          <div
+            class="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-navy-500/10 blur-3xl"
+          />
+        </div>
       </div>
     </section>
 
@@ -266,108 +269,194 @@ const handleTemplateClick = (templateId: string): void => {
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="bg-gray-50 py-16 dark:bg-gray-800 sm:py-24">
-      <div class="container mx-auto max-w-7xl px-4">
+    <section
+      id="how-it-works"
+      class="relative overflow-hidden bg-gray-900/50 py-16 backdrop-blur-sm dark:bg-gray-950/80 sm:py-24"
+    >
+      <!-- Background decoration -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute left-1/4 top-10 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div
+          class="absolute right-1/4 bottom-10 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl"
+        />
+        <!-- Grid pattern overlay -->
+        <div
+          class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000,transparent)]"
+        />
+      </div>
+
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="mb-12 text-center">
-          <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             {{ t('landing.howItWorks.title') }}
           </h2>
-          <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+          <p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
             {{ t('landing.howItWorks.subtitle') }}
           </p>
         </div>
 
-        <!-- Steps -->
-        <div class="grid gap-8 md:grid-cols-3">
-          <!-- Step 1 -->
-          <div class="relative text-center">
-            <div
-              class="mb-6 flex justify-center rounded-full bg-emerald-100 p-6 dark:bg-emerald-900/30"
-            >
-              <UIcon
-                name="i-heroicons-pencil-square"
-                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
-              />
-            </div>
-            <div
-              class="mb-4 inline-block rounded-full bg-emerald-500 px-4 py-1 text-sm font-semibold text-white"
-            >
-              {{ t('landing.howItWorks.step') }} 1
-            </div>
-            <h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-              {{ t('landing.howItWorks.step1.title') }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {{ t('landing.howItWorks.step1.description') }}
-            </p>
+        <!-- Steps Container -->
+        <div class="relative mx-auto max-w-6xl">
+          <!-- Steps Grid -->
+          <div class="grid gap-12 lg:grid-cols-3 lg:gap-8 px-3 sm:px-24 md:px-36 lg:px-0">
+            <!-- Step 1: Tell Us Your Goal -->
+            <div class="group relative flex flex-col">
+              <!-- Step Number Badge -->
+              <div class="mb-6 flex justify-center">
+                <div
+                  class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-2xl font-bold text-white transition-all group-hover:scale-110"
+                >
+                  1
+                </div>
+              </div>
 
-            <!-- Arrow for desktop -->
-            <div class="absolute right-0 top-16 hidden translate-x-1/2 md:block">
-              <UIcon name="i-heroicons-arrow-right" class="h-8 w-8 text-emerald-400" />
+              <!-- Card -->
+              <div
+                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+              >
+                <!-- Icon Container -->
+                <div class="mb-6 flex justify-center">
+                  <div
+                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
+                  >
+                    <UIcon
+                      name="i-heroicons-pencil-square"
+                      class="h-16 w-16 animate-pulse text-emerald-400"
+                    />
+                    <!-- Decorative glow -->
+                    <div
+                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
+                    />
+                  </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                  {{ t('landing.howItWorks.step1.title') }}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-center leading-relaxed text-gray-300">
+                  {{ t('landing.howItWorks.step1.description') }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 2: We Enhance Your Prompt -->
+            <div class="group relative flex flex-col">
+              <!-- Step Number Badge -->
+              <div class="mb-6 flex justify-center">
+                <div
+                  class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-2xl font-bold text-white transition-all group-hover:scale-110"
+                >
+                  2
+                </div>
+              </div>
+
+              <!-- Card -->
+              <div
+                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+              >
+                <!-- Icon Container -->
+                <div class="mb-6 flex justify-center">
+                  <div
+                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
+                  >
+                    <UIcon
+                      name="i-heroicons-sparkles"
+                      class="h-16 w-16 animate-pulse text-emerald-400"
+                    />
+                    <!-- Decorative glow -->
+                    <div
+                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
+                    />
+                  </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                  {{ t('landing.howItWorks.step2.title') }}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-center leading-relaxed text-gray-300">
+                  {{ t('landing.howItWorks.step2.description') }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3: Copy & Use Anywhere -->
+            <div class="group relative flex flex-col">
+              <!-- Step Number Badge -->
+              <div class="mb-6 flex justify-center">
+                <div
+                  class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-2xl font-bold text-white transition-all group-hover:scale-110"
+                >
+                  3
+                </div>
+              </div>
+
+              <!-- Card -->
+              <div
+                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+              >
+                <!-- Icon Container -->
+                <div class="mb-6 flex justify-center">
+                  <div
+                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
+                  >
+                    <UIcon
+                      name="i-heroicons-clipboard-document-check"
+                      class="h-16 w-16 animate-pulse text-emerald-400"
+                    />
+                    <!-- Decorative glow -->
+                    <div
+                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
+                    />
+                  </div>
+                </div>
+
+                <!-- Title -->
+                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                  {{ t('landing.howItWorks.step3.title') }}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-center leading-relaxed text-gray-300">
+                  {{ t('landing.howItWorks.step3.description') }}
+                </p>
+
+                <!-- Success checkmark decoration -->
+                <div
+                  class="absolute -bottom-2 -end-2 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 opacity-0 shadow-lg transition-all group-hover:scale-110 group-hover:opacity-100"
+                >
+                  <UIcon name="i-heroicons-check" class="h-6 w-6 text-white" />
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Step 2 -->
-          <div class="relative text-center">
-            <div
-              class="mb-6 flex justify-center rounded-full bg-emerald-100 p-6 dark:bg-emerald-900/30"
+          <!-- CTA Button -->
+          <div class="mt-16 text-center">
+            <button
+              type="button"
+              class="cursor-pointer group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-400/60 transition-all duration-300 hover:scale-105 active:scale-95"
+              @click="handleGetStarted"
             >
+              <!-- Icon -->
               <UIcon
-                name="i-heroicons-sparkles"
-                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
+                name="i-heroicons-rocket-launch"
+                class="relative z-10 h-6 w-6 transition-transform group-hover:rotate-12"
               />
-            </div>
-            <div
-              class="mb-4 inline-block rounded-full bg-emerald-500 px-4 py-1 text-sm font-semibold text-white"
-            >
-              {{ t('landing.howItWorks.step') }} 2
-            </div>
-            <h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-              {{ t('landing.howItWorks.step2.title') }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {{ t('landing.howItWorks.step2.description') }}
-            </p>
-
-            <!-- Arrow for desktop -->
-            <div class="absolute right-0 top-16 hidden translate-x-1/2 md:block">
-              <UIcon name="i-heroicons-arrow-right" class="h-8 w-8 text-emerald-400" />
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="text-center">
-            <div
-              class="mb-6 flex justify-center rounded-full bg-emerald-100 p-6 dark:bg-emerald-900/30"
-            >
-              <UIcon
-                name="i-heroicons-clipboard-document-check"
-                class="h-12 w-12 text-emerald-700 dark:text-emerald-400"
+              <!-- Text -->
+              <span class="relative z-10">{{ t('landing.howItWorks.cta') }}</span>
+              <!-- Shine effect -->
+              <div
+                class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
               />
-            </div>
-            <div
-              class="mb-4 inline-block rounded-full bg-emerald-500 px-4 py-1 text-sm font-semibold text-white"
-            >
-              {{ t('landing.howItWorks.step') }} 3
-            </div>
-            <h3 class="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-              {{ t('landing.howItWorks.step3.title') }}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {{ t('landing.howItWorks.step3.description') }}
-            </p>
+            </button>
           </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="mt-12 text-center">
-          <UButton size="lg" color="emerald" variant="solid" @click="handleGetStarted">
-            <template #leading>
-              <UIcon name="i-heroicons-rocket-launch" />
-            </template>
-            {{ t('landing.howItWorks.cta') }}
-          </UButton>
         </div>
       </div>
     </section>
@@ -385,10 +474,15 @@ const handleTemplateClick = (templateId: string): void => {
               {{ t('landing.templatesPreview.subtitle') }}
             </p>
           </div>
-          <UButton color="emerald" variant="outline" @click="handleViewTemplates">
+          <UButton
+            class="cursor-pointer"
+            color="emerald"
+            variant="outline"
+            @click="handleViewTemplates"
+          >
             {{ t('landing.templatesPreview.viewAll') }}
             <template #trailing>
-              <UIcon name="i-heroicons-arrow-right" />
+              <UIcon name="i-heroicons-arrow-right" class="icon-flip" />
             </template>
           </UButton>
         </div>
@@ -409,16 +503,7 @@ const handleTemplateClick = (templateId: string): void => {
             <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
               {{ template.title }}
             </h3>
-            <UBadge
-              :color="
-                template.category === 'business'
-                  ? 'primary'
-                  : template.category === 'technical'
-                  ? 'navy'
-                  : 'emerald'
-              "
-              size="sm"
-            >
+            <UBadge color="primary" size="sm">
               {{ t(`templates.categories.${template.category}`) }}
             </UBadge>
           </div>
@@ -438,12 +523,19 @@ const handleTemplateClick = (templateId: string): void => {
         <p class="mx-auto mb-8 max-w-2xl text-lg text-emerald-100">
           {{ t('landing.finalCta.subtitle') }}
         </p>
-        <UButton size="xl" color="neutral" variant="solid" @click="handleGetStarted">
-          <template #leading>
-            <UIcon name="i-heroicons-rocket-launch" />
-          </template>
-          {{ t('landing.finalCta.cta') }}
-        </UButton>
+        <button
+          type="button"
+          class="cursor-pointer group relative px-8 py-3 rounded-xl bg-white/10 backdrop-blur-md text-white font-semibold text-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105 active:scale-95"
+          @click="handleGetStarted"
+        >
+          <div class="relative flex items-center justify-center gap-3">
+            <UIcon
+              name="i-heroicons-rocket-launch"
+              class="h-6 w-6 group-hover:rotate-12 transition-transform duration-300"
+            />
+            <span class="whitespace-nowrap">{{ t('landing.finalCta.cta') }}</span>
+          </div>
+        </button>
       </div>
     </section>
   </div>

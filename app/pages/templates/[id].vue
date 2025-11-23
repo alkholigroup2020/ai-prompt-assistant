@@ -18,12 +18,12 @@
         <p class="text-gray-600 dark:text-gray-400 mb-6">
           Failed to load template. The template may not exist or there was a server error.
         </p>
-        <div class="flex gap-3">
-          <UButton color="neutral" variant="outline" @click="router.push(localePath('/templates'))">
+        <div class="flex justify-center gap-3">
+          <UButton class="cursor-pointer" color="neutral" variant="outline" @click="router.push(localePath('/templates'))">
             <UIcon name="i-heroicons-arrow-left" class="w-5 h-5" />
             {{ $t('templates.detail.backToGallery') }}
           </UButton>
-          <UButton color="emerald" variant="solid" @click="loadTemplate">
+          <UButton class="cursor-pointer" color="emerald" variant="solid" @click="loadTemplate">
             <UIcon name="i-heroicons-arrow-path" class="w-5 h-5" />
             {{ $t('common.retry') || 'Try Again' }}
           </UButton>

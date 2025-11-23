@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     'nuxt-mcp',
     '@nuxtjs/i18n',
-    '@nuxtjs/google-fonts',
+    '@nuxt/fonts',
     '@vueuse/nuxt',
     '@pinia/nuxt'
   ],
@@ -58,14 +58,19 @@ export default defineNuxtConfig({
     }
   },
 
-  // Google Fonts Configuration
-  googleFonts: {
-    families: {
-      Inter: [400, 500, 600, 700],
-      'IBM Plex Sans Arabic': [400, 500, 600, 700]
-    },
-    display: 'swap',
-    preload: true
+  // Nuxt Fonts Configuration
+  fonts: {
+    families: [
+      // English font
+      { name: 'Inter', provider: 'google', weights: [400, 500, 600, 700] },
+      // Arabic font - El Messiri
+      { name: 'El Messiri', provider: 'google', weights: [400, 500, 600, 700] }
+    ],
+    defaults: {
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      preload: true
+    }
   },
 
   // Runtime Configuration

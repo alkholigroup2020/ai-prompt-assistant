@@ -90,7 +90,8 @@
       "Bash(npx -y @playwright/mcp)",
       "WebFetch(domain:www.npmjs.com)",
       "Bash(npx:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []

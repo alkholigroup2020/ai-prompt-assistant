@@ -28,7 +28,7 @@
   --color-navy-900: #000020;
 
   /* Typography */
-  --font-sans: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-sans: 'Inter', 'El Messiri', system-ui, sans-serif;
 
   /* Breakpoints */
   --breakpoint-xs: 375px;
@@ -81,14 +81,14 @@
 
 /* Base Typography */
 body {
-  font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'Inter', 'El Messiri', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Arabic Typography */
 html[lang="ar"] body {
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'El Messiri', sans-serif;
 }
 
 /* RTL Animations - Flip horizontal animations for RTL */
