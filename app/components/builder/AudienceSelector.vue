@@ -1,199 +1,177 @@
 <template>
-  <div class="space-y-2">
-    <label
-      for="audience-select"
-      class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+  <div class="space-y-3">
+    <UFormField
+      :label="$t('builder.audience.label')"
+      :help="!validationError ? $t('builder.audience.helpText') : undefined"
+      :error="validationError"
+      required
     >
-      {{ $t('builder.audience.label') }}
-      <span class="text-red-500">*</span>
-    </label>
-
-    <USelectMenu
-      id="audience-select"
-      v-model="selectedAudience"
-      :options="audienceOptions"
-      :placeholder="$t('builder.audience.placeholder')"
-      :ui="{ base: 'w-full' }"
-      :aria-describedby="validationError ? 'audience-error' : 'audience-help'"
-      :aria-invalid="!!validationError"
-      @update:model-value="handleAudienceChange"
-    >
-      <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
-      <template #label>
-        <div v-if="selectedAudience" class="flex items-center gap-2">
-          <UIcon :name="getAudienceIcon(selectedAudience.value)" class="w-5 h-5" />
-          <span>{{ selectedAudience.label }}</span>
-        </div>
-        <span v-else class="text-gray-500">{{ $t('builder.audience.placeholder') }}</span>
-      </template>
-
-      <!-- @ts-expect-error - Nuxt UI slot typing limitation -->
-      <template #option="{ option }">
-        <div class="flex items-center gap-3 py-1">
-          <UIcon :name="getAudienceIcon(option.value)" class="w-5 h-5 text-emerald-500" />
-          <div class="flex-1">
-            <div class="font-medium">{{ option.label }}</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              {{ option.description }}
-            </div>
-          </div>
-        </div>
-      </template>
-    </USelectMenu>
+      <USelectMenu
+        v-model="selectedAudience"
+        :items="audienceItems"
+        :placeholder="$t('builder.audience.placeholder')"
+        :icon="selectedAudience?.icon ?? 'i-heroicons-users'"
+        :search-input="{ placeholder: $t('builder.audience.placeholder') }"
+        size="lg"
+        class="w-full"
+        :ui="{
+          base: 'ps-14',
+          trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200',
+          leadingIcon: 'text-emerald-500',
+        }"
+        @update:model-value="handleAudienceChange"
+      />
+    </UFormField>
 
     <!-- Other Audience Input (shown when "Other" is selected) -->
-    <div v-if="isOtherSelected" class="mt-3">
-      <UInput
-        id="audience-other"
-        v-model="otherAudienceValue"
-        :placeholder="$t('builder.audience.otherPlaceholder')"
-        :ui="{ base: 'w-full' }"
-        :aria-describedby="validationError ? 'audience-error' : 'audience-help'"
-        :aria-invalid="!!validationError"
-        @input="handleOtherAudienceChange"
-      />
-    </div>
-
-    <!-- Validation Error -->
-    <p v-if="validationError" id="audience-error" class="text-sm text-red-600 dark:text-red-400 mt-1" role="alert" aria-live="polite">
-      <UIcon name="i-heroicons-exclamation-circle" class="w-4 h-4 inline" />
-      {{ validationError }}
-    </p>
-
-    <!-- Help Text -->
-    <p v-else id="audience-help" class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      {{ $t('builder.audience.helpText') }}
-    </p>
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-1"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-1"
+    >
+      <div v-if="isOtherSelected" class="pl-1">
+        <UFormField
+          :label="$t('builder.audience.otherLabel')"
+          :help="$t('builder.audience.otherHelp')"
+        >
+          <UInput
+            v-model="otherAudienceValue"
+            :placeholder="$t('builder.audience.otherPlaceholder')"
+            size="lg"
+            class="w-full"
+            leading-icon="i-heroicons-pencil-square"
+            :ui="{ base: 'ps-14', leadingIcon: 'text-emerald-500' }"
+            @input="handleOtherAudienceChange"
+          />
+        </UFormField>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck - Nuxt UI USelectMenu slot types are incomplete
-/* eslint-enable @typescript-eslint/ban-ts-comment */
-import { computed, ref, watch } from 'vue';
-import { useFormStore } from '~/stores/form';
-import { useI18n } from 'vue-i18n';
+import { computed, ref, watch } from 'vue'
+import { useFormStore } from '~/stores/form'
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
-const formStore = useFormStore();
+interface AudienceItem {
+  label: string
+  value: string
+  icon: string
+}
 
-// Audience options with icons and descriptions
-const audienceOptions = computed(() => [
+const { t } = useI18n()
+const formStore = useFormStore()
+
+// Audience items with icons (for USelectMenu)
+const audienceItems = computed<AudienceItem[]>(() => [
   {
-    value: 'technical-team',
     label: t('builder.audience.options.technicalTeam.label'),
-    description: t('builder.audience.options.technicalTeam.description'),
+    value: 'technical-team',
+    icon: 'i-heroicons-cpu-chip',
   },
   {
-    value: 'executives',
     label: t('builder.audience.options.executives.label'),
-    description: t('builder.audience.options.executives.description'),
+    value: 'executives',
+    icon: 'i-heroicons-building-office',
   },
   {
-    value: 'clients',
     label: t('builder.audience.options.clients.label'),
-    description: t('builder.audience.options.clients.description'),
+    value: 'clients',
+    icon: 'i-heroicons-users',
   },
   {
-    value: 'general-public',
     label: t('builder.audience.options.generalPublic.label'),
-    description: t('builder.audience.options.generalPublic.description'),
+    value: 'general-public',
+    icon: 'i-heroicons-globe-alt',
   },
   {
-    value: 'students',
     label: t('builder.audience.options.students.label'),
-    description: t('builder.audience.options.students.description'),
+    value: 'students',
+    icon: 'i-heroicons-academic-cap',
   },
   {
-    value: 'experts',
     label: t('builder.audience.options.experts.label'),
-    description: t('builder.audience.options.experts.description'),
+    value: 'experts',
+    icon: 'i-heroicons-star',
   },
   {
-    value: 'beginners',
     label: t('builder.audience.options.beginners.label'),
-    description: t('builder.audience.options.beginners.description'),
+    value: 'beginners',
+    icon: 'i-heroicons-light-bulb',
   },
   {
-    value: 'stakeholders',
     label: t('builder.audience.options.stakeholders.label'),
-    description: t('builder.audience.options.stakeholders.description'),
+    value: 'stakeholders',
+    icon: 'i-heroicons-briefcase',
   },
   {
-    value: 'team-members',
     label: t('builder.audience.options.teamMembers.label'),
-    description: t('builder.audience.options.teamMembers.description'),
+    value: 'team-members',
+    icon: 'i-heroicons-user-group',
   },
   {
-    value: 'other',
     label: t('builder.audience.options.other.label'),
-    description: t('builder.audience.options.other.description'),
+    value: 'other',
+    icon: 'i-heroicons-ellipsis-horizontal-circle',
   },
-]);
+])
 
-// Icon mapping for audiences
-const getAudienceIcon = (audienceValue: string): string => {
-  const iconMap: Record<string, string> = {
-    'technical-team': 'i-heroicons-cpu-chip',
-    'executives': 'i-heroicons-building-office',
-    'clients': 'i-heroicons-users',
-    'general-public': 'i-heroicons-globe-alt',
-    'students': 'i-heroicons-academic-cap',
-    'experts': 'i-heroicons-star',
-    'beginners': 'i-heroicons-light-bulb',
-    'stakeholders': 'i-heroicons-briefcase',
-    'team-members': 'i-heroicons-user-group',
-    'other': 'i-heroicons-ellipsis-horizontal-circle',
-  };
-  return iconMap[audienceValue] || 'i-heroicons-user';
-};
-
-// Selected audience state
-const selectedAudience = ref<{ value: string; label: string; description: string } | null>(null);
-const otherAudienceValue = ref('');
+// Selected audience (full object for USelectMenu)
+const selectedAudience = ref<AudienceItem | undefined>(undefined)
+const otherAudienceValue = ref('')
 
 // Check if "Other" is selected
-const isOtherSelected = computed(() => selectedAudience.value?.value === 'other');
+const isOtherSelected = computed(() => selectedAudience.value?.value === 'other')
 
 // Validation error from store
-const validationError = computed(() => formStore.validationErrors.audience);
+const validationError = computed(() => formStore.validationErrors.audience)
 
 // Initialize from store
-watch(() => formStore.formData.audience, (newAudience) => {
-  if (newAudience && !selectedAudience.value) {
-    const option = audienceOptions.value.find(opt => opt.value === newAudience);
-    if (option) {
-      selectedAudience.value = option;
+watch(
+  () => formStore.formData.audience,
+  (newAudience) => {
+    if (newAudience && (!selectedAudience.value || selectedAudience.value.value !== newAudience)) {
+      const item = audienceItems.value.find((opt) => opt.value === newAudience)
+      if (item) {
+        selectedAudience.value = item
+      }
     }
-  }
-}, { immediate: true });
+  },
+  { immediate: true }
+)
 
-watch(() => formStore.formData.audienceOther, (newAudienceOther) => {
-  if (newAudienceOther && !otherAudienceValue.value) {
-    otherAudienceValue.value = newAudienceOther;
-  }
-}, { immediate: true });
+watch(
+  () => formStore.formData.audienceOther,
+  (newAudienceOther) => {
+    if (newAudienceOther && !otherAudienceValue.value) {
+      otherAudienceValue.value = newAudienceOther
+    }
+  },
+  { immediate: true }
+)
 
 // Handle audience change
-const handleAudienceChange = (value: unknown) => {
-  const option = value as { value: string; label: string } | null;
-  if (option && typeof option === 'object' && 'value' in option) {
-    if (option.value === 'other') {
-      formStore.updateField('audience', 'other');
-      formStore.updateField('audienceOther', otherAudienceValue.value);
+const handleAudienceChange = (value: AudienceItem | undefined) => {
+  if (value) {
+    if (value.value === 'other') {
+      formStore.updateField('audience', 'other')
+      formStore.updateField('audienceOther', otherAudienceValue.value)
     } else {
-      formStore.updateField('audience', option.value);
-      formStore.updateField('audienceOther', undefined);
-      otherAudienceValue.value = '';
+      formStore.updateField('audience', value.value)
+      formStore.updateField('audienceOther', undefined)
+      otherAudienceValue.value = ''
     }
-    formStore.validateField('audience');
+    formStore.validateField('audience')
   }
-};
+}
 
 // Handle other audience input
 const handleOtherAudienceChange = () => {
-  formStore.updateField('audienceOther', otherAudienceValue.value);
-  formStore.validateField('audience');
-};
+  formStore.updateField('audienceOther', otherAudienceValue.value)
+  formStore.validateField('audience')
+}
 </script>

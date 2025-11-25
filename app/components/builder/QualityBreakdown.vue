@@ -25,6 +25,12 @@ const animatedValues = ref({
 watch(
   () => props.breakdown,
   (newBreakdown) => {
+    // Skip animation during SSR (requestAnimationFrame not available)
+    if (!import.meta.client) {
+      animatedValues.value = { ...newBreakdown }
+      return
+    }
+
     if (props.animate) {
       const _duration = 800 // Animation duration in ms (for reference)
       const steps = 60 // 60 fps

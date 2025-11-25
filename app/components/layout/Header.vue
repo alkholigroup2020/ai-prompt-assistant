@@ -2,9 +2,9 @@
   <header
     class="sticky shadow-md top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-gray-800 dark:bg-gray-950/95"
   >
-    <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between">
+    <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
       <!-- Logo and Branding -->
-      <div class="flex items-center gap-3 px-3">
+      <div class="flex items-center gap-3">
         <NuxtLink
           :to="localePath('/')"
           class="flex items-center gap-2 text-xl font-bold text-navy-900 transition-colors hover:text-emerald-700 dark:text-white dark:hover:text-emerald-400"

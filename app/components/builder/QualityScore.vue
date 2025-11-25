@@ -22,6 +22,12 @@ const targetScore = computed(() => Math.max(0, Math.min(100, props.score)))
 watch(
   targetScore,
   (newScore) => {
+    // Skip animation during SSR (requestAnimationFrame not available)
+    if (!import.meta.client) {
+      animatedScore.value = newScore
+      return
+    }
+
     if (props.animate) {
       const _duration = 1000 // 1 second animation (for reference)
       const steps = 60 // 60 fps

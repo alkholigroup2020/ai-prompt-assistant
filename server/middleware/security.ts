@@ -6,6 +6,9 @@
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig();
 
+  // Check if in development mode
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
   // Content Security Policy (CSP)
   // Restricts resources the page can load to prevent XSS attacks
   const cspDirectives = [
@@ -14,7 +17,9 @@ export default defineEventHandler((event) => {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: https:",
-    "connect-src 'self' https://generativelanguage.googleapis.com",
+    "connect-src 'self' https://generativelanguage.googleapis.com" + (isDevelopment ? " ws: wss:" : ""),
+    // Allow frames from same origin in development (for Nuxt devtools)
+    "frame-src 'self'" + (isDevelopment ? " http://localhost:* ws://localhost:*" : ""),
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'"

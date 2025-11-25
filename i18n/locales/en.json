@@ -186,6 +186,8 @@
       "label": "Your Role",
       "placeholder": "Select your role...",
       "otherPlaceholder": "Enter your role (e.g., UX Researcher)",
+      "otherLabel": "Custom Role",
+      "otherHelp": "Enter a custom role that best describes your profession",
       "helpText": "Select the role that best describes your profession or expertise",
       "options": {
         "softwareEngineer": {
@@ -234,6 +236,8 @@
       "label": "Target Audience",
       "placeholder": "Select your target audience...",
       "otherPlaceholder": "Enter your target audience",
+      "otherLabel": "Custom Audience",
+      "otherHelp": "Enter a custom target audience for your prompt",
       "helpText": "Who will be reading or using your output?",
       "options": {
         "technicalTeam": {
@@ -283,12 +287,60 @@
       "placeholder": "Describe what you want the AI to help you with...",
       "characters": "characters",
       "helpText": "Be specific about what you want to accomplish (10-1000 characters)",
-      "examplesTitle": "Example prompts (click to use):",
-      "examples": [
-        "Explain the concept of microservices architecture to a non-technical audience",
-        "Write a professional email to decline a meeting request",
-        "Create a step-by-step guide for deploying a React app to Vercel"
-      ]
+      "examplesTitle": "Example Prompts",
+      "examplesPlaceholder": "Choose an example prompt to get started...",
+      "examplesSearchPlaceholder": "Search examples by keyword...",
+      "examplesHint": "Select an example to auto-fill the task description, then customize as needed.",
+      "examples": {
+        "hr": {
+          "jobDescription": "Write a job description for a Marketing Manager position",
+          "interviewQuestions": "Create interview questions for a Sales Representative role",
+          "performanceReview": "Draft a performance review summary for an employee",
+          "onboarding": "Create an onboarding checklist for new employees",
+          "policyDraft": "Write a company policy for remote work arrangements",
+          "trainingPlan": "Develop a training plan for customer service team"
+        },
+        "finance": {
+          "budgetProposal": "Create a budget proposal for next quarter's marketing activities",
+          "expenseReport": "Write an expense report summary for a business trip",
+          "financialSummary": "Summarize monthly financial performance for management",
+          "invoiceReminder": "Draft a polite payment reminder email to a client",
+          "costAnalysis": "Analyze cost reduction opportunities for office operations",
+          "paymentTerms": "Write payment terms and conditions for a new contract"
+        },
+        "bizdev": {
+          "partnershipProposal": "Draft a partnership proposal for a potential business partner",
+          "marketResearch": "Outline key questions for market research on a new service",
+          "businessPlan": "Create an executive summary for a business expansion plan",
+          "competitorAnalysis": "Summarize our main competitors' strengths and weaknesses",
+          "expansionStrategy": "Develop a strategy for entering a new market region",
+          "swotAnalysis": "Create a SWOT analysis for our current business position"
+        },
+        "sales": {
+          "salesPitch": "Write a compelling sales pitch for our consulting services",
+          "followUpEmail": "Draft a follow-up email after a client meeting",
+          "productDescription": "Create a product description for our service offerings",
+          "customerResponse": "Write a professional response to a customer inquiry",
+          "quotation": "Draft a quotation cover letter for a potential client",
+          "thankYouNote": "Write a thank you note after closing a deal"
+        },
+        "admin": {
+          "meetingAgenda": "Create an agenda for the weekly team meeting",
+          "meetingMinutes": "Write meeting minutes template with key sections",
+          "processDocumentation": "Document the process for handling customer complaints",
+          "announcementDraft": "Draft an announcement for the upcoming company event",
+          "eventPlanning": "Create a checklist for organizing a team building event",
+          "supplierEmail": "Write an email to request quotes from suppliers"
+        },
+        "writing": {
+          "professionalEmail": "Write a professional email to request a deadline extension",
+          "reportSummary": "Summarize a lengthy report into key points",
+          "presentation": "Create an outline for a quarterly business presentation",
+          "memo": "Write a memo to inform staff about office schedule changes",
+          "newsletter": "Draft content ideas for the monthly company newsletter",
+          "letterDraft": "Write a formal letter to a business partner"
+        }
+      }
     },
     "tone": {
       "label": "Tone",

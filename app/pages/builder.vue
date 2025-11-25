@@ -11,29 +11,83 @@
         </p>
       </div>
 
-      <!-- Progress Indicator -->
-      <div class="mb-6 md:mb-8">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
-            {{ t('builder.progress.label') }}
-          </span>
-          <span class="text-sm md:text-base font-medium text-emerald-700 dark:text-emerald-400">
-            {{ completionPercentage }}%
-          </span>
+      <!-- Sticky Progress Indicator -->
+      <div
+        class="sticky top-16 z-40 -mx-4 px-4 py-3 mb-6 md:mb-8 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm transition-all duration-300"
+      >
+        <div class="flex items-center gap-4 md:gap-6">
+          <!-- Progress Bar Section (75%) -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {{ t('builder.progress.label') }}
+              </span>
+              <span class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                {{ completionPercentage }}%
+              </span>
+            </div>
+            <UiProgressBar
+              :value="completionPercentage"
+              color="primary"
+              size="md"
+              :striped="completionPercentage < 100"
+              :animated="completionPercentage < 100"
+            />
+          </div>
+
+          <!-- Quality Score Circle (25%) -->
+          <div class="flex-shrink-0 flex items-center gap-3 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700">
+            <!-- Label (appears before circle in RTL) -->
+            <div class="hidden sm:block order-2 rtl:order-1 text-start rtl:text-end">
+              <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                {{ t('builder.preview.quality') }}
+              </p>
+              <p :class="qualityScoreTextColor" class="text-sm font-semibold">
+                {{ qualityRatingLabel }}
+              </p>
+            </div>
+            <!-- Circle -->
+            <div class="relative w-14 h-14 md:w-16 md:h-16 order-1 rtl:order-2">
+              <svg
+                class="w-full h-full transform -rotate-90"
+                viewBox="0 0 64 64"
+              >
+                <!-- Background circle -->
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="28"
+                  stroke-width="6"
+                  class="stroke-gray-200 dark:stroke-gray-700"
+                  fill="none"
+                />
+                <!-- Progress circle -->
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="28"
+                  stroke-width="6"
+                  :stroke-dasharray="175.93"
+                  :stroke-dashoffset="175.93 * (1 - qualityScore / 100)"
+                  :class="qualityScoreStrokeColor"
+                  class="transition-all duration-700 ease-out"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <!-- Score text -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span :class="qualityScoreTextColor" class="text-sm md:text-base font-bold">
+                  {{ qualityScore }}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <UiProgressBar
-          :value="completionPercentage"
-          color="primary"
-          size="md"
-          :striped="completionPercentage < 100"
-          :animated="completionPercentage < 100"
-        />
       </div>
 
-      <!-- Two-Column Layout: Form + Preview -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-        <!-- Left Column: Form Sections -->
-        <div class="space-y-6">
+      <!-- Form Sections -->
+      <div class="space-y-6">
           <!-- Basic Information Section -->
           <UiCard padding="lg" shadow="md">
             <template #header>
@@ -45,9 +99,14 @@
               </div>
             </template>
 
-            <div class="space-y-4">
-              <BuilderRoleSelector />
-              <BuilderAudienceSelector />
+            <div class="space-y-6">
+              <!-- Two Column Grid for Role and Audience -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <BuilderRoleSelector />
+                <BuilderAudienceSelector />
+              </div>
+
+              <!-- Task Input spans full width -->
               <BuilderTaskInput />
             </div>
           </UiCard>
@@ -96,10 +155,8 @@
 
             <BuilderAdvancedOptions />
           </UiCard>
-        </div>
 
-        <!-- Right Column: Live Preview Panel -->
-        <div class="space-y-6 lg:sticky lg:top-8 lg:self-start">
+          <!-- Preview and Actions Section -->
           <!-- Quality Score Display -->
           <UiCard padding="lg" shadow="md">
             <template #header>
@@ -243,46 +300,45 @@
               {{ t('builder.actions.saveDraft') }}
             </UButton>
           </div>
-        </div>
-      </div>
 
-      <!-- Keyboard Shortcuts Help -->
-      <div class="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-        <div class="flex items-start gap-3">
-          <UIcon
-            name="i-heroicons-information-circle"
-            class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
-          />
-          <div class="flex-1">
-            <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
-              {{ t('builder.shortcuts.title') }}
-            </h3>
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
-            >
-              <div>
-                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
-                {{ t('builder.shortcuts.quickEnhance') }}
-              </div>
-              <div>
-                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
-                {{ t('builder.shortcuts.deepEnhance') }}
-              </div>
-              <div>
-                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
-                {{ t('builder.shortcuts.saveDraft') }}
-              </div>
-              <div>
-                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
-                {{ t('builder.shortcuts.reset') }}
-              </div>
-              <div>
-                <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
-                {{ t('builder.shortcuts.clearFocus') }}
+          <!-- Keyboard Shortcuts Help -->
+          <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+            <div class="flex items-start gap-3">
+              <UIcon
+                name="i-heroicons-information-circle"
+                class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
+              />
+              <div class="flex-1">
+                <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                  {{ t('builder.shortcuts.title') }}
+                </h3>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
+                >
+                  <div>
+                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
+                    {{ t('builder.shortcuts.quickEnhance') }}
+                  </div>
+                  <div>
+                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
+                    {{ t('builder.shortcuts.deepEnhance') }}
+                  </div>
+                  <div>
+                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
+                    {{ t('builder.shortcuts.saveDraft') }}
+                  </div>
+                  <div>
+                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
+                    {{ t('builder.shortcuts.reset') }}
+                  </div>
+                  <div>
+                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
+                    {{ t('builder.shortcuts.clearFocus') }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -336,6 +392,28 @@ const qualityScoreResult = computed(() => {
 const qualityScore = computed(() => qualityScoreResult.value.score)
 const scoreBreakdown = computed(() => qualityScoreResult.value.breakdown)
 const suggestions = computed(() => qualityScoreResult.value.suggestions)
+
+// Quality score color classes for sticky bar
+const qualityScoreTextColor = computed(() => {
+  if (qualityScore.value >= 80) return 'text-emerald-500'
+  if (qualityScore.value >= 60) return 'text-yellow-500'
+  return 'text-red-500'
+})
+
+const qualityScoreStrokeColor = computed(() => {
+  if (qualityScore.value >= 80) return 'stroke-emerald-500'
+  if (qualityScore.value >= 60) return 'stroke-yellow-500'
+  return 'stroke-red-500'
+})
+
+const qualityRatingLabel = computed(() => {
+  if (qualityScore.value >= 90) return t('quality.rating.excellent')
+  if (qualityScore.value >= 80) return t('quality.rating.veryGood')
+  if (qualityScore.value >= 70) return t('quality.rating.good')
+  if (qualityScore.value >= 60) return t('quality.rating.fair')
+  if (qualityScore.value >= 40) return t('quality.rating.needsImprovement')
+  return t('quality.rating.poor')
+})
 
 // Completion percentage from form store
 const completionPercentage = computed(() => formStore.completionPercentage)
