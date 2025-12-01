@@ -312,21 +312,21 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
     return enhancementData;
 
   } catch (error) {
-    // SECURITY: Log errors securely without sensitive data or stack traces
+    // DEBUG: Log full error for troubleshooting (remove in production)
+    console.error('Gemini API full error:', error);
+
     const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
-    console.error('Gemini API error:', {
-      // Only log error type, never the full error object or stack trace
-      errorType: sanitizedError.split(':')[0],
-      timestamp: new Date().toISOString()
-    });
+    console.error('Gemini API error message:', sanitizedError);
 
     if (error instanceof Error) {
-      // SECURITY: Never log the actual API key or sensitive error details
-      if (error.message.includes('API key') || error.message.includes('invalid_api_key')) {
+      if (error.message.includes('API key') || error.message.includes('invalid_api_key') || error.message.includes('API_KEY_INVALID')) {
         throw new Error('GEMINI_API_ERROR: Invalid API key configuration');
       }
-      if (error.message.includes('quota') || error.message.includes('429')) {
+      if (error.message.includes('quota') || error.message.includes('429') || error.message.includes('RESOURCE_EXHAUSTED')) {
         throw new Error('GEMINI_API_ERROR: API quota exceeded');
+      }
+      if (error.message.includes('not found') || error.message.includes('NOT_FOUND')) {
+        throw new Error('GEMINI_API_ERROR: Model not found - check model name');
       }
     }
 
