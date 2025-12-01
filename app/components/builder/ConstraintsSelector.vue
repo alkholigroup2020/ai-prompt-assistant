@@ -5,43 +5,122 @@
       <span class="text-gray-500 text-xs ml-1">({{ $t('builder.constraints.optional') }})</span>
     </label>
 
-    <!-- Constraints Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <div
-        v-for="option in constraintOptions"
-        :key="option.value"
-        class="flex items-start gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-      >
-        <UCheckbox
-          :id="`constraint-${option.value}`"
-          :model-value="isSelected(option.value)"
-          :name="option.value"
-          @update:model-value="(value: unknown) => toggleConstraint(option.value, value === true)"
-        />
-        <div class="flex-1 min-w-0">
-          <label
-            :for="`constraint-${option.value}`"
-            class="flex items-center gap-2 cursor-pointer"
+    <!-- Word Limit Section (Radio Group - Mutually Exclusive) -->
+    <div class="space-y-2">
+      <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
+        {{ $t('builder.constraints.wordLimitLabel') }}
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <!-- No Limit Option -->
+        <div
+          class="flex items-center gap-2.5 p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
+          :class="{ 'ring-2 ring-primary-500 border-primary-500': !selectedWordLimit }"
+          @click="selectWordLimit(null)"
+        >
+          <input
+            id="word-limit-none"
+            type="radio"
+            name="word-limit"
+            :checked="!selectedWordLimit"
+            class="w-4 h-4 text-primary-600 cursor-pointer"
+            @change="selectWordLimit(null)"
           >
-            <span class="text-sm font-medium text-gray-900 dark:text-gray-100">
+          <label
+            for="word-limit-none"
+            class="flex items-center gap-1.5 flex-1 min-w-0 cursor-pointer"
+          >
+            <span class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
+              {{ $t('builder.constraints.noLimit') }}
+            </span>
+          </label>
+        </div>
+
+        <!-- Word Limit Options -->
+        <div
+          v-for="option in wordLimitOptions"
+          :key="option.value"
+          class="flex items-center gap-2.5 p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
+          :class="{ 'ring-2 ring-primary-500 border-primary-500': selectedWordLimit === option.value }"
+          @click="selectWordLimit(option.value)"
+        >
+          <input
+            :id="`word-limit-${option.value}`"
+            type="radio"
+            name="word-limit"
+            :value="option.value"
+            :checked="selectedWordLimit === option.value"
+            class="w-4 h-4 text-primary-600 cursor-pointer"
+            @change="selectWordLimit(option.value)"
+          >
+          <label
+            :for="`word-limit-${option.value}`"
+            class="flex items-center gap-1.5 flex-1 min-w-0 cursor-pointer"
+          >
+            <span class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
               {{ option.label }}
             </span>
             <UTooltip :text="option.description" :popper="{ placement: 'top' }">
               <UIcon
                 name="i-heroicons-information-circle"
-                class="w-4 h-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                class="w-4 h-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex-shrink-0"
               />
             </UTooltip>
           </label>
-          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {{ option.example }}
-          </p>
         </div>
       </div>
     </div>
 
-    <!-- Other Constraints Input -->
-    <div class="mt-4">
+    <!-- Other Constraints Section (Checkboxes - Multiple Selection) -->
+    <div class="space-y-2 mt-4">
+      <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
+        {{ $t('builder.constraints.otherConstraintsLabel') }}
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <div
+          v-for="option in otherConstraintOptions"
+          :key="option.value"
+          class="flex items-center gap-2.5 p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
+          @click="toggleConstraint(option.value, !isSelected(option.value))"
+        >
+          <UCheckbox
+            :id="`constraint-${option.value}`"
+            :model-value="isSelected(option.value)"
+            :name="option.value"
+            class="cursor-pointer"
+            @update:model-value="(value: unknown) => toggleConstraint(option.value, value === true)"
+            @click.stop
+          />
+          <span
+            class="flex items-center gap-1.5 flex-1 min-w-0 cursor-pointer"
+          >
+            <span class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
+              {{ option.label }}
+            </span>
+            <UTooltip :text="option.description" :popper="{ placement: 'top' }">
+              <UIcon
+                name="i-heroicons-information-circle"
+                class="w-4 h-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex-shrink-0"
+              />
+            </UTooltip>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selected Count -->
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+      <UIcon name="i-heroicons-check-circle" class="w-4 h-4 inline align-text-bottom" />
+      {{ selectedCount === 0
+        ? $t('builder.constraints.noneSelected')
+        : $t('builder.constraints.selectedCount', { count: selectedCount })
+      }}
+    </p>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700 my-6" />
+
+    <!-- Additional Constraints Input -->
+    <div class="w-full md:w-1/2">
       <label
         for="constraints-other"
         class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -52,26 +131,11 @@
         id="constraints-other"
         v-model="otherConstraintsValue"
         :placeholder="$t('builder.constraints.otherPlaceholder')"
-        :rows="2"
-        :ui="{ base: 'w-full' }"
+        :rows="3"
+        class="w-full"
         @input="handleOtherConstraintsChange"
       />
     </div>
-
-    <!-- Selected Count -->
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-      <UIcon name="i-heroicons-check-circle" class="w-4 h-4 inline" />
-      {{ selectedCount === 0
-        ? $t('builder.constraints.noneSelected')
-        : $t('builder.constraints.selectedCount', { count: selectedCount })
-      }}
-    </p>
-
-    <!-- Help Text -->
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-      <UIcon name="i-heroicons-information-circle" class="w-4 h-4 inline" />
-      {{ $t('builder.constraints.helpText') }}
-    </p>
   </div>
 </template>
 
@@ -84,67 +148,68 @@ import { Constraint } from '~/types';
 const { t } = useI18n();
 const formStore = useFormStore();
 
-// Constraint options with descriptions and examples
-const constraintOptions = computed(() => [
+// Word limit constraints (mutually exclusive)
+const wordLimitConstraints = [
+  Constraint.WORD_LIMIT_100,
+  Constraint.WORD_LIMIT_300,
+  Constraint.WORD_LIMIT_500,
+];
+
+// Word limit options
+const wordLimitOptions = computed(() => [
   {
     value: Constraint.WORD_LIMIT_100,
     label: t('builder.constraints.options.wordLimit100.label'),
     description: t('builder.constraints.options.wordLimit100.description'),
-    example: t('builder.constraints.options.wordLimit100.example'),
   },
   {
     value: Constraint.WORD_LIMIT_300,
     label: t('builder.constraints.options.wordLimit300.label'),
     description: t('builder.constraints.options.wordLimit300.description'),
-    example: t('builder.constraints.options.wordLimit300.example'),
   },
   {
     value: Constraint.WORD_LIMIT_500,
     label: t('builder.constraints.options.wordLimit500.label'),
     description: t('builder.constraints.options.wordLimit500.description'),
-    example: t('builder.constraints.options.wordLimit500.example'),
   },
+]);
+
+// Other constraint options (can select multiple)
+const otherConstraintOptions = computed(() => [
   {
     value: Constraint.INCLUDE_CITATIONS,
     label: t('builder.constraints.options.includeCitations.label'),
     description: t('builder.constraints.options.includeCitations.description'),
-    example: t('builder.constraints.options.includeCitations.example'),
   },
   {
     value: Constraint.USE_PROVIDED_DATA,
     label: t('builder.constraints.options.useProvidedData.label'),
     description: t('builder.constraints.options.useProvidedData.description'),
-    example: t('builder.constraints.options.useProvidedData.example'),
   },
   {
     value: Constraint.NO_JARGON,
     label: t('builder.constraints.options.noJargon.label'),
     description: t('builder.constraints.options.noJargon.description'),
-    example: t('builder.constraints.options.noJargon.example'),
   },
   {
     value: Constraint.TECHNICAL_DETAIL,
     label: t('builder.constraints.options.technicalDetail.label'),
     description: t('builder.constraints.options.technicalDetail.description'),
-    example: t('builder.constraints.options.technicalDetail.example'),
   },
   {
     value: Constraint.BEGINNER_FRIENDLY,
     label: t('builder.constraints.options.beginnerFriendly.label'),
     description: t('builder.constraints.options.beginnerFriendly.description'),
-    example: t('builder.constraints.options.beginnerFriendly.example'),
   },
   {
     value: Constraint.ACTION_ORIENTED,
     label: t('builder.constraints.options.actionOriented.label'),
     description: t('builder.constraints.options.actionOriented.description'),
-    example: t('builder.constraints.options.actionOriented.example'),
   },
   {
     value: Constraint.DATA_DRIVEN,
     label: t('builder.constraints.options.dataDriven.label'),
     description: t('builder.constraints.options.dataDriven.description'),
-    example: t('builder.constraints.options.dataDriven.example'),
   },
 ]);
 
@@ -153,6 +218,11 @@ const otherConstraintsValue = ref('');
 
 // Selected constraints
 const selectedConstraints = computed(() => formStore.formData.constraints || []);
+
+// Get currently selected word limit
+const selectedWordLimit = computed(() => {
+  return selectedConstraints.value.find(c => wordLimitConstraints.includes(c)) || null;
+});
 
 // Selected count
 const selectedCount = computed(() => selectedConstraints.value.length);
@@ -169,7 +239,22 @@ watch(() => formStore.formData.constraintsOther, (newConstraintsOther) => {
   }
 }, { immediate: true });
 
-// Toggle constraint
+// Select word limit (radio behavior - only one can be selected)
+const selectWordLimit = (constraint: Constraint | null) => {
+  // Remove all existing word limit constraints
+  wordLimitConstraints.forEach(wl => {
+    if (selectedConstraints.value.includes(wl)) {
+      formStore.removeConstraint(wl);
+    }
+  });
+
+  // Add the new word limit if not null
+  if (constraint) {
+    formStore.addConstraint(constraint);
+  }
+};
+
+// Toggle constraint (checkbox behavior)
 const toggleConstraint = (constraint: Constraint, checked: boolean) => {
   if (checked) {
     formStore.addConstraint(constraint);

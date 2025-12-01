@@ -1,101 +1,88 @@
 <template>
-  <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-    <!-- Collapsible Header -->
-    <button
-      type="button"
-      class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-      :aria-expanded="isExpanded"
-      :aria-label="$t('builder.advanced.title')"
-      @click="toggleCollapse"
-      @keydown.enter.prevent="toggleCollapse"
-      @keydown.space.prevent="toggleCollapse"
-    >
-      <div class="flex items-center gap-3">
-        <UIcon
-          :name="isExpanded ? 'i-heroicons-chevron-down' : 'i-heroicons-chevron-right'"
-          class="w-5 h-5 text-gray-600 dark:text-gray-400 transition-transform"
-        />
-        <span class="text-sm font-medium text-gray-900 dark:text-gray-100">
-          {{ $t('builder.advanced.title') }}
-        </span>
-        <span class="text-xs text-gray-500 dark:text-gray-400">
-          ({{ $t('builder.advanced.optional') }})
-        </span>
-      </div>
-      <UBadge
-        v-if="hasContent"
-        color="emerald"
-        variant="subtle"
-        size="xs"
-      >
-        {{ $t('builder.advanced.hasContent') }}
-      </UBadge>
-    </button>
+  <div class="space-y-6">
+    <!-- Enhancement Level Cards -->
+    <div class="space-y-3">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        {{ $t('builder.advanced.enhancementLevel.label') }}
+      </label>
 
-    <!-- Collapsible Content -->
-    <div
-      v-if="isExpanded"
-      class="p-4 space-y-6 bg-white dark:bg-gray-900"
-    >
-      <!-- Enhancement Level Toggle -->
-      <div class="space-y-2">
-        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          {{ $t('builder.advanced.enhancementLevel.label') }}
-        </label>
-        <div
-          class="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
-          role="radiogroup"
-          :aria-label="$t('builder.advanced.enhancementLevel.label')"
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Quick Polish Card -->
+        <button
+          type="button"
+          :class="[
+            'relative p-4 rounded-lg border-2 transition-all cursor-pointer text-left',
+            'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
+            enhancementLevel === 'quick'
+              ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
+              : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-600'
+          ]"
+          @click="setEnhancementLevel('quick')"
         >
-          <button
-            type="button"
-            role="radio"
-            :aria-checked="enhancementLevel === 'quick'"
-            :tabindex="enhancementLevel === 'quick' ? 0 : -1"
-            :class="[
-              'flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all',
-              'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
-              enhancementLevel === 'quick'
-                ? 'bg-emerald-500 text-white shadow-md'
-                : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
-            ]"
-            @click="setEnhancementLevel('quick')"
-            @keydown.enter.prevent="setEnhancementLevel('quick')"
-            @keydown.space.prevent="setEnhancementLevel('quick')"
+          <!-- Checkmark for selected -->
+          <div
+            v-if="enhancementLevel === 'quick'"
+            class="absolute top-3 right-3 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
           >
-            <UIcon name="i-heroicons-bolt" class="w-4 h-4 inline mr-1" />
-            {{ $t('builder.advanced.enhancementLevel.quick') }}
-          </button>
-          <button
-            type="button"
-            role="radio"
-            :aria-checked="enhancementLevel === 'detailed'"
-            :tabindex="enhancementLevel === 'detailed' ? 0 : -1"
-            :class="[
-              'flex-1 py-2 px-4 rounded-md font-medium text-sm transition-all',
-              'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
-              enhancementLevel === 'detailed'
-                ? 'bg-emerald-500 text-white shadow-md'
-                : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
-            ]"
-            @click="setEnhancementLevel('detailed')"
-            @keydown.enter.prevent="setEnhancementLevel('detailed')"
-            @keydown.space.prevent="setEnhancementLevel('detailed')"
-          >
-            <UIcon name="i-heroicons-sparkles" class="w-4 h-4 inline mr-1" />
-            {{ $t('builder.advanced.enhancementLevel.detailed') }}
-          </button>
-        </div>
-        <p class="text-xs text-gray-500 dark:text-gray-400">
-          {{ enhancementLevel === 'quick'
-            ? $t('builder.advanced.enhancementLevel.quickDescription')
-            : $t('builder.advanced.enhancementLevel.detailedDescription')
-          }}
-        </p>
-      </div>
+            <UIcon name="i-heroicons-check" class="w-3 h-3 text-white" />
+          </div>
 
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center">
+              <UIcon name="i-heroicons-bolt" class="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-1">
+                {{ $t('builder.advanced.enhancementLevel.quick') }}
+              </h3>
+              <p class="text-xs text-gray-600 dark:text-gray-400">
+                {{ $t('builder.advanced.enhancementLevel.quickDescription') }}
+              </p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Deep Enhancement Card -->
+        <button
+          type="button"
+          :class="[
+            'relative p-4 rounded-lg border-2 transition-all cursor-pointer text-left',
+            'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2',
+            enhancementLevel === 'detailed'
+              ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
+              : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-600'
+          ]"
+          @click="setEnhancementLevel('detailed')"
+        >
+          <!-- Checkmark for selected -->
+          <div
+            v-if="enhancementLevel === 'detailed'"
+            class="absolute top-3 right-3 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center"
+          >
+            <UIcon name="i-heroicons-check" class="w-3 h-3 text-white" />
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center">
+              <UIcon name="i-heroicons-sparkles" class="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-1">
+                {{ $t('builder.advanced.enhancementLevel.detailed') }}
+              </h3>
+              <p class="text-xs text-gray-600 dark:text-gray-400">
+                {{ $t('builder.advanced.enhancementLevel.detailedDescription') }}
+              </p>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Examples and Context - Side by Side -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
       <!-- Examples Textarea -->
-      <div class="space-y-2">
+      <div class="flex flex-col space-y-2">
         <label
           for="examples-input"
           class="block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -106,24 +93,21 @@
           id="examples-input"
           v-model="examplesValue"
           :placeholder="$t('builder.advanced.examples.placeholder')"
-          :rows="4"
-          autoresize
-          :maxrows="10"
-          :ui="{ base: 'w-full' }"
+          :rows="3"
+          :ui="{ base: 'w-full max-h-[84px] overflow-y-auto resize-none' }"
           @input="handleExamplesChange"
           @blur="handleExamplesBlur"
         />
         <!-- Character Counter -->
-        <div class="flex items-center justify-between text-xs">
+        <div class="text-xs">
           <span
             :class="{
               'text-red-600 dark:text-red-400': examplesCount > CHAR_LIMITS.EXAMPLES_MAX,
               'text-gray-500 dark:text-gray-400': examplesCount <= CHAR_LIMITS.EXAMPLES_MAX
             }"
           >
-            {{ examplesCount }} / {{ CHAR_LIMITS.EXAMPLES_MAX }}
+            {{ examplesCount }} / {{ CHAR_LIMITS.EXAMPLES_MAX }} {{ $t('builder.advanced.characters') }}
           </span>
-          <span class="text-gray-400">{{ $t('builder.advanced.characters') }}</span>
         </div>
         <p class="text-xs text-gray-500 dark:text-gray-400">
           <UIcon name="i-heroicons-information-circle" class="w-4 h-4 inline" />
@@ -137,7 +121,7 @@
       </div>
 
       <!-- Context Textarea -->
-      <div class="space-y-2">
+      <div class="flex flex-col space-y-2">
         <label
           for="context-input"
           class="block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -148,24 +132,21 @@
           id="context-input"
           v-model="contextValue"
           :placeholder="$t('builder.advanced.context.placeholder')"
-          :rows="4"
-          autoresize
-          :maxrows="10"
-          :ui="{ base: 'w-full' }"
+          :rows="3"
+          :ui="{ base: 'w-full max-h-[84px] overflow-y-auto resize-none' }"
           @input="handleContextChange"
           @blur="handleContextBlur"
         />
         <!-- Character Counter -->
-        <div class="flex items-center justify-between text-xs">
+        <div class="text-xs">
           <span
             :class="{
               'text-red-600 dark:text-red-400': contextCount > CHAR_LIMITS.CONTEXT_MAX,
               'text-gray-500 dark:text-gray-400': contextCount <= CHAR_LIMITS.CONTEXT_MAX
             }"
           >
-            {{ contextCount }} / {{ CHAR_LIMITS.CONTEXT_MAX }}
+            {{ contextCount }} / {{ CHAR_LIMITS.CONTEXT_MAX }} {{ $t('builder.advanced.characters') }}
           </span>
-          <span class="text-gray-400">{{ $t('builder.advanced.characters') }}</span>
         </div>
         <p class="text-xs text-gray-500 dark:text-gray-400">
           <UIcon name="i-heroicons-information-circle" class="w-4 h-4 inline" />
@@ -189,9 +170,6 @@ import type { EnhancementLevel } from '~/types';
 
 const formStore = useFormStore();
 
-// Collapsed state
-const isExpanded = ref(false);
-
 // Enhancement level
 const enhancementLevel = ref<EnhancementLevel>('quick');
 
@@ -202,13 +180,6 @@ const contextValue = ref('');
 // Character counts
 const examplesCount = computed(() => examplesValue.value.length);
 const contextCount = computed(() => contextValue.value.length);
-
-// Check if has content
-const hasContent = computed(() =>
-  examplesValue.value.length > 0 ||
-  contextValue.value.length > 0 ||
-  enhancementLevel.value === 'detailed'
-);
 
 // Validation errors
 const examplesError = computed(() => formStore.validationErrors.examples);
@@ -232,11 +203,6 @@ watch(() => formStore.formData.context, (newContext) => {
     contextValue.value = newContext || '';
   }
 }, { immediate: true });
-
-// Toggle collapse
-const toggleCollapse = () => {
-  isExpanded.value = !isExpanded.value;
-};
 
 // Set enhancement level
 const setEnhancementLevel = (level: EnhancementLevel) => {

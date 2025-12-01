@@ -32,14 +32,13 @@ export function useQualityScore() {
     const completeness = calculateCompleteness(input)
     const suggestions = generateSuggestions(input, breakdown, completeness)
 
-    // Overall score is weighted average of breakdown scores
+    // Overall score is weighted average of breakdown scores (already 0-100)
     const score = Math.round(
-      (breakdown.clarity * 0.25 +
+      breakdown.clarity * 0.25 +
         breakdown.specificity * 0.25 +
         breakdown.context * 0.2 +
         breakdown.structure * 0.15 +
-        breakdown.completeness * 0.15) *
-        100
+        breakdown.completeness * 0.15
     )
 
     return {
@@ -53,14 +52,15 @@ export function useQualityScore() {
 
   /**
    * Calculate detailed score breakdown
+   * Returns values in 0-100 range (not 0-1)
    */
   function calculateBreakdown(input: FormInput): QualityScoreBreakdown {
     return {
-      clarity: calculateClarity(input),
-      specificity: calculateSpecificity(input),
-      context: calculateContext(input),
-      structure: calculateStructure(input),
-      completeness: calculateCompletenessScore(input),
+      clarity: calculateClarity(input) * 100,
+      specificity: calculateSpecificity(input) * 100,
+      context: calculateContext(input) * 100,
+      structure: calculateStructure(input) * 100,
+      completeness: calculateCompletenessScore(input) * 100,
     }
   }
 
@@ -127,20 +127,20 @@ export function useQualityScore() {
    * Calculate context score (0-1)
    */
   function calculateContext(input: FormInput): number {
-    let score = 0.3 // Base score for having basic info
+    let score = 0 // Start at 0 for empty form
 
     // Additional context provided
     if (input.context && input.context.length >= 50) {
-      score += 0.4
+      score += 0.5
     } else if (input.context && input.context.length >= 20) {
-      score += 0.2
+      score += 0.3
     }
 
     // Examples add context
     if (input.examples && input.examples.length >= 50) {
-      score += 0.3
+      score += 0.5
     } else if (input.examples && input.examples.length >= 20) {
-      score += 0.15
+      score += 0.2
     }
 
     return Math.min(1, score)
@@ -150,7 +150,7 @@ export function useQualityScore() {
    * Calculate structure score (0-1)
    */
   function calculateStructure(input: FormInput): number {
-    let score = 0.4 // Base score for using the form
+    let score = 0 // Start at 0 for empty form
 
     // Well-structured task (check for organization indicators)
     if (input.task) {
@@ -159,14 +159,14 @@ export function useQualityScore() {
       const hasNewlines = /\n/.test(input.task)
 
       if (hasNumbering || hasBullets) {
-        score += 0.2
+        score += 0.3
       }
       if (hasNewlines) {
-        score += 0.1
+        score += 0.2
       }
     }
 
-    // Multiple fields filled
+    // Multiple fields filled - this provides the structure score
     const filledFields = [
       input.role,
       input.audience,
@@ -178,7 +178,7 @@ export function useQualityScore() {
       input.context,
     ].filter(Boolean).length
 
-    score += (filledFields / 8) * 0.3
+    score += (filledFields / 8) * 0.5
 
     return Math.min(1, score)
   }
@@ -244,7 +244,7 @@ export function useQualityScore() {
     let suggestionId = 1
 
     // Clarity suggestions
-    if (breakdown.clarity < 0.7) {
+    if (breakdown.clarity < 70) {
       if (!input.role || input.role.length < 3) {
         suggestions.push({
           id: `suggestion-${suggestionId++}`,
@@ -280,7 +280,7 @@ export function useQualityScore() {
     }
 
     // Specificity suggestions
-    if (breakdown.specificity < 0.7) {
+    if (breakdown.specificity < 70) {
       if (!input.task || input.task.length < 50) {
         suggestions.push({
           id: `suggestion-${suggestionId++}`,
@@ -308,7 +308,7 @@ export function useQualityScore() {
     }
 
     // Context suggestions
-    if (breakdown.context < 0.7) {
+    if (breakdown.context < 70) {
       if (!input.context || input.context.length < 50) {
         suggestions.push({
           id: `suggestion-${suggestionId++}`,
@@ -328,7 +328,7 @@ export function useQualityScore() {
     }
 
     // Structure suggestions
-    if (breakdown.structure < 0.7) {
+    if (breakdown.structure < 70) {
       suggestions.push({
         id: `suggestion-${suggestionId++}`,
         type: 'minor',

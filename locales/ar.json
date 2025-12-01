@@ -132,7 +132,6 @@
     "preview": {
       "quality": "درجة الجودة",
       "suggestions": "الاقتراحات",
-      "moreDetails": "المزيد من التفاصيل",
       "title": "معاينة مباشرة",
       "empty": "ابدأ بملء النموذج لرؤية معاينة لأمرك",
       "words": "الكلمات",
@@ -464,9 +463,6 @@
     "constraints": {
       "label": "القيود",
       "optional": "اختياري",
-      "wordLimitLabel": "حد الكلمات",
-      "noLimit": "بدون حد",
-      "otherConstraintsLabel": "متطلبات أخرى",
       "otherLabel": "قيود إضافية",
       "otherPlaceholder": "أدخل أي متطلبات أو قيود محددة أخرى...",
       "noneSelected": "لم يتم اختيار قيود",

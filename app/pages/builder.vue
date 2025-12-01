@@ -18,7 +18,7 @@
         <div class="flex items-center gap-4 md:gap-6">
           <!-- Progress Bar Section (75%) -->
           <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center justify-between mb-3">
               <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {{ t('builder.progress.label') }}
               </span>
@@ -32,11 +32,14 @@
               size="md"
               :striped="completionPercentage < 100"
               :animated="completionPercentage < 100"
+              :show-percentage="false"
             />
           </div>
 
           <!-- Quality Score Circle (25%) -->
-          <div class="flex-shrink-0 flex items-center gap-3 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700">
+          <div
+            class="flex-shrink-0 flex items-center gap-3 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700"
+          >
             <!-- Label (appears before circle in RTL) -->
             <div class="hidden sm:block order-2 rtl:order-1 text-start rtl:text-end">
               <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
@@ -45,13 +48,16 @@
               <p :class="qualityScoreTextColor" class="text-sm font-semibold">
                 {{ qualityRatingLabel }}
               </p>
+              <button
+                class="text-xs text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 underline cursor-pointer mt-0.5"
+                @click="showQualityModal = true"
+              >
+                {{ t('builder.preview.moreDetails') }}
+              </button>
             </div>
             <!-- Circle -->
             <div class="relative w-14 h-14 md:w-16 md:h-16 order-1 rtl:order-2">
-              <svg
-                class="w-full h-full transform -rotate-90"
-                viewBox="0 0 64 64"
-              >
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 64 64">
                 <!-- Background circle -->
                 <circle
                   cx="32"
@@ -88,259 +94,211 @@
 
       <!-- Form Sections -->
       <div class="space-y-6">
-          <!-- Basic Information Section -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.sections.basic') }}
-                </h2>
-              </div>
-            </template>
-
-            <div class="space-y-6">
-              <!-- Two Column Grid for Role and Audience -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <BuilderRoleSelector />
-                <BuilderAudienceSelector />
-              </div>
-
-              <!-- Task Input spans full width -->
-              <BuilderTaskInput />
+        <!-- Basic Information Section -->
+        <UiCard padding="lg" shadow="md">
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-emerald-700" />
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {{ t('builder.sections.basic') }}
+              </h2>
             </div>
-          </UiCard>
+          </template>
 
-          <!-- Style & Format Section -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-paint-brush" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.sections.style') }}
-                </h2>
-              </div>
-            </template>
-
-            <div class="space-y-4">
-              <BuilderToneSelector />
-              <BuilderOutputFormatSelector />
-            </div>
-          </UiCard>
-
-          <!-- Constraints Section -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.sections.constraints') }}
-                </h2>
-              </div>
-            </template>
-
-            <BuilderConstraintsSelector />
-          </UiCard>
-
-          <!-- Advanced Options Section -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-adjustments-horizontal" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.sections.advanced') }}
-                </h2>
-              </div>
-            </template>
-
-            <BuilderAdvancedOptions />
-          </UiCard>
-
-          <!-- Preview and Actions Section -->
-          <!-- Quality Score Display -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <UIcon name="i-heroicons-chart-bar" class="w-5 h-5 text-emerald-700" />
-                  <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    {{ t('builder.preview.quality') }}
-                  </h2>
-                </div>
-                <UBadge v-if="autoSaveStatus === 'saved'" color="emerald" variant="subtle">
-                  {{ t('builder.autoSave.saved') }}
-                </UBadge>
-                <UBadge v-else-if="autoSaveStatus === 'saving'" color="primary" variant="subtle">
-                  {{ t('builder.autoSave.saving') }}
-                </UBadge>
-              </div>
-            </template>
-
-            <div class="flex flex-col items-center space-y-4">
-              <BuilderQualityScore :score="qualityScore" size="lg" :show-label="true" />
-
-              <div class="w-full">
-                <BuilderQualityBreakdown :breakdown="scoreBreakdown" />
-              </div>
-            </div>
-          </UiCard>
-
-          <!-- Real-time Suggestions -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-light-bulb" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.preview.suggestions') }}
-                </h2>
-              </div>
-            </template>
-
-            <BuilderSuggestions :suggestions="suggestions" @apply="applySuggestion" />
-          </UiCard>
-
-          <!-- Live Preview -->
-          <UiCard padding="lg" shadow="md">
-            <template #header>
-              <div class="flex items-center gap-2">
-                <UIcon name="i-heroicons-eye" class="w-5 h-5 text-emerald-700" />
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ t('builder.preview.title') }}
-                </h2>
-              </div>
-            </template>
-
-            <div class="prose prose-sm dark:prose-invert max-w-none">
-              <p v-if="!previewText" class="text-gray-500 dark:text-gray-400 italic">
-                {{ t('builder.preview.empty') }}
-              </p>
-              <div v-else class="whitespace-pre-wrap text-gray-900 dark:text-gray-100">
-                {{ previewText }}
-              </div>
+          <div class="space-y-6">
+            <!-- Two Column Grid for Role and Audience -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <BuilderRoleSelector />
+              <BuilderAudienceSelector />
             </div>
 
-            <template #footer>
+            <!-- Task Input spans full width -->
+            <BuilderTaskInput />
+          </div>
+        </UiCard>
+
+        <!-- Style & Format Section -->
+        <UiCard padding="lg" shadow="md">
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="i-heroicons-paint-brush" class="w-5 h-5 text-emerald-700" />
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {{ t('builder.sections.style') }}
+              </h2>
+            </div>
+          </template>
+
+          <!-- Two Column Grid for Tone and Output Format -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <BuilderToneSelector />
+            <BuilderOutputFormatSelector />
+          </div>
+        </UiCard>
+
+        <!-- Constraints Section -->
+        <UiCard padding="lg" shadow="md">
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="i-heroicons-shield-check" class="w-5 h-5 text-emerald-700" />
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {{ t('builder.sections.constraints') }}
+              </h2>
+            </div>
+          </template>
+
+          <BuilderConstraintsSelector />
+        </UiCard>
+
+        <!-- Advanced Options Section -->
+        <UiCard padding="lg" shadow="md">
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="i-heroicons-adjustments-horizontal" class="w-5 h-5 text-emerald-700" />
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {{ t('builder.sections.advanced') }}
+              </h2>
+            </div>
+          </template>
+
+          <BuilderAdvancedOptions />
+        </UiCard>
+
+        <!-- Live Preview -->
+        <UiCard padding="lg" shadow="md">
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="i-heroicons-eye" class="w-5 h-5 text-emerald-700" />
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {{ t('builder.preview.title') }}
+              </h2>
+            </div>
+          </template>
+
+          <div class="prose prose-sm dark:prose-invert max-w-none">
+            <p v-if="!previewText" class="text-gray-500 dark:text-gray-400 italic">
+              {{ t('builder.preview.empty') }}
+            </p>
+            <div v-else class="whitespace-pre-wrap text-gray-900 dark:text-gray-100">
+              {{ previewText }}
+            </div>
+          </div>
+
+          <template #footer>
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <span>{{ t('builder.preview.words') }}: {{ wordCount }}</span>
+              <span>{{ t('builder.preview.chars') }}: {{ charCount }}</span>
+            </div>
+          </template>
+        </UiCard>
+
+        <!-- Action Buttons - One row on lg+, column on mobile -->
+        <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+          <!-- Save Draft -->
+          <UButton
+            variant="outline"
+            size="lg"
+            block
+            class="min-h-[44px] lg:flex-1 cursor-pointer"
+            :disabled="!formStore.formData.task || isEnhancing"
+            @click="handleSaveDraft"
+          >
+            <template #leading>
+              <UIcon name="i-heroicons-bookmark" />
+            </template>
+            {{ t('builder.actions.saveDraft') }}
+          </UButton>
+
+          <!-- Reset Form -->
+          <UButton
+            variant="outline"
+            size="lg"
+            block
+            class="min-h-[44px] lg:flex-1 cursor-pointer"
+            :disabled="isEnhancing"
+            @click="handleReset"
+          >
+            <template #leading>
+              <UIcon name="i-heroicons-arrow-path" />
+            </template>
+            {{ t('builder.actions.reset') }}
+          </UButton>
+
+          <!-- Quick Polish -->
+          <UButton
+            color="primary"
+            size="lg"
+            block
+            class="min-h-[44px] lg:flex-1 cursor-pointer"
+            :loading="isEnhancing"
+            :disabled="!formStore.isValid || isEnhancing"
+            :aria-busy="isEnhancing"
+            :aria-label="
+              isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
+            "
+            @click="handleEnhance('quick')"
+          >
+            <template #leading>
+              <UIcon name="i-heroicons-sparkles" />
+            </template>
+            {{ t('builder.actions.quickEnhance') }}
+          </UButton>
+        </div>
+
+        <!-- Keyboard Shortcuts Help -->
+        <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+          <div class="flex items-start gap-3">
+            <UIcon
+              name="i-heroicons-information-circle"
+              class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
+            />
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                {{ t('builder.shortcuts.title') }}
+              </h3>
               <div
-                class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
               >
-                <span>{{ t('builder.preview.words') }}: {{ wordCount }}</span>
-                <span>{{ t('builder.preview.chars') }}: {{ charCount }}</span>
-              </div>
-            </template>
-          </UiCard>
-
-          <!-- Enhancement Buttons -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            <UButton
-              color="primary"
-              size="lg"
-              block
-              class="min-h-[44px]"
-              :loading="isEnhancing"
-              :disabled="!formStore.isValid || isEnhancing"
-              :aria-busy="isEnhancing"
-              :aria-label="
-                isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
-              "
-              @click="handleEnhance('quick')"
-            >
-              <template #leading>
-                <UIcon name="i-heroicons-sparkles" />
-              </template>
-              {{ t('builder.actions.quickEnhance') }}
-            </UButton>
-
-            <UButton
-              color="emerald"
-              size="lg"
-              block
-              class="min-h-[44px]"
-              :loading="isEnhancing"
-              :disabled="!formStore.isValid || isEnhancing"
-              :aria-busy="isEnhancing"
-              :aria-label="
-                isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.deepEnhance')
-              "
-              @click="handleEnhance('detailed')"
-            >
-              <template #leading>
-                <UIcon name="i-heroicons-bolt" />
-              </template>
-              {{ t('builder.actions.deepEnhance') }}
-            </UButton>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            <UButton
-              variant="outline"
-              size="md"
-              block
-              class="min-h-[44px]"
-              :disabled="isEnhancing"
-              @click="handleReset"
-            >
-              <template #leading>
-                <UIcon name="i-heroicons-arrow-path" />
-              </template>
-              {{ t('builder.actions.reset') }}
-            </UButton>
-
-            <UButton
-              variant="outline"
-              size="md"
-              block
-              class="min-h-[44px]"
-              :disabled="!formStore.formData.task || isEnhancing"
-              @click="handleSaveDraft"
-            >
-              <template #leading>
-                <UIcon name="i-heroicons-bookmark" />
-              </template>
-              {{ t('builder.actions.saveDraft') }}
-            </UButton>
-          </div>
-
-          <!-- Keyboard Shortcuts Help -->
-          <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-heroicons-information-circle"
-                class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
-              />
-              <div class="flex-1">
-                <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                  {{ t('builder.shortcuts.title') }}
-                </h3>
-                <div
-                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
-                >
-                  <div>
-                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
-                    {{ t('builder.shortcuts.quickEnhance') }}
-                  </div>
-                  <div>
-                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
-                    {{ t('builder.shortcuts.deepEnhance') }}
-                  </div>
-                  <div>
-                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
-                    {{ t('builder.shortcuts.saveDraft') }}
-                  </div>
-                  <div>
-                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
-                    {{ t('builder.shortcuts.reset') }}
-                  </div>
-                  <div>
-                    <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
-                    {{ t('builder.shortcuts.clearFocus') }}
-                  </div>
+                <div>
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
+                  {{ t('builder.shortcuts.quickEnhance') }}
+                </div>
+                <div>
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
+                  {{ t('builder.shortcuts.deepEnhance') }}
+                </div>
+                <div>
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
+                  {{ t('builder.shortcuts.saveDraft') }}
+                </div>
+                <div>
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
+                  {{ t('builder.shortcuts.reset') }}
+                </div>
+                <div>
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
+                  {{ t('builder.shortcuts.clearFocus') }}
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
+
+    <!-- Quality Score Details Modal -->
+    <UModal v-model:open="showQualityModal" :title="t('builder.preview.quality')">
+      <template #body>
+        <div class="flex flex-col items-center space-y-6">
+          <!-- Large Quality Score Display -->
+          <BuilderQualityScore :score="qualityScore" size="lg" :show-label="true" />
+
+          <!-- Quality Breakdown -->
+          <div class="w-full">
+            <BuilderQualityBreakdown :breakdown="scoreBreakdown" />
+          </div>
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>
 
@@ -381,6 +339,9 @@ useHead({
 // Auto-save status
 const autoSaveStatus = ref<'idle' | 'saving' | 'saved'>('idle')
 
+// Quality Score Modal
+const showQualityModal = ref(false)
+
 // Is enhancing computed property
 const isEnhancing = computed(() => enhancementState.loading)
 
@@ -391,7 +352,6 @@ const qualityScoreResult = computed(() => {
 
 const qualityScore = computed(() => qualityScoreResult.value.score)
 const scoreBreakdown = computed(() => qualityScoreResult.value.breakdown)
-const suggestions = computed(() => qualityScoreResult.value.suggestions)
 
 // Quality score color classes for sticky bar
 const qualityScoreTextColor = computed(() => {
@@ -538,21 +498,6 @@ const handleSaveDraft = () => {
   })
 }
 
-const applySuggestion = (suggestion: { action?: { field: string; value: string } }) => {
-  if (suggestion.action?.field && suggestion.action?.value) {
-    formStore.updateField(
-      suggestion.action.field as keyof typeof formStore.formData,
-      suggestion.action.value
-    )
-    toast.add({
-      title: t('builder.suggestions.applied'),
-      description: t('builder.suggestions.appliedDescription'),
-      color: 'emerald',
-      icon: 'i-heroicons-check-circle',
-    })
-  }
-}
-
 // Keyboard shortcuts
 const handleKeydown = (event: KeyboardEvent) => {
   // Ctrl+Enter: Quick Enhance
@@ -611,11 +556,18 @@ watch(
 
 // Lifecycle hooks
 onMounted(() => {
-  // Load saved draft
+  // Load saved draft (skip undefined/null values to avoid restoring old defaults)
   const draftData = loadDraft()
   if (draftData && draftData.draft) {
     Object.entries(draftData.draft).forEach(([key, value]) => {
-      formStore.updateField(key as keyof typeof formStore.formData, value)
+      // Skip undefined, null, or empty string values
+      if (value !== undefined && value !== null && value !== '') {
+        // Skip old default values for tone and outputFormat to start fresh
+        if (key === 'tone' && value === 'professional') return
+        if (key === 'outputFormat' && value === 'paragraph') return
+
+        formStore.updateField(key as keyof typeof formStore.formData, value)
+      }
     })
   }
 

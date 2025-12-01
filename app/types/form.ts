@@ -76,8 +76,8 @@ export interface FormInput {
   task: string;                    // Main task description (10-1000 chars)
 
   // Enhancement Options
-  tone: ToneOption;                // Writing tone
-  outputFormat: OutputFormat;      // Desired output structure
+  tone?: ToneOption;               // Writing tone (optional, starts empty)
+  outputFormat?: OutputFormat;     // Desired output structure (optional, starts empty)
   outputFormatOther?: string;      // Custom format if "other"
 
   // Advanced Options

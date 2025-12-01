@@ -8,7 +8,13 @@ export default defineNuxtConfig({
 
   // Deployment preset for Vercel Edge
   nitro: {
-    preset: 'vercel-edge'
+    preset: 'vercel-edge',
+  },
+
+  // Dev server configuration - hardcoded to port 3000
+  devServer: {
+    port: 5000,
+    host: 'localhost',
   },
 
   // Modules
@@ -22,14 +28,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/fonts',
     '@vueuse/nuxt',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
   ],
 
   // @nuxt/ui Configuration
   ui: {
     theme: {
-      colors: ['emerald', 'navy']
-    }
+      colors: ['emerald', 'navy'],
+    },
   },
 
   // i18n Configuration
@@ -40,22 +46,22 @@ export default defineNuxtConfig({
         code: 'en',
         iso: 'en-US',
         name: 'English',
-        file: 'en.json'
+        file: 'en.json',
       },
       {
         code: 'ar',
         iso: 'ar-SA',
         name: 'العربية',
-        file: 'ar.json'
-      }
+        file: 'ar.json',
+      },
     ],
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root'
-    }
+      redirectOn: 'root',
+    },
   },
 
   // Nuxt Fonts Configuration
@@ -64,13 +70,13 @@ export default defineNuxtConfig({
       // English font
       { name: 'Inter', provider: 'google', weights: [400, 500, 600, 700] },
       // Arabic font - El Messiri
-      { name: 'El Messiri', provider: 'google', weights: [400, 500, 600, 700] }
+      { name: 'El Messiri', provider: 'google', weights: [400, 500, 600, 700] },
     ],
     defaults: {
       weights: [400, 500, 600, 700],
       styles: ['normal'],
-      preload: true
-    }
+      preload: true,
+    },
   },
 
   // Runtime Configuration
@@ -90,8 +96,8 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
       enableAnalytics: process.env.ENABLE_ANALYTICS === 'true',
       enableTemplates: process.env.ENABLE_TEMPLATES !== 'false',
-      enableExport: process.env.ENABLE_EXPORT !== 'false'
-    }
+      enableExport: process.env.ENABLE_EXPORT !== 'false',
+    },
   },
 
   // CSS Configuration
@@ -102,7 +108,7 @@ export default defineNuxtConfig({
     strict: true,
     // Disable type checking in dev mode to avoid Nuxt UI slot typing errors
     // Type checking still runs during build and via `nuxt typecheck` command
-    typeCheck: process.env.NODE_ENV === 'production' ? true : false
+    typeCheck: process.env.NODE_ENV === 'production' ? true : false,
   },
 
   // Vite Configuration for Code Splitting
@@ -133,25 +139,25 @@ export default defineNuxtConfig({
                 return undefined
               }
             }
-          }
+          },
         },
         // Tree-shaking optimization
         treeshake: {
           moduleSideEffects: 'no-external',
           propertyReadSideEffects: false,
-          tryCatchDeoptimization: false
-        }
+          tryCatchDeoptimization: false,
+        },
       },
       // Set chunk size warnings
       chunkSizeWarningLimit: 500,
       // Report compressed size for better bundle analysis
       reportCompressedSize: true,
       // Source maps for production debugging (set to false for smaller bundles)
-      sourcemap: false
+      sourcemap: false,
     },
     optimizeDeps: {
-      include: ['vue', 'vue-router', 'vue-i18n']
-    }
+      include: ['vue', 'vue-router', 'vue-i18n'],
+    },
   },
 
   // Route Rules for static generation and caching
@@ -165,7 +171,7 @@ export default defineNuxtConfig({
 
     // Builder and results are dynamic, no caching
     '/builder': { ssr: true },
-    '/results': { ssr: true }
+    '/results': { ssr: true },
   },
 
   // Experimental features
@@ -174,7 +180,7 @@ export default defineNuxtConfig({
     payloadExtraction: true,
 
     // Component islands for partial hydration
-    componentIslands: true
+    componentIslands: true,
   },
 
   // App Configuration
@@ -191,15 +197,15 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
 
         // DNS prefetch for Gemini API (for faster API connections)
-        { rel: 'dns-prefetch', href: 'https://generativelanguage.googleapis.com' }
+        { rel: 'dns-prefetch', href: 'https://generativelanguage.googleapis.com' },
       ],
 
       // Script loading configuration
       script: [
         // Scripts will be automatically deferred by Nuxt 4
         // This is just a placeholder for any future third-party scripts
-      ]
-    }
+      ],
+    },
   },
 
   // Build configuration for script optimization
@@ -208,6 +214,6 @@ export default defineNuxtConfig({
     analyze: false,
 
     // Transpile configuration
-    transpile: []
-  }
+    transpile: [],
+  },
 })

@@ -132,7 +132,6 @@
     "preview": {
       "quality": "Quality Score",
       "suggestions": "Suggestions",
-      "moreDetails": "More details",
       "title": "Live Preview",
       "empty": "Start filling out the form to see a preview of your prompt",
       "words": "Words",
@@ -464,9 +463,6 @@
     "constraints": {
       "label": "Constraints",
       "optional": "Optional",
-      "wordLimitLabel": "Word Limit",
-      "noLimit": "No Limit",
-      "otherConstraintsLabel": "Other Requirements",
       "otherLabel": "Additional Constraints",
       "otherPlaceholder": "Enter any other specific requirements or limitations...",
       "noneSelected": "No constraints selected",

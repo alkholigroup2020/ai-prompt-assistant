@@ -690,3 +690,4 @@ Refer to these files for detailed specifications:
 - `docs/DevelopmentTasks.md`: MVP development phases (Phases 1-15)
 - `docs/PostReleaseEnhancements.md`: Post-MVP enhancements and future features
 - `docs/TASK_COMPLETION_LOG.md`: Completed tasks and implementation history
+- The dev server is always running on http://localhost:5000/
