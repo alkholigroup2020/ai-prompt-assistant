@@ -299,6 +299,12 @@
         </div>
       </template>
     </UModal>
+
+    <!-- Reset Confirmation Modal -->
+    <BuilderResetConfirmModal
+      v-model="showResetModal"
+      @confirm="confirmReset"
+    />
   </div>
 </template>
 
@@ -341,6 +347,9 @@ const autoSaveStatus = ref<'idle' | 'saving' | 'saved'>('idle')
 
 // Quality Score Modal
 const showQualityModal = ref(false)
+
+// Reset Confirmation Modal
+const showResetModal = ref(false)
 
 // Quality score calculation
 const qualityScoreResult = computed(() => {
@@ -469,15 +478,17 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
 }
 
 const handleReset = () => {
-  if (confirm(t('builder.actions.resetConfirm'))) {
-    formStore.resetForm()
-    toast.add({
-      title: t('builder.actions.resetSuccess'),
-      description: t('builder.actions.resetSuccessDescription'),
-      color: 'primary',
-      icon: 'i-heroicons-arrow-path',
-    })
-  }
+  showResetModal.value = true
+}
+
+const confirmReset = () => {
+  formStore.resetForm()
+  toast.add({
+    title: t('builder.actions.resetSuccess'),
+    description: t('builder.actions.resetSuccessDescription'),
+    color: 'primary',
+    icon: 'i-heroicons-arrow-path',
+  })
 }
 
 const handleSaveDraft = () => {

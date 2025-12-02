@@ -161,6 +161,13 @@
       "draftSaved": "Draft Saved",
       "draftSavedDescription": "Your work has been saved and can be restored later"
     },
+    "resetModal": {
+      "title": "Reset Form",
+      "message": "Are you sure you want to reset the form? This will clear all fields and you'll start fresh.",
+      "warning": "This action cannot be undone. Any unsaved work will be lost.",
+      "confirm": "Reset Form",
+      "cancel": "Cancel"
+    },
     "validation": {
       "error": "Validation Error",
       "fixErrors": "Please fix the errors in the form before enhancing"

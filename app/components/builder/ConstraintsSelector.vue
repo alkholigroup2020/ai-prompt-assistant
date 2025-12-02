@@ -232,9 +232,12 @@ const isSelected = (constraint: Constraint): boolean => {
   return selectedConstraints.value.includes(constraint);
 };
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(() => formStore.formData.constraintsOther, (newConstraintsOther) => {
-  if (newConstraintsOther && newConstraintsOther !== otherConstraintsValue.value) {
+  if (!newConstraintsOther) {
+    // Handle reset: clear the other constraints input
+    otherConstraintsValue.value = '';
+  } else if (newConstraintsOther !== otherConstraintsValue.value) {
     otherConstraintsValue.value = newConstraintsOther;
   }
 }, { immediate: true });

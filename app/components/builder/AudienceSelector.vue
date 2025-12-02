@@ -130,11 +130,15 @@ const isOtherSelected = computed(() => selectedAudience.value?.value === 'other'
 // Validation error from store
 const validationError = computed(() => formStore.validationErrors.audience)
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(
   () => formStore.formData.audience,
   (newAudience) => {
-    if (newAudience && (!selectedAudience.value || selectedAudience.value.value !== newAudience)) {
+    if (!newAudience) {
+      // Handle reset: clear the selection
+      selectedAudience.value = undefined
+      otherAudienceValue.value = ''
+    } else if (!selectedAudience.value || selectedAudience.value.value !== newAudience) {
       const item = audienceItems.value.find((opt) => opt.value === newAudience)
       if (item) {
         selectedAudience.value = item

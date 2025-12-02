@@ -130,11 +130,15 @@ const isOtherSelected = computed(() => selectedRole.value?.value === 'other')
 // Validation error from store
 const validationError = computed(() => formStore.validationErrors.role)
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(
   () => formStore.formData.role,
   (newRole) => {
-    if (newRole && (!selectedRole.value || selectedRole.value.value !== newRole)) {
+    if (!newRole) {
+      // Handle reset: clear the selection
+      selectedRole.value = undefined
+      otherRoleValue.value = ''
+    } else if (!selectedRole.value || selectedRole.value.value !== newRole) {
       const item = roleItems.value.find(opt => opt.value === newRole)
       if (item) {
         selectedRole.value = item

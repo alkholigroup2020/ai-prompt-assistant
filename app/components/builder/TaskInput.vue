@@ -67,6 +67,7 @@
         </span>
       </div>
       <USelectMenu
+        :key="exampleSelectorKey"
         v-model="selectedExample"
         :items="exampleCategories"
         :placeholder="$t('builder.task.examplesPlaceholder')"
@@ -109,6 +110,9 @@ const taskValue = ref('')
 
 // Selected example (for USelectMenu)
 const selectedExample = ref<ExampleItem | undefined>(undefined)
+
+// Key to force USelectMenu re-render on reset
+const exampleSelectorKey = ref(0)
 
 // Character count
 const characterCount = computed(() => taskValue.value.length)
@@ -192,11 +196,17 @@ const exampleCategories = computed<ExampleItem[][]>(() => [
   ],
 ])
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(
   () => formStore.formData.task,
   (newTask) => {
-    if (newTask && newTask !== taskValue.value) {
+    if (!newTask) {
+      // Handle reset: clear the task value and example selection
+      taskValue.value = ''
+      selectedExample.value = undefined
+      // Increment key to force USelectMenu to re-render and clear visual state
+      exampleSelectorKey.value++
+    } else if (newTask !== taskValue.value) {
       taskValue.value = newTask
     }
   },

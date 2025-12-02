@@ -4,11 +4,15 @@ import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
+
   server: {
+    port: 5000,
     hmr: {
-      port: 24680, // Use a different port
+      port: 24680,
+      host: 'localhost',
     },
   },
+
   test: {
     globals: true,
     environment: 'jsdom',
@@ -26,6 +30,7 @@ export default defineConfig({
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     exclude: ['node_modules', '.nuxt', 'dist'],
   },
+
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('./', import.meta.url)),

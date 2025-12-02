@@ -179,11 +179,15 @@ const otherFormatValue = ref('')
 // Check if "Other" is selected
 const isOtherSelected = computed(() => selectedFormat.value?.value === OutputFormat.OTHER)
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(
   () => formStore.formData.outputFormat,
   (newFormat) => {
-    if (newFormat && (!selectedFormat.value || selectedFormat.value.value !== newFormat)) {
+    if (!newFormat) {
+      // Handle reset: clear the selection
+      selectedFormat.value = undefined
+      otherFormatValue.value = ''
+    } else if (!selectedFormat.value || selectedFormat.value.value !== newFormat) {
       const item = formatItems.value.find((opt) => opt.value === newFormat)
       if (item) {
         selectedFormat.value = item

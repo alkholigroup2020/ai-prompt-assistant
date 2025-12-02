@@ -122,11 +122,14 @@ const toneItems = computed<ToneItem[]>(() => [
 // Selected tone (full object for USelectMenu)
 const selectedTone = ref<ToneItem | undefined>(undefined)
 
-// Initialize from store
+// Initialize from store and handle reset
 watch(
   () => formStore.formData.tone,
   (newTone) => {
-    if (newTone && (!selectedTone.value || selectedTone.value.value !== newTone)) {
+    if (!newTone) {
+      // Handle reset: clear the selection
+      selectedTone.value = undefined
+    } else if (!selectedTone.value || selectedTone.value.value !== newTone) {
       const item = toneItems.value.find((opt) => opt.value === newTone)
       if (item) {
         selectedTone.value = item
