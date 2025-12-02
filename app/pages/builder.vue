@@ -301,10 +301,7 @@
     </UModal>
 
     <!-- Reset Confirmation Modal -->
-    <BuilderResetConfirmModal
-      v-model="showResetModal"
-      @confirm="confirmReset"
-    />
+    <BuilderResetConfirmModal v-model="showResetModal" @confirm="confirmReset" />
   </div>
 </template>
 

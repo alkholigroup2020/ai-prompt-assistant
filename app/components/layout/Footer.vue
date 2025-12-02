@@ -10,7 +10,7 @@
               alt="AKG Logo"
               class="h-6 w-auto"
               aria-hidden="true"
-            >
+            />
             <span class="text-lg font-bold text-navy-900 dark:text-white">
               {{ t('footer.appName') }}
             </span>
@@ -117,7 +117,7 @@ const companyWebsite = computed(() => 'https://www.alkholi.com')
 const footerLinks = [
   { to: '/', label: 'nav.home' },
   { to: '/builder', label: 'nav.builder' },
-  { to: '/templates', label: 'nav.templates' }
+  { to: '/templates', label: 'nav.templates' },
 ]
 </script>
 
@@ -130,7 +130,7 @@ a:focus-visible {
 }
 
 /* External link icon animation */
-a[target="_blank"]:hover svg {
+a[target='_blank']:hover svg {
   transform: translate(2px, -2px);
   transition: transform 0.2s ease-in-out;
 }

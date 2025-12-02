@@ -103,7 +103,8 @@
       "Bash(node:*)",
       "Bash(start:*)",
       "mcp__puppeteer__puppeteer_click",
-      "mcp__puppeteer__puppeteer_fill"
+      "mcp__puppeteer__puppeteer_fill",
+      "WebFetch(domain:blog.walterclayton.com)"
     ],
     "deny": [],
     "ask": []

@@ -8,11 +8,7 @@
     <LayoutHeader />
 
     <!-- Main Content -->
-    <main
-      id="main-content"
-      class="flex-1"
-      role="main"
-    >
+    <main id="main-content" class="flex-1" role="main">
       <!-- Page Content Slot -->
       <slot />
     </main>
@@ -46,15 +42,19 @@ onMounted(() => {
 
 // Computed properties
 const currentLocale = computed(() => locale.value)
-const direction = computed(() => preferencesStore.isRTL ? 'rtl' : 'ltr')
+const direction = computed(() => (preferencesStore.isRTL ? 'rtl' : 'ltr'))
 
 // Watch for language changes and update HTML attributes
-watch(currentLocale, (newLocale) => {
-  if (typeof document !== 'undefined') {
-    document.documentElement.lang = newLocale
-    document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr'
-  }
-}, { immediate: true })
+watch(
+  currentLocale,
+  (newLocale) => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = newLocale
+      document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr'
+    }
+  },
+  { immediate: true }
+)
 
 // Update HTML attributes on mount for SSR compatibility
 onMounted(() => {
@@ -68,7 +68,7 @@ onMounted(() => {
 provide('layout', {
   locale: currentLocale,
   direction,
-  isRTL: computed(() => preferencesStore.isRTL)
+  isRTL: computed(() => preferencesStore.isRTL),
 })
 </script>
 
@@ -79,23 +79,23 @@ html {
 }
 
 /* RTL-specific styles */
-[dir="rtl"] {
+[dir='rtl'] {
   text-align: right;
 }
 
-[dir="rtl"] * {
+[dir='rtl'] * {
   direction: rtl;
 }
 
 /* Ensure proper text direction for input elements */
-[dir="rtl"] input,
-[dir="rtl"] textarea,
-[dir="rtl"] select {
+[dir='rtl'] input,
+[dir='rtl'] textarea,
+[dir='rtl'] select {
   text-align: right;
 }
 
 /* Fix flex direction for RTL */
-[dir="rtl"] .flex-row {
+[dir='rtl'] .flex-row {
   flex-direction: row-reverse;
 }
 

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     preset: 'vercel-edge',
   },
 
-  // Dev server configuration - hardcoded to port 3000
+  // Dev server configuration
   devServer: {
     port: 5000,
     host: 'localhost',
