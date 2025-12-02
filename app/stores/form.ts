@@ -5,6 +5,7 @@
 
 import { defineStore } from 'pinia';
 import type { FormInput, Language, EnhancementLevel, Constraint } from '~/types/form';
+import { ToneOption, OutputFormat } from '~/types/form';
 
 /**
  * Validation error structure
@@ -39,9 +40,9 @@ function createInitialFormInput(): FormInput {
     audience: '',
     task: '',
 
-    // Enhancement options (start empty - no default selection)
-    tone: undefined,
-    outputFormat: undefined,
+    // Enhancement options (with sensible defaults for API compatibility)
+    tone: ToneOption.PROFESSIONAL,
+    outputFormat: OutputFormat.PARAGRAPH,
 
     // Advanced options
     constraints: [],

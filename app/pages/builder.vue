@@ -317,7 +317,7 @@ const router = useRouter()
 const localePath = useLocalePath()
 const toast = useToast()
 const formStore = useFormStore()
-const { enhance, state: enhancementState, enhancedPrompt } = useEnhancement()
+const { enhance, isLoading: isEnhancing, enhancedPrompt } = useEnhancement()
 const { calculate: calculateQualityScore } = useQualityScore()
 const { saveDraft, loadDraft, startAutoSave, stopAutoSave } = useLocalStorage()
 
@@ -341,9 +341,6 @@ const autoSaveStatus = ref<'idle' | 'saving' | 'saved'>('idle')
 
 // Quality Score Modal
 const showQualityModal = ref(false)
-
-// Is enhancing computed property
-const isEnhancing = computed(() => enhancementState.loading)
 
 // Quality score calculation
 const qualityScoreResult = computed(() => {

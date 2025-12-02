@@ -138,6 +138,8 @@ const improvementPercentage = computed(() => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/main.css";
+
 .comparison-container {
   @apply w-full;
 }
@@ -151,7 +153,7 @@ const improvementPercentage = computed(() => {
 }
 
 .comparison-card.enhanced {
-  @apply ring-2 ring-emerald-500 ring-opacity-20;
+  @apply ring-2 ring-emerald-500/20;
 }
 
 .card-header {

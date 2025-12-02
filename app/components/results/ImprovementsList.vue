@@ -212,6 +212,8 @@ const getCategoryLabel = (category: string): string => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/main.css";
+
 .improvements-list-container {
   @apply w-full;
 }

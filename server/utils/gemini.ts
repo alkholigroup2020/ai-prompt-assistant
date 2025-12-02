@@ -266,8 +266,8 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
 
   try {
     const client = getGeminiClient();
-    const config = useRuntimeConfig();
-    const modelName = config.public.geminiModel || 'gemini-pro';
+    // Use gemini-2.0-flash (Gemini 1.0 and 1.5 models are retired)
+    const modelName = 'gemini-2.0-flash';
     const model = client.getGenerativeModel({ model: modelName });
 
     const prompt = buildEnhancementPrompt(input);
@@ -312,11 +312,12 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
     return enhancementData;
 
   } catch (error) {
-    // DEBUG: Log full error for troubleshooting (remove in production)
-    console.error('Gemini API full error:', error);
-
+    // SECURITY: Log errors securely without sensitive data
     const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
-    console.error('Gemini API error message:', sanitizedError);
+    console.error('Gemini API error:', {
+      errorType: sanitizedError.split(':')[0],
+      timestamp: new Date().toISOString()
+    });
 
     if (error instanceof Error) {
       if (error.message.includes('API key') || error.message.includes('invalid_api_key') || error.message.includes('API_KEY_INVALID')) {
@@ -464,8 +465,8 @@ export async function analyzePromptQuality(prompt: string): Promise<{
 export async function checkGeminiConnection(): Promise<boolean> {
   try {
     const client = getGeminiClient();
-    const config = useRuntimeConfig();
-    const modelName = config.public.geminiModel || 'gemini-pro';
+    // Force gemini-2.0-flash
+    const modelName = 'gemini-2.0-flash';
     const model = client.getGenerativeModel({ model: modelName });
 
     // Try a simple generation

@@ -4,19 +4,18 @@ import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
+  server: {
+    hmr: {
+      port: 24680, // Use a different port
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      exclude: [
-        'node_modules/',
-        '.nuxt/',
-        'dist/',
-        '**/*.config.*',
-        '**/*.d.ts',
-      ],
+      exclude: ['node_modules/', '.nuxt/', 'dist/', '**/*.config.*', '**/*.d.ts'],
       thresholds: {
         lines: 80,
         functions: 80,

@@ -9,38 +9,39 @@ interface EnhancementState {
 
 /**
  * Composable for managing prompt enhancement functionality
+ * Uses useState to persist state across page navigations
  */
 export function useEnhancement() {
   const api = useApi()
 
-  // Reactive state for enhancement
-  const state = reactive<EnhancementState>({
+  // Use Nuxt's useState for persistent state across page navigations
+  const state = useState<EnhancementState>('enhancement-state', () => ({
     loading: false,
     error: null,
     result: null,
     originalPrompt: '',
-  })
+  }))
 
   /**
    * Enhance a prompt using the AI API
    */
   async function enhance(input: FormInput): Promise<void> {
     // Reset previous state
-    state.loading = true
-    state.error = null
-    state.result = null
+    state.value.loading = true
+    state.value.error = null
+    state.value.result = null
 
     // Store original prompt for comparison
-    state.originalPrompt = buildOriginalPrompt(input)
+    state.value.originalPrompt = buildOriginalPrompt(input)
 
     try {
       const response = await api.enhancePrompt(input)
-      state.result = response
+      state.value.result = response
     } catch (error) {
-      state.error = error as APIError
+      state.value.error = error as APIError
       throw error
     } finally {
-      state.loading = false
+      state.value.loading = false
     }
   }
 
@@ -89,46 +90,61 @@ export function useEnhancement() {
    * Clear enhancement state
    */
   function clear(): void {
-    state.loading = false
-    state.error = null
-    state.result = null
-    state.originalPrompt = ''
+    state.value.loading = false
+    state.value.error = null
+    state.value.result = null
+    state.value.originalPrompt = ''
   }
 
   /**
    * Check if enhancement is available
    */
-  const hasResult = computed(() => state.result !== null)
+  const hasResult = computed(() => state.value.result !== null)
 
   /**
    * Get quality score from result
    */
-  const qualityScore = computed(() => state.result?.data?.qualityScore || 0)
+  const qualityScore = computed(() => state.value.result?.data?.qualityScore || 0)
 
   /**
    * Get enhanced prompt text
    */
-  const enhancedPrompt = computed(() => state.result?.data?.enhancedPrompt || '')
+  const enhancedPrompt = computed(() => state.value.result?.data?.enhancedPrompt || '')
 
   /**
    * Get improvements list
    */
-  const improvements = computed(() => state.result?.data?.improvements || [])
+  const improvements = computed(() => state.value.result?.data?.improvements || [])
 
   /**
    * Get suggestions list
    */
-  const suggestions = computed(() => state.result?.data?.suggestions || [])
+  const suggestions = computed(() => state.value.result?.data?.suggestions || [])
 
   /**
    * Get alternative versions
    */
   const alternativeVersions = computed(
-    () => state.result?.data?.alternativeVersions
+    () => state.value.result?.data?.alternativeVersions
   )
 
+  /**
+   * Get loading state
+   */
+  const isLoading = computed(() => state.value.loading)
+
+  /**
+   * Get error state
+   */
+  const error = computed(() => state.value.error)
+
+  /**
+   * Get original prompt
+   */
+  const originalPrompt = computed(() => state.value.originalPrompt)
+
   return {
-    // State
+    // State (expose as readonly ref)
     state: readonly(state),
 
     // Actions
@@ -142,5 +158,8 @@ export function useEnhancement() {
     improvements,
     suggestions,
     alternativeVersions,
+    isLoading,
+    error,
+    originalPrompt,
   }
 }

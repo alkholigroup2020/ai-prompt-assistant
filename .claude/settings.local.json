@@ -97,7 +97,13 @@
       "mcp__puppeteer__puppeteer_screenshot",
       "mcp__puppeteer__puppeteer_evaluate",
       "mcp__nuxt-ui-remote__get_component_metadata",
-      "mcp__puppeteer__puppeteer_connect_active_tab"
+      "mcp__puppeteer__puppeteer_connect_active_tab",
+      "Bash(start chrome --remote-debugging-port=9222 \"http://localhost:5000/builder\")",
+      "Bash(start \"\" \"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --remote-debugging-port=9222 --no-first-run \"http://localhost:5000/builder\")",
+      "Bash(node:*)",
+      "Bash(start:*)",
+      "mcp__puppeteer__puppeteer_click",
+      "mcp__puppeteer__puppeteer_fill"
     ],
     "deny": [],
     "ask": []

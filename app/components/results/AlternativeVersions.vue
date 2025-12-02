@@ -258,6 +258,8 @@ const versionStats = computed(() => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/main.css";
+
 .alternative-versions-container {
   @apply w-full;
 }
@@ -276,7 +278,7 @@ const versionStats = computed(() => {
 }
 
 .tab-active {
-  @apply bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 ring-2 ring-purple-500 ring-opacity-20;
+  @apply bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 ring-2 ring-purple-500/20;
 }
 
 .tab-inactive {

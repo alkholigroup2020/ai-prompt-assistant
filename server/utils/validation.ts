@@ -144,9 +144,13 @@ export function validateFormInput(data: unknown): {
   // Type guard for data object
   const input = data as Record<string, unknown>;
 
-  // Validate payload size
+  // Validate payload size (using Buffer.byteLength for edge runtime compatibility)
   try {
-    const payloadSize = new Blob([JSON.stringify(data)]).size;
+    const payloadStr = JSON.stringify(data);
+    const payloadSize = typeof Buffer !== 'undefined'
+      ? Buffer.byteLength(payloadStr, 'utf8')
+      : new TextEncoder().encode(payloadStr).length;
+
     if (payloadSize > MAX_PAYLOAD_SIZE) {
       return {
         valid: false,

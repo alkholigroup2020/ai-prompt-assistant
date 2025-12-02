@@ -222,6 +222,7 @@ const {
   enhancedPrompt,
   improvements,
   alternativeVersions,
+  originalPrompt,
 } = useEnhancement()
 const { saveToHistory } = useLocalStorage()
 
@@ -245,11 +246,8 @@ const originalInput = computed<FormInput>(() => formStore.formData)
 
 // Get enhancement response (cast to remove readonly constraint)
 const enhancementResponse = computed(() =>
-  enhancementState.result as unknown as import('~/types').EnhancementResponse | undefined
+  enhancementState.value.result as unknown as import('~/types').EnhancementResponse | undefined
 )
-
-// Get original prompt text for comparison
-const originalPrompt = computed(() => enhancementState.originalPrompt)
 
 // Get enhancement level
 const enhancementLevel = computed(() => originalInput.value.enhancementLevel || 'quick')
@@ -278,11 +276,11 @@ const navigateToTemplates = (): void => {
 
 // Save to history on mount
 onMounted(() => {
-  if (hasResult.value && enhancedPrompt.value && enhancementState.result) {
+  if (hasResult.value && enhancedPrompt.value && enhancementState.value.result) {
     try {
       // Save to history using the correct signature
       // Cast to remove readonly constraint
-      const response = enhancementState.result as unknown as import('~/types').EnhancementResponse
+      const response = enhancementState.value.result as unknown as import('~/types').EnhancementResponse
       saveToHistory(originalInput.value, response)
 
       // Update stats

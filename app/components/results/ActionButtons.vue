@@ -259,6 +259,8 @@ const exportOptions = [
 </template>
 
 <style scoped>
+@reference "~/assets/css/main.css";
+
 .action-buttons-container {
   @apply w-full;
 }
