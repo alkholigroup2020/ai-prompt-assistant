@@ -133,8 +133,24 @@
         :placeholder="$t('builder.constraints.otherPlaceholder')"
         :rows="3"
         class="w-full"
+        :highlight="isOverLimit"
         @input="handleOtherConstraintsChange"
       />
+      <!-- Character Counter -->
+      <div class="mt-1 flex items-center justify-between text-xs">
+        <span
+          :class="{
+            'text-red-600 dark:text-red-400': isOverLimit,
+            'text-gray-500 dark:text-gray-400': !isOverLimit
+          }"
+        >
+          {{ otherConstraintsCount }} / {{ CHAR_LIMITS.OTHER_FIELD_MAX }} {{ $t('builder.advanced.characters') }}
+        </span>
+        <span v-if="isOverLimit" class="text-red-600 dark:text-red-400">
+          <UIcon name="i-heroicons-exclamation-circle" class="w-4 h-4 inline" />
+          {{ $t('builder.constraints.overLimit', 'Character limit exceeded') }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -144,9 +160,14 @@ import { computed, ref, watch } from 'vue';
 import { useFormStore } from '~/stores/form';
 import { useI18n } from 'vue-i18n';
 import { Constraint } from '~/types';
+import { CHAR_LIMITS } from '~/utils/validators';
 
 const { t } = useI18n();
 const formStore = useFormStore();
+
+// Character count for other constraints
+const otherConstraintsCount = computed(() => otherConstraintsValue.value.length);
+const isOverLimit = computed(() => otherConstraintsCount.value > CHAR_LIMITS.OTHER_FIELD_MAX);
 
 // Word limit constraints (mutually exclusive)
 const wordLimitConstraints = [

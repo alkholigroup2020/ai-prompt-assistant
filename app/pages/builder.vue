@@ -39,6 +39,9 @@
           <!-- Quality Score Circle (25%) -->
           <div
             class="flex-shrink-0 flex items-center gap-3 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700"
+            role="status"
+            aria-live="polite"
+            :aria-label="t('builder.preview.qualityAriaLabel', { score: qualityScore, rating: qualityRatingLabel })"
           >
             <!-- Label (appears before circle in RTL) -->
             <div class="hidden sm:block order-2 rtl:order-1 text-start rtl:text-end">
@@ -49,15 +52,21 @@
                 {{ qualityRatingLabel }}
               </p>
               <button
+                type="button"
                 class="text-xs text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 underline cursor-pointer mt-0.5"
+                :aria-label="t('builder.preview.moreDetailsAriaLabel', 'View quality score breakdown')"
                 @click="showQualityModal = true"
               >
                 {{ t('builder.preview.moreDetails') }}
               </button>
             </div>
             <!-- Circle -->
-            <div class="relative w-14 h-14 md:w-16 md:h-16 order-1 rtl:order-2">
-              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 64 64">
+            <div
+              class="relative w-14 h-14 md:w-16 md:h-16 order-1 rtl:order-2"
+              role="img"
+              :aria-label="t('builder.preview.qualityScoreAriaLabel', { score: qualityScore })"
+            >
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 64 64" aria-hidden="true">
                 <!-- Background circle -->
                 <circle
                   cx="32"
@@ -83,7 +92,7 @@
               </svg>
               <!-- Score text -->
               <div class="absolute inset-0 flex items-center justify-center">
-                <span :class="qualityScoreTextColor" class="text-sm md:text-base font-bold">
+                <span :class="qualityScoreTextColor" class="text-sm md:text-base font-bold" aria-hidden="true">
                   {{ qualityScore }}
                 </span>
               </div>
@@ -199,7 +208,9 @@
             size="lg"
             block
             class="min-h-[44px] lg:flex-1 cursor-pointer"
-            :disabled="!formStore.formData.task || isEnhancing"
+            :disabled="!formStore.formData.task || isEnhancing || isSavingDraft"
+            :loading="isSavingDraft"
+            :aria-busy="isSavingDraft"
             @click="handleSaveDraft"
           >
             <template #leading>
@@ -244,51 +255,96 @@
           </UButton>
         </div>
 
-        <!-- Keyboard Shortcuts Help -->
-        <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-          <div class="flex items-start gap-3">
-            <UIcon
-              name="i-heroicons-information-circle"
-              class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5"
-            />
-            <div class="flex-1">
-              <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+        <!-- Keyboard Shortcuts Help - Collapsible -->
+        <div class="rounded-lg border border-blue-200 dark:border-blue-800 overflow-hidden">
+          <button
+            type="button"
+            class="w-full p-4 bg-blue-50 dark:bg-blue-900/20 flex items-center justify-between gap-3 cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+            :aria-expanded="showKeyboardShortcuts"
+            aria-controls="keyboard-shortcuts-content"
+            @click="showKeyboardShortcuts = !showKeyboardShortcuts"
+          >
+            <div class="flex items-center gap-3">
+              <UIcon
+                name="i-heroicons-command-line"
+                class="w-5 h-5 text-blue-600 dark:text-blue-400"
+              />
+              <span class="text-sm font-semibold text-blue-900 dark:text-blue-100">
                 {{ t('builder.shortcuts.title') }}
-              </h3>
+              </span>
+            </div>
+            <UIcon
+              :name="showKeyboardShortcuts ? 'i-heroicons-chevron-up' : 'i-heroicons-chevron-down'"
+              class="w-5 h-5 text-blue-600 dark:text-blue-400 transition-transform duration-200"
+            />
+          </button>
+
+          <Transition
+            enter-active-class="transition duration-200 ease-out"
+            enter-from-class="opacity-0 -translate-y-2"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition duration-150 ease-in"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 -translate-y-2"
+          >
+            <div
+              v-show="showKeyboardShortcuts"
+              id="keyboard-shortcuts-content"
+              class="p-4 bg-blue-50/50 dark:bg-blue-900/10 border-t border-blue-200 dark:border-blue-800"
+            >
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm text-blue-700 dark:text-blue-300"
               >
-                <div>
-                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Enter</kbd>
-                  {{ t('builder.shortcuts.quickEnhance') }}
+                <div class="flex items-center gap-2">
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded text-xs font-mono">Ctrl+Enter</kbd>
+                  <span>{{ t('builder.shortcuts.quickEnhance') }}</span>
                 </div>
-                <div>
-                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+Shift+Enter</kbd>
-                  {{ t('builder.shortcuts.deepEnhance') }}
+                <div class="flex items-center gap-2">
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded text-xs font-mono">Ctrl+Shift+Enter</kbd>
+                  <span>{{ t('builder.shortcuts.deepEnhance') }}</span>
                 </div>
-                <div>
-                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+S</kbd>
-                  {{ t('builder.shortcuts.saveDraft') }}
+                <div class="flex items-center gap-2">
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded text-xs font-mono">Ctrl+S</kbd>
+                  <span>{{ t('builder.shortcuts.saveDraft') }}</span>
                 </div>
-                <div>
-                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Ctrl+R</kbd>
-                  {{ t('builder.shortcuts.reset') }}
+                <div class="flex items-center gap-2">
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded text-xs font-mono">Ctrl+R</kbd>
+                  <span>{{ t('builder.shortcuts.reset') }}</span>
                 </div>
-                <div>
-                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded">Esc</kbd>
-                  {{ t('builder.shortcuts.clearFocus') }}
+                <div class="flex items-center gap-2">
+                  <kbd class="px-2 py-1 bg-white dark:bg-gray-800 rounded text-xs font-mono">Esc</kbd>
+                  <span>{{ t('builder.shortcuts.clearFocus') }}</span>
                 </div>
               </div>
             </div>
-          </div>
+          </Transition>
         </div>
       </div>
     </div>
 
     <!-- Quality Score Details Modal -->
-    <UModal v-model:open="showQualityModal" :title="t('builder.preview.quality')">
+    <UModal
+      v-model:open="showQualityModal"
+      :title="t('builder.preview.quality')"
+      :description="t('builder.preview.qualityModalDescription', 'Detailed breakdown of your prompt quality score')"
+    >
+      <template #header>
+        <div class="flex items-center justify-between w-full p-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+            {{ t('builder.preview.quality') }}
+          </h2>
+          <button
+            type="button"
+            class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+            :aria-label="t('common.close', 'Close')"
+            @click="showQualityModal = false"
+          >
+            <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
+          </button>
+        </div>
+      </template>
       <template #body>
-        <div class="flex flex-col items-center space-y-6">
+        <div class="flex flex-col items-center space-y-6 p-4">
           <!-- Large Quality Score Display -->
           <BuilderQualityScore :score="qualityScore" size="lg" :show-label="true" />
 
@@ -342,11 +398,17 @@ useHead({
 // Auto-save status
 const autoSaveStatus = ref<'idle' | 'saving' | 'saved'>('idle')
 
+// Save draft loading state
+const isSavingDraft = ref(false)
+
 // Quality Score Modal
 const showQualityModal = ref(false)
 
 // Reset Confirmation Modal
 const showResetModal = ref(false)
+
+// Keyboard shortcuts section collapsed state
+const showKeyboardShortcuts = ref(false)
 
 // Quality score calculation
 const qualityScoreResult = computed(() => {
@@ -440,7 +502,7 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
     toast.add({
       title: t('builder.validation.error'),
       description: t('builder.validation.fixErrors'),
-      color: 'primary',
+      color: 'neutral',
       icon: 'i-heroicons-exclamation-triangle',
     })
     return
@@ -472,7 +534,7 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
     toast.add({
       title: t('builder.enhancement.error'),
       description: t('builder.enhancement.errorDescription'),
-      color: 'primary',
+      color: 'neutral',
       icon: 'i-heroicons-x-circle',
     })
   }
@@ -492,19 +554,30 @@ const confirmReset = () => {
   })
 }
 
-const handleSaveDraft = () => {
-  const draftData = {
-    draft: formStore.formData,
-    lastSaved: new Date(),
-    autoSaved: false,
+const handleSaveDraft = async () => {
+  if (isSavingDraft.value) return
+
+  isSavingDraft.value = true
+
+  try {
+    const draftData = {
+      draft: formStore.formData,
+      lastSaved: new Date(),
+      autoSaved: false,
+    }
+    saveDraft(draftData)
+    toast.add({
+      title: t('builder.actions.draftSaved'),
+      description: t('builder.actions.draftSavedDescription'),
+      color: 'emerald',
+      icon: 'i-heroicons-bookmark',
+    })
+  } finally {
+    // Brief delay to show loading state
+    setTimeout(() => {
+      isSavingDraft.value = false
+    }, 300)
   }
-  saveDraft(draftData)
-  toast.add({
-    title: t('builder.actions.draftSaved'),
-    description: t('builder.actions.draftSavedDescription'),
-    color: 'emerald',
-    icon: 'i-heroicons-bookmark',
-  })
 }
 
 // Keyboard shortcuts
