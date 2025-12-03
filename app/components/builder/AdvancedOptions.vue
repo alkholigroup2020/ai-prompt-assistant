@@ -95,7 +95,6 @@
           :placeholder="$t('builder.advanced.examples.placeholder')"
           :rows="3"
           :ui="{ base: 'w-full max-h-[84px] overflow-y-auto resize-none' }"
-          @input="handleExamplesChange"
           @blur="handleExamplesBlur"
         />
         <!-- Character Counter -->
@@ -134,7 +133,6 @@
           :placeholder="$t('builder.advanced.context.placeholder')"
           :rows="3"
           :ui="{ base: 'w-full max-h-[84px] overflow-y-auto resize-none' }"
-          @input="handleContextChange"
           @blur="handleContextBlur"
         />
         <!-- Character Counter -->
@@ -204,15 +202,20 @@ watch(() => formStore.formData.context, (newContext) => {
   }
 }, { immediate: true });
 
+// Sync local values to store when they change (replaces @input handlers)
+// Using watch ensures the sync happens AFTER v-model updates the ref
+watch(examplesValue, (newValue) => {
+  formStore.updateField('examples', newValue || undefined);
+});
+
+watch(contextValue, (newValue) => {
+  formStore.updateField('context', newValue || undefined);
+});
+
 // Set enhancement level
 const setEnhancementLevel = (level: EnhancementLevel) => {
   enhancementLevel.value = level;
   formStore.updateField('enhancementLevel', level);
-};
-
-// Handle examples change
-const handleExamplesChange = () => {
-  formStore.updateField('examples', examplesValue.value || undefined);
 };
 
 // Handle examples blur
@@ -220,11 +223,6 @@ const handleExamplesBlur = () => {
   if (examplesValue.value) {
     formStore.validateField('examples');
   }
-};
-
-// Handle context change
-const handleContextChange = () => {
-  formStore.updateField('context', contextValue.value || undefined);
 };
 
 // Handle context blur

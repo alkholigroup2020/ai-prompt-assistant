@@ -45,6 +45,8 @@ function createInitialFormInput(): FormInput {
 
     // Advanced options
     constraints: [],
+    examples: undefined,
+    context: undefined,
 
     // Enhancement settings
     enhancementLevel: 'quick' as EnhancementLevel,
