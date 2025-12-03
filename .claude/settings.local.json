@@ -104,7 +104,12 @@
       "Bash(start:*)",
       "mcp__puppeteer__puppeteer_click",
       "mcp__puppeteer__puppeteer_fill",
-      "WebFetch(domain:blog.walterclayton.com)"
+      "WebFetch(domain:blog.walterclayton.com)",
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__read_text_file",
+      "mcp__filesystem__create_directory",
+      "mcp__filesystem__read_multiple_files",
+      "mcp__filesystem__write_file"
     ],
     "deny": [],
     "ask": []

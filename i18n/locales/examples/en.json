@@ -1,0 +1,589 @@
+{
+  "examples": {
+    "software-engineer": {
+      "technical-team": {
+        "0": "Review this code snippet for potential performance issues and suggest optimizations",
+        "1": "Debug this error message and explain the root cause to the team",
+        "2": "Write API documentation for this endpoint including request/response examples",
+        "3": "Refactor this function to improve readability while maintaining functionality",
+        "4": "Create unit tests for this module covering edge cases and error handling"
+      },
+      "executives": {
+        "0": "Summarize the technical debt situation and its impact on delivery timelines",
+        "1": "Explain the benefits of this architectural change in business terms",
+        "2": "Present the security audit findings with recommended actions and priorities",
+        "3": "Provide a non-technical overview of the system migration plan",
+        "4": "Estimate development resources needed for the Q2 roadmap features"
+      },
+      "clients": {
+        "0": "Write a technical specification document for the proposed feature",
+        "1": "Explain the project timeline and development milestones clearly",
+        "2": "Describe how the new feature will solve their business problem",
+        "3": "Answer common questions about system integration requirements",
+        "4": "Provide a summary of completed deliverables and next steps"
+      },
+      "general-public": {
+        "0": "Explain how this software feature works in simple terms",
+        "1": "Write a user guide for setting up the mobile application",
+        "2": "Describe our security measures in a way anyone can understand",
+        "3": "Create FAQ answers about common technical issues",
+        "4": "Explain the benefits of our technology without using jargon"
+      },
+      "students": {
+        "0": "Explain this programming concept with beginner-friendly examples",
+        "1": "Create a learning path for becoming a software developer",
+        "2": "Break down this algorithm into step-by-step explanations",
+        "3": "Explain the difference between these programming paradigms",
+        "4": "Provide practical coding exercises for learning this framework"
+      },
+      "experts": {
+        "0": "Analyze the trade-offs between these architectural patterns",
+        "1": "Review this system design for scalability and reliability concerns",
+        "2": "Evaluate the performance benchmarks and suggest optimizations",
+        "3": "Assess the security vulnerabilities in this codebase",
+        "4": "Compare these technology stacks for our specific use case"
+      },
+      "beginners": {
+        "0": "Explain what an API is and how it works in simple terms",
+        "1": "Walk through the basics of version control with Git",
+        "2": "Introduce the fundamentals of web development step by step",
+        "3": "Explain common programming errors and how to fix them",
+        "4": "Create a beginner's guide to reading and understanding code"
+      },
+      "stakeholders": {
+        "0": "Provide a progress update on the development sprint",
+        "1": "Explain the technical risks that could impact the timeline",
+        "2": "Summarize the key technical decisions and their rationale",
+        "3": "Present the quality metrics and testing coverage report",
+        "4": "Outline the infrastructure costs and scaling requirements"
+      },
+      "team-members": {
+        "0": "Document the onboarding process for new developers",
+        "1": "Write the pull request description explaining these changes",
+        "2": "Create a technical decision record for this architecture choice",
+        "3": "Share best practices for our coding standards",
+        "4": "Prepare discussion points for the code review session"
+      }
+    },
+    "product-manager": {
+      "technical-team": {
+        "0": "Write user stories with clear acceptance criteria for this feature",
+        "1": "Explain the business context and priorities behind these requirements",
+        "2": "Help prioritize the backlog based on impact and effort",
+        "3": "Create a roadmap timeline aligning technical and business goals",
+        "4": "Define success metrics for measuring feature adoption"
+      },
+      "executives": {
+        "0": "Present the quarterly product performance and key metrics",
+        "1": "Create an executive summary of the product roadmap",
+        "2": "Outline the strategic vision and market positioning",
+        "3": "Build the business case for this product investment",
+        "4": "Summarize competitive analysis and differentiation strategy"
+      },
+      "clients": {
+        "0": "Announce upcoming features and improvements to customers",
+        "1": "Explain the release timeline and what to expect",
+        "2": "Gather and document customer feedback for prioritization",
+        "3": "Write release notes highlighting key changes and benefits",
+        "4": "Respond to customer feature requests with our roadmap plans"
+      },
+      "general-public": {
+        "0": "Write a product announcement for our website and social media",
+        "1": "Create a press release about our new product launch",
+        "2": "Explain our product's unique value proposition simply",
+        "3": "Answer common questions about product features and pricing",
+        "4": "Write engaging content about how our product solves problems"
+      },
+      "students": {
+        "0": "Explain the fundamentals of product management as a career",
+        "1": "Share insights on how to build and validate product ideas",
+        "2": "Describe the product development lifecycle with examples",
+        "3": "Provide tips for breaking into product management",
+        "4": "Explain how to conduct user research effectively"
+      },
+      "experts": {
+        "0": "Analyze market trends and their implications for our product",
+        "1": "Evaluate different product-market fit assessment frameworks",
+        "2": "Discuss advanced metrics for measuring product success",
+        "3": "Share insights on scaling product teams and processes",
+        "4": "Review industry best practices for product strategy"
+      },
+      "beginners": {
+        "0": "Explain what a product manager does in simple terms",
+        "1": "Introduce the basics of user experience and product design",
+        "2": "Walk through how products go from idea to launch",
+        "3": "Explain key product metrics and why they matter",
+        "4": "Create a guide to writing effective product requirements"
+      },
+      "stakeholders": {
+        "0": "Present the product status update and upcoming priorities",
+        "1": "Outline the product roadmap with key milestones",
+        "2": "Explain budget requirements and expected ROI",
+        "3": "Share customer feedback themes and proposed actions",
+        "4": "Report on feature adoption and user engagement metrics"
+      },
+      "team-members": {
+        "0": "Create sprint planning documentation with clear priorities",
+        "1": "Document the product requirements for the upcoming release",
+        "2": "Facilitate a retrospective to improve team processes",
+        "3": "Define the feature launch checklist and responsibilities",
+        "4": "Communicate cross-team dependencies and coordination needs"
+      }
+    },
+    "data-analyst": {
+      "technical-team": {
+        "0": "Document the data pipeline architecture and dependencies",
+        "1": "Write SQL queries optimized for performance on large datasets",
+        "2": "Create documentation for our data models and schemas",
+        "3": "Explain the ETL process and data transformation logic",
+        "4": "Set up monitoring and alerting for data quality issues"
+      },
+      "executives": {
+        "0": "Create an executive dashboard summarizing key business metrics",
+        "1": "Present insights from customer behavior analysis",
+        "2": "Show trends and forecasts for strategic decision-making",
+        "3": "Translate complex data findings into actionable recommendations",
+        "4": "Report on KPI progress toward annual targets"
+      },
+      "clients": {
+        "0": "Create a custom analytics report for client requirements",
+        "1": "Explain data findings in a clear and actionable format",
+        "2": "Provide insights on customer segments and behavior patterns",
+        "3": "Present ROI analysis and performance metrics",
+        "4": "Document data deliverables and methodology used"
+      },
+      "general-public": {
+        "0": "Explain statistical findings in simple, everyday terms",
+        "1": "Create an infographic presenting key data insights",
+        "2": "Write a blog post about interesting trends in our data",
+        "3": "Make complex data visualizations accessible and understandable",
+        "4": "Answer common questions about how we use data responsibly"
+      },
+      "students": {
+        "0": "Explain basic statistics concepts with real-world examples",
+        "1": "Create a learning guide for data analysis tools and techniques",
+        "2": "Walk through a data analysis project from start to finish",
+        "3": "Introduce visualization best practices and common mistakes",
+        "4": "Provide exercises for practicing SQL and data manipulation"
+      },
+      "experts": {
+        "0": "Discuss advanced statistical methods for this analysis",
+        "1": "Review the machine learning model performance and improvements",
+        "2": "Evaluate different approaches for handling this data problem",
+        "3": "Analyze the methodology and potential biases in this study",
+        "4": "Compare statistical techniques for this specific use case"
+      },
+      "beginners": {
+        "0": "Explain what data analysis is and why it matters",
+        "1": "Introduce basic spreadsheet functions for data work",
+        "2": "Create a guide to understanding charts and graphs",
+        "3": "Walk through simple data cleaning techniques",
+        "4": "Explain common data terms and what they mean"
+      },
+      "stakeholders": {
+        "0": "Present monthly business metrics and trend analysis",
+        "1": "Report on data-driven insights affecting strategic decisions",
+        "2": "Show progress on analytics initiatives and their impact",
+        "3": "Identify risks and opportunities based on data patterns",
+        "4": "Provide recommendations supported by data evidence"
+      },
+      "team-members": {
+        "0": "Share analysis methodology and reproducibility documentation",
+        "1": "Create a data dictionary for shared understanding",
+        "2": "Document insights and findings from recent analysis",
+        "3": "Collaborate on data visualization standards and templates",
+        "4": "Present findings at the team knowledge-sharing session"
+      }
+    },
+    "marketing-specialist": {
+      "technical-team": {
+        "0": "Write marketing requirements for the website feature update",
+        "1": "Explain campaign performance metrics and tracking needs",
+        "2": "Document the customer journey and touchpoint requirements",
+        "3": "Coordinate on marketing automation tool integration",
+        "4": "Report bugs and issues found in marketing tools"
+      },
+      "executives": {
+        "0": "Present quarterly marketing performance and ROI analysis",
+        "1": "Propose budget allocation for next year's campaigns",
+        "2": "Share competitive positioning and market opportunity analysis",
+        "3": "Report on brand awareness and customer acquisition metrics",
+        "4": "Outline the marketing strategy aligned with business goals"
+      },
+      "clients": {
+        "0": "Create a compelling case study featuring their success story",
+        "1": "Develop co-marketing campaign proposals for partnership",
+        "2": "Present campaign performance reports and recommendations",
+        "3": "Write testimonial requests highlighting their achievements",
+        "4": "Design a customer referral program proposal"
+      },
+      "general-public": {
+        "0": "Write engaging social media content for our campaign",
+        "1": "Create an emotional brand story that resonates with audiences",
+        "2": "Develop blog content that educates and entertains",
+        "3": "Write hashtag campaigns for social media engagement",
+        "4": "Create video scripts for product demonstrations"
+      },
+      "students": {
+        "0": "Explain digital marketing fundamentals and career paths",
+        "1": "Share tips for building a personal brand online",
+        "2": "Create a guide to social media marketing basics",
+        "3": "Introduce marketing analytics and measurement concepts",
+        "4": "Provide real-world examples of successful campaigns"
+      },
+      "experts": {
+        "0": "Analyze emerging marketing trends and their implications",
+        "1": "Evaluate A/B testing results and optimization strategies",
+        "2": "Discuss advanced attribution modeling approaches",
+        "3": "Review marketing technology stack recommendations",
+        "4": "Share insights on scaling content marketing operations"
+      },
+      "beginners": {
+        "0": "Explain what marketing is and its different types",
+        "1": "Introduce the basics of creating marketing content",
+        "2": "Walk through setting up a simple marketing campaign",
+        "3": "Explain common marketing terms and metrics",
+        "4": "Create a guide to understanding your target audience"
+      },
+      "stakeholders": {
+        "0": "Report on campaign performance against set objectives",
+        "1": "Present marketing budget utilization and efficiency",
+        "2": "Show lead generation and conversion funnel metrics",
+        "3": "Update on brand perception and market positioning",
+        "4": "Outline upcoming campaigns and expected outcomes"
+      },
+      "team-members": {
+        "0": "Create the content calendar for the upcoming quarter",
+        "1": "Document campaign briefs and creative requirements",
+        "2": "Coordinate cross-functional marketing activities",
+        "3": "Share copywriting guidelines and brand voice standards",
+        "4": "Organize asset library and creative resources"
+      }
+    },
+    "designer": {
+      "technical-team": {
+        "0": "Document design specifications and component guidelines",
+        "1": "Create a style guide with colors, typography, and spacing",
+        "2": "Explain responsive design requirements for mobile devices",
+        "3": "Provide interaction design specifications for developers",
+        "4": "Collaborate on design system implementation details"
+      },
+      "executives": {
+        "0": "Present the design vision and brand evolution strategy",
+        "1": "Show the design impact on user engagement metrics",
+        "2": "Propose design investment for improving user experience",
+        "3": "Report on competitive design analysis and recommendations",
+        "4": "Demonstrate how design contributes to business goals"
+      },
+      "clients": {
+        "0": "Present design concepts and gather feedback",
+        "1": "Explain the design rationale and user research insights",
+        "2": "Create mood boards showing design direction options",
+        "3": "Document design deliverables and revision process",
+        "4": "Guide clients through the design approval workflow"
+      },
+      "general-public": {
+        "0": "Explain design principles in an accessible way",
+        "1": "Share the story behind our brand visual identity",
+        "2": "Create educational content about good design practices",
+        "3": "Write about design trends and their everyday impact",
+        "4": "Introduce the basics of user-centered design thinking"
+      },
+      "students": {
+        "0": "Create a beginner's guide to learning design fundamentals",
+        "1": "Explain color theory and its application in design",
+        "2": "Share resources for building a design portfolio",
+        "3": "Walk through the design process from concept to final",
+        "4": "Introduce UX research methods and their importance"
+      },
+      "experts": {
+        "0": "Discuss advanced interaction design patterns and innovations",
+        "1": "Analyze design system architecture and scalability",
+        "2": "Evaluate accessibility compliance and inclusive design",
+        "3": "Review emerging design tools and workflow optimizations",
+        "4": "Share insights on design operations and team scaling"
+      },
+      "beginners": {
+        "0": "Explain what UX and UI design mean in simple terms",
+        "1": "Introduce basic design tools and how to get started",
+        "2": "Walk through creating a simple design layout",
+        "3": "Explain common design mistakes and how to avoid them",
+        "4": "Create a glossary of essential design terminology"
+      },
+      "stakeholders": {
+        "0": "Present design progress and upcoming deliverables",
+        "1": "Show user testing results and design recommendations",
+        "2": "Report on design resource needs and timeline",
+        "3": "Demonstrate design impact on key user metrics",
+        "4": "Outline design priorities aligned with business objectives"
+      },
+      "team-members": {
+        "0": "Share design decisions and rationale with the team",
+        "1": "Create design review documentation and feedback",
+        "2": "Facilitate design critique sessions effectively",
+        "3": "Document design patterns for team consistency",
+        "4": "Coordinate handoff materials for development"
+      }
+    },
+    "business-analyst": {
+      "technical-team": {
+        "0": "Write detailed functional requirements for the new feature",
+        "1": "Create process flow diagrams for the proposed workflow",
+        "2": "Document data requirements and integration specifications",
+        "3": "Define acceptance criteria for user stories",
+        "4": "Facilitate requirement clarification sessions with developers"
+      },
+      "executives": {
+        "0": "Present business case analysis with cost-benefit breakdown",
+        "1": "Create executive summary of process improvement opportunities",
+        "2": "Recommend strategic initiatives based on analysis findings",
+        "3": "Report on organizational efficiency metrics and trends",
+        "4": "Outline transformation roadmap with expected outcomes"
+      },
+      "clients": {
+        "0": "Document client requirements and project scope",
+        "1": "Create proposal for process improvement engagement",
+        "2": "Present analysis findings and recommendations",
+        "3": "Facilitate requirements gathering workshops",
+        "4": "Develop project timeline with key milestones"
+      },
+      "general-public": {
+        "0": "Explain business analysis concepts in everyday terms",
+        "1": "Write about how businesses improve their operations",
+        "2": "Create content explaining digital transformation simply",
+        "3": "Share stories of successful business improvements",
+        "4": "Answer common questions about organizational efficiency"
+      },
+      "students": {
+        "0": "Explain the role of a business analyst in organizations",
+        "1": "Create a guide to business analysis methodologies",
+        "2": "Share tips for developing analytical thinking skills",
+        "3": "Walk through a sample business case analysis",
+        "4": "Introduce popular business analysis tools and frameworks"
+      },
+      "experts": {
+        "0": "Analyze complex business scenarios using advanced frameworks",
+        "1": "Evaluate enterprise architecture implications",
+        "2": "Discuss best practices for large-scale transformations",
+        "3": "Review emerging trends in business process management",
+        "4": "Share insights on data-driven decision making approaches"
+      },
+      "beginners": {
+        "0": "Explain what business analysis is and why it matters",
+        "1": "Introduce basic process mapping techniques",
+        "2": "Walk through creating a simple requirements document",
+        "3": "Explain common business analysis deliverables",
+        "4": "Create a guide to stakeholder management basics"
+      },
+      "stakeholders": {
+        "0": "Present requirements analysis and recommendations",
+        "1": "Report on project progress and scope changes",
+        "2": "Document decisions and their business impact",
+        "3": "Identify risks and mitigation strategies",
+        "4": "Provide status update on deliverables and timeline"
+      },
+      "team-members": {
+        "0": "Share requirements documentation with the project team",
+        "1": "Create user story backlog with priorities",
+        "2": "Facilitate knowledge transfer sessions",
+        "3": "Document process improvements and lessons learned",
+        "4": "Coordinate cross-functional team communications"
+      }
+    },
+    "content-writer": {
+      "technical-team": {
+        "0": "Write technical documentation for the developer guide",
+        "1": "Create API documentation with clear examples",
+        "2": "Document release notes for the software update",
+        "3": "Write help center articles for technical features",
+        "4": "Coordinate content needs for technical marketing materials"
+      },
+      "executives": {
+        "0": "Write thought leadership articles on industry trends",
+        "1": "Create executive communications and announcements",
+        "2": "Draft speeches and presentations for leadership",
+        "3": "Write annual report narrative sections",
+        "4": "Develop messaging for strategic communications"
+      },
+      "clients": {
+        "0": "Write compelling proposal narratives for client projects",
+        "1": "Create customized content addressing client pain points",
+        "2": "Develop case studies highlighting client successes",
+        "3": "Write personalized email sequences for client nurturing",
+        "4": "Create client-facing documentation and guides"
+      },
+      "general-public": {
+        "0": "Write engaging blog posts that drive traffic and engagement",
+        "1": "Create social media content that sparks conversation",
+        "2": "Develop email newsletter content that retains subscribers",
+        "3": "Write website copy that converts visitors to customers",
+        "4": "Create video scripts for brand storytelling"
+      },
+      "students": {
+        "0": "Explain content writing fundamentals and best practices",
+        "1": "Create a guide to developing your writing voice",
+        "2": "Share tips for writing effective headlines and hooks",
+        "3": "Walk through the content creation process step by step",
+        "4": "Introduce SEO basics for content writers"
+      },
+      "experts": {
+        "0": "Discuss advanced content strategy and planning",
+        "1": "Analyze content performance metrics and optimization",
+        "2": "Share insights on AI-assisted content creation",
+        "3": "Review emerging trends in content marketing",
+        "4": "Evaluate content distribution and amplification strategies"
+      },
+      "beginners": {
+        "0": "Explain different types of content and their purposes",
+        "1": "Introduce basic writing structure and formatting",
+        "2": "Walk through editing and proofreading techniques",
+        "3": "Explain how to research and organize content",
+        "4": "Create a checklist for publishing quality content"
+      },
+      "stakeholders": {
+        "0": "Present content calendar and upcoming publications",
+        "1": "Report on content performance and engagement metrics",
+        "2": "Propose content initiatives aligned with business goals",
+        "3": "Update on brand messaging and voice consistency",
+        "4": "Outline content resource needs and timeline"
+      },
+      "team-members": {
+        "0": "Create editorial guidelines and style documentation",
+        "1": "Document content briefs for upcoming projects",
+        "2": "Coordinate content review and approval workflow",
+        "3": "Share writing tips and best practices with the team",
+        "4": "Organize content assets and resource library"
+      }
+    },
+    "project-manager": {
+      "technical-team": {
+        "0": "Create sprint planning documentation with clear priorities",
+        "1": "Document project timeline and development milestones",
+        "2": "Identify and communicate technical risks and blockers",
+        "3": "Coordinate resource allocation across team members",
+        "4": "Facilitate technical decision-making discussions"
+      },
+      "executives": {
+        "0": "Present project status report with key metrics and risks",
+        "1": "Create executive summary of project portfolio health",
+        "2": "Report on resource utilization and capacity planning",
+        "3": "Present budget status and forecast for the quarter",
+        "4": "Outline strategic project priorities and recommendations"
+      },
+      "clients": {
+        "0": "Write project status update for client communication",
+        "1": "Document project scope and deliverables agreement",
+        "2": "Respond to client concerns and change requests",
+        "3": "Present project completion report and handover",
+        "4": "Coordinate project kickoff meeting and expectations"
+      },
+      "general-public": {
+        "0": "Explain project management principles in simple terms",
+        "1": "Write about successful project delivery practices",
+        "2": "Create content about effective team collaboration",
+        "3": "Share tips for managing personal projects",
+        "4": "Explain how large projects get organized and executed"
+      },
+      "students": {
+        "0": "Introduce project management fundamentals and methodologies",
+        "1": "Explain the difference between Agile and Waterfall approaches",
+        "2": "Share tips for developing project management skills",
+        "3": "Walk through creating a project plan from scratch",
+        "4": "Introduce essential project management tools and techniques"
+      },
+      "experts": {
+        "0": "Discuss advanced project portfolio management strategies",
+        "1": "Analyze best practices for scaling project management",
+        "2": "Evaluate emerging project management methodologies",
+        "3": "Share insights on managing distributed teams effectively",
+        "4": "Review project governance and compliance frameworks"
+      },
+      "beginners": {
+        "0": "Explain what project management is and why it matters",
+        "1": "Introduce basic project planning concepts",
+        "2": "Walk through creating a simple project schedule",
+        "3": "Explain common project management terminology",
+        "4": "Create a guide to running effective meetings"
+      },
+      "stakeholders": {
+        "0": "Present project dashboard with status and metrics",
+        "1": "Report on timeline progress and milestone completion",
+        "2": "Communicate project risks and mitigation plans",
+        "3": "Update on budget status and resource allocation",
+        "4": "Outline next phase priorities and decision points"
+      },
+      "team-members": {
+        "0": "Create clear task assignments and expectations",
+        "1": "Document meeting notes and action items",
+        "2": "Facilitate team retrospective and improvement planning",
+        "3": "Coordinate cross-team dependencies and handoffs",
+        "4": "Recognize team achievements and share feedback"
+      }
+    },
+    "researcher": {
+      "technical-team": {
+        "0": "Document research methodology and experimental design",
+        "1": "Create technical specifications for research tools",
+        "2": "Write code documentation for research algorithms",
+        "3": "Share reproducibility guidelines for experiments",
+        "4": "Coordinate with engineers on research implementation"
+      },
+      "executives": {
+        "0": "Present research findings with business implications",
+        "1": "Recommend strategic investments based on research insights",
+        "2": "Report on innovation pipeline and research progress",
+        "3": "Create executive summary of competitive research",
+        "4": "Outline research roadmap aligned with company strategy"
+      },
+      "clients": {
+        "0": "Write research report summarizing key findings",
+        "1": "Present market research insights and recommendations",
+        "2": "Create client deliverable documenting research methodology",
+        "3": "Develop presentation of research conclusions",
+        "4": "Answer client questions about research validity"
+      },
+      "general-public": {
+        "0": "Write accessible article explaining research discoveries",
+        "1": "Create educational content about scientific methods",
+        "2": "Explain complex research findings in simple terms",
+        "3": "Share stories about the research process and journey",
+        "4": "Answer common questions about how research is conducted"
+      },
+      "students": {
+        "0": "Explain research methodology fundamentals",
+        "1": "Create a guide to conducting literature reviews",
+        "2": "Share tips for academic writing and citations",
+        "3": "Walk through the research process from question to conclusion",
+        "4": "Introduce statistical analysis basics for research"
+      },
+      "experts": {
+        "0": "Present detailed research methodology for peer review",
+        "1": "Write technical paper for academic publication",
+        "2": "Discuss advanced statistical methods and limitations",
+        "3": "Analyze competing research and theoretical frameworks",
+        "4": "Share insights on emerging research methodologies"
+      },
+      "beginners": {
+        "0": "Explain what research is and its different types",
+        "1": "Introduce basic research concepts and terminology",
+        "2": "Walk through how to read and understand studies",
+        "3": "Explain the difference between qualitative and quantitative",
+        "4": "Create a guide to evaluating research credibility"
+      },
+      "stakeholders": {
+        "0": "Present research progress and preliminary findings",
+        "1": "Report on research budget and resource utilization",
+        "2": "Communicate potential applications of research",
+        "3": "Identify research risks and timeline adjustments",
+        "4": "Outline research priorities for the next phase"
+      },
+      "team-members": {
+        "0": "Share research findings and analysis with the team",
+        "1": "Document experimental procedures for replication",
+        "2": "Coordinate data collection and analysis tasks",
+        "3": "Facilitate knowledge sharing from research insights",
+        "4": "Create research documentation and reference materials"
+      }
+    }
+  }
+}
