@@ -157,14 +157,17 @@ const versionStats = computed(() => {
     <div v-if="hasVersions" class="versions-content">
       <!-- Tabs -->
       <div class="tabs-container">
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-6" role="tablist" :aria-label="t('results.versions.title')">
           <button
             v-for="tab in tabs"
             :key="tab.key"
             :class="[
-              'tab-button',
+              'tab-button cursor-pointer',
               activeTab === tab.key ? 'tab-active' : 'tab-inactive'
             ]"
+            :aria-selected="activeTab === tab.key"
+            :aria-controls="`version-panel-${tab.key}`"
+            role="tab"
             @click="activeTab = tab.key"
           >
             <UIcon :name="tab.icon" class="w-5 h-5" />
@@ -209,6 +212,7 @@ const versionStats = computed(() => {
                 color="primary"
                 size="sm"
                 :disabled="!!copyingVersion"
+                class="cursor-pointer"
                 @click="copyVersion(activeTab)"
               />
             </div>
@@ -238,7 +242,7 @@ const versionStats = computed(() => {
           size="sm"
           variant="outline"
           :disabled="!!copyingVersion"
-          class="flex-1"
+          class="flex-1 cursor-pointer"
           @click="copyVersion(tab.key)"
         />
       </div>

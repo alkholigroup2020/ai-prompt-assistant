@@ -31,6 +31,29 @@ const isExporting = ref(false);
 const showExportMenu = ref(false);
 
 /**
+ * Handle keyboard events for export menu accessibility
+ */
+const handleExportKeydown = (event: KeyboardEvent): void => {
+  if (event.key === 'Escape' && showExportMenu.value) {
+    showExportMenu.value = false;
+  }
+};
+
+// Add/remove keyboard listener when menu state changes
+watch(showExportMenu, (isOpen) => {
+  if (isOpen) {
+    document.addEventListener('keydown', handleExportKeydown);
+  } else {
+    document.removeEventListener('keydown', handleExportKeydown);
+  }
+});
+
+// Cleanup on unmount
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleExportKeydown);
+});
+
+/**
  * Copy enhanced prompt to clipboard
  */
 const handleCopy = async (): Promise<void> => {
@@ -174,7 +197,7 @@ const exportOptions = [
         :disabled="isCopying"
         :aria-busy="isCopying"
         :aria-live="isCopying ? 'polite' : undefined"
-        class="flex-1 sm:flex-none"
+        class="flex-1 sm:flex-none cursor-pointer"
         @click="handleCopy"
       />
 
@@ -188,7 +211,8 @@ const exportOptions = [
           :loading="isExporting"
           :aria-busy="isExporting"
           :aria-expanded="showExportMenu"
-          class="w-full"
+          aria-haspopup="menu"
+          class="w-full cursor-pointer"
           @click="showExportMenu = !showExportMenu"
         />
 
@@ -230,7 +254,7 @@ const exportOptions = [
         color="neutral"
         size="lg"
         variant="outline"
-        class="flex-1 sm:flex-none"
+        class="flex-1 sm:flex-none cursor-pointer"
         @click="handleShare"
       />
 
@@ -241,7 +265,7 @@ const exportOptions = [
         color="neutral"
         size="lg"
         variant="outline"
-        class="flex-1 sm:flex-none"
+        class="flex-1 sm:flex-none cursor-pointer"
         @click="handleNewPrompt"
       />
     </div>

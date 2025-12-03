@@ -85,6 +85,20 @@ const getCategoryColor = (category?: string): 'primary' | 'emerald' | 'navy' | '
 };
 
 /**
+ * Get category icon class (pre-defined to work with Tailwind JIT)
+ */
+const getCategoryIconClass = (category?: string): string => {
+  const iconClasses: Record<string, string> = {
+    clarity: 'text-emerald-600 dark:text-emerald-400',
+    specificity: 'text-blue-600 dark:text-blue-400',
+    context: 'text-emerald-600 dark:text-emerald-400',
+    structure: 'text-blue-600 dark:text-blue-400',
+    completeness: 'text-emerald-600 dark:text-emerald-400',
+  };
+  return iconClasses[category ?? ''] ?? 'text-emerald-600 dark:text-emerald-400';
+};
+
+/**
  * Group improvements by category
  */
 const groupedImprovements = computed(() => {
@@ -141,7 +155,7 @@ const getCategoryLabel = (category: string): string => {
             <UIcon
               :name="getCategoryIcon(category)"
               class="w-5 h-5"
-              :class="`text-${getCategoryColor(category)}-600 dark:text-${getCategoryColor(category)}-400`"
+              :class="getCategoryIconClass(category)"
             />
             <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
               {{ getCategoryLabel(category) }}
@@ -176,7 +190,9 @@ const getCategoryLabel = (category: string): string => {
                 <!-- Expandable Details -->
                 <div v-if="expandable && improvement.details" class="mt-2">
                   <button
-                    class="text-sm text-emerald-700 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center gap-1 transition-colors"
+                    class="text-sm text-emerald-700 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center gap-1 transition-colors cursor-pointer"
+                    :aria-expanded="isExpanded(index)"
+                    :aria-controls="`improvement-details-${index}`"
                     @click="toggleExpansion(index)"
                   >
                     <span>{{ isExpanded(index) ? t('results.improvements.showLess') : t('results.improvements.showMore') }}</span>
@@ -187,7 +203,11 @@ const getCategoryLabel = (category: string): string => {
                   </button>
 
                   <Transition name="expand">
-                    <div v-if="isExpanded(index)" class="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
+                    <div
+                      v-if="isExpanded(index)"
+                      :id="`improvement-details-${index}`"
+                      class="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-md"
+                    >
                       <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ improvement.details }}
                       </p>

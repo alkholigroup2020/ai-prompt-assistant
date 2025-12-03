@@ -407,8 +407,8 @@ const showQualityModal = ref(false)
 // Reset Confirmation Modal
 const showResetModal = ref(false)
 
-// Keyboard shortcuts section collapsed state
-const showKeyboardShortcuts = ref(false)
+// Keyboard shortcuts section expanded state (open by default)
+const showKeyboardShortcuts = ref(true)
 
 // Quality score calculation
 const qualityScoreResult = computed(() => {

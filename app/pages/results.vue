@@ -108,6 +108,7 @@
                   :loading="isExporting"
                   :aria-busy="isExporting"
                   :aria-expanded="showExportMenu"
+                  aria-haspopup="menu"
                   class="w-full cursor-pointer"
                   @click="showExportMenu = !showExportMenu"
                 />
@@ -175,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useEnhancement } from '~/composables/useEnhancement'
@@ -232,6 +233,29 @@ const enhancementResponse = computed(
 // Export state
 const isExporting = ref(false)
 const showExportMenu = ref(false)
+
+/**
+ * Handle keyboard events for export menu accessibility
+ */
+const handleExportKeydown = (event: KeyboardEvent): void => {
+  if (event.key === 'Escape' && showExportMenu.value) {
+    showExportMenu.value = false
+  }
+}
+
+// Add/remove keyboard listener when menu state changes
+watch(showExportMenu, (isOpen) => {
+  if (isOpen) {
+    document.addEventListener('keydown', handleExportKeydown)
+  } else {
+    document.removeEventListener('keydown', handleExportKeydown)
+  }
+})
+
+// Cleanup on unmount
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleExportKeydown)
+})
 
 // Export menu options
 const exportOptions = computed(() => [
