@@ -591,6 +591,29 @@
     }
   },
   "results": {
+    "meta": {
+      "title": "Enhancement Results - AI Prompt Assistant",
+      "description": "View your enhanced AI prompt with quality score, improvements, and alternative versions"
+    },
+    "success": {
+      "title": "Your Prompt is Ready!",
+      "description": "Your prompt has been enhanced and is ready to use with any AI tool."
+    },
+    "noResults": {
+      "title": "No Results Available",
+      "description": "You need to enhance a prompt first before viewing results.",
+      "goToBuilder": "Go to Prompt Builder",
+      "redirectTitle": "No Results Found",
+      "redirectDescription": "Redirecting to prompt builder..."
+    },
+    "nextSteps": {
+      "title": "What's Next?",
+      "description": "Create another prompt or browse templates"
+    },
+    "newPrompt": {
+      "title": "Ready for New Prompt",
+      "description": "Form has been reset. Start creating your new prompt."
+    },
     "comparison": {
       "title": "Before & After Comparison",
       "description": "See how your prompt has been enhanced for better AI results",
