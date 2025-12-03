@@ -378,7 +378,7 @@ const toast = useToast()
 const formStore = useFormStore()
 const { enhance, isLoading: isEnhancing, enhancedPrompt } = useEnhancement()
 const { calculate: calculateQualityScore } = useQualityScore()
-const { saveDraft, loadDraft, startAutoSave, stopAutoSave } = useLocalStorage()
+const { saveDraft, loadDraft, clearDraft, startAutoSave, stopAutoSave } = useLocalStorage()
 
 // SEO Meta Tags
 useHead({
@@ -546,6 +546,7 @@ const handleReset = () => {
 
 const confirmReset = () => {
   formStore.resetForm()
+  clearDraft() // Clear saved draft from localStorage to prevent restoration on refresh
   toast.add({
     title: t('builder.actions.resetSuccess'),
     description: t('builder.actions.resetSuccessDescription'),
