@@ -21,17 +21,29 @@ export default defineNuxtPlugin((nuxtApp) => {
   // Initialize preferences from localStorage
   preferencesStore.initialize()
 
-  // Sync i18n locale with stored preference
-  // This ensures the locale matches what's saved in localStorage
-  if (preferencesStore.currentLanguage !== i18n.locale.value) {
-    i18n.setLocale(preferencesStore.currentLanguage)
+  // Helper to validate and normalize locale
+  const normalizeLocale = (locale: string): 'en' | 'ar' => {
+    if (locale === 'ar' || locale.startsWith('ar')) return 'ar'
+    return 'en' // Default to English for any other value
+  }
+
+  // IMPORTANT: URL locale takes priority over stored preference
+  // If the user navigates to /ar/builder, respect that even if their preference is 'en'
+  // The URL represents explicit user intent for the current session
+  const urlLocale = normalizeLocale(i18n.locale.value)
+
+  // Sync the stored preference TO the URL locale (not the other way around)
+  // This ensures the language the user is viewing matches what gets sent to the API
+  if (preferencesStore.currentLanguage !== urlLocale) {
+    preferencesStore.setLanguage(urlLocale)
   }
 
   // Watch for locale changes from i18n and sync to store
-  // This handles cases where the URL locale is different from stored preference
+  // This handles cases where the user switches language via the language toggle
   watch(() => i18n.locale.value, (newLocale) => {
-    if (newLocale !== preferencesStore.currentLanguage) {
-      preferencesStore.setLanguage(newLocale as 'en' | 'ar')
+    const normalized = normalizeLocale(newLocale)
+    if (normalized !== preferencesStore.currentLanguage) {
+      preferencesStore.setLanguage(normalized)
     }
   })
 })

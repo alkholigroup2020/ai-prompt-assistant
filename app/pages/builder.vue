@@ -315,7 +315,7 @@ import { useQualityScore } from '~/composables/useQualityScore'
 import { useLocalStorage } from '~/composables/useLocalStorage'
 
 // Composables
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
 const localePath = useLocalePath()
 const toast = useToast()
@@ -448,6 +448,10 @@ const handleEnhance = async (level: 'quick' | 'detailed') => {
 
   // Update the enhancement level in the form store
   formStore.updateField('enhancementLevel', level)
+
+  // CRITICAL: Sync the current locale with form language for proper API response language
+  const currentLocale = locale.value as 'en' | 'ar'
+  formStore.updateField('language', currentLocale)
 
   try {
     await enhance(formStore.formData)

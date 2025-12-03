@@ -74,8 +74,22 @@ async function retryWithBackoff<T>(
  */
 function buildEnhancementPrompt(input: FormInput): string {
   const parts: string[] = [];
+  const isArabic = input.language === 'ar';
 
   parts.push('You are an expert AI prompt engineer. Your task is to enhance and optimize the following prompt request.');
+
+  // Add language instruction - CRITICAL for proper localization
+  if (isArabic) {
+    parts.push('');
+    parts.push('**CRITICAL LANGUAGE REQUIREMENT:**');
+    parts.push('The user is working in Arabic. You MUST respond ENTIRELY in Arabic (العربية).');
+    parts.push('- The "shortTitle" MUST be in Arabic');
+    parts.push('- The "enhancedPrompt" MUST be in Arabic');
+    parts.push('- The "improvements" array MUST contain Arabic text');
+    parts.push('- The "suggestions" array MUST contain Arabic text');
+    parts.push('- Do NOT mix English and Arabic. Use Arabic ONLY.');
+  }
+
   parts.push('');
   parts.push('**User Context:**');
   parts.push(`- Role: ${input.role}${input.roleOther ? ` (${input.roleOther})` : ''}`);
@@ -121,14 +135,25 @@ function buildEnhancementPrompt(input: FormInput): string {
   parts.push('**Required Response Format (JSON):**');
   parts.push('```json');
   parts.push('{');
-  parts.push('  "shortTitle": "Brief title for this prompt (max 60 chars)",');
-  parts.push('  "enhancedPrompt": "The fully enhanced and optimized prompt",');
-  parts.push('  "improvements": ["list of key improvements made"],');
-  parts.push('  "suggestions": ["optional additional suggestions for the user"]');
+  if (isArabic) {
+    parts.push('  "shortTitle": "عنوان قصير للبرومبت (60 حرف كحد أقصى)",');
+    parts.push('  "enhancedPrompt": "البرومبت المحسّن والمُطوَّر بالكامل",');
+    parts.push('  "improvements": ["قائمة التحسينات الرئيسية التي تمت"],');
+    parts.push('  "suggestions": ["اقتراحات إضافية اختيارية للمستخدم"]');
+  } else {
+    parts.push('  "shortTitle": "Brief title for this prompt (max 60 chars)",');
+    parts.push('  "enhancedPrompt": "The fully enhanced and optimized prompt",');
+    parts.push('  "improvements": ["list of key improvements made"],');
+    parts.push('  "suggestions": ["optional additional suggestions for the user"]');
+  }
   parts.push('}');
   parts.push('```');
   parts.push('');
-  parts.push('Respond ONLY with valid JSON. Do not include any other text or markdown.');
+  if (isArabic) {
+    parts.push('IMPORTANT: Respond ONLY with valid JSON. All text content MUST be in Arabic. Do not include any other text or markdown.');
+  } else {
+    parts.push('Respond ONLY with valid JSON. Do not include any other text or markdown.');
+  }
 
   return parts.join('\n');
 }
