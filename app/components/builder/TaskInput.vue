@@ -4,6 +4,9 @@
       :label="$t('builder.task.label')"
       :error="validationError"
       required
+      :ui="{
+        label: isFieldEmpty && formStore.isDirty ? 'text-red-500 dark:text-red-400' : ''
+      }"
     >
       <template #hint>
         <div class="flex items-center gap-2">
@@ -94,6 +97,9 @@ const isError = computed(() => !!validationError.value)
 
 // Validation error from store
 const validationError = computed(() => formStore.validationErrors.task)
+
+// Check if field is required but empty (for label styling)
+const isFieldEmpty = computed(() => !formStore.formData.task || formStore.formData.task.trim().length === 0 || formStore.formData.task.length < CHAR_LIMITS.TASK_MIN)
 
 // Initialize from store and handle reset
 watch(

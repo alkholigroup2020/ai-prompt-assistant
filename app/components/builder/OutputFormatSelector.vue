@@ -4,6 +4,9 @@
       :label="$t('builder.outputFormat.label')"
       :help="$t('builder.outputFormat.helpText')"
       required
+      :ui="{
+        label: isFieldEmpty && formStore.isDirty ? 'text-red-500 dark:text-red-400' : ''
+      }"
     >
       <USelectMenu
         v-model="selectedFormat"
@@ -83,6 +86,9 @@ interface FormatItem {
 
 const { t } = useI18n()
 const formStore = useFormStore()
+
+// Check if field is required but empty (for label styling)
+const isFieldEmpty = computed(() => !formStore.formData.outputFormat)
 
 // Output format items with icons and descriptions (for USelectMenu)
 const formatItems = computed<FormatItem[]>(() => [

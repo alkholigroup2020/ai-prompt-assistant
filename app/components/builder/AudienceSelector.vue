@@ -5,6 +5,9 @@
       :help="!validationError ? $t('builder.audience.helpText') : undefined"
       :error="validationError"
       required
+      :ui="{
+        label: isFieldEmpty && formStore.isDirty ? 'text-red-500 dark:text-red-400' : ''
+      }"
     >
       <USelectMenu
         v-model="selectedAudience"
@@ -129,6 +132,9 @@ const isOtherSelected = computed(() => selectedAudience.value?.value === 'other'
 
 // Validation error from store
 const validationError = computed(() => formStore.validationErrors.audience)
+
+// Check if field is required but empty (for label styling)
+const isFieldEmpty = computed(() => !formStore.formData.audience || formStore.formData.audience.trim().length === 0)
 
 // Initialize from store and handle reset
 watch(

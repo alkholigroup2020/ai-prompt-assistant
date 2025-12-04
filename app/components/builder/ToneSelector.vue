@@ -4,6 +4,9 @@
       :label="$t('builder.tone.label')"
       :help="$t('builder.tone.helpText')"
       required
+      :ui="{
+        label: isFieldEmpty && formStore.isDirty ? 'text-red-500 dark:text-red-400' : ''
+      }"
     >
       <USelectMenu
         v-model="selectedTone"
@@ -60,6 +63,9 @@ interface ToneItem {
 
 const { t } = useI18n()
 const formStore = useFormStore()
+
+// Check if field is required but empty (for label styling)
+const isFieldEmpty = computed(() => !formStore.formData.tone)
 
 // Tone items with icons and descriptions (for USelectMenu)
 const toneItems = computed<ToneItem[]>(() => [

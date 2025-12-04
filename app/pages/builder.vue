@@ -202,6 +202,22 @@
 
         <!-- Action Buttons - One row on lg+, column on mobile -->
         <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+          <!-- Reset Form -->
+          <UButton
+            color="neutral"
+            variant="soft"
+            size="lg"
+            block
+            class="min-h-[44px] lg:flex-1 cursor-pointer !text-red-600 dark:!text-red-400 hover:!bg-red-50 dark:hover:!bg-red-950/20 !border-red-300 dark:!border-red-800"
+            :disabled="isEnhancing"
+            @click="handleReset"
+          >
+            <template #leading>
+              <UIcon name="i-heroicons-arrow-path" />
+            </template>
+            {{ t('builder.actions.reset') }}
+          </UButton>
+
           <!-- Save Draft -->
           <UButton
             variant="outline"
@@ -219,21 +235,6 @@
             {{ t('builder.actions.saveDraft') }}
           </UButton>
 
-          <!-- Reset Form -->
-          <UButton
-            variant="outline"
-            size="lg"
-            block
-            class="min-h-[44px] lg:flex-1 cursor-pointer"
-            :disabled="isEnhancing"
-            @click="handleReset"
-          >
-            <template #leading>
-              <UIcon name="i-heroicons-arrow-path" />
-            </template>
-            {{ t('builder.actions.reset') }}
-          </UButton>
-
           <!-- Quick Polish -->
           <UButton
             color="primary"
@@ -241,7 +242,7 @@
             block
             class="min-h-[44px] lg:flex-1 cursor-pointer"
             :loading="isEnhancing"
-            :disabled="!formStore.isValid || isEnhancing"
+            :disabled="!formStore.isComplete || !formStore.isValid || isEnhancing"
             :aria-busy="isEnhancing"
             :aria-label="
               isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
@@ -498,7 +499,7 @@ const charCount = computed(() => {
 
 // Handlers
 const handleEnhance = async (level: 'quick' | 'detailed') => {
-  if (!formStore.isValid) {
+  if (!formStore.isComplete || !formStore.isValid) {
     toast.add({
       title: t('builder.validation.error'),
       description: t('builder.validation.fixErrors'),
@@ -586,7 +587,7 @@ const handleKeydown = (event: KeyboardEvent) => {
   // Ctrl+Enter: Quick Enhance
   if (event.ctrlKey && event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault()
-    if (formStore.isValid && !isEnhancing.value) {
+    if (formStore.isComplete && formStore.isValid && !isEnhancing.value) {
       handleEnhance('quick')
     }
   }
@@ -594,7 +595,7 @@ const handleKeydown = (event: KeyboardEvent) => {
   // Ctrl+Shift+Enter: Deep Enhancement
   if (event.ctrlKey && event.shiftKey && event.key === 'Enter') {
     event.preventDefault()
-    if (formStore.isValid && !isEnhancing.value) {
+    if (formStore.isComplete && formStore.isValid && !isEnhancing.value) {
       handleEnhance('detailed')
     }
   }

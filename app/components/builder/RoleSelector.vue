@@ -5,6 +5,9 @@
       :help="!validationError ? $t('builder.role.helpText') : undefined"
       :error="validationError"
       required
+      :ui="{
+        label: isFieldEmpty && formStore.isDirty ? 'text-red-500 dark:text-red-400' : ''
+      }"
     >
       <USelectMenu
         v-model="selectedRole"
@@ -129,6 +132,9 @@ const isOtherSelected = computed(() => selectedRole.value?.value === 'other')
 
 // Validation error from store
 const validationError = computed(() => formStore.validationErrors.role)
+
+// Check if field is required but empty (for label styling)
+const isFieldEmpty = computed(() => !formStore.formData.role || formStore.formData.role.trim().length === 0)
 
 // Initialize from store and handle reset
 watch(

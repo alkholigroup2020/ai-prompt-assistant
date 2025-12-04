@@ -90,7 +90,9 @@ export const useFormStore = defineStore('form', {
         this.formInput.role &&
         this.formInput.audience &&
         this.formInput.task &&
-        this.formInput.task.length >= 10
+        this.formInput.task.length >= 10 &&
+        this.formInput.tone &&
+        this.formInput.outputFormat
       );
     },
 
