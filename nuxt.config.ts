@@ -95,7 +95,6 @@ export default defineNuxtConfig({
       geminiModel: process.env.NUXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash',
       appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
       enableAnalytics: process.env.ENABLE_ANALYTICS === 'true',
-      enableTemplates: process.env.ENABLE_TEMPLATES !== 'false',
       enableExport: process.env.ENABLE_EXPORT !== 'false',
     },
   },
@@ -164,10 +163,6 @@ export default defineNuxtConfig({
   routeRules: {
     // Static pages - prerender at build time
     '/': { prerender: true },
-
-    // Templates can be cached client-side
-    '/templates': { swr: 3600 }, // Cache for 1 hour
-    '/templates/**': { swr: 3600 },
 
     // Builder and results are dynamic, no caching
     '/builder': { ssr: true },

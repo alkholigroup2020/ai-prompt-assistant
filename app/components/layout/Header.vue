@@ -131,7 +131,6 @@ const isDark = computed(() => preferencesStore.isDarkMode)
 const navigationItems = [
   { to: '/', label: 'nav.home' },
   { to: '/builder', label: 'nav.builder' },
-  { to: '/templates', label: 'nav.templates' },
 ]
 
 // Methods

@@ -3,8 +3,6 @@
  * Type definitions for API responses and errors
  */
 
-import type { PromptTemplate } from './template';
-
 /**
  * Quality score type (0-100)
  */
@@ -73,29 +71,6 @@ export interface EnhancementResponse {
   success: boolean;
   data?: EnhancementData;
   metadata: APIMetadata;
-  error?: APIError;
-}
-
-/**
- * Template list response
- */
-export interface TemplateListResponse {
-  success: boolean;
-  data?: {
-    templates: PromptTemplate[];
-    total: number;
-    page: number;
-    pageSize: number;
-  };
-  error?: APIError;
-}
-
-/**
- * Template detail response
- */
-export interface TemplateDetailResponse {
-  success: boolean;
-  data?: PromptTemplate;
   error?: APIError;
 }
 

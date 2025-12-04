@@ -70,39 +70,6 @@ test.describe('Critical User Flows', () => {
     await expect(qualityScore).toBeVisible()
   })
 
-  test('should navigate to templates page', async ({ page }) => {
-    // Navigate to templates
-    await page.goto('/templates')
-
-    // Verify templates page loads
-    await expect(page).toHaveURL(/\/templates/)
-    await expect(page.locator('h1')).toContainText(/template/i)
-
-    // Check that template cards are displayed
-    const templateCards = page.locator('[data-testid="template-card"]').or(page.locator('button:has-text("Use Template")')).first()
-    await expect(templateCards).toBeVisible({ timeout: 10000 })
-  })
-
-  test('should use a template and navigate to builder', async ({ page }) => {
-    await page.goto('/templates')
-
-    // Wait for templates to load
-    await page.waitForTimeout(1000)
-
-    // Click on the first "Use Template" button or template card
-    const useTemplateButton = page.getByRole('button', { name: /use template/i }).first()
-      .or(page.getByRole('button', { name: /view details/i }).first())
-
-    await useTemplateButton.click({ timeout: 10000 })
-
-    // Should navigate to builder or template detail page
-    await page.waitForURL(/\/(builder|templates\/)/, { timeout: 10000 })
-
-    // Check that we're on a valid page
-    const currentUrl = page.url()
-    expect(currentUrl).toMatch(/\/(builder|templates\/)/)
-  })
-
   test('should switch language to Arabic', async ({ page }) => {
     // Find and click the language switcher
     const languageSwitcher = page.getByRole('button', { name: /language|لغة/i })
@@ -147,10 +114,6 @@ test.describe('Critical User Flows', () => {
     // Go to builder
     await page.goto('/builder')
     await expect(page).toHaveURL(/\/builder/)
-
-    // Go to templates
-    await page.goto('/templates')
-    await expect(page).toHaveURL(/\/templates/)
 
     // Go back to home
     await page.goto('/')

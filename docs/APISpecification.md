@@ -96,40 +96,7 @@ Enhances a user's prompt using AI.
 }
 ```
 
-### 2. GET /api/templates
-Retrieves available prompt templates.
-
-#### Query Parameters
-- `category` (optional): Filter by category
-- `difficulty` (optional): beginner | intermediate | advanced
-- `search` (optional): Search term
-- `limit` (optional): Number of results (default: 20, max: 50)
-- `offset` (optional): Pagination offset
-
-#### Response (200)
-```typescript
-{
-  success: true,
-  data: {
-    templates: Template[],
-    total: number,
-    hasMore: boolean
-  }
-}
-```
-
-### 3. GET /api/templates/:id
-Retrieves a specific template.
-
-#### Response (200)
-```typescript
-{
-  success: true,
-  data: Template
-}
-```
-
-### 4. POST /api/analyze-prompt
+### 2. POST /api/analyze-prompt
 Analyzes prompt quality without enhancement.
 
 #### Request
@@ -158,7 +125,7 @@ Analyzes prompt quality without enhancement.
 }
 ```
 
-### 5. POST /api/export
+### 3. POST /api/export
 Exports enhanced prompt in various formats.
 
 #### Request
@@ -177,7 +144,7 @@ Exports enhanced prompt in various formats.
 #### Response (200)
 Returns file download or base64 encoded content.
 
-### 6. GET /api/health
+### 4. GET /api/health
 Health check endpoint.
 
 #### Response (200)

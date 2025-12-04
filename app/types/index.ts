@@ -29,31 +29,12 @@ export type {
   APIError,
   EnhancementData,
   EnhancementResponse,
-  TemplateListResponse,
-  TemplateDetailResponse,
   AnalysisResponse,
   ExportResponse,
   HealthResponse,
   RateLimitError,
   ValidationError
 } from './api';
-
-// Template Types
-export * from './template';
-export type {
-  TemplateDifficulty,
-  TemplateVariableType,
-  TemplateVariable,
-  TemplateExample,
-  PromptTemplate,
-  TemplateFilters,
-  TemplatePagination,
-  TemplateListResult,
-  TemplateStats
-} from './template';
-export {
-  TemplateCategory
-} from './template';
 
 // Storage Types
 export * from './storage';

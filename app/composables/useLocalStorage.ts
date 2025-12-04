@@ -164,9 +164,9 @@ export function useLocalStorage() {
   }
 
   /**
-   * Increment total templates used (saves to totalSaved)
+   * Increment total saved prompts
    */
-  function incrementTemplatesUsed(): void {
+  function incrementSavedPrompts(): void {
     const stats = loadStats()
     updateStats({ totalSaved: stats.totalSaved + 1 })
   }
@@ -269,7 +269,7 @@ export function useLocalStorage() {
     loadStats,
     updateStats,
     incrementPromptsEnhanced,
-    incrementTemplatesUsed,
+    incrementSavedPrompts,
     incrementExports,
     updateAverageQualityScore,
 

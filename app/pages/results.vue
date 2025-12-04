@@ -91,7 +91,7 @@
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">
                   {{
-                    t('results.nextSteps.description', 'Create another prompt or browse templates')
+                    t('results.nextSteps.description', 'Create another prompt or save this one')
                   }}
                 </p>
               </div>
@@ -156,16 +156,6 @@
                 @click="createNewPrompt"
               >
                 {{ t('results.actions.newPrompt') }}
-              </UButton>
-              <UButton
-                color="neutral"
-                size="lg"
-                variant="outline"
-                icon="i-heroicons-document-duplicate"
-                class="flex-1 sm:flex-none cursor-pointer"
-                @click="navigateToTemplates"
-              >
-                {{ t('nav.templates') }}
               </UButton>
             </div>
           </div>
@@ -366,10 +356,6 @@ const createNewPrompt = (): void => {
     color: 'primary',
     icon: 'i-heroicons-sparkles',
   })
-}
-
-const navigateToTemplates = (): void => {
-  router.push(localePath('/templates'))
 }
 
 // Save to history on mount

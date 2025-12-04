@@ -6,7 +6,6 @@
   "nav": {
     "home": "الرئيسية",
     "builder": "منشئ الأوامر",
-    "templates": "القوالب",
     "about": "حول"
   },
   "header": {
@@ -36,14 +35,13 @@
   "landing": {
     "meta": {
       "title": "مساعد الأوامر الذكية - حوّل أفكارك إلى أوامر ذكاء اصطناعي قوية",
-      "description": "أنشئ أوامر أفضل لـ ChatGPT و Claude و Gemini. احصل على نتائج أفضل بنسبة 80% مع منشئ الأوامر المدعوم بالذكاء الاصطناعي و20+ قالب جاهز للاستخدام.",
+      "description": "أنشئ أوامر أفضل لـ ChatGPT و Claude و Gemini. احصل على نتائج أفضل بنسبة 80% مع منشئ الأوامر المدعوم بالذكاء الاصطناعي.",
       "keywords": "أوامر الذكاء الاصطناعي، ChatGPT، Claude، Gemini، هندسة الأوامر، مساعد الذكاء الاصطناعي، منشئ الأوامر، أدوات الذكاء الاصطناعي"
     },
     "hero": {
       "headline": "حوّل أفكارك إلى أوامر ذكاء اصطناعي قوية",
       "subheadline": "احصل على نتائج أفضل من ChatGPT و Claude و Gemini من خلال صياغة أوامر دقيقة وفعّالة في ثوانٍ.",
-      "ctaStart": "ابدأ البناء",
-      "ctaTemplates": "عرض القوالب"
+      "ctaStart": "ابدأ البناء"
     },
     "valueProps": {
       "title": "لماذا تهم الأوامر الأفضل",
@@ -55,10 +53,6 @@
       "fasterWriting": {
         "title": "كتابة أسرع",
         "description": "أنشئ أوامر فعّالة في ثوانٍ، وليس دقائق"
-      },
-      "templates": {
-        "title": "قوالب جاهزة",
-        "description": "20+ قالب مُعد مسبقًا لحالات الاستخدام الشائعة"
       },
       "bilingual": {
         "title": "لغات",
@@ -82,17 +76,6 @@
         "description": "انسخ أمرك المحسّن والصقه في ChatGPT أو Claude أو Gemini أو أي أداة ذكاء اصطناعي تفضلها."
       },
       "cta": "ابدأ الآن"
-    },
-    "templatesPreview": {
-      "title": "القوالب الشائعة",
-      "subtitle": "ابدأ بقالب وخصصه حسب احتياجاتك",
-      "viewAll": "عرض جميع القوالب"
-    },
-    "templates": {
-      "emailReply": "الرد على البريد الإلكتروني",
-      "dataAnalysis": "تحليل البيانات",
-      "codeReview": "مراجعة الكود",
-      "salesPitch": "عرض المبيعات"
     },
     "finalCta": {
       "title": "هل أنت مستعد لإنشاء أوامر ذكاء اصطناعي أفضل؟",
@@ -609,7 +592,7 @@
     },
     "nextSteps": {
       "title": "ما التالي؟",
-      "description": "أنشئ أمراً جديداً أو تصفح القوالب"
+      "description": "أنشئ أمراً جديداً أو قم بتصدير النتائج"
     },
     "newPrompt": {
       "title": "جاهز لأمر جديد",
@@ -690,85 +673,6 @@
       "emptyDescription": "يتم إنشاء الإصدارات البديلة مع وضع التحسين العميق"
     }
   },
-  "templates": {
-    "title": "مكتبة القوالب",
-    "description": "تصفح مجموعتنا من قوالب الأوامر الجاهزة للاستخدام",
-    "search": "بحث في القوالب...",
-    "searchPlaceholder": "اكتب للبحث في القوالب حسب العنوان أو الفئة أو العلامات",
-    "filters": {
-      "title": "الفلاتر",
-      "category": "الفئة",
-      "allCategories": "جميع الفئات",
-      "difficulty": "مستوى الصعوبة",
-      "allDifficulties": "جميع المستويات",
-      "sortBy": "ترتيب حسب",
-      "popular": "الأكثر شعبية",
-      "recent": "المضافة مؤخراً",
-      "rating": "الأعلى تقييماً",
-      "titleAsc": "العنوان (أ-ي)",
-      "clear": "مسح الفلاتر"
-    },
-    "categories": {
-      "business": "أعمال",
-      "technical": "تقني",
-      "creative": "إبداعي",
-      "analysis": "تحليل",
-      "communication": "تواصل",
-      "research": "بحث",
-      "marketing": "تسويق",
-      "hr": "موارد بشرية",
-      "sales": "مبيعات",
-      "customer_service": "خدمة العملاء"
-    },
-    "difficulty": {
-      "beginner": "مبتدئ",
-      "intermediate": "متوسط",
-      "advanced": "متقدم"
-    },
-    "card": {
-      "useTemplate": "استخدم القالب",
-      "viewDetails": "عرض التفاصيل",
-      "estimatedTime": "~{time}",
-      "rating": "{rating} نجوم",
-      "used": "مستخدم {count} مرة",
-      "new": "جديد",
-      "popular": "شائع"
-    },
-    "grid": {
-      "showing": "عرض {start}-{end} من {total} قالب",
-      "noResults": "لم يتم العثور على قوالب",
-      "noResultsDescription": "حاول تعديل الفلاتر أو مصطلحات البحث",
-      "loading": "جاري تحميل القوالب...",
-      "loadMore": "تحميل المزيد",
-      "previous": "السابق",
-      "next": "التالي",
-      "page": "صفحة {current} من {total}"
-    },
-    "detail": {
-      "title": "تفاصيل القالب",
-      "description": "الوصف",
-      "category": "الفئة",
-      "difficulty": "مستوى الصعوبة",
-      "estimatedTime": "الوقت المقدر",
-      "rating": "التقييم",
-      "usageCount": "مرات الاستخدام",
-      "lastUpdated": "آخر تحديث",
-      "variables": "الحقول المطلوبة",
-      "variablesDescription": "املأ هذه الحقول لتخصيص قالبك",
-      "examples": "أمثلة",
-      "examplesDescription": "شاهد كيف استخدم الآخرون هذا القالب",
-      "exampleTitle": "مثال: {title}",
-      "exampleInput": "متغيرات الإدخال",
-      "exampleOutput": "الناتج المتوقع",
-      "applyTemplate": "تطبيق القالب",
-      "backToGallery": "العودة إلى القوالب",
-      "preview": "معاينة",
-      "previewDescription": "هكذا ستبدو مطالبتك",
-      "fillRequired": "يرجى ملء جميع الحقول المطلوبة",
-      "applied": "تم تطبيق القالب",
-      "appliedDescription": "تم تطبيق القالب على منشئ الأوامر"
-    }
-  },
   "error": {
     "meta": {
       "title": "خطأ - مساعد أوامر الذكاء الاصطناعي",
@@ -796,7 +700,6 @@
       "goHome": "الذهاب إلى الرئيسية",
       "goBack": "العودة",
       "tryAgain": "حاول مرة أخرى",
-      "viewTemplates": "عرض القوالب",
       "startBuilder": "ابدأ البناء"
     },
     "support": {
@@ -809,7 +712,6 @@
       "title": "قد ترغب في:",
       "home": "العودة إلى الصفحة الرئيسية",
       "builder": "إنشاء أمر جديد",
-      "templates": "تصفح قوالب الأوامر",
       "refresh": "تحديث الصفحة"
     }
   }

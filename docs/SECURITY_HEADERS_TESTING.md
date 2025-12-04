@@ -76,7 +76,7 @@ form-action 'self'
 curl -I http://localhost:3000
 
 # Test API endpoint headers
-curl -I http://localhost:3000/api/templates
+curl -I http://localhost:3000/api/health
 ```
 
 ### Test with Browser DevTools

@@ -1,7 +1,5 @@
 import type {
   EnhancementResponse,
-  TemplateListResponse,
-  TemplateDetailResponse,
   AnalysisResponse,
   ExportResponse,
   HealthResponse,
@@ -127,38 +125,6 @@ export function useApi() {
   }
 
   /**
-   * Fetch all templates with optional filters
-   */
-  async function fetchTemplates(
-    category?: string,
-    difficulty?: string,
-    search?: string,
-    page = 1,
-    limit = 20
-  ): Promise<TemplateListResponse> {
-    const params = new URLSearchParams()
-
-    if (category) params.append('category', category)
-    if (difficulty) params.append('difficulty', difficulty)
-    if (search) params.append('search', search)
-    params.append('page', page.toString())
-    params.append('limit', limit.toString())
-
-    const endpoint = `/api/templates?${params.toString()}`
-
-    return await fetchWithRetry<TemplateListResponse>(endpoint, { retry: 2 })
-  }
-
-  /**
-   * Fetch a single template by ID
-   */
-  async function fetchTemplate(id: string): Promise<TemplateDetailResponse> {
-    return await fetchWithRetry<TemplateDetailResponse>(`/api/templates/${id}`, {
-      retry: 2,
-    })
-  }
-
-  /**
    * Analyze prompt quality without enhancement
    */
   async function analyzePrompt(prompt: string): Promise<AnalysisResponse> {
@@ -196,8 +162,6 @@ export function useApi() {
 
   return {
     enhancePrompt,
-    fetchTemplates,
-    fetchTemplate,
     analyzePrompt,
     exportPrompt,
     checkHealth,

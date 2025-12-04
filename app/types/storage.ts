@@ -44,7 +44,6 @@ export interface PromptHistory {
 export interface UserStats {
   totalPrompts: number;             // Total prompts enhanced
   totalSaved: number;               // Total prompts saved
-  favoriteTemplate?: string;        // Most used template ID
   averageQualityScore: number;      // Average quality score
   totalExports: number;             // Total exports
   totalCopies: number;              // Total clipboard copies

@@ -107,52 +107,6 @@ interface EnhancementResponse {
 }
 ```
 
-### Template Schema
-```typescript
-interface PromptTemplate {
-  id: string;
-  category: TemplateCategory;
-  title: string;
-  description: string;
-  tags: string[];
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
-  estimatedTime: string;        // e.g., "2 minutes"
-  
-  // Template Structure
-  basePrompt: string;
-  variables: TemplateVariable[];
-  examples: TemplateExample[];
-  
-  // Metadata
-  usageCount: number;
-  rating: number;
-  lastUpdated: Date;
-}
-
-interface TemplateVariable {
-  key: string;                  // e.g., "{{product_name}}"
-  label: string;
-  type: 'text' | 'select' | 'multiselect';
-  required: boolean;
-  placeholder?: string;
-  options?: string[];
-  maxLength?: number;
-}
-
-enum TemplateCategory {
-  BUSINESS = 'business',
-  TECHNICAL = 'technical',
-  CREATIVE = 'creative',
-  ANALYSIS = 'analysis',
-  COMMUNICATION = 'communication',
-  RESEARCH = 'research',
-  MARKETING = 'marketing',
-  HR = 'hr',
-  SALES = 'sales',
-  CUSTOMER_SERVICE = 'customer_service'
-}
-```
-
 ### Local Storage Schema
 ```typescript
 interface LocalData {
@@ -182,7 +136,6 @@ interface LocalData {
   stats: {
     totalPrompts: number;
     totalSaved: number;
-    favoriteTemplate?: string;
     averageQualityScore: number;
   };
 }
@@ -216,14 +169,5 @@ CREATE TABLE prompt_analytics (
   copied BOOLEAN DEFAULT FALSE,
   exported BOOLEAN DEFAULT FALSE,
   time_on_page INTEGER
-);
-
--- Templates usage
-CREATE TABLE template_usage (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  template_id VARCHAR(100),
-  used_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  session_id VARCHAR(100),
-  completed BOOLEAN
 );
 ```

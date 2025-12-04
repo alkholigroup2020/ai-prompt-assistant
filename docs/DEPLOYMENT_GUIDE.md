@@ -62,7 +62,6 @@ Set these in **Vercel Dashboard** → **Project Settings** → **Environment Var
 | `RATE_LIMIT_WINDOW` | `60000` (60 seconds in ms) | Production, Preview |
 | `RATE_LIMIT_MAX_REQUESTS` | `60` | Production, Preview |
 | `ENABLE_ANALYTICS` | `false` (or `true` if using Supabase) | Production, Preview |
-| `ENABLE_TEMPLATES` | `true` | Production, Preview |
 | `ENABLE_EXPORT` | `true` | Production, Preview |
 
 ### 2.2 Optional Analytics Variables (if using Supabase)
@@ -137,7 +136,6 @@ npm run preview
 - [ ] Build completes without errors
 - [ ] All pages load correctly
 - [ ] API endpoints respond (test `/api/health`)
-- [ ] Templates load properly
 - [ ] Export functionality works
 - [ ] Language switching works (EN/AR)
 
@@ -161,7 +159,6 @@ Test all critical user flows:
 
 - [ ] **Landing Page** → Navigate and check all sections
 - [ ] **Form Submission** → Fill form → Enhance prompt → View results
-- [ ] **Template Selection** → Select template → Fill form → Enhance
 - [ ] **Export Functionality** → Export as TXT, MD, JSON
 - [ ] **Copy to Clipboard** → Test copy button with success feedback
 - [ ] **Language Switching** → Switch EN ↔ AR, verify RTL layout
@@ -366,7 +363,7 @@ vercel logs --prod
 **Issue:** Slow response times
 - Check Vercel Analytics → Functions tab
 - Optimize API calls (Gemini API timeout)
-- Enable caching for templates
+- Enable caching for API responses
 
 **Issue:** Large bundle size
 ```bash
@@ -404,7 +401,6 @@ du -sh .output
 - [ ] Production URL accessible
 - [ ] All pages loading correctly
 - [ ] API endpoints responding
-- [ ] Templates loading
 - [ ] Export functionality working
 - [ ] Language switching working
 - [ ] Mobile responsive

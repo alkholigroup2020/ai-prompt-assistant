@@ -29,16 +29,6 @@ export default defineEventHandler((event) => {
     return;
   }
 
-  // Templates API - Cache for 1 hour (templates don't change often)
-  if (path.startsWith('/api/templates')) {
-    setHeader(
-      event,
-      'Cache-Control',
-      'public, max-age=3600, stale-while-revalidate=86400'
-    );
-    return;
-  }
-
   // Health check - Cache for 1 minute
   if (path === '/api/health') {
     setHeader(
@@ -69,8 +59,7 @@ export default defineEventHandler((event) => {
   if (
     path === '/' ||
     path.startsWith('/builder') ||
-    path.startsWith('/results') ||
-    path.startsWith('/templates')
+    path.startsWith('/results')
   ) {
     setHeader(
       event,

@@ -48,45 +48,9 @@ useHead({
   ],
 })
 
-// Popular templates data (preview)
-const popularTemplates = computed(() => [
-  {
-    id: 'email-reply-001',
-    title: t('landing.templates.emailReply'),
-    icon: 'envelope',
-    category: 'business',
-  },
-  {
-    id: 'data-analysis-001',
-    title: t('landing.templates.dataAnalysis'),
-    icon: 'chart-bar',
-    category: 'analysis',
-  },
-  {
-    id: 'code-review-001',
-    title: t('landing.templates.codeReview'),
-    icon: 'code-bracket',
-    category: 'technical',
-  },
-  {
-    id: 'sales-pitch-001',
-    title: t('landing.templates.salesPitch'),
-    icon: 'presentation-chart-line',
-    category: 'business',
-  },
-])
-
 // Navigation handlers
 const handleGetStarted = (): void => {
   router.push(localePath('/builder'))
-}
-
-const handleViewTemplates = (): void => {
-  router.push(localePath('/templates'))
-}
-
-const handleTemplateClick = (templateId: string): void => {
-  router.push(localePath(`/templates/${templateId}`))
 }
 </script>
 
@@ -146,21 +110,6 @@ const handleTemplateClick = (templateId: string): void => {
               />
             </button>
 
-            <!-- Secondary CTA: View Templates -->
-            <button
-              type="button"
-              class="cursor-pointer group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 backdrop-blur-md text-white font-semibold text-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105 active:scale-95"
-              @click="handleViewTemplates"
-            >
-              <!-- Button content -->
-              <div class="relative flex items-center justify-center gap-3">
-                <UIcon
-                  name="i-heroicons-squares-2x2"
-                  class="h-6 w-6 group-hover:rotate-6 transition-transform duration-300"
-                />
-                <span class="whitespace-nowrap">{{ t('landing.hero.ctaTemplates') }}</span>
-              </div>
-            </button>
           </div>
         </div>
 
@@ -192,7 +141,7 @@ const handleTemplateClick = (templateId: string): void => {
         </div>
 
         <!-- Value Cards -->
-        <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <!-- Card 1: Better Results -->
           <div
             class="group rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
@@ -229,25 +178,7 @@ const handleTemplateClick = (templateId: string): void => {
             </p>
           </div>
 
-          <!-- Card 3: Ready Templates -->
-          <div
-            class="group rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
-          >
-            <div
-              class="mb-4 flex justify-center text-emerald-500 transition-transform group-hover:scale-110"
-            >
-              <UIcon name="i-heroicons-document-duplicate" class="h-12 w-12" />
-            </div>
-            <div class="mb-2 text-4xl font-bold text-emerald-700 dark:text-emerald-400">20+</div>
-            <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
-              {{ t('landing.valueProps.templates.title') }}
-            </h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">
-              {{ t('landing.valueProps.templates.description') }}
-            </p>
-          </div>
-
-          <!-- Card 4: Bilingual Support -->
+          <!-- Card 3: Bilingual Support -->
           <div
             class="group rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
           >
@@ -456,56 +387,6 @@ const handleTemplateClick = (templateId: string): void => {
                 class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
               />
             </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Popular Templates Section -->
-    <section id="templates-preview" class="bg-white py-16 dark:bg-gray-900 sm:py-24">
-      <div class="container mx-auto max-w-7xl px-4">
-        <!-- Section Header -->
-        <div class="mb-12 flex items-center justify-between">
-          <div>
-            <h2 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-              {{ t('landing.templatesPreview.title') }}
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">
-              {{ t('landing.templatesPreview.subtitle') }}
-            </p>
-          </div>
-          <UButton
-            class="cursor-pointer"
-            color="emerald"
-            variant="outline"
-            @click="handleViewTemplates"
-          >
-            {{ t('landing.templatesPreview.viewAll') }}
-            <template #trailing>
-              <UIcon name="i-heroicons-arrow-right" class="icon-flip" />
-            </template>
-          </UButton>
-        </div>
-
-        <!-- Template Cards -->
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div
-            v-for="template in popularTemplates"
-            :key="template.id"
-            class="group cursor-pointer rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
-            @click="handleTemplateClick(template.id)"
-          >
-            <div
-              class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 transition-colors group-hover:bg-emerald-500 group-hover:text-white dark:bg-emerald-900/30 dark:text-emerald-400"
-            >
-              <UIcon :name="`i-heroicons-${template.icon}`" class="h-8 w-8" />
-            </div>
-            <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
-              {{ template.title }}
-            </h3>
-            <UBadge color="primary" size="sm">
-              {{ t(`templates.categories.${template.category}`) }}
-            </UBadge>
           </div>
         </div>
       </div>

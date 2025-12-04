@@ -55,7 +55,6 @@ RATE_LIMIT_MAX_REQUESTS=60
 
 # Feature Flags (Optional)
 ENABLE_ANALYTICS=false
-ENABLE_TEMPLATES=true
 ENABLE_EXPORT=true
 ```
 
@@ -115,7 +114,6 @@ Visit the preview URL and test:
 - [ ] Navigate to Builder page
 - [ ] Fill out form and submit
 - [ ] Verify enhancement works (check Gemini API integration)
-- [ ] Test template selection
 - [ ] Test export functionality (TXT, MD, JSON)
 - [ ] Test language switching (EN/AR)
 - [ ] Test on mobile browser

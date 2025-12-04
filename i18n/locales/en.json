@@ -6,7 +6,6 @@
   "nav": {
     "home": "Home",
     "builder": "Prompt Builder",
-    "templates": "Templates",
     "about": "About"
   },
   "header": {
@@ -36,14 +35,13 @@
   "landing": {
     "meta": {
       "title": "AI Prompt Assistant - Transform Ideas into Powerful AI Prompts",
-      "description": "Create better prompts for ChatGPT, Claude, and Gemini. Get 80% better results with our AI-powered prompt builder and 20+ ready-to-use templates.",
+      "description": "Create better prompts for ChatGPT, Claude, and Gemini. Get 80% better results with our AI-powered prompt builder.",
       "keywords": "AI prompts, ChatGPT, Claude, Gemini, prompt engineering, AI assistant, prompt builder, AI tools"
     },
     "hero": {
       "headline": "Transform Your Ideas into Powerful AI Prompts",
       "subheadline": "Get better results from ChatGPT, Claude & Gemini by crafting precise, effective prompts in seconds.",
-      "ctaStart": "Start Building",
-      "ctaTemplates": "View Templates"
+      "ctaStart": "Start Building"
     },
     "valueProps": {
       "title": "Why Better Prompts Matter",
@@ -55,10 +53,6 @@
       "fasterWriting": {
         "title": "Faster Writing",
         "description": "Create effective prompts in seconds, not minutes"
-      },
-      "templates": {
-        "title": "Ready Templates",
-        "description": "20+ pre-built templates for common use cases"
       },
       "bilingual": {
         "title": "Languages",
@@ -82,17 +76,6 @@
         "description": "Copy your enhanced prompt and paste it into ChatGPT, Claude, Gemini, or any AI tool you prefer."
       },
       "cta": "Get Started Now"
-    },
-    "templatesPreview": {
-      "title": "Popular Templates",
-      "subtitle": "Start with a template and customize it to your needs",
-      "viewAll": "View All Templates"
-    },
-    "templates": {
-      "emailReply": "Email Reply",
-      "dataAnalysis": "Data Analysis",
-      "codeReview": "Code Review",
-      "salesPitch": "Sales Pitch"
     },
     "finalCta": {
       "title": "Ready to Create Better AI Prompts?",
@@ -609,7 +592,7 @@
     },
     "nextSteps": {
       "title": "What's Next?",
-      "description": "Create another prompt or browse templates"
+      "description": "Create another prompt or export your results"
     },
     "newPrompt": {
       "title": "Ready for New Prompt",
@@ -690,85 +673,6 @@
       "emptyDescription": "Alternative versions are generated with Deep Enhancement mode"
     }
   },
-  "templates": {
-    "title": "Template Library",
-    "description": "Browse our collection of ready-to-use prompt templates",
-    "search": "Search templates...",
-    "searchPlaceholder": "Type to search templates by title, category, or tags",
-    "filters": {
-      "title": "Filters",
-      "category": "Category",
-      "allCategories": "All Categories",
-      "difficulty": "Difficulty",
-      "allDifficulties": "All Difficulties",
-      "sortBy": "Sort By",
-      "popular": "Most Popular",
-      "recent": "Recently Added",
-      "rating": "Highest Rated",
-      "titleAsc": "Title (A-Z)",
-      "clear": "Clear Filters"
-    },
-    "categories": {
-      "business": "Business",
-      "technical": "Technical",
-      "creative": "Creative",
-      "analysis": "Analysis",
-      "communication": "Communication",
-      "research": "Research",
-      "marketing": "Marketing",
-      "hr": "HR",
-      "sales": "Sales",
-      "customer_service": "Customer Service"
-    },
-    "difficulty": {
-      "beginner": "Beginner",
-      "intermediate": "Intermediate",
-      "advanced": "Advanced"
-    },
-    "card": {
-      "useTemplate": "Use Template",
-      "viewDetails": "View Details",
-      "estimatedTime": "~{time}",
-      "rating": "{rating} stars",
-      "used": "Used {count} times",
-      "new": "New",
-      "popular": "Popular"
-    },
-    "grid": {
-      "showing": "Showing {start}-{end} of {total} templates",
-      "noResults": "No templates found",
-      "noResultsDescription": "Try adjusting your filters or search terms",
-      "loading": "Loading templates...",
-      "loadMore": "Load More",
-      "previous": "Previous",
-      "next": "Next",
-      "page": "Page {current} of {total}"
-    },
-    "detail": {
-      "title": "Template Details",
-      "description": "Description",
-      "category": "Category",
-      "difficulty": "Difficulty",
-      "estimatedTime": "Estimated Time",
-      "rating": "Rating",
-      "usageCount": "Times Used",
-      "lastUpdated": "Last Updated",
-      "variables": "Required Fields",
-      "variablesDescription": "Fill in these fields to customize your template",
-      "examples": "Examples",
-      "examplesDescription": "See how others have used this template",
-      "exampleTitle": "Example: {title}",
-      "exampleInput": "Input Variables",
-      "exampleOutput": "Expected Output",
-      "applyTemplate": "Apply Template",
-      "backToGallery": "Back to Templates",
-      "preview": "Preview",
-      "previewDescription": "This is how your prompt will look",
-      "fillRequired": "Please fill in all required fields",
-      "applied": "Template Applied",
-      "appliedDescription": "The template has been applied to the prompt builder"
-    }
-  },
   "error": {
     "meta": {
       "title": "Error - AI Prompt Assistant",
@@ -796,7 +700,6 @@
       "goHome": "Go to Home",
       "goBack": "Go Back",
       "tryAgain": "Try Again",
-      "viewTemplates": "View Templates",
       "startBuilder": "Start Building"
     },
     "support": {
@@ -809,7 +712,6 @@
       "title": "You might want to:",
       "home": "Return to the home page",
       "builder": "Create a new prompt",
-      "templates": "Browse prompt templates",
       "refresh": "Refresh the page"
     }
   }

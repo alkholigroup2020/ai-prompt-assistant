@@ -102,17 +102,6 @@
                 {{ $t('error.suggestions.builder') }}
               </button>
             </li>
-            <li class="flex items-start gap-3">
-              <UIcon name="i-heroicons-document-text" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
-              <button
-                type="button"
-                class="text-left text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
-                :aria-label="$t('error.suggestions.templates')"
-                @click="handleViewTemplates"
-              >
-                {{ $t('error.suggestions.templates') }}
-              </button>
-            </li>
             <li v-if="error?.statusCode === 500" class="flex items-start gap-3">
               <UIcon name="i-heroicons-arrow-path" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
               <button
@@ -271,13 +260,6 @@ const handleGoBack = (): void => {
  */
 const handleTryAgain = (): void => {
   window.location.reload();
-};
-
-/**
- * Navigate to templates page
- */
-const handleViewTemplates = async (): Promise<void> => {
-  await navigateTo(localePath('/templates'));
 };
 
 /**

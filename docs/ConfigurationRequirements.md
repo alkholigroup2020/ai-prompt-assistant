@@ -23,7 +23,6 @@ RATE_LIMIT_MAX_REQUESTS=60       # Max requests per window
 
 # Feature Flags
 ENABLE_ANALYTICS=false            # Toggle Supabase analytics
-ENABLE_TEMPLATES=true             # Toggle templates feature
 ENABLE_EXPORT=true                # Toggle export feature
 ENABLE_QUALITY_SCORE=true        # Toggle quality scoring
 
@@ -254,7 +253,6 @@ GOOGLE_ANALYTICS_ID=              # Analytics
 - Error rates by endpoint
 - Gemini API usage
 - Quality scores distribution
-- Template usage statistics
 - User session duration
 
 ## Backup & Recovery

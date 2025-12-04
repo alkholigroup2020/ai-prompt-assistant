@@ -348,7 +348,7 @@ app/components/TopLevel.vue                → <TopLevel />
 <NuxtLink to="/builder">Builder</NuxtLink>
 
 <!-- JavaScript -->
-router.push('/templates')
+router.push('/results')
 await navigateTo('/builder')
 ```
 
@@ -359,7 +359,7 @@ await navigateTo('/builder')
 
 <!-- JavaScript -->
 const localePath = useLocalePath()
-router.push(localePath('/templates'))
+router.push(localePath('/results'))
 await navigateTo(localePath('/builder'))
 ```
 
@@ -568,8 +568,7 @@ MCP servers are configured in:
 1. **Smart Prompt Builder**: Interactive form with real-time guidance, context-aware suggestions, character limit optimizer
 2. **Prompt Enhancement Engine**: Two modes (Quick Polish / Deep Enhancement) using Gemini API
 3. **Prompt Quality Analyzer**: Real-time quality score (0-100), improvement suggestions, completeness indicators
-4. **Template Library**: 20+ pre-built templates, category-based organization
-5. **Results Experience**: Side-by-side comparison, one-click copy, multiple export formats (TXT, MD, JSON)
+4. **Results Experience**: Side-by-side comparison, one-click copy, multiple export formats (TXT, MD, JSON)
 
 ### API Endpoints (To Be Implemented)
 
@@ -582,8 +581,6 @@ All endpoints under `/api/`:
   - Rate limit: 60 requests/minute (Gemini free tier)
   - Timeout: 30 seconds
 
-- **GET /api/templates**: Retrieve prompt templates
-- **GET /api/templates/:id**: Get specific template
 - **POST /api/analyze-prompt**: Analyze prompt quality without enhancement
 - **POST /api/export**: Export prompts in various formats
 - **GET /api/health**: Health check
@@ -594,7 +591,6 @@ Key TypeScript interfaces are defined in `docs/DataSchema.md`:
 
 - **FormInput**: User input form structure with role, audience, task, tone, outputFormat, constraints, etc.
 - **EnhancementResponse**: API response structure with enhancedPrompt, qualityScore, improvements, metadata
-- **PromptTemplate**: Template structure with category, variables, examples, difficulty level
 - **LocalData**: Local storage schema for preferences, drafts, history, and statistics
 
 ### Modules & Configuration
@@ -632,7 +628,6 @@ Optional:
 SUPABASE_URL=                     # For analytics (optional)
 SUPABASE_ANON_KEY=
 ENABLE_ANALYTICS=false
-ENABLE_TEMPLATES=true
 ENABLE_EXPORT=true
 ```
 

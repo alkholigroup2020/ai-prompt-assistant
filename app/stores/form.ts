@@ -191,7 +191,7 @@ export const useFormStore = defineStore('form', {
     },
 
     /**
-     * Set entire form (e.g., from template or saved draft)
+     * Set entire form (e.g., from saved draft)
      */
     setForm(formInput: Partial<FormInput>): void {
       this.formInput = {

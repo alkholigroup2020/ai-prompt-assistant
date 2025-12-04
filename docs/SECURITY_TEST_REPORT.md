@@ -28,8 +28,6 @@ Comprehensive security testing performed on all API endpoints, input validation,
 - `/api/enhance-prompt` (POST)
 - `/api/analyze-prompt` (POST)
 - `/api/export` (POST)
-- `/api/templates` (GET)
-- `/api/templates/:id` (GET)
 - `/api/health` (GET)
 
 ### Findings

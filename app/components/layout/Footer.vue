@@ -117,7 +117,6 @@ const companyWebsite = computed(() => 'https://www.alkholi.com')
 const footerLinks = [
   { to: '/', label: 'nav.home' },
   { to: '/builder', label: 'nav.builder' },
-  { to: '/templates', label: 'nav.templates' },
 ]
 </script>
 
