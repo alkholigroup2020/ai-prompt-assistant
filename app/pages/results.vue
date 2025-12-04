@@ -199,7 +199,7 @@ const {
   alternativeVersions,
   originalPrompt,
 } = useEnhancement()
-const { saveToHistory } = useLocalStorage()
+const { saveToHistory, clearDraft } = useLocalStorage()
 
 // SEO Meta Tags
 useHead({
@@ -348,8 +348,13 @@ const navigateToBuilder = (): void => {
 }
 
 const createNewPrompt = (): void => {
-  // Reset form and navigate to builder
+  // Reset form store
   formStore.resetForm()
+
+  // Clear draft from localStorage to prevent restoration on navigation
+  clearDraft()
+
+  // Navigate to builder
   router.push(localePath('/builder'))
 
   toast.add({
