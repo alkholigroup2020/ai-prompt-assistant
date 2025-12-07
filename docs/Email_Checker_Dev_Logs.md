@@ -133,6 +133,124 @@ Phase 2 will implement:
 
 ---
 
-## Phase 2: Composable (� Pending)
+## Phase 2: Composable (✅ Completed)
+
+**Date**: 2025-12-07
+
+**Files Created**:
+- `app/composables/useEmailEnhancement.ts` (~135 lines)
+
+**Total**: ~135 lines
+
+### What Was Done
+
+#### useEmailEnhancement Composable (`app/composables/useEmailEnhancement.ts`)
+
+Created a Vue composable for managing email enhancement state following the existing `useEnhancement.ts` pattern:
+
+**State Management:**
+- Uses Nuxt's `useState` for persistent state across page navigations
+- State interface: `{ loading, error, result, originalEmail }`
+- State is exposed as readonly to prevent external mutations
+
+**Actions:**
+- `enhance(input: EmailEnhanceRequest)`: Calls the `/api/enhance-email` endpoint
+  - Resets state before making request
+  - Stores original email for comparison
+  - Handles API response and errors
+  - Uses `$fetch` for type-safe API calls
+- `clear()`: Resets all state to initial values
+
+**Computed Properties:**
+- `hasResult`: Boolean indicating if enhancement was successful
+- `enhancedEmail`: The enhanced email text
+- `suggestedSubject`: AI-suggested subject line
+- `improvements`: Array of improvements made
+- `metadata`: Processing metadata (timing, lengths, etc.)
+- `isLoading`: Loading state for UI feedback
+- `error`: Error object if request failed
+- `originalEmail`: Original email for comparison
+- `improvementPercentage`: Calculated percentage change in email length
+
+**Error Handling:**
+- Handles `$fetch` errors with proper error extraction
+- Falls back to generic error messages for unknown errors
+- Preserves error codes and messages from API responses
+
+### What Should Be Working Now
+
+At the end of Phase 2, the following should be functional:
+
+✅ **State Management**: Complete composable for email enhancement
+  - Persistent state across page navigations
+  - Reactive updates when enhancement completes
+  - Clear function to reset state
+
+✅ **API Integration**: Frontend can now call the email enhancement API
+  - Type-safe request/response handling
+  - Automatic error extraction and formatting
+  - Loading state management
+
+✅ **Computed Properties**: Easy access to enhancement results
+  - Direct access to enhanced email, subject, improvements
+  - Improvement percentage calculation
+  - Error and loading state access
+
+### Usage Example
+
+```typescript
+// In a Vue component
+const {
+  enhance,
+  clear,
+  hasResult,
+  enhancedEmail,
+  suggestedSubject,
+  improvements,
+  isLoading,
+  error,
+  originalEmail,
+  improvementPercentage
+} = useEmailEnhancement()
+
+// Enhance an email
+async function handleEnhance() {
+  try {
+    await enhance({
+      emailDraft: 'Hi John, wanted to check on the project...',
+      outputLanguage: 'en',
+      tone: 'professional'
+    })
+    // Success! Access results via computed properties
+    console.log(enhancedEmail.value)
+    console.log(suggestedSubject.value)
+  } catch (err) {
+    // Error is also available via error.value
+    console.error(error.value?.message)
+  }
+}
+
+// Clear state for new email
+function handleNewEmail() {
+  clear()
+}
+```
+
+### Validation Results
+
+✅ **TypeScript** - `npx nuxt typecheck` passed
+✅ **ESLint** - `npx eslint` passed with zero errors
+
+### Next Steps
+
+Phase 3 will implement:
+- `app/components/email/EmailInput.vue` - Email draft textarea
+- `app/components/email/OutputLanguageSelector.vue` - EN/AR toggle
+- `app/components/email/ToneSelector.vue` - Tone options
+- `app/components/email/EmailComparison.vue` - Side-by-side results
+
+---
+
+## Phase 3: Components (⏳ Pending)
 
 Coming next...
