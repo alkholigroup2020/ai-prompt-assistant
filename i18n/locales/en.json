@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "builder": "Prompt Builder",
+    "emailChecker": "Email Checker",
     "about": "About"
   },
   "header": {
@@ -93,7 +94,8 @@
     "delete": "Delete",
     "edit": "Edit",
     "copy": "Copy",
-    "download": "Download"
+    "download": "Download",
+    "optional": "Optional"
   },
   "builder": {
     "meta": {
@@ -713,6 +715,55 @@
       "home": "Return to the home page",
       "builder": "Create a new prompt",
       "refresh": "Refresh the page"
+    }
+  },
+  "emailChecker": {
+    "meta": {
+      "title": "Email Checker & Enhancer - AI Prompt Assistant",
+      "description": "Check grammar, fix spelling, and enhance your emails with AI. Get professional, polished emails in seconds."
+    },
+    "title": "Email Checker & Enhancer",
+    "subtitle": "Check grammar, fix spelling, and improve your emails instantly with AI",
+    "input": {
+      "label": "Email Draft",
+      "placeholder": "Paste your email draft here...\n\nExample:\nHi John,\n\nI wanted to ask about the project status. Can you update me on where we are?\n\nThanks",
+      "helpText": "Paste or type your email draft (10-5,000 characters)"
+    },
+    "language": {
+      "label": "Output Language",
+      "helpText": "Select the language for your enhanced email"
+    },
+    "tone": {
+      "label": "Tone",
+      "helpText": "Choose a tone for your email (optional)",
+      "options": {
+        "professional": "Professional",
+        "friendly": "Friendly",
+        "formal": "Formal",
+        "casual": "Casual"
+      }
+    },
+    "actions": {
+      "enhance": "Enhance Email",
+      "enhancing": "Enhancing...",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "newEmail": "New Email",
+      "download": "Download"
+    },
+    "results": {
+      "title": "Enhanced Email",
+      "original": "Original",
+      "enhanced": "Enhanced",
+      "suggestedSubject": "Suggested Subject Line",
+      "improvements": "Improvements Made",
+      "words": "words",
+      "chars": "chars",
+      "copySuccess": "Email Copied",
+      "copySuccessDescription": "The enhanced email has been copied to your clipboard"
+    },
+    "error": {
+      "title": "Enhancement Failed"
     }
   }
 }
