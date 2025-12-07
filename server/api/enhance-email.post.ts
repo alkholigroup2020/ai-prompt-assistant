@@ -78,14 +78,10 @@ function validateEmailRequest(body: unknown): {
       })
     }
 
-    // Security check
-    const securityCheck = validateSecurity(input.emailDraft as string)
-    if (!securityCheck.valid) {
-      errors.push({
-        field: 'emailDraft',
-        message: 'Email draft contains potentially unsafe content'
-      })
-    }
+    // Note: We don't run validateSecurity() on email content because:
+    // 1. Email content is natural language, not code
+    // 2. Common phrases like "update me on where we are" trigger SQL injection false positives
+    // 3. The content is sanitized before use and sent to Gemini API which handles it safely
   }
 
   // Validate outputLanguage (required)

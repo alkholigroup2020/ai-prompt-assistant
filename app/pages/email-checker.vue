@@ -21,7 +21,7 @@
           <form @submit.prevent="handleEnhance">
             <div class="space-y-6">
               <!-- Email Input -->
-              <EmailEmailInput
+              <EmailDraftInput
                 v-model="emailDraft"
                 :disabled="isLoading"
                 @blur="validateDraft"
@@ -99,7 +99,7 @@
             v-if="hasResult"
             class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 md:p-8"
           >
-            <EmailEmailComparison
+            <EmailResultComparison
               :original-email="originalEmail"
               :enhanced-email="enhancedEmail"
               :suggested-subject="suggestedSubject"

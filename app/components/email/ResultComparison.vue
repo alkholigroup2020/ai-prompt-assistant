@@ -249,6 +249,8 @@ const copySubject = async () => {
 </script>
 
 <style scoped>
+@reference "~/assets/css/main.css";
+
 .comparison-card {
   @apply bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm transition-all duration-200;
 }
