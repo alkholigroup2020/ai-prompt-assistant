@@ -760,7 +760,8 @@
       "words": "كلمات",
       "chars": "أحرف",
       "copySuccess": "تم نسخ البريد",
-      "copySuccessDescription": "تم نسخ البريد الإلكتروني المحسّن إلى الحافظة"
+      "copySuccessDescription": "تم نسخ البريد الإلكتروني المحسّن إلى الحافظة",
+      "nextStepsDescription": "حسّن بريداً آخر أو انسخ هذا البريد"
     },
     "error": {
       "title": "فشل التحسين"

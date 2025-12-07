@@ -8,7 +8,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 import type { EmailEnhanceRequest, EmailEnhanceResponse } from '~/types/email'
 import type { APIError } from '~/types/api'
 import { enforceRateLimit } from '../utils/rate-limit'
-import { sanitizeInput, validateSecurity } from '../utils/security'
+import { sanitizeInput } from '../utils/security'
 import { buildEmailEnhancementPrompt, parseEmailResponse } from '../utils/email-prompts'
 
 /**
@@ -209,16 +209,36 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
     }
 
     const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
     // Build prompt
     const prompt = buildEmailEnhancementPrompt(sanitizedInput)
 
     // Call Gemini API with retry logic
-    const responseText = await retryWithBackoff(async () => {
-      const response = await model.generateContent(prompt)
-      return response.response.text()
-    })
+    let responseText: string
+    try {
+      responseText = await retryWithBackoff(async () => {
+        const response = await model.generateContent(prompt)
+        return response.response.text()
+      })
+    }
+    catch (geminiError) {
+      // Convert Gemini errors to properly tagged errors for consistent handling
+      const errorMessage = geminiError instanceof Error ? geminiError.message : 'Unknown error'
+
+      if (errorMessage.includes('API key') || errorMessage.includes('invalid_api_key') || errorMessage.includes('API_KEY_INVALID')) {
+        throw new Error('GEMINI_API_ERROR: Invalid API key configuration')
+      }
+      if (errorMessage.includes('quota') || errorMessage.includes('429') || errorMessage.includes('RESOURCE_EXHAUSTED')) {
+        throw new Error('GEMINI_API_ERROR: API quota exceeded')
+      }
+      if (errorMessage.includes('not found') || errorMessage.includes('NOT_FOUND')) {
+        throw new Error('GEMINI_API_ERROR: Model not found - check model name')
+      }
+      // Wrap any other Gemini error
+      throw new Error('GEMINI_API_ERROR: Unable to enhance email')
+    }
 
     // Parse the response
     const parsed = parseEmailResponse(responseText)

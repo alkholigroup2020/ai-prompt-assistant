@@ -92,7 +92,7 @@ export default defineNuxtConfig({
 
     // Public runtime config (exposed to client)
     public: {
-      geminiModel: process.env.NUXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash',
+      geminiModel: process.env.NUXT_PUBLIC_GEMINI_MODEL || 'gemini-2.5-flash',
       appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
       enableAnalytics: process.env.ENABLE_ANALYTICS === 'true',
       enableExport: process.env.ENABLE_EXPORT !== 'false',

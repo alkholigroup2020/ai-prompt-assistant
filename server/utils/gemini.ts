@@ -291,8 +291,8 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
 
   try {
     const client = getGeminiClient();
-    // Use gemini-2.0-flash (Gemini 1.0 and 1.5 models are retired)
-    const modelName = 'gemini-2.0-flash';
+    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
+    const modelName = 'gemini-2.5-flash';
     const model = client.getGenerativeModel({ model: modelName });
 
     const prompt = buildEnhancementPrompt(input);
@@ -337,22 +337,33 @@ export async function enhancePrompt(input: FormInput): Promise<EnhancementData> 
     return enhancementData;
 
   } catch (error) {
-    // SECURITY: Log errors securely without sensitive data
-    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    // Log full error for debugging (in dev environment)
+    const fullErrorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Gemini API error (full):', fullErrorMessage);
     console.error('Gemini API error:', {
-      errorType: sanitizedError.split(':')[0],
+      errorType: fullErrorMessage.split(':')[0],
       timestamp: new Date().toISOString()
     });
 
     if (error instanceof Error) {
-      if (error.message.includes('API key') || error.message.includes('invalid_api_key') || error.message.includes('API_KEY_INVALID')) {
+      const errorMsg = error.message.toLowerCase();
+      if (errorMsg.includes('api key') || errorMsg.includes('invalid_api_key') || errorMsg.includes('api_key_invalid')) {
         throw new Error('GEMINI_API_ERROR: Invalid API key configuration');
       }
-      if (error.message.includes('quota') || error.message.includes('429') || error.message.includes('RESOURCE_EXHAUSTED')) {
+      if (errorMsg.includes('quota') || errorMsg.includes('429') || errorMsg.includes('resource_exhausted')) {
         throw new Error('GEMINI_API_ERROR: API quota exceeded');
       }
-      if (error.message.includes('not found') || error.message.includes('NOT_FOUND')) {
+      if (errorMsg.includes('not found') || errorMsg.includes('not_found')) {
         throw new Error('GEMINI_API_ERROR: Model not found - check model name');
+      }
+      if (errorMsg.includes('permission') || errorMsg.includes('denied') || errorMsg.includes('403')) {
+        throw new Error('GEMINI_API_ERROR: Permission denied - check API key permissions');
+      }
+      if (errorMsg.includes('timeout') || errorMsg.includes('deadline')) {
+        throw new Error('GEMINI_API_ERROR: Request timeout');
+      }
+      if (errorMsg.includes('network') || errorMsg.includes('fetch') || errorMsg.includes('enotfound') || errorMsg.includes('econnrefused')) {
+        throw new Error('GEMINI_API_ERROR: Network error - cannot reach Gemini API');
       }
     }
 
@@ -490,19 +501,19 @@ export async function analyzePromptQuality(prompt: string): Promise<{
 export async function checkGeminiConnection(): Promise<boolean> {
   try {
     const client = getGeminiClient();
-    // Force gemini-2.0-flash
-    const modelName = 'gemini-2.0-flash';
+    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
+    const modelName = 'gemini-2.5-flash';
     const model = client.getGenerativeModel({ model: modelName });
 
     // Try a simple generation
     const result = await model.generateContent('Hello');
     return !!result.response.text();
   } catch (error) {
-    // SECURITY: Log errors securely without sensitive data or stack traces
-    const sanitizedError = error instanceof Error ? error.message : 'Unknown error';
+    // Log full error for debugging
+    const fullErrorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Gemini connection check failed (full):', fullErrorMessage);
     console.error('Gemini connection check failed:', {
-      // Only log error type, never the full error object or stack trace
-      errorType: sanitizedError.split(':')[0],
+      errorType: fullErrorMessage.split(':')[0],
       timestamp: new Date().toISOString()
     });
     return false;

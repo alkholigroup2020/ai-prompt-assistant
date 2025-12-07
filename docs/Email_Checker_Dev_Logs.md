@@ -755,6 +755,103 @@ Verified complete functionality:
 
 ---
 
+## Phase 7: Bug Fix - API Error Handling (✅ Completed)
+
+**Date**: 2025-12-07
+
+**Files Modified**:
+- `server/api/enhance-email.post.ts` (error handling fix)
+
+### What Was Done
+
+#### Issue Identified
+The Email Checker API was returning `INTERNAL_ERROR` instead of `GEMINI_API_ERROR` when the Gemini API failed. This was because the endpoint directly called the Gemini API without properly wrapping errors with the `GEMINI_API_ERROR` prefix that the error handler expects.
+
+#### Fix Applied
+
+1. **Added Gemini Error Wrapping**: Wrapped the Gemini API call in a try-catch block that converts specific Gemini errors to properly tagged errors:
+   - API key issues → `GEMINI_API_ERROR: Invalid API key configuration`
+   - Quota exceeded → `GEMINI_API_ERROR: API quota exceeded`
+   - Model not found → `GEMINI_API_ERROR: Model not found`
+   - Other errors → `GEMINI_API_ERROR: Unable to enhance email`
+
+2. **Removed Unused Import**: Removed the unused `validateSecurity` import to fix ESLint error.
+
+### Code Changes
+
+```typescript
+// Before: Direct Gemini API call without error wrapping
+const responseText = await retryWithBackoff(async () => {
+  const response = await model.generateContent(prompt)
+  return response.response.text()
+})
+
+// After: Properly wrapped with error conversion
+let responseText: string
+try {
+  responseText = await retryWithBackoff(async () => {
+    const response = await model.generateContent(prompt)
+    return response.response.text()
+  })
+}
+catch (geminiError) {
+  const errorMessage = geminiError instanceof Error ? geminiError.message : 'Unknown error'
+  // Convert to GEMINI_API_ERROR for proper error handling...
+  throw new Error('GEMINI_API_ERROR: Unable to enhance email')
+}
+```
+
+### Validation Results
+
+✅ **TypeScript** - `npx nuxt typecheck` passed
+✅ **ESLint** - `npx eslint` passed (0 errors)
+✅ **API Error Handling** - Now returns proper `GEMINI_API_ERROR` code
+
+---
+
+## Phase 8: Model Update - Quota Fix (✅ Completed)
+
+**Date**: 2025-12-07
+
+**Files Modified**:
+- `server/utils/gemini.ts` (model update)
+- `server/api/enhance-email.post.ts` (model update)
+- `nuxt.config.ts` (default model update)
+
+### Issue Identified
+
+The Gemini API was returning `429 Too Many Requests` errors with `limit: 0` for the `gemini-2.0-flash` model. This indicated the free tier daily quota was exhausted for that specific model.
+
+### Fix Applied
+
+Changed the model from `gemini-2.0-flash` to `gemini-2.5-flash` which:
+1. Has separate quota limits
+2. Is a newer model with improved capabilities
+3. Works immediately without waiting for quota reset
+
+**Changes Made:**
+
+1. **server/utils/gemini.ts**:
+   - Updated `enhancePrompt()` to use `gemini-2.5-flash`
+   - Updated `checkGeminiConnection()` to use `gemini-2.5-flash`
+   - Improved error logging to show full error messages for debugging
+
+2. **server/api/enhance-email.post.ts**:
+   - Updated to use `gemini-2.5-flash`
+   - Added Gemini error wrapping for proper error handling
+
+3. **nuxt.config.ts**:
+   - Updated default model to `gemini-2.5-flash`
+
+### Validation Results
+
+✅ **Health Check** - `{"status":"ok","services":{"gemini":"connected"}}`
+✅ **Email Checker API** - Returns enhanced emails successfully
+✅ **Builder API** - Returns enhanced prompts successfully
+✅ **ESLint** - No errors
+
+---
+
 ## Feature Complete! 🎉
 
 The Email Checker & Enhancer feature is now fully implemented and ready for use. All phases have been completed:
@@ -765,3 +862,5 @@ The Email Checker & Enhancer feature is now fully implemented and ready for use.
 - ✅ Phase 4: Main Page
 - ✅ Phase 5: i18n & Navigation
 - ✅ Phase 6: Testing & Validation
+- ✅ Phase 7: Bug Fix - API Error Handling
+- ✅ Phase 8: Model Update - Quota Fix

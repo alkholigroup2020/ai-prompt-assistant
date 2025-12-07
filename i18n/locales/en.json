@@ -760,7 +760,8 @@
       "words": "words",
       "chars": "chars",
       "copySuccess": "Email Copied",
-      "copySuccessDescription": "The enhanced email has been copied to your clipboard"
+      "copySuccessDescription": "The enhanced email has been copied to your clipboard",
+      "nextStepsDescription": "Enhance another email or copy this one"
     },
     "error": {
       "title": "Enhancement Failed"
