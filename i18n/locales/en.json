@@ -78,6 +78,18 @@
       },
       "cta": "Get Started Now"
     },
+    "emailFeature": {
+      "badge": "New Feature",
+      "title": "Email Checker & Enhancer",
+      "subtitle": "Write better emails in seconds",
+      "description": "Check grammar, fix spelling, and enhance your emails with AI. Get professional, polished emails ready for any audience.",
+      "benefits": {
+        "grammar": "Fix grammar & spelling instantly",
+        "tone": "Adjust tone for any audience",
+        "bilingual": "Works in English & Arabic"
+      },
+      "cta": "Try Email Checker"
+    },
     "finalCta": {
       "title": "Ready to Create Better AI Prompts?",
       "subtitle": "Join Alkholi Group employees in creating more effective prompts for any AI tool. Start building now!",
@@ -727,10 +739,16 @@
     "input": {
       "label": "Email Draft",
       "placeholder": "Paste your email draft here...\n\nExample:\nHi John,\n\nI wanted to ask about the project status. Can you update me on where we are?\n\nThanks",
+      "placeholderAr": "الصق مسودة بريدك الإلكتروني هنا...\n\nمثال:\nمرحباً أحمد،\n\nأردت أن أسأل عن حالة المشروع. هل يمكنك إطلاعي على آخر التطورات؟\n\nشكراً",
       "helpText": "Paste or type your email draft (10-5,000 characters)"
+    },
+    "inputLanguage": {
+      "label": "Input Language",
+      "description": "Sets the text direction for your draft"
     },
     "language": {
       "label": "Output Language",
+      "description": "The language your enhanced email will be written in",
       "helpText": "Select the language for your enhanced email"
     },
     "tone": {
@@ -749,7 +767,9 @@
       "copy": "Copy",
       "copied": "Copied!",
       "newEmail": "New Email",
-      "download": "Download"
+      "download": "Download",
+      "ready": "Ready to Enhance",
+      "readyDescription": "Click enhance to improve your email"
     },
     "results": {
       "title": "Enhanced Email",

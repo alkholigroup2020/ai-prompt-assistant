@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+  <div class="bg-gray-50 dark:bg-gray-900 py-8">
     <div class="container mx-auto max-w-7xl px-4">
       <!-- Page Header (always visible) -->
       <div class="text-center mb-8">
@@ -24,89 +24,141 @@
         <UiCard padding="lg" shadow="md">
           <form @submit.prevent="handleEnhance">
             <div class="space-y-6">
-              <!-- Email Input -->
-              <EmailDraftInput
-                v-model="emailDraft"
-                :disabled="isLoading"
-                @blur="validateDraft"
-              />
-
-              <!-- Output Language Toggle -->
-              <div class="space-y-3">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ $t('emailChecker.language.label') }}
-                </label>
-                <div class="flex">
-                  <button
-                    type="button"
-                    :class="[
-                      'flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 cursor-pointer',
-                      'border border-gray-300 dark:border-gray-600',
-                      'first:rounded-l-lg last:rounded-r-lg',
-                      '-ml-px first:ml-0',
-                      outputLanguage === 'en'
-                        ? 'bg-emerald-600 text-white border-emerald-600 dark:border-emerald-500 z-10'
-                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                    ]"
+              <!-- Main Form Row: Email Draft (75%) | Language + Tone (25%) -->
+              <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Email Input (75% on large screens) -->
+                <div class="lg:col-span-3 flex flex-col">
+                  <EmailDraftInput
+                    v-model="emailDraft"
                     :disabled="isLoading"
-                    @click="outputLanguage = 'en'"
-                  >
-                    English
-                  </button>
-                  <button
-                    type="button"
-                    :class="[
-                      'flex-1 px-4 py-3 text-sm font-medium transition-all duration-200 cursor-pointer',
-                      'border border-gray-300 dark:border-gray-600',
-                      'first:rounded-l-lg last:rounded-r-lg',
-                      '-ml-px first:ml-0',
-                      outputLanguage === 'ar'
-                        ? 'bg-emerald-600 text-white border-emerald-600 dark:border-emerald-500 z-10'
-                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                    ]"
-                    :disabled="isLoading"
-                    @click="outputLanguage = 'ar'"
-                  >
-                    العربية
-                  </button>
+                    :direction="inputDirection"
+                    :language="inputLanguage"
+                    class="h-full"
+                    @blur="validateDraft"
+                  />
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
-                  {{ $t('emailChecker.language.helpText') }}
-                </p>
-              </div>
 
-              <!-- Tone Toggle -->
-              <div class="space-y-3">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ $t('emailChecker.tone.label') }}
-                  <span class="text-gray-400 dark:text-gray-500 font-normal">
-                    ({{ $t('common.optional') }})
-                  </span>
-                </label>
-                <div class="flex flex-wrap">
-                  <button
-                    v-for="(tone, index) in toneOptions"
-                    :key="tone.value"
-                    type="button"
-                    :class="[
-                      'flex-1 min-w-[100px] px-3 py-2.5 text-sm font-medium transition-all duration-200 cursor-pointer',
-                      'border border-gray-300 dark:border-gray-600',
-                      index === 0 ? 'rounded-l-lg' : '',
-                      index === toneOptions.length - 1 ? 'rounded-r-lg' : '',
-                      index > 0 ? '-ml-px' : '',
-                      selectedTone === tone.value
-                        ? 'bg-emerald-600 text-white border-emerald-600 dark:border-emerald-500 z-10'
-                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                    ]"
-                    :disabled="isLoading"
-                    @click="selectedTone = selectedTone === tone.value ? undefined : tone.value"
-                  >
-                    {{ tone.label }}
-                  </button>
+                <!-- Language & Tone Column (25% on large screens) -->
+                <div class="lg:col-span-1 space-y-4">
+                  <!-- Input Language Toggle -->
+                  <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {{ $t('emailChecker.inputLanguage.label') }}
+                    </label>
+                    <div class="flex">
+                      <button
+                        type="button"
+                        :class="[
+                          'flex-1 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'border border-gray-300 dark:border-gray-600',
+                          'rounded-s-lg',
+                          'flex items-center justify-center gap-2',
+                          inputLanguage === 'en'
+                            ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ]"
+                        :disabled="isLoading"
+                        @click="inputLanguage = 'en'"
+                      >
+                        <UIcon name="i-heroicons-language" class="w-4 h-4" />
+                        <span>EN</span>
+                      </button>
+                      <button
+                        type="button"
+                        :class="[
+                          'flex-1 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'border border-gray-300 dark:border-gray-600',
+                          'rounded-e-lg -ms-px',
+                          'flex items-center justify-center gap-2',
+                          inputLanguage === 'ar'
+                            ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ]"
+                        :disabled="isLoading"
+                        @click="inputLanguage = 'ar'"
+                      >
+                        <UIcon name="i-heroicons-language" class="w-4 h-4" />
+                        <span>AR</span>
+                      </button>
+                    </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      {{ $t('emailChecker.inputLanguage.description') }}
+                    </p>
+                  </div>
+
+                  <!-- Output Language Toggle -->
+                  <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {{ $t('emailChecker.language.label') }}
+                    </label>
+                    <div class="flex">
+                      <button
+                        type="button"
+                        :class="[
+                          'flex-1 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'border border-gray-300 dark:border-gray-600',
+                          'rounded-s-lg',
+                          'flex items-center justify-center gap-2',
+                          outputLanguage === 'en'
+                            ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ]"
+                        :disabled="isLoading"
+                        @click="outputLanguage = 'en'"
+                      >
+                        <UIcon name="i-heroicons-language" class="w-4 h-4" />
+                        <span>EN</span>
+                      </button>
+                      <button
+                        type="button"
+                        :class="[
+                          'flex-1 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'border border-gray-300 dark:border-gray-600',
+                          'rounded-e-lg -ms-px',
+                          'flex items-center justify-center gap-2',
+                          outputLanguage === 'ar'
+                            ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ]"
+                        :disabled="isLoading"
+                        @click="outputLanguage = 'ar'"
+                      >
+                        <UIcon name="i-heroicons-language" class="w-4 h-4" />
+                        <span>AR</span>
+                      </button>
+                    </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      {{ $t('emailChecker.language.description') }}
+                    </p>
+                  </div>
+
+                  <!-- Tone Toggle -->
+                  <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {{ $t('emailChecker.tone.label') }}
+                    </label>
+                    <div class="grid grid-cols-2 gap-1.5">
+                      <button
+                        v-for="tone in toneOptions"
+                        :key="tone.value"
+                        type="button"
+                        :class="[
+                          'px-2 py-2.5 text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'border border-gray-300 dark:border-gray-600 rounded-lg',
+                          'flex items-center justify-center gap-1.5',
+                          selectedTone === tone.value
+                            ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ]"
+                        :disabled="isLoading"
+                        @click="selectedTone = selectedTone === tone.value ? undefined : tone.value"
+                      >
+                        <UIcon :name="tone.icon" class="w-4 h-4" />
+                        <span class="text-xs">{{ tone.label }}</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
-                  {{ $t('emailChecker.tone.helpText') }}
-                </p>
               </div>
 
               <!-- Error Display -->
@@ -130,42 +182,53 @@
                 </div>
               </div>
 
-              <!-- Action Buttons -->
-              <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                <!-- Reset Button -->
-                <UButton
-                  type="button"
-                  color="neutral"
-                  variant="soft"
-                  size="lg"
-                  class="min-h-[44px] sm:flex-1 cursor-pointer !text-red-600 dark:!text-red-400 hover:!bg-red-50 dark:hover:!bg-red-950/20 !border-red-300 dark:!border-red-800"
-                  :disabled="isLoading || !emailDraft"
-                  @click="handleReset"
-                >
-                  <template #leading>
-                    <UIcon name="i-heroicons-arrow-path" />
-                  </template>
-                  {{ $t('builder.actions.reset') }}
-                </UButton>
-
-                <!-- Enhance Button -->
-                <UButton
-                  type="submit"
-                  color="primary"
-                  size="lg"
-                  :loading="isLoading"
-                  :disabled="!isFormValid || isLoading"
-                  class="min-h-[44px] sm:flex-[2] cursor-pointer"
-                >
-                  <template #leading>
+              <!-- Action Toolbar -->
+              <div class="mt-2 -mx-6 -mb-6 px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 rounded-b-lg">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div class="flex items-center gap-3">
                     <UIcon
-                      v-if="!isLoading"
                       name="i-heroicons-sparkles"
-                      class="w-5 h-5"
+                      class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
                     />
-                  </template>
-                  {{ isLoading ? $t('emailChecker.actions.enhancing') : $t('emailChecker.actions.enhance') }}
-                </UButton>
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        {{ $t('emailChecker.actions.ready', 'Ready to Enhance') }}
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {{ $t('emailChecker.actions.readyDescription', 'Click enhance to improve your email') }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 w-full sm:w-auto">
+                    <!-- Reset Button -->
+                    <UButton
+                      type="button"
+                      color="neutral"
+                      variant="outline"
+                      size="lg"
+                      icon="i-heroicons-arrow-path"
+                      class="flex-1 sm:flex-none cursor-pointer"
+                      :disabled="isLoading || !emailDraft"
+                      @click="handleReset"
+                    >
+                      {{ $t('builder.actions.reset') }}
+                    </UButton>
+
+                    <!-- Enhance Button -->
+                    <UButton
+                      type="button"
+                      color="primary"
+                      size="lg"
+                      icon="i-heroicons-sparkles"
+                      :loading="isLoading"
+                      :disabled="!isFormValid || isLoading"
+                      class="flex-1 sm:flex-none cursor-pointer"
+                      @click="handleEnhance"
+                    >
+                      {{ isLoading ? $t('emailChecker.actions.enhancing') : $t('emailChecker.actions.enhance') }}
+                    </UButton>
+                  </div>
+                </div>
               </div>
             </div>
           </form>
@@ -190,7 +253,7 @@
                 <p class="text-sm font-medium text-amber-800 dark:text-amber-200">
                   {{ $t('emailChecker.results.suggestedSubject') }}
                 </p>
-                <p class="mt-1 text-amber-900 dark:text-amber-100 font-medium">
+                <p class="mt-1 text-amber-900 dark:text-amber-100 font-medium" :dir="outputDirection">
                   {{ suggestedSubject }}
                 </p>
               </div>
@@ -233,7 +296,7 @@
                   {{ $t('emailChecker.results.enhanced') }}
                 </h3>
               </div>
-              <p class="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p class="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed" :dir="outputDirection">
                 {{ enhancedEmail }}
               </p>
             </div>
@@ -309,19 +372,24 @@ useSeoMeta({
 
 // Form state
 const emailDraft = ref('')
+const inputLanguage = ref<EmailLanguage>('en')
 const outputLanguage = ref<EmailLanguage>(locale.value === 'ar' ? 'ar' : 'en')
-const selectedTone = ref<EmailTone | undefined>(undefined)
+const selectedTone = ref<EmailTone | undefined>('professional')
+
+// Computed direction based on language
+const inputDirection = computed(() => inputLanguage.value === 'ar' ? 'rtl' : 'ltr')
+const outputDirection = computed(() => outputLanguage.value === 'ar' ? 'rtl' : 'ltr')
 
 // Copy states
 const enhancedCopied = ref(false)
 const subjectCopied = ref(false)
 
-// Tone options
+// Tone options with icons
 const toneOptions = computed(() => [
-  { value: 'professional' as EmailTone, label: t('emailChecker.tone.options.professional') },
-  { value: 'friendly' as EmailTone, label: t('emailChecker.tone.options.friendly') },
-  { value: 'formal' as EmailTone, label: t('emailChecker.tone.options.formal') },
-  { value: 'casual' as EmailTone, label: t('emailChecker.tone.options.casual') }
+  { value: 'professional' as EmailTone, label: t('emailChecker.tone.options.professional'), icon: 'i-heroicons-briefcase' },
+  { value: 'friendly' as EmailTone, label: t('emailChecker.tone.options.friendly'), icon: 'i-heroicons-face-smile' },
+  { value: 'formal' as EmailTone, label: t('emailChecker.tone.options.formal'), icon: 'i-heroicons-document-text' },
+  { value: 'casual' as EmailTone, label: t('emailChecker.tone.options.casual'), icon: 'i-heroicons-chat-bubble-left-right' }
 ])
 
 // Email enhancement composable

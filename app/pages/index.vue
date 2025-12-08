@@ -392,6 +392,105 @@ const handleGetStarted = (): void => {
       </div>
     </section>
 
+    <!-- Email Feature Section -->
+    <section
+      id="email-feature"
+      class="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-16 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:py-24"
+    >
+      <!-- Background decoration -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-900/30" />
+        <div class="absolute left-0 bottom-0 h-96 w-96 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-900/30" />
+      </div>
+
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-5 lg:gap-16">
+          <!-- Content Side (60%) -->
+          <div class="text-center lg:col-span-3 lg:text-start">
+            <!-- Headline -->
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
+              {{ t('landing.emailFeature.title') }}
+            </h2>
+
+            <!-- Subtitle -->
+            <p class="mt-2 text-xl font-medium text-emerald-600 dark:text-emerald-400">
+              {{ t('landing.emailFeature.subtitle') }}
+            </p>
+
+            <!-- Description -->
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+              {{ t('landing.emailFeature.description') }}
+            </p>
+
+            <!-- Benefits -->
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.grammar') }}</span>
+              </li>
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.tone') }}</span>
+              </li>
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.bilingual') }}</span>
+              </li>
+            </ul>
+
+            <!-- CTA Button -->
+            <div class="mt-10">
+              <NuxtLink
+                :to="localePath('/email-checker')"
+                class="cursor-pointer group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/40 active:scale-95"
+              >
+                <UIcon
+                  name="i-heroicons-envelope"
+                  class="relative z-10 h-6 w-6 transition-transform group-hover:rotate-6"
+                />
+                <span class="relative z-10">{{ t('landing.emailFeature.cta') }}</span>
+                <!-- Shine effect -->
+                <div
+                  class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
+                />
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Visual Side (40%) -->
+          <div class="relative flex items-center justify-center lg:col-span-2">
+            <!-- Large Email Icon Container -->
+            <div class="relative">
+              <!-- Outer glow ring -->
+              <div class="absolute inset-0 animate-pulse rounded-full bg-emerald-400/20 blur-2xl" />
+
+              <!-- Icon container -->
+              <div class="relative rounded-3xl border border-emerald-200 bg-gradient-to-br from-white to-emerald-50 p-12 shadow-2xl dark:border-emerald-800 dark:from-gray-800 dark:to-gray-900 sm:p-16">
+                <UIcon
+                  name="i-heroicons-envelope"
+                  class="h-32 w-32 text-emerald-500 dark:text-emerald-400 sm:h-40 sm:w-40"
+                />
+
+                <!-- Decorative elements -->
+                <div class="absolute -right-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+                  <UIcon name="i-heroicons-sparkles" class="h-6 w-6" />
+                </div>
+                <div class="absolute -bottom-4 -left-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+                  <UIcon name="i-heroicons-check" class="h-6 w-6" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section
       id="final-cta"
