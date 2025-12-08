@@ -109,6 +109,11 @@
     "download": "Download",
     "optional": "Optional"
   },
+  "loading": {
+    "enhancingPrompt": "Enhancing your prompt...",
+    "enhancingEmail": "Enhancing your email...",
+    "pleaseWait": "This may take a few seconds"
+  },
   "builder": {
     "meta": {
       "title": "Prompt Builder - Create Perfect AI Prompts",

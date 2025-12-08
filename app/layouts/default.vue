@@ -16,6 +16,9 @@
     <!-- Footer -->
     <LayoutFooter />
 
+    <!-- Global Loading Overlay -->
+    <AppLoadingOverlay />
+
     <!-- Skip to main content link for accessibility -->
     <a
       href="#main-content"
