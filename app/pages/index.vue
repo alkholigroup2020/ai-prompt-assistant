@@ -126,7 +126,7 @@ const handleGetStarted = (): void => {
     </section>
 
     <!-- Value Propositions Section -->
-    <section id="value-props" class="bg-white py-12 sm:py-16 md:py-20 lg:py-24 dark:bg-gray-900">
+    <section id="value-props" class="bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-24 dark:bg-gray-900">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="mb-8 sm:mb-10 md:mb-12 text-center">
@@ -199,17 +199,15 @@ const handleGetStarted = (): void => {
       </div>
     </section>
 
-    <!-- How It Works Section -->
+    <!-- Email Feature Section -->
     <section
-      id="how-it-works"
-      class="relative overflow-hidden bg-gray-900/50 py-16 backdrop-blur-sm dark:bg-gray-950/80 sm:py-24"
+      id="email-feature"
+      class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 py-16 dark:from-slate-950 dark:via-gray-950 dark:to-slate-950 sm:py-24"
     >
       <!-- Background decoration -->
       <div class="absolute inset-0 -z-10">
-        <div class="absolute left-1/4 top-10 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div
-          class="absolute right-1/4 bottom-10 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl"
-        />
+        <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div class="absolute left-0 bottom-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
         <!-- Grid pattern overlay -->
         <div
           class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000,transparent)]"
@@ -217,12 +215,106 @@ const handleGetStarted = (): void => {
       </div>
 
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-5 lg:gap-16">
+          <!-- Content Side (60%) -->
+          <div class="text-center lg:col-span-3 lg:text-start">
+            <!-- Headline -->
+            <h2 class="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+              {{ t('landing.emailFeature.title') }}
+            </h2>
+
+            <!-- Subtitle -->
+            <p class="mt-2 text-xl font-medium text-emerald-400">
+              {{ t('landing.emailFeature.subtitle') }}
+            </p>
+
+            <!-- Description -->
+            <p class="mt-4 text-lg text-gray-300">
+              {{ t('landing.emailFeature.description') }}
+            </p>
+
+            <!-- Benefits -->
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-400" />
+                </div>
+                <span class="text-gray-300">{{ t('landing.emailFeature.benefits.grammar') }}</span>
+              </li>
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-400" />
+                </div>
+                <span class="text-gray-300">{{ t('landing.emailFeature.benefits.tone') }}</span>
+              </li>
+              <li class="flex items-center gap-3 justify-center lg:justify-start">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-900/50">
+                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-400" />
+                </div>
+                <span class="text-gray-300">{{ t('landing.emailFeature.benefits.bilingual') }}</span>
+              </li>
+            </ul>
+
+            <!-- CTA Button -->
+            <div class="mt-10">
+              <NuxtLink
+                :to="localePath('/email-checker')"
+                class="cursor-pointer group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/40 active:scale-95"
+              >
+                <UIcon
+                  name="i-heroicons-envelope"
+                  class="relative z-10 h-6 w-6 transition-transform group-hover:rotate-6"
+                />
+                <span class="relative z-10">{{ t('landing.emailFeature.cta') }}</span>
+                <!-- Shine effect -->
+                <div
+                  class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
+                />
+              </NuxtLink>
+            </div>
+          </div>
+
+          <!-- Visual Side (40%) -->
+          <div class="relative flex items-center justify-center lg:col-span-2">
+            <!-- Large Email Icon Container -->
+            <div class="relative">
+              <!-- Outer glow ring -->
+              <div class="absolute inset-0 animate-pulse rounded-full bg-emerald-400/20 blur-2xl" />
+
+              <!-- Icon container -->
+              <div class="relative rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-12 shadow-2xl backdrop-blur-sm sm:p-16">
+                <UIcon
+                  name="i-heroicons-envelope"
+                  class="h-32 w-32 text-emerald-400 sm:h-40 sm:w-40"
+                />
+
+                <!-- Decorative elements -->
+                <div class="absolute -right-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+                  <UIcon name="i-heroicons-sparkles" class="h-6 w-6" />
+                </div>
+                <div class="absolute -bottom-4 -left-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+                  <UIcon name="i-heroicons-check" class="h-6 w-6" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section
+      id="how-it-works"
+      class="bg-gray-50 py-16 dark:bg-gray-900 sm:py-24"
+    >
+
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="mb-16 text-center">
-          <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
             {{ t('landing.howItWorks.title') }}
           </h2>
-          <p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
+          <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300 sm:text-xl">
             {{ t('landing.howItWorks.subtitle') }}
           </p>
         </div>
@@ -244,31 +336,23 @@ const handleGetStarted = (): void => {
 
               <!-- Card -->
               <div
-                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+                class="relative flex-1 rounded-xl border border-gray-200 bg-white p-8 py-12 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
               >
                 <!-- Icon Container -->
                 <div class="mb-6 flex justify-center">
-                  <div
-                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
-                  >
-                    <UIcon
-                      name="i-heroicons-pencil-square"
-                      class="h-16 w-16 animate-pulse text-emerald-400"
-                    />
-                    <!-- Decorative glow -->
-                    <div
-                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
-                    />
-                  </div>
+                  <UIcon
+                    name="i-heroicons-pencil-square"
+                    class="h-16 w-16 text-emerald-500 transition-transform group-hover:scale-110"
+                  />
                 </div>
 
                 <!-- Title -->
-                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                <h3 class="mb-3 text-center text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
                   {{ t('landing.howItWorks.step1.title') }}
                 </h3>
 
                 <!-- Description -->
-                <p class="text-center leading-relaxed text-gray-300">
+                <p class="text-center leading-relaxed text-gray-600 dark:text-gray-400">
                   {{ t('landing.howItWorks.step1.description') }}
                 </p>
               </div>
@@ -287,31 +371,23 @@ const handleGetStarted = (): void => {
 
               <!-- Card -->
               <div
-                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+                class="relative flex-1 rounded-xl border border-gray-200 bg-white p-8 py-12 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
               >
                 <!-- Icon Container -->
                 <div class="mb-6 flex justify-center">
-                  <div
-                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
-                  >
-                    <UIcon
-                      name="i-heroicons-sparkles"
-                      class="h-16 w-16 animate-pulse text-emerald-400"
-                    />
-                    <!-- Decorative glow -->
-                    <div
-                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
-                    />
-                  </div>
+                  <UIcon
+                    name="i-heroicons-sparkles"
+                    class="h-16 w-16 text-emerald-500 transition-transform group-hover:scale-110"
+                  />
                 </div>
 
                 <!-- Title -->
-                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                <h3 class="mb-3 text-center text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
                   {{ t('landing.howItWorks.step2.title') }}
                 </h3>
 
                 <!-- Description -->
-                <p class="text-center leading-relaxed text-gray-300">
+                <p class="text-center leading-relaxed text-gray-600 dark:text-gray-400">
                   {{ t('landing.howItWorks.step2.description') }}
                 </p>
               </div>
@@ -330,31 +406,23 @@ const handleGetStarted = (): void => {
 
               <!-- Card -->
               <div
-                class="relative flex-1 rounded-2xl border border-gray-700/50 bg-gray-800/50 p-8 py-12 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/50 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-emerald-500/20"
+                class="relative flex-1 rounded-xl border border-gray-200 bg-white p-8 py-12 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
               >
                 <!-- Icon Container -->
                 <div class="mb-6 flex justify-center">
-                  <div
-                    class="relative rounded-2xl bg-gradient-to-br from-emerald-900/40 to-emerald-800/40 p-6 transition-transform group-hover:rotate-3 group-hover:scale-105"
-                  >
-                    <UIcon
-                      name="i-heroicons-clipboard-document-check"
-                      class="h-16 w-16 animate-pulse text-emerald-400"
-                    />
-                    <!-- Decorative glow -->
-                    <div
-                      class="absolute inset-0 -z-10 rounded-2xl bg-emerald-400 opacity-0 blur-xl transition-opacity group-hover:opacity-30"
-                    />
-                  </div>
+                  <UIcon
+                    name="i-heroicons-clipboard-document-check"
+                    class="h-16 w-16 text-emerald-500 transition-transform group-hover:scale-110"
+                  />
                 </div>
 
                 <!-- Title -->
-                <h3 class="mb-3 text-center text-xl font-bold text-white sm:text-2xl">
+                <h3 class="mb-3 text-center text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
                   {{ t('landing.howItWorks.step3.title') }}
                 </h3>
 
                 <!-- Description -->
-                <p class="text-center leading-relaxed text-gray-300">
+                <p class="text-center leading-relaxed text-gray-600 dark:text-gray-400">
                   {{ t('landing.howItWorks.step3.description') }}
                 </p>
 
@@ -387,105 +455,6 @@ const handleGetStarted = (): void => {
                 class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
               />
             </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Email Feature Section -->
-    <section
-      id="email-feature"
-      class="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-16 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 sm:py-24"
-    >
-      <!-- Background decoration -->
-      <div class="absolute inset-0 -z-10">
-        <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-900/30" />
-        <div class="absolute left-0 bottom-0 h-96 w-96 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-900/30" />
-      </div>
-
-      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid items-center gap-12 lg:grid-cols-5 lg:gap-16">
-          <!-- Content Side (60%) -->
-          <div class="text-center lg:col-span-3 lg:text-start">
-            <!-- Headline -->
-            <h2 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
-              {{ t('landing.emailFeature.title') }}
-            </h2>
-
-            <!-- Subtitle -->
-            <p class="mt-2 text-xl font-medium text-emerald-600 dark:text-emerald-400">
-              {{ t('landing.emailFeature.subtitle') }}
-            </p>
-
-            <!-- Description -->
-            <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              {{ t('landing.emailFeature.description') }}
-            </p>
-
-            <!-- Benefits -->
-            <ul class="mt-8 space-y-4">
-              <li class="flex items-center gap-3 justify-center lg:justify-start">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
-                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.grammar') }}</span>
-              </li>
-              <li class="flex items-center gap-3 justify-center lg:justify-start">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
-                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.tone') }}</span>
-              </li>
-              <li class="flex items-center gap-3 justify-center lg:justify-start">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
-                  <UIcon name="i-heroicons-check-circle" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <span class="text-gray-700 dark:text-gray-300">{{ t('landing.emailFeature.benefits.bilingual') }}</span>
-              </li>
-            </ul>
-
-            <!-- CTA Button -->
-            <div class="mt-10">
-              <NuxtLink
-                :to="localePath('/email-checker')"
-                class="cursor-pointer group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/40 active:scale-95"
-              >
-                <UIcon
-                  name="i-heroicons-envelope"
-                  class="relative z-10 h-6 w-6 transition-transform group-hover:rotate-6"
-                />
-                <span class="relative z-10">{{ t('landing.emailFeature.cta') }}</span>
-                <!-- Shine effect -->
-                <div
-                  class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
-                />
-              </NuxtLink>
-            </div>
-          </div>
-
-          <!-- Visual Side (40%) -->
-          <div class="relative flex items-center justify-center lg:col-span-2">
-            <!-- Large Email Icon Container -->
-            <div class="relative">
-              <!-- Outer glow ring -->
-              <div class="absolute inset-0 animate-pulse rounded-full bg-emerald-400/20 blur-2xl" />
-
-              <!-- Icon container -->
-              <div class="relative rounded-3xl border border-emerald-200 bg-gradient-to-br from-white to-emerald-50 p-12 shadow-2xl dark:border-emerald-800 dark:from-gray-800 dark:to-gray-900 sm:p-16">
-                <UIcon
-                  name="i-heroicons-envelope"
-                  class="h-32 w-32 text-emerald-500 dark:text-emerald-400 sm:h-40 sm:w-40"
-                />
-
-                <!-- Decorative elements -->
-                <div class="absolute -right-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
-                  <UIcon name="i-heroicons-sparkles" class="h-6 w-6" />
-                </div>
-                <div class="absolute -bottom-4 -left-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
-                  <UIcon name="i-heroicons-check" class="h-6 w-6" />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
