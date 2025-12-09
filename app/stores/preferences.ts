@@ -9,6 +9,12 @@ import type { Language, ToneOption, OutputFormat } from '~/types/form';
 import { StorageKey, DEFAULT_PREFERENCES } from '~/types/storage';
 
 /**
+ * DARK MODE ONLY CONFIGURATION
+ * Set to false to re-enable theme switching
+ */
+const FORCE_DARK_MODE = true;
+
+/**
  * Preferences state interface
  */
 interface PreferencesState {
@@ -229,6 +235,14 @@ export const usePreferencesStore = defineStore('preferences', {
         return;
       }
 
+      // DARK MODE ONLY: Always apply dark theme
+      // To re-enable theme switching, set FORCE_DARK_MODE to false
+      if (FORCE_DARK_MODE) {
+        document.documentElement.classList.add('dark');
+        return;
+      }
+
+      // Original theme logic (preserved for re-enablement)
       const isDark = this.isDarkMode;
 
       // Add or remove dark class from HTML element

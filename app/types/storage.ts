@@ -98,7 +98,7 @@ export enum StorageKey {
  */
 export const DEFAULT_PREFERENCES: UserPreferences = {
   language: 'en',
-  theme: 'light',
+  theme: 'dark',
   defaultTone: ToneOption.PROFESSIONAL,
   defaultFormat: OutputFormat.PARAGRAPH,
   tooltipsEnabled: true,

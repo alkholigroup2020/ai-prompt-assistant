@@ -50,8 +50,10 @@
           <span class="hidden sm:inline">{{ currentLocale.toUpperCase() }}</span>
         </UButton>
 
-        <!-- Theme Toggle -->
+        <!-- Theme Toggle - HIDDEN: Dark mode only
+             To re-enable: change v-if="false" to v-if="true" -->
         <UButton
+          v-if="false"
           :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
           size="sm"
           color="neutral"
