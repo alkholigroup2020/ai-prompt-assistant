@@ -3,7 +3,8 @@
 ## Base Configuration
 - Base URL: `/api`
 - Content-Type: `application/json`
-- Rate Limiting: 60 requests per minute
+- Rate Limiting: 5 requests per minute per user (via queue system)
+- Queue Processing: ~30 requests per minute globally
 - Timeout: 30 seconds
 
 ## Endpoints

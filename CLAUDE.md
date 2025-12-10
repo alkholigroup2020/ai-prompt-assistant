@@ -578,7 +578,7 @@ All endpoints under `/api/`:
 
   - Accepts: role, audience, task, tone, outputFormat, constraints, examples, context, enhancementLevel, language
   - Returns: enhancedPrompt, qualityScore, improvements, suggestions, alternativeVersions
-  - Rate limit: 60 requests/minute (Gemini free tier)
+  - Rate limit: 5 requests/minute per user (via queue system)
   - Timeout: 30 seconds
 
 - **POST /api/analyze-prompt**: Analyze prompt quality without enhancement
@@ -615,11 +615,10 @@ Current Nuxt modules in use:
 Required for production:
 
 ```env
-GEMINI_API_KEY=                   # Google AI Studio API key
+GROQ_API_KEY=                     # Groq API key (primary provider)
+GEMINI_API_KEY=                   # Google AI Studio API key (fallback)
 NUXT_PUBLIC_GEMINI_MODEL=gemini-pro
 NUXT_PUBLIC_APP_URL=              # Production URL
-RATE_LIMIT_WINDOW=60000           # 60 seconds in ms
-RATE_LIMIT_MAX_REQUESTS=60        # Gemini free tier limit
 ```
 
 Optional:
@@ -650,7 +649,7 @@ ENABLE_EXPORT=true
 ### Security Considerations
 
 - Input sanitization for XSS prevention
-- Rate limiting per session (60 requests/minute)
+- Rate limiting per user (5 requests/minute via queue)
 - No sensitive data storage or logging
 - Request size limits (max 1MB payload)
 - Timeout protection (30s max)
@@ -666,7 +665,7 @@ ENABLE_EXPORT=true
 ## Development Notes
 
 - This is an MVP (Version 1.0) with no user authentication
-- Uses Gemini API free tier with 60 requests/minute limit
+- Uses Groq (primary) + Gemini (fallback) with 5 requests/minute per user limit
 - Client-side processing where possible to minimize server costs
 - Zero operational cost target
 - Target users: Up to 100 Alkholi Group employees

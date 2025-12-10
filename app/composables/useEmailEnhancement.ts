@@ -1,6 +1,6 @@
 import type { EmailEnhanceRequest, EmailEnhanceResponse } from '~/types/email'
 import type { APIError } from '~/types/api'
-import { useRateLimitStore } from '~/stores/rateLimit'
+import { useQueueStore } from '~/stores/queue'
 
 interface EmailEnhancementState {
   loading: boolean
@@ -11,28 +11,21 @@ interface EmailEnhancementState {
 
 /**
  * Composable for managing email enhancement functionality
- * Uses useState to persist state across page navigations
+ * Uses queue-based processing for all requests
  */
 export function useEmailEnhancement() {
+  const queueStore = useQueueStore()
+
   // Use Nuxt's useState for persistent state across page navigations
   const state = useState<EmailEnhancementState>('email-enhancement-state', () => ({
     loading: false,
     error: null,
     result: null,
-    originalEmail: ''
+    originalEmail: '',
   }))
 
   /**
-   * Update rate limit store from response headers
-   */
-  function updateRateLimitFromHeaders(headers: Headers): void {
-    if (!import.meta.client) return
-    const rateLimitStore = useRateLimitStore()
-    rateLimitStore.updateFromHeaders(headers)
-  }
-
-  /**
-   * Enhance an email using the AI API
+   * Enhance an email using the queue
    */
   async function enhance(input: EmailEnhanceRequest): Promise<void> {
     // Reset previous state
@@ -44,75 +37,97 @@ export function useEmailEnhancement() {
     state.value.originalEmail = input.emailDraft
 
     try {
-      // Use $fetch.raw to access response headers for rate limiting
-      const response = await $fetch.raw<EmailEnhanceResponse>('/api/enhance-email', {
-        method: 'POST',
-        body: input
-      })
+      // Submit to queue
+      await queueStore.submitToQueue('email', input)
 
-      // Extract rate limit headers
-      if (response.headers) {
-        updateRateLimitFromHeaders(response.headers)
-      }
+      // Wait for completion by watching the store
+      await waitForCompletion()
 
-      const data = response._data
-
-      if (!data?.success && data?.error) {
-        throw data.error
-      }
-
-      state.value.result = data || null
-    }
-    catch (error) {
-      // Try to extract rate limit headers from error response
-      if (error && typeof error === 'object' && 'response' in error) {
-        const errorResponse = error as { response?: { headers?: Headers } }
-        if (errorResponse.response?.headers) {
-          updateRateLimitFromHeaders(errorResponse.response.headers)
-        }
-      }
-
-      // Check for rate limit error (429 status)
-      if (error && typeof error === 'object' && 'statusCode' in error) {
-        const statusCode = (error as { statusCode?: number }).statusCode
-        if (statusCode === 429) {
-          const rateLimitStore = useRateLimitStore()
-          state.value.error = {
-            code: 'RATE_LIMIT_EXCEEDED',
-            message: `Rate limit reached. Please wait ${rateLimitStore.formattedCountdown || '1 minute'} before trying again.`,
-            retryAfter: rateLimitStore.countdown || 60
+      // Check result
+      if (queueStore.status === 'completed' && queueStore.result) {
+        // Extract the result - queue returns { success, data, provider }
+        const queueResult = queueStore.result as {
+          success?: boolean
+          data?: {
+            enhancedEmail: string
+            suggestedSubject: string
+            improvements: string[]
           }
-          throw state.value.error
+          provider?: string
         }
-      }
 
-      // Handle fetch errors
-      if (error && typeof error === 'object' && 'data' in error) {
-        const fetchError = error as { data?: EmailEnhanceResponse }
-        if (fetchError.data?.error) {
-          state.value.error = fetchError.data.error
-        }
-        else {
-          state.value.error = {
-            code: 'FETCH_ERROR',
-            message: 'Failed to connect to the server. Please try again.'
+        if (queueResult.data) {
+          state.value.result = {
+            success: true,
+            data: {
+              enhancedEmail: queueResult.data.enhancedEmail,
+              suggestedSubject: queueResult.data.suggestedSubject,
+              improvements: queueResult.data.improvements || [],
+              metadata: {
+                originalLength: state.value.originalEmail.length,
+                enhancedLength: queueResult.data.enhancedEmail?.length || 0,
+                processingTime: 0,
+                language: input.outputLanguage,
+                requestId: queueStore.jobId || '',
+                timestamp: new Date(),
+                provider: queueResult.provider as 'groq' | 'gemini' | undefined,
+              },
+            },
           }
         }
+      } else if (queueStore.status === 'failed') {
+        state.value.error = queueStore.error || {
+          code: 'QUEUE_ERROR',
+          message: 'Failed to process request',
+        }
+        throw state.value.error
       }
-      else if (error && typeof error === 'object' && 'code' in error) {
+    } catch (error) {
+      if (!state.value.error) {
         state.value.error = error as APIError
       }
-      else {
-        state.value.error = {
-          code: 'UNKNOWN_ERROR',
-          message: 'An unexpected error occurred. Please try again.'
-        }
-      }
-      throw state.value.error
-    }
-    finally {
+      throw error
+    } finally {
       state.value.loading = false
     }
+  }
+
+  /**
+   * Wait for queue job to complete
+   */
+  function waitForCompletion(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // Check if already complete
+      if (queueStore.status === 'completed' || queueStore.status === 'failed') {
+        if (queueStore.status === 'failed') {
+          reject(queueStore.error)
+        } else {
+          resolve()
+        }
+        return
+      }
+
+      // Watch for status changes
+      const unwatch = watch(
+        () => queueStore.status,
+        (status) => {
+          if (status === 'completed') {
+            unwatch()
+            resolve()
+          } else if (status === 'failed' || status === 'idle') {
+            unwatch()
+            reject(queueStore.error || new Error('Queue processing failed'))
+          }
+        },
+        { immediate: false }
+      )
+
+      // Timeout after 5 minutes
+      setTimeout(() => {
+        unwatch()
+        reject(new Error('Queue timeout'))
+      }, 5 * 60 * 1000)
+    })
   }
 
   /**
@@ -123,6 +138,7 @@ export function useEmailEnhancement() {
     state.value.error = null
     state.value.result = null
     state.value.originalEmail = ''
+    queueStore.reset()
   }
 
   /**
@@ -151,14 +167,14 @@ export function useEmailEnhancement() {
   const metadata = computed(() => state.value.result?.data?.metadata)
 
   /**
-   * Get loading state
+   * Get loading state (includes queue status)
    */
-  const isLoading = computed(() => state.value.loading)
+  const isLoading = computed(() => state.value.loading || queueStore.hasActiveJob)
 
   /**
    * Get error state
    */
-  const error = computed(() => state.value.error)
+  const error = computed(() => state.value.error || queueStore.error)
 
   /**
    * Get original email
@@ -175,6 +191,23 @@ export function useEmailEnhancement() {
     if (originalLength === 0) return 0
     return Math.round(((enhancedLength - originalLength) / originalLength) * 100)
   })
+
+  /**
+   * Get queue position
+   */
+  const queuePosition = computed(() => queueStore.position)
+
+  /**
+   * Get queue status
+   */
+  const queueStatus = computed(() => queueStore.status)
+
+  /**
+   * Check if in queue
+   */
+  const isQueued = computed(
+    () => queueStore.status === 'queued' || queueStore.status === 'processing'
+  )
 
   return {
     // State (expose as readonly ref)
@@ -193,6 +226,12 @@ export function useEmailEnhancement() {
     isLoading,
     error,
     originalEmail,
-    improvementPercentage
+    improvementPercentage,
+
+    // Queue-specific
+    queuePosition,
+    queueStatus,
+    isQueued,
+    queueStore,
   }
 }

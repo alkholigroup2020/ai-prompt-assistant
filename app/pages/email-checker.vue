@@ -221,8 +221,10 @@
                     </div>
                   </div>
                   <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <!-- Queue Status (compact) -->
+                    <QueueStatus v-if="isQueued" compact />
                     <!-- Rate Limit Indicator -->
-                    <RateLimitIndicator compact />
+                    <RateLimitIndicator v-if="!isQueued" compact />
                     <!-- Reset Button -->
                     <UButton
                       type="button"
@@ -244,7 +246,7 @@
                       size="lg"
                       icon="i-heroicons-sparkles"
                       :loading="isLoading"
-                      :disabled="!isFormValid || isLoading || rateLimitStore.isLimitExceeded"
+                      :disabled="!isFormValid || isLoading || isQueued || rateLimitStore.isLimitExceeded"
                       class="flex-1 sm:flex-none cursor-pointer"
                       @click="handleEnhance"
                     >
@@ -425,7 +427,8 @@ const {
   enhancedEmail,
   suggestedSubject,
   isLoading,
-  error
+  error,
+  isQueued
 } = useEmailEnhancement()
 
 // Form validation

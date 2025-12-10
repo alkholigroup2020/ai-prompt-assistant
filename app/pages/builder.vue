@@ -36,9 +36,10 @@
             />
           </div>
 
-          <!-- Rate Limit Indicator -->
+          <!-- Queue Status / Rate Limit Indicator -->
           <div class="flex-shrink-0 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700">
-            <RateLimitIndicator compact />
+            <QueueStatus v-if="isQueued" compact />
+            <RateLimitIndicator v-else compact />
           </div>
 
           <!-- Quality Score Circle (25%) -->
@@ -247,7 +248,7 @@
             block
             class="min-h-[44px] lg:flex-1 cursor-pointer"
             :loading="isEnhancing"
-            :disabled="!formStore.isComplete || !formStore.isValid || isEnhancing || rateLimitStore.isLimitExceeded"
+            :disabled="!formStore.isComplete || !formStore.isValid || isEnhancing || isQueued || rateLimitStore.isLimitExceeded"
             :aria-busy="isEnhancing"
             :aria-label="
               isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
@@ -384,7 +385,7 @@ const localePath = useLocalePath()
 const toast = useToast()
 const formStore = useFormStore()
 const rateLimitStore = useRateLimitStore()
-const { enhance, isLoading: isEnhancing, enhancedPrompt } = useEnhancement()
+const { enhance, isLoading: isEnhancing, enhancedPrompt, isQueued } = useEnhancement()
 const { calculate: calculateQualityScore } = useQualityScore()
 const { saveDraft, loadDraft, clearDraft, startAutoSave, stopAutoSave } = useLocalStorage()
 

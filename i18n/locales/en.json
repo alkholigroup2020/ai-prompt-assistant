@@ -742,6 +742,24 @@
     "waitMessage": "Please wait {time} before making another request",
     "remainingTooltip": "{remaining} of {limit} requests remaining this minute"
   },
+  "queue": {
+    "submitting": "Submitting...",
+    "submittingDesc": "Your request is being submitted to the queue.",
+    "position": "Position #{position} in queue",
+    "positionTitle": "Position #{position} in Queue",
+    "queuedDesc": "Estimated wait time: {wait}",
+    "processing": "Processing...",
+    "processingTitle": "Processing Your Request",
+    "processingDesc": "Your request is being processed by AI.",
+    "cancel": "Cancel",
+    "stats": "{pending} pending, {processing} processing",
+    "error": {
+      "queueFull": "Queue is full. Please try again later.",
+      "clientLimit": "You have too many pending requests. Please wait.",
+      "timeout": "Request timed out. Please try again.",
+      "notFound": "Request not found or has expired."
+    }
+  },
   "emailChecker": {
     "meta": {
       "title": "Email Checker & Enhancer - AI Prompt Assistant",
