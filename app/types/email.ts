@@ -25,6 +25,11 @@ export interface EmailEnhanceRequest {
 }
 
 /**
+ * AI Provider type
+ */
+export type AIProvider = 'groq' | 'gemini'
+
+/**
  * Email metadata
  */
 export interface EmailMetadata {
@@ -34,6 +39,7 @@ export interface EmailMetadata {
   language: string
   requestId?: string
   timestamp?: Date
+  provider?: AIProvider // Which AI provider was used (groq or gemini)
 }
 
 /**

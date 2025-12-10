@@ -286,12 +286,13 @@ function generateAlternativeVersions(
 
 /**
  * Enhance a prompt using Gemini API
+ * Note: Use enhancePrompt from ai-provider.ts for multi-provider support
  */
-export async function enhancePrompt(input: FormInput): Promise<EnhancementData> {
+export async function enhancePromptWithGemini(input: FormInput): Promise<EnhancementData> {
 
   try {
     const client = getGeminiClient();
-    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
+    // Use gemini-2.5-flash - trying different model due to quota issues with 2.0
     const modelName = 'gemini-2.5-flash';
     const model = client.getGenerativeModel({ model: modelName });
 
@@ -501,7 +502,7 @@ export async function analyzePromptQuality(prompt: string): Promise<{
 export async function checkGeminiConnection(): Promise<boolean> {
   try {
     const client = getGeminiClient();
-    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
+    // Use gemini-2.5-flash - trying different model due to quota issues with 2.0
     const modelName = 'gemini-2.5-flash';
     const model = client.getGenerativeModel({ model: modelName });
 

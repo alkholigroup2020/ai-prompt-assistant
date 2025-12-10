@@ -1,15 +1,14 @@
 /**
  * POST /api/enhance-email
- * Endpoint for email enhancement using Gemini AI
+ * Endpoint for email enhancement using AI (Groq primary, Gemini fallback)
  */
 
 import { randomUUID } from 'crypto'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 import type { EmailEnhanceRequest, EmailEnhanceResponse } from '~/types/email'
 import type { APIError } from '~/types/api'
 import { enforceRateLimit } from '../utils/rate-limit'
 import { sanitizeInput } from '../utils/security'
-import { buildEmailEnhancementPrompt, parseEmailResponse } from '../utils/email-prompts'
+import { enhanceEmail } from '../utils/ai-provider'
 
 /**
  * Validation rules for email enhancement
@@ -17,7 +16,7 @@ import { buildEmailEnhancementPrompt, parseEmailResponse } from '../utils/email-
 const EMAIL_VALIDATION_RULES = {
   emailDraft: { min: 10, max: 5000 },
   outputLanguage: ['en', 'ar'],
-  tone: ['professional', 'friendly', 'formal', 'casual']
+  tone: ['professional', 'friendly', 'formal', 'casual'],
 }
 
 /**
@@ -40,8 +39,8 @@ function validateEmailRequest(body: unknown): {
       valid: false,
       error: {
         code: 'PAYLOAD_TOO_LARGE',
-        message: `Request payload too large (max ${MAX_PAYLOAD_SIZE} bytes)`
-      }
+        message: `Request payload too large (max ${MAX_PAYLOAD_SIZE} bytes)`,
+      },
     }
   }
 
@@ -51,8 +50,8 @@ function validateEmailRequest(body: unknown): {
       valid: false,
       error: {
         code: 'INVALID_PAYLOAD',
-        message: 'Request body must be a valid JSON object'
-      }
+        message: 'Request body must be a valid JSON object',
+      },
     }
   }
 
@@ -62,19 +61,18 @@ function validateEmailRequest(body: unknown): {
   // Validate emailDraft (required)
   if (!input.emailDraft || typeof input.emailDraft !== 'string') {
     errors.push({ field: 'emailDraft', message: 'Email draft is required' })
-  }
-  else {
+  } else {
     const length = input.emailDraft.trim().length
     if (length < EMAIL_VALIDATION_RULES.emailDraft.min) {
       errors.push({
         field: 'emailDraft',
-        message: `Email draft must be at least ${EMAIL_VALIDATION_RULES.emailDraft.min} characters`
+        message: `Email draft must be at least ${EMAIL_VALIDATION_RULES.emailDraft.min} characters`,
       })
     }
     if (length > EMAIL_VALIDATION_RULES.emailDraft.max) {
       errors.push({
         field: 'emailDraft',
-        message: `Email draft must not exceed ${EMAIL_VALIDATION_RULES.emailDraft.max} characters`
+        message: `Email draft must not exceed ${EMAIL_VALIDATION_RULES.emailDraft.max} characters`,
       })
     }
 
@@ -87,22 +85,22 @@ function validateEmailRequest(body: unknown): {
   // Validate outputLanguage (required)
   if (!input.outputLanguage || typeof input.outputLanguage !== 'string') {
     errors.push({ field: 'outputLanguage', message: 'Output language is required' })
-  }
-  else if (!EMAIL_VALIDATION_RULES.outputLanguage.includes(input.outputLanguage)) {
+  } else if (!EMAIL_VALIDATION_RULES.outputLanguage.includes(input.outputLanguage)) {
     errors.push({
       field: 'outputLanguage',
-      message: `Output language must be one of: ${EMAIL_VALIDATION_RULES.outputLanguage.join(', ')}`
+      message: `Output language must be one of: ${EMAIL_VALIDATION_RULES.outputLanguage.join(
+        ', '
+      )}`,
     })
   }
 
   // Validate tone (optional)
   if (input.tone && typeof input.tone !== 'string') {
     errors.push({ field: 'tone', message: 'Tone must be a string' })
-  }
-  else if (input.tone && !EMAIL_VALIDATION_RULES.tone.includes(input.tone as string)) {
+  } else if (input.tone && !EMAIL_VALIDATION_RULES.tone.includes(input.tone as string)) {
     errors.push({
       field: 'tone',
-      message: `Tone must be one of: ${EMAIL_VALIDATION_RULES.tone.join(', ')}`
+      message: `Tone must be one of: ${EMAIL_VALIDATION_RULES.tone.join(', ')}`,
     })
   }
 
@@ -113,8 +111,8 @@ function validateEmailRequest(body: unknown): {
       error: {
         code: 'VALIDATION_ERROR',
         message: 'Validation failed',
-        details: { fields: errors }
-      }
+        details: { fields: errors },
+      },
     }
   }
 
@@ -122,54 +120,16 @@ function validateEmailRequest(body: unknown): {
   const sanitized: EmailEnhanceRequest = {
     emailDraft: sanitizeInput(input.emailDraft as string, {
       escapeHtml: false,
-      allowNewlines: true
+      allowNewlines: true,
     }),
     outputLanguage: input.outputLanguage as 'en' | 'ar',
-    tone: input.tone as 'professional' | 'friendly' | 'formal' | 'casual' | undefined
+    tone: input.tone as 'professional' | 'friendly' | 'formal' | 'casual' | undefined,
   }
 
   return {
     valid: true,
-    sanitized
+    sanitized,
   }
-}
-
-/**
- * Retry helper with exponential backoff
- */
-async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  maxRetries = 3,
-  baseDelay = 1000
-): Promise<T> {
-  let lastError: Error
-
-  for (let attempt = 0; attempt < maxRetries; attempt++) {
-    try {
-      return await fn()
-    }
-    catch (error) {
-      lastError = error as Error
-
-      // Don't retry on validation errors or rate limits
-      if (
-        error instanceof Error
-        && (error.message.includes('VALIDATION') || error.message.includes('RATE_LIMIT'))
-      ) {
-        throw error
-      }
-
-      // Calculate delay with exponential backoff
-      const delay = baseDelay * Math.pow(2, attempt)
-
-      // Don't wait on the last attempt
-      if (attempt < maxRetries - 1) {
-        await new Promise(resolve => setTimeout(resolve, delay))
-      }
-    }
-  }
-
-  throw lastError!
 }
 
 /**
@@ -193,60 +153,15 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
       setResponseStatus(event, 400)
       return {
         success: false,
-        error: validation.error
+        error: validation.error,
       }
     }
 
     // Get sanitized input
     const sanitizedInput = validation.sanitized!
 
-    // Initialize Gemini client
-    const config = useRuntimeConfig()
-    const apiKey = config.geminiApiKey
-
-    if (!apiKey) {
-      throw new Error('GEMINI_API_ERROR: API key not configured')
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey)
-    // Use gemini-2.5-flash (gemini-2.0-flash has quota issues)
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
-
-    // Build prompt
-    const prompt = buildEmailEnhancementPrompt(sanitizedInput)
-
-    // Call Gemini API with retry logic
-    let responseText: string
-    try {
-      responseText = await retryWithBackoff(async () => {
-        const response = await model.generateContent(prompt)
-        return response.response.text()
-      })
-    }
-    catch (geminiError) {
-      // Convert Gemini errors to properly tagged errors for consistent handling
-      const errorMessage = geminiError instanceof Error ? geminiError.message : 'Unknown error'
-
-      if (errorMessage.includes('API key') || errorMessage.includes('invalid_api_key') || errorMessage.includes('API_KEY_INVALID')) {
-        throw new Error('GEMINI_API_ERROR: Invalid API key configuration')
-      }
-      if (errorMessage.includes('quota') || errorMessage.includes('429') || errorMessage.includes('RESOURCE_EXHAUSTED')) {
-        throw new Error('GEMINI_API_ERROR: API quota exceeded')
-      }
-      if (errorMessage.includes('not found') || errorMessage.includes('NOT_FOUND')) {
-        throw new Error('GEMINI_API_ERROR: Model not found - check model name')
-      }
-      // Wrap any other Gemini error
-      throw new Error('GEMINI_API_ERROR: Unable to enhance email')
-    }
-
-    // Parse the response
-    const parsed = parseEmailResponse(responseText)
-
-    // Validate required fields
-    if (!parsed.enhancedEmail || !parsed.improvements) {
-      throw new Error('Incomplete response from AI')
-    }
+    // Call AI provider (Groq primary, Gemini fallback)
+    const result = await enhanceEmail(sanitizedInput)
 
     // Calculate processing time
     const processingTime = Date.now() - startTime
@@ -255,33 +170,33 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
     const response: EmailEnhanceResponse = {
       success: true,
       data: {
-        enhancedEmail: parsed.enhancedEmail,
-        suggestedSubject: parsed.suggestedSubject,
-        improvements: Array.isArray(parsed.improvements) ? parsed.improvements : [],
+        enhancedEmail: result.enhancedEmail,
+        suggestedSubject: result.suggestedSubject,
+        improvements: Array.isArray(result.improvements) ? result.improvements : [],
         metadata: {
           originalLength: sanitizedInput.emailDraft.length,
-          enhancedLength: parsed.enhancedEmail.length,
+          enhancedLength: result.enhancedEmail.length,
           processingTime,
           language: sanitizedInput.outputLanguage,
           requestId,
-          timestamp: new Date()
-        }
-      }
+          timestamp: new Date(),
+          provider: result.provider, // Track which provider was used
+        },
+      },
     }
 
     // Set success status
     setResponseStatus(event, 200)
 
     return response
-  }
-  catch (error) {
+  } catch (error) {
     // SECURITY: Log errors securely without sensitive data or stack traces
     const sanitizedError = error instanceof Error ? error.message : 'Unknown error'
     console.error('Email enhancement error:', {
       requestId,
       // Only log error type, never the full error object or stack trace
       errorType: sanitizedError.split(':')[0],
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     })
 
     // Determine error type and status code
@@ -290,17 +205,15 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
     let errorMessage = 'An unexpected error occurred while enhancing your email'
 
     if (error instanceof Error) {
-      if (error.message.includes('GEMINI_API_ERROR')) {
+      if (error.message.includes('GEMINI_API_ERROR') || error.message.includes('GROQ_API_ERROR') || error.message.includes('AI_PROVIDER_ERROR')) {
         statusCode = 502
-        errorCode = 'GEMINI_API_ERROR'
+        errorCode = 'AI_PROVIDER_ERROR'
         errorMessage = 'AI service temporarily unavailable. Please try again.'
-      }
-      else if (error.message.includes('TIMEOUT')) {
+      } else if (error.message.includes('TIMEOUT')) {
         statusCode = 504
         errorCode = 'TIMEOUT'
         errorMessage = 'Request took too long. Please try a shorter email.'
-      }
-      else if (error.message.includes('RATE_LIMIT')) {
+      } else if (error.message.includes('RATE_LIMIT')) {
         statusCode = 429
         errorCode = 'RATE_LIMIT_EXCEEDED'
         errorMessage = 'Too many requests. Please wait before trying again.'
@@ -315,8 +228,8 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
       success: false,
       error: {
         code: errorCode,
-        message: errorMessage
-      }
+        message: errorMessage,
+      },
     }
   }
 })

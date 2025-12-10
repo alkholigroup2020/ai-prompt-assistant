@@ -81,8 +81,9 @@ export default defineNuxtConfig({
 
   // Runtime Configuration
   runtimeConfig: {
-    // Server-only secrets
-    geminiApiKey: process.env.GEMINI_API_KEY,
+    // Server-only secrets - AI Providers
+    groqApiKey: process.env.GROQ_API_KEY, // Primary: 30 RPM free tier
+    geminiApiKey: process.env.GEMINI_API_KEY, // Fallback: 5 RPM free tier
     rateLimitWindow: process.env.RATE_LIMIT_WINDOW || '60000',
     rateLimitMaxRequests: process.env.RATE_LIMIT_MAX_REQUESTS || '60',
 
@@ -191,7 +192,8 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
 
-        // DNS prefetch for Gemini API (for faster API connections)
+        // DNS prefetch for AI APIs (for faster API connections)
+        { rel: 'dns-prefetch', href: 'https://api.groq.com' },
         { rel: 'dns-prefetch', href: 'https://generativelanguage.googleapis.com' },
       ],
 

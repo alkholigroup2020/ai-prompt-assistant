@@ -1,13 +1,13 @@
 /**
  * POST /api/enhance-prompt
- * Main endpoint for prompt enhancement using Gemini AI
+ * Main endpoint for prompt enhancement using AI (Groq primary, Gemini fallback)
  */
 
 import { randomUUID } from 'crypto';
 import type { EnhancementResponse } from '~/types/api';
 import { validateFormInput } from '../utils/validation';
 import { enforceRateLimit } from '../utils/rate-limit';
-import { enhancePrompt } from '../utils/gemini';
+import { enhancePrompt } from '../utils/ai-provider';
 
 export default defineEventHandler(async (event): Promise<EnhancementResponse> => {
   const startTime = Date.now();
@@ -42,8 +42,8 @@ export default defineEventHandler(async (event): Promise<EnhancementResponse> =>
     // Get sanitized input
     const sanitizedInput = validation.sanitized!;
 
-    // Call Gemini API to enhance the prompt
-    const enhancementData = await enhancePrompt(sanitizedInput);
+    // Call AI provider (Groq primary, Gemini fallback)
+    const result = await enhancePrompt(sanitizedInput);
 
     // Calculate processing time
     const processingTime = Date.now() - startTime;
@@ -51,15 +51,16 @@ export default defineEventHandler(async (event): Promise<EnhancementResponse> =>
     // Build successful response
     const response: EnhancementResponse = {
       success: true,
-      data: enhancementData,
+      data: result.data,
       metadata: {
         processingTime,
         enhancementLevel: sanitizedInput.enhancementLevel || 'quick',
         originalLength: sanitizedInput.task?.length || 0,
-        enhancedLength: enhancementData.enhancedPrompt.length,
+        enhancedLength: result.data.enhancedPrompt.length,
         language: sanitizedInput.language || 'en',
         requestId,
-        timestamp: new Date()
+        timestamp: new Date(),
+        provider: result.provider // Track which provider was used
       }
     };
 
@@ -84,9 +85,9 @@ export default defineEventHandler(async (event): Promise<EnhancementResponse> =>
     let errorMessage = 'An unexpected error occurred while enhancing your prompt';
 
     if (error instanceof Error) {
-      if (error.message.includes('GEMINI_API_ERROR')) {
+      if (error.message.includes('GEMINI_API_ERROR') || error.message.includes('GROQ_API_ERROR') || error.message.includes('AI_PROVIDER_ERROR')) {
         statusCode = 502;
-        errorCode = 'GEMINI_API_ERROR';
+        errorCode = 'AI_PROVIDER_ERROR';
         errorMessage = 'AI service temporarily unavailable. Please try again.';
       } else if (error.message.includes('TIMEOUT')) {
         statusCode = 504;

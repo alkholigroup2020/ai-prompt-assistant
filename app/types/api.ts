@@ -29,6 +29,11 @@ export interface AlternativeVersions {
 }
 
 /**
+ * AI Provider type
+ */
+export type AIProvider = 'groq' | 'gemini';
+
+/**
  * API metadata
  */
 export interface APIMetadata {
@@ -39,6 +44,7 @@ export interface APIMetadata {
   language: string;
   requestId?: string;
   timestamp?: Date;
+  provider?: AIProvider;        // Which AI provider was used (groq or gemini)
 }
 
 /**
@@ -110,7 +116,8 @@ export interface HealthResponse {
   version: string;
   timestamp: string;
   services: {
-    gemini: 'connected' | 'disconnected';
+    groq?: 'connected' | 'disconnected';   // Primary AI provider
+    gemini: 'connected' | 'disconnected';  // Fallback AI provider
     database?: 'connected' | 'disconnected';
   };
 }
