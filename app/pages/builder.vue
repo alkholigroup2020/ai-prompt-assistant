@@ -36,6 +36,11 @@
             />
           </div>
 
+          <!-- Rate Limit Indicator -->
+          <div class="flex-shrink-0 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700">
+            <RateLimitIndicator compact />
+          </div>
+
           <!-- Quality Score Circle (25%) -->
           <div
             class="flex-shrink-0 flex items-center gap-3 pl-4 rtl:pl-0 rtl:pr-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700"
@@ -242,7 +247,7 @@
             block
             class="min-h-[44px] lg:flex-1 cursor-pointer"
             :loading="isEnhancing"
-            :disabled="!formStore.isComplete || !formStore.isValid || isEnhancing"
+            :disabled="!formStore.isComplete || !formStore.isValid || isEnhancing || rateLimitStore.isLimitExceeded"
             :aria-busy="isEnhancing"
             :aria-label="
               isEnhancing ? t('builder.actions.enhancing') : t('builder.actions.quickEnhance')
@@ -367,6 +372,7 @@ import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useFormStore } from '~/stores/form'
+import { useRateLimitStore } from '~/stores/rateLimit'
 import { useEnhancement } from '~/composables/useEnhancement'
 import { useQualityScore } from '~/composables/useQualityScore'
 import { useLocalStorage } from '~/composables/useLocalStorage'
@@ -377,6 +383,7 @@ const router = useRouter()
 const localePath = useLocalePath()
 const toast = useToast()
 const formStore = useFormStore()
+const rateLimitStore = useRateLimitStore()
 const { enhance, isLoading: isEnhancing, enhancedPrompt } = useEnhancement()
 const { calculate: calculateQualityScore } = useQualityScore()
 const { saveDraft, loadDraft, clearDraft, startAutoSave, stopAutoSave } = useLocalStorage()

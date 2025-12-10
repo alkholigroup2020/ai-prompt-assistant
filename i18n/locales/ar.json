@@ -734,6 +734,14 @@
       "refresh": "تحديث الصفحة"
     }
   },
+  "rateLimit": {
+    "remaining": "{count} طلبات متبقية",
+    "tooltip": "يتم إعادة تعيين طلبات API كل دقيقة",
+    "resetIn": "إعادة التعيين في {time}",
+    "exceeded": "تم الوصول لحد الطلبات",
+    "waitMessage": "يرجى الانتظار {time} قبل تقديم طلب آخر",
+    "remainingTooltip": "{remaining} من {limit} طلبات متبقية هذه الدقيقة"
+  },
   "emailChecker": {
     "meta": {
       "title": "مدقق ومحسّن البريد الإلكتروني - مساعد الأوامر الذكية",

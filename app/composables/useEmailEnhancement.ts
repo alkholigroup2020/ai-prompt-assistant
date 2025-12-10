@@ -1,5 +1,6 @@
 import type { EmailEnhanceRequest, EmailEnhanceResponse } from '~/types/email'
 import type { APIError } from '~/types/api'
+import { useRateLimitStore } from '~/stores/rateLimit'
 
 interface EmailEnhancementState {
   loading: boolean
@@ -22,6 +23,15 @@ export function useEmailEnhancement() {
   }))
 
   /**
+   * Update rate limit store from response headers
+   */
+  function updateRateLimitFromHeaders(headers: Headers): void {
+    if (!import.meta.client) return
+    const rateLimitStore = useRateLimitStore()
+    rateLimitStore.updateFromHeaders(headers)
+  }
+
+  /**
    * Enhance an email using the AI API
    */
   async function enhance(input: EmailEnhanceRequest): Promise<void> {
@@ -34,18 +44,48 @@ export function useEmailEnhancement() {
     state.value.originalEmail = input.emailDraft
 
     try {
-      const response = await $fetch<EmailEnhanceResponse>('/api/enhance-email', {
+      // Use $fetch.raw to access response headers for rate limiting
+      const response = await $fetch.raw<EmailEnhanceResponse>('/api/enhance-email', {
         method: 'POST',
         body: input
       })
 
-      if (!response.success && response.error) {
-        throw response.error
+      // Extract rate limit headers
+      if (response.headers) {
+        updateRateLimitFromHeaders(response.headers)
       }
 
-      state.value.result = response
+      const data = response._data
+
+      if (!data?.success && data?.error) {
+        throw data.error
+      }
+
+      state.value.result = data || null
     }
     catch (error) {
+      // Try to extract rate limit headers from error response
+      if (error && typeof error === 'object' && 'response' in error) {
+        const errorResponse = error as { response?: { headers?: Headers } }
+        if (errorResponse.response?.headers) {
+          updateRateLimitFromHeaders(errorResponse.response.headers)
+        }
+      }
+
+      // Check for rate limit error (429 status)
+      if (error && typeof error === 'object' && 'statusCode' in error) {
+        const statusCode = (error as { statusCode?: number }).statusCode
+        if (statusCode === 429) {
+          const rateLimitStore = useRateLimitStore()
+          state.value.error = {
+            code: 'RATE_LIMIT_EXCEEDED',
+            message: `Rate limit reached. Please wait ${rateLimitStore.formattedCountdown || '1 minute'} before trying again.`,
+            retryAfter: rateLimitStore.countdown || 60
+          }
+          throw state.value.error
+        }
+      }
+
       // Handle fetch errors
       if (error && typeof error === 'object' && 'data' in error) {
         const fetchError = error as { data?: EmailEnhanceResponse }

@@ -161,9 +161,30 @@
                 </div>
               </div>
 
-              <!-- Error Display -->
+              <!-- Rate Limit Error Display -->
               <div
-                v-if="error"
+                v-if="error && error.code === 'RATE_LIMIT_EXCEEDED'"
+                class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg"
+              >
+                <div class="flex items-start gap-3">
+                  <UIcon
+                    name="i-heroicons-clock"
+                    class="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0"
+                  />
+                  <div>
+                    <p class="text-sm font-medium text-amber-800 dark:text-amber-200">
+                      {{ $t('rateLimit.exceeded') }}
+                    </p>
+                    <p class="mt-1 text-sm text-amber-700 dark:text-amber-300">
+                      {{ $t('rateLimit.waitMessage', { time: rateLimitStore.formattedCountdown || '1:00' }) }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Other Error Display -->
+              <div
+                v-else-if="error"
                 class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg"
               >
                 <div class="flex items-start gap-3">
@@ -199,7 +220,9 @@
                       </p>
                     </div>
                   </div>
-                  <div class="flex gap-3 w-full sm:w-auto">
+                  <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <!-- Rate Limit Indicator -->
+                    <RateLimitIndicator compact />
                     <!-- Reset Button -->
                     <UButton
                       type="button"
@@ -221,7 +244,7 @@
                       size="lg"
                       icon="i-heroicons-sparkles"
                       :loading="isLoading"
-                      :disabled="!isFormValid || isLoading"
+                      :disabled="!isFormValid || isLoading || rateLimitStore.isLimitExceeded"
                       class="flex-1 sm:flex-none cursor-pointer"
                       @click="handleEnhance"
                     >
@@ -351,10 +374,12 @@
 <script setup lang="ts">
 import type { EmailLanguage, EmailTone } from '~/types/email'
 import { copyToClipboard } from '~/utils/export'
+import { useRateLimitStore } from '~/stores/rateLimit'
 
 // SEO
 const { t, locale } = useI18n()
 const toast = useToast()
+const rateLimitStore = useRateLimitStore()
 
 useHead({
   title: () => t('emailChecker.meta.title'),

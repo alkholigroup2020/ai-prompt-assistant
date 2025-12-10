@@ -7,6 +7,7 @@ import type {
   FormInput,
 } from '~/types'
 import { apiCache, CACHE_TIMES } from '~/utils/apiCache'
+import { useRateLimitStore } from '~/stores/rateLimit'
 
 interface FetchOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
@@ -20,6 +21,26 @@ interface FetchOptions {
 interface ApiState {
   loading: boolean
   error: APIError | null
+}
+
+/**
+ * Extract rate limit headers from response and update store
+ */
+function updateRateLimitFromResponse(headers: Headers): void {
+  // Only run on client side
+  if (!import.meta.client) return
+
+  // Debug: Log all headers in development
+  if (import.meta.dev) {
+    console.log('[useApi] Response headers:', {
+      limit: headers.get('x-ratelimit-limit'),
+      remaining: headers.get('x-ratelimit-remaining'),
+      reset: headers.get('x-ratelimit-reset')
+    })
+  }
+
+  const rateLimitStore = useRateLimitStore()
+  rateLimitStore.updateFromHeaders(headers)
 }
 
 /**
@@ -64,7 +85,8 @@ export function useApi() {
         const controller = new AbortController()
         const timeoutId = setTimeout(() => controller.abort(), timeout)
 
-        const response = await $fetch<T>(endpoint, {
+        // Use $fetch.raw to access response headers
+        const response = await $fetch.raw<T>(endpoint, {
           baseURL,
           method,
           body: body as unknown as BodyInit,
@@ -76,14 +98,29 @@ export function useApi() {
 
         clearTimeout(timeoutId)
 
-        // Cache the response if caching is enabled
-        if (cache && cacheKey && response) {
-          apiCache.set(cacheKey, response, cacheTime)
+        // Extract rate limit headers and update store
+        if (response.headers) {
+          updateRateLimitFromResponse(response.headers)
         }
 
-        return response as T
+        const data = response._data as T
+
+        // Cache the response if caching is enabled
+        if (cache && cacheKey && data) {
+          apiCache.set(cacheKey, data, cacheTime)
+        }
+
+        return data
       } catch (error) {
         lastError = error as Error
+
+        // Try to extract rate limit headers from error response
+        if (error && typeof error === 'object' && 'response' in error) {
+          const errorResponse = error as { response?: { headers?: Headers } }
+          if (errorResponse.response?.headers) {
+            updateRateLimitFromResponse(errorResponse.response.headers)
+          }
+        }
 
         // Don't retry on client errors (4xx)
         if (error && typeof error === 'object' && 'statusCode' in error) {

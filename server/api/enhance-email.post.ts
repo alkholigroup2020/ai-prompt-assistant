@@ -204,7 +204,13 @@ export default defineEventHandler(async (event): Promise<EmailEnhanceResponse> =
     let errorCode = 'INTERNAL_ERROR'
     let errorMessage = 'An unexpected error occurred while enhancing your email'
 
-    if (error instanceof Error) {
+    // Check for H3 errors with statusCode (like rate limit errors)
+    const errorObj = error as { statusCode?: number; statusMessage?: string }
+    if (errorObj.statusCode === 429) {
+      statusCode = 429
+      errorCode = 'RATE_LIMIT_EXCEEDED'
+      errorMessage = 'Too many requests. Please wait before trying again.'
+    } else if (error instanceof Error) {
       if (error.message.includes('GEMINI_API_ERROR') || error.message.includes('GROQ_API_ERROR') || error.message.includes('AI_PROVIDER_ERROR')) {
         statusCode = 502
         errorCode = 'AI_PROVIDER_ERROR'

@@ -734,6 +734,14 @@
       "refresh": "Refresh the page"
     }
   },
+  "rateLimit": {
+    "remaining": "{count} requests left",
+    "tooltip": "API requests reset every minute",
+    "resetIn": "Resets in {time}",
+    "exceeded": "Rate Limit Reached",
+    "waitMessage": "Please wait {time} before making another request",
+    "remainingTooltip": "{remaining} of {limit} requests remaining this minute"
+  },
   "emailChecker": {
     "meta": {
       "title": "Email Checker & Enhancer - AI Prompt Assistant",
