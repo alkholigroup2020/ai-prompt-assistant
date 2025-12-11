@@ -824,3 +824,13 @@ a.high-contrast-focus:focus-visible {
   color: #fca5a5; /* red-300: 8.1:1 on gray-900 ✓ */
   border-left-color: #fca5a5;
 }
+
+/* ============================================ */
+/* Toast/Notification Position Below Navbar    */
+/* ============================================ */
+
+/* Offset toasts below the navbar (h-16 = 64px + 16px padding = 80px) */
+/* Target the Nuxt UI toast viewport (ol element with fixed position) */
+ol.fixed.flex.flex-col.z-\[100\] {
+  top: 80px !important;
+}

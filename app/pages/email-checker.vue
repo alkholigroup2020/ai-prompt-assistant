@@ -297,7 +297,7 @@
                 </p>
                 <p
                   class="mt-1 text-amber-900 dark:text-amber-100 font-medium"
-                  :dir="outputDirection"
+                  :style="{ direction: outputDirection, textAlign: outputDirection === 'rtl' ? 'right' : 'left' }"
                 >
                   {{ suggestedSubject }}
                 </p>
@@ -343,7 +343,7 @@
               </div>
               <p
                 class="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed"
-                :dir="outputDirection"
+                :style="{ direction: outputDirection, textAlign: outputDirection === 'rtl' ? 'right' : 'left' }"
               >
                 {{ enhancedEmail }}
               </p>

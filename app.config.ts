@@ -9,6 +9,15 @@ export default defineAppConfig({
       error: 'red',
       neutral: 'slate'
     },
+    // Override toaster position to appear below navbar (top-20 = 80px)
+    toaster: {
+      compoundVariants: [{
+        position: ['top-left', 'top-center', 'top-right'],
+        class: {
+          viewport: 'top-20'
+        }
+      }]
+    },
     // Override badge styles for better contrast (WCAG AA compliance)
     badge: {
       default: {

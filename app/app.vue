@@ -19,10 +19,17 @@ useHead({
     lang: computed(() => locale.value)
   }
 })
+
+// Dynamic toast position based on locale (top-right for EN, top-left for AR)
+// Offset 80px from top to appear below navbar (h-16 = 64px + 16px padding)
+const toasterConfig = computed(() => ({
+  position: (locale.value === 'ar' ? 'top-left' : 'top-right') as 'top-left' | 'top-right',
+  offset: 80
+}))
 </script>
 
 <template>
-  <UApp>
+  <UApp :toaster="toasterConfig">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
