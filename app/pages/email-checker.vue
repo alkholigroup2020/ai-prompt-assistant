@@ -55,7 +55,7 @@
                           'flex items-center justify-center gap-2',
                           inputLanguage === 'en'
                             ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700',
                         ]"
                         :disabled="isLoading"
                         @click="inputLanguage = 'en'"
@@ -72,7 +72,7 @@
                           'flex items-center justify-center gap-2',
                           inputLanguage === 'ar'
                             ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700',
                         ]"
                         :disabled="isLoading"
                         @click="inputLanguage = 'ar'"
@@ -101,7 +101,7 @@
                           'flex items-center justify-center gap-2',
                           outputLanguage === 'en'
                             ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700',
                         ]"
                         :disabled="isLoading"
                         @click="outputLanguage = 'en'"
@@ -118,7 +118,7 @@
                           'flex items-center justify-center gap-2',
                           outputLanguage === 'ar'
                             ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600 z-10'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700',
                         ]"
                         :disabled="isLoading"
                         @click="outputLanguage = 'ar'"
@@ -148,7 +148,7 @@
                           'flex items-center justify-center gap-1.5',
                           selectedTone === tone.value
                             ? 'bg-emerald-700 text-white border-emerald-700 dark:bg-emerald-600 dark:border-emerald-600'
-                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700',
                         ]"
                         :disabled="isLoading"
                         @click="selectedTone = selectedTone === tone.value ? undefined : tone.value"
@@ -176,7 +176,11 @@
                       {{ $t('rateLimit.exceeded') }}
                     </p>
                     <p class="mt-1 text-sm text-amber-700 dark:text-amber-300">
-                      {{ $t('rateLimit.waitMessage', { time: rateLimitStore.formattedCountdown || '1:00' }) }}
+                      {{
+                        $t('rateLimit.waitMessage', {
+                          time: rateLimitStore.formattedCountdown || '1:00',
+                        })
+                      }}
                     </p>
                   </div>
                 </div>
@@ -204,7 +208,9 @@
               </div>
 
               <!-- Action Toolbar -->
-              <div class="mt-2 -mx-6 -mb-6 px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 rounded-b-lg">
+              <div
+                class="mt-2 -mx-6 -mb-6 px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 rounded-b-lg"
+              >
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div class="flex items-center gap-3">
                     <UIcon
@@ -216,7 +222,12 @@
                         {{ $t('emailChecker.actions.ready', 'Ready to Enhance') }}
                       </h3>
                       <p class="text-sm text-gray-600 dark:text-gray-400">
-                        {{ $t('emailChecker.actions.readyDescription', 'Click enhance to improve your email') }}
+                        {{
+                          $t(
+                            'emailChecker.actions.readyDescription',
+                            'Click enhance to improve your email'
+                          )
+                        }}
                       </p>
                     </div>
                   </div>
@@ -232,7 +243,7 @@
                       variant="outline"
                       size="lg"
                       icon="i-heroicons-arrow-path"
-                      class="flex-1 sm:flex-none cursor-pointer"
+                      class="flex-1 sm:flex-none cursor-pointer !text-red-600 dark:!text-red-400 hover:!bg-red-50 dark:hover:!bg-red-950/20 !border-red-300 dark:!border-red-800"
                       :disabled="isLoading || !emailDraft"
                       @click="handleReset"
                     >
@@ -246,11 +257,17 @@
                       size="lg"
                       icon="i-heroicons-sparkles"
                       :loading="isLoading"
-                      :disabled="!isFormValid || isLoading || isQueued || rateLimitStore.isLimitExceeded"
+                      :disabled="
+                        !isFormValid || isLoading || isQueued || rateLimitStore.isLimitExceeded
+                      "
                       class="flex-1 sm:flex-none cursor-pointer"
                       @click="handleEnhance"
                     >
-                      {{ isLoading ? $t('emailChecker.actions.enhancing') : $t('emailChecker.actions.enhance') }}
+                      {{
+                        isLoading
+                          ? $t('emailChecker.actions.enhancing')
+                          : $t('emailChecker.actions.enhance')
+                      }}
                     </UButton>
                   </div>
                 </div>
@@ -278,7 +295,10 @@
                 <p class="text-sm font-medium text-amber-800 dark:text-amber-200">
                   {{ $t('emailChecker.results.suggestedSubject') }}
                 </p>
-                <p class="mt-1 text-amber-900 dark:text-amber-100 font-medium" :dir="outputDirection">
+                <p
+                  class="mt-1 text-amber-900 dark:text-amber-100 font-medium"
+                  :dir="outputDirection"
+                >
                   {{ suggestedSubject }}
                 </p>
               </div>
@@ -321,7 +341,10 @@
                   {{ $t('emailChecker.results.enhanced') }}
                 </h3>
               </div>
-              <p class="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed" :dir="outputDirection">
+              <p
+                class="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed"
+                :dir="outputDirection"
+              >
                 {{ enhancedEmail }}
               </p>
             </div>
@@ -341,7 +364,12 @@
                   {{ $t('results.nextSteps.title') }}
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                  {{ $t('emailChecker.results.nextStepsDescription', 'Enhance another email or copy this one') }}
+                  {{
+                    $t(
+                      'emailChecker.results.nextStepsDescription',
+                      'Enhance another email or copy this one'
+                    )
+                  }}
                 </p>
               </div>
             </div>
@@ -354,7 +382,11 @@
                 class="flex-1 sm:flex-none cursor-pointer"
                 @click="copyEnhanced"
               >
-                {{ enhancedCopied ? $t('emailChecker.actions.copied') : $t('emailChecker.actions.copy') }}
+                {{
+                  enhancedCopied
+                    ? $t('emailChecker.actions.copied')
+                    : $t('emailChecker.actions.copy')
+                }}
               </UButton>
               <UButton
                 color="primary"
@@ -370,6 +402,9 @@
         </UiCard>
       </div>
     </div>
+
+    <!-- Reset Confirmation Modal -->
+    <BuilderResetConfirmModal v-model="showResetModal" @confirm="confirmReset" />
   </div>
 </template>
 
@@ -385,16 +420,14 @@ const rateLimitStore = useRateLimitStore()
 
 useHead({
   title: () => t('emailChecker.meta.title'),
-  meta: [
-    { name: 'description', content: () => t('emailChecker.meta.description') }
-  ]
+  meta: [{ name: 'description', content: () => t('emailChecker.meta.description') }],
 })
 
 useSeoMeta({
   title: () => t('emailChecker.meta.title'),
   description: () => t('emailChecker.meta.description'),
   ogTitle: () => t('emailChecker.meta.title'),
-  ogDescription: () => t('emailChecker.meta.description')
+  ogDescription: () => t('emailChecker.meta.description'),
 })
 
 // Form state
@@ -404,32 +437,43 @@ const outputLanguage = ref<EmailLanguage>(locale.value === 'ar' ? 'ar' : 'en')
 const selectedTone = ref<EmailTone | undefined>('professional')
 
 // Computed direction based on language
-const inputDirection = computed(() => inputLanguage.value === 'ar' ? 'rtl' : 'ltr')
-const outputDirection = computed(() => outputLanguage.value === 'ar' ? 'rtl' : 'ltr')
+const inputDirection = computed(() => (inputLanguage.value === 'ar' ? 'rtl' : 'ltr'))
+const outputDirection = computed(() => (outputLanguage.value === 'ar' ? 'rtl' : 'ltr'))
 
 // Copy states
 const enhancedCopied = ref(false)
 const subjectCopied = ref(false)
 
+// Reset Confirmation Modal
+const showResetModal = ref(false)
+
 // Tone options with icons
 const toneOptions = computed(() => [
-  { value: 'professional' as EmailTone, label: t('emailChecker.tone.options.professional'), icon: 'i-heroicons-briefcase' },
-  { value: 'friendly' as EmailTone, label: t('emailChecker.tone.options.friendly'), icon: 'i-heroicons-face-smile' },
-  { value: 'formal' as EmailTone, label: t('emailChecker.tone.options.formal'), icon: 'i-heroicons-document-text' },
-  { value: 'casual' as EmailTone, label: t('emailChecker.tone.options.casual'), icon: 'i-heroicons-chat-bubble-left-right' }
+  {
+    value: 'professional' as EmailTone,
+    label: t('emailChecker.tone.options.professional'),
+    icon: 'i-heroicons-briefcase',
+  },
+  {
+    value: 'friendly' as EmailTone,
+    label: t('emailChecker.tone.options.friendly'),
+    icon: 'i-heroicons-face-smile',
+  },
+  {
+    value: 'formal' as EmailTone,
+    label: t('emailChecker.tone.options.formal'),
+    icon: 'i-heroicons-document-text',
+  },
+  {
+    value: 'casual' as EmailTone,
+    label: t('emailChecker.tone.options.casual'),
+    icon: 'i-heroicons-chat-bubble-left-right',
+  },
 ])
 
 // Email enhancement composable
-const {
-  enhance,
-  clear,
-  hasResult,
-  enhancedEmail,
-  suggestedSubject,
-  isLoading,
-  error,
-  isQueued
-} = useEmailEnhancement()
+const { enhance, clear, hasResult, enhancedEmail, suggestedSubject, isLoading, error, isQueued } =
+  useEmailEnhancement()
 
 // Form validation
 const isFormValid = computed(() => {
@@ -450,19 +494,29 @@ const handleEnhance = async () => {
     await enhance({
       emailDraft: emailDraft.value.trim(),
       outputLanguage: outputLanguage.value,
-      tone: selectedTone.value
+      tone: selectedTone.value,
     })
-  }
-  catch {
+  } catch {
     // Error is handled by the composable and displayed in UI
   }
 }
 
 // Handle reset
 const handleReset = () => {
+  showResetModal.value = true
+}
+
+const confirmReset = () => {
   emailDraft.value = ''
   selectedTone.value = undefined
   clear()
+
+  toast.add({
+    title: t('builder.actions.resetSuccess'),
+    description: t('builder.actions.resetSuccessDescription'),
+    icon: 'i-heroicons-check-circle',
+    color: 'emerald',
+  })
 }
 
 // Handle new email action
@@ -487,14 +541,13 @@ const copyEnhanced = async () => {
       title: t('emailChecker.results.copySuccess'),
       description: t('emailChecker.results.copySuccessDescription'),
       icon: 'i-heroicons-check-circle',
-      color: 'emerald'
+      color: 'emerald',
     })
 
     setTimeout(() => {
       enhancedCopied.value = false
     }, 2000)
-  }
-  catch (err) {
+  } catch (err) {
     console.error('Failed to copy:', err)
   }
 }
@@ -510,8 +563,7 @@ const copySubject = async () => {
     setTimeout(() => {
       subjectCopied.value = false
     }, 2000)
-  }
-  catch (err) {
+  } catch (err) {
     console.error('Failed to copy subject:', err)
   }
 }

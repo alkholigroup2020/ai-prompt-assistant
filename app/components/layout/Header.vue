@@ -47,7 +47,7 @@
           :aria-label="t('header.switchLanguage')"
           @click="toggleLanguage"
         >
-          <span class="hidden sm:inline">{{ currentLocale.toUpperCase() }}</span>
+          <span class="hidden sm:inline">{{ targetLocale.toUpperCase() }}</span>
         </UButton>
 
         <!-- Theme Toggle - HIDDEN: Dark mode only
@@ -127,6 +127,7 @@ const mobileMenuOpen = ref(false)
 
 // Computed
 const currentLocale = computed(() => locale.value)
+const targetLocale = computed(() => currentLocale.value === 'en' ? 'ar' : 'en')
 const isDark = computed(() => preferencesStore.isDarkMode)
 
 // Navigation items
