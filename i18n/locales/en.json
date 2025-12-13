@@ -233,9 +233,9 @@
           "label": "Project Manager",
           "description": "Project coordinator or scrum master"
         },
-        "researcher": {
-          "label": "Researcher",
-          "description": "Academic or industry researcher"
+        "businessDevelopmentSpecialist": {
+          "label": "Business Development Specialist",
+          "description": "Sales, partnerships, or business growth"
         },
         "other": {
           "label": "Other",

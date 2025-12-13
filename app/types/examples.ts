@@ -16,7 +16,7 @@ export type RoleId =
   | 'business-analyst'
   | 'content-writer'
   | 'project-manager'
-  | 'researcher'
+  | 'business-development-specialist'
 
 /**
  * Valid audience IDs (excludes 'other' which hides examples)

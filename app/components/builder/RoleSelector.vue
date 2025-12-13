@@ -112,9 +112,9 @@ const roleItems = computed<RoleItem[]>(() => [
     icon: 'i-heroicons-user-group',
   },
   {
-    label: t('builder.role.options.researcher.label'),
-    value: 'researcher',
-    icon: 'i-heroicons-magnifying-glass',
+    label: t('builder.role.options.businessDevelopmentSpecialist.label'),
+    value: 'business-development-specialist',
+    icon: 'i-heroicons-rocket-launch',
   },
   {
     label: t('builder.role.options.other.label'),

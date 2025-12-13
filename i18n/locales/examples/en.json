@@ -520,69 +520,69 @@
         "4": "Recognize team achievements and share feedback"
       }
     },
-    "researcher": {
+    "business-development-specialist": {
       "technical-team": {
-        "0": "Document research methodology and experimental design",
-        "1": "Create technical specifications for research tools",
-        "2": "Write code documentation for research algorithms",
-        "3": "Share reproducibility guidelines for experiments",
-        "4": "Coordinate with engineers on research implementation"
+        "0": "Create technical requirements document for the new product integration with partner systems",
+        "1": "Present the product roadmap and upcoming features to potential technology partners",
+        "2": "Coordinate with development team on custom solution requirements for enterprise clients",
+        "3": "Document API integration specifications for third-party partnerships",
+        "4": "Communicate technical capabilities and limitations to prospective clients"
       },
       "executives": {
-        "0": "Present research findings with business implications",
-        "1": "Recommend strategic investments based on research insights",
-        "2": "Report on innovation pipeline and research progress",
-        "3": "Create executive summary of competitive research",
-        "4": "Outline research roadmap aligned with company strategy"
+        "0": "Present quarterly business development results with pipeline analysis and revenue projections",
+        "1": "Propose market expansion strategy for new geographic regions",
+        "2": "Create executive summary of competitive landscape and market opportunities",
+        "3": "Report on strategic partnership progress and revenue impact",
+        "4": "Develop business case for new product line investment"
       },
       "clients": {
-        "0": "Write research report summarizing key findings",
-        "1": "Present market research insights and recommendations",
-        "2": "Create client deliverable documenting research methodology",
-        "3": "Develop presentation of research conclusions",
-        "4": "Answer client questions about research validity"
+        "0": "Write compelling business proposal addressing client's specific needs and challenges",
+        "1": "Create customized presentation showcasing our solutions for their industry",
+        "2": "Develop partnership proposal with mutual benefits and growth opportunities",
+        "3": "Draft follow-up communication after initial meeting with next steps",
+        "4": "Prepare contract terms and pricing proposal for enterprise agreement"
       },
       "general-public": {
-        "0": "Write accessible article explaining research discoveries",
-        "1": "Create educational content about scientific methods",
-        "2": "Explain complex research findings in simple terms",
-        "3": "Share stories about the research process and journey",
-        "4": "Answer common questions about how research is conducted"
+        "0": "Write engaging content about our company's mission and value proposition",
+        "1": "Create thought leadership article on industry trends and innovations",
+        "2": "Develop social media content highlighting company achievements and partnerships",
+        "3": "Write press release announcing new partnership or market expansion",
+        "4": "Answer common questions about our services and how we help businesses grow"
       },
       "students": {
-        "0": "Explain research methodology fundamentals",
-        "1": "Create a guide to conducting literature reviews",
-        "2": "Share tips for academic writing and citations",
-        "3": "Walk through the research process from question to conclusion",
-        "4": "Introduce statistical analysis basics for research"
+        "0": "Explain the role of business development in company growth",
+        "1": "Create a guide to building a career in sales and business development",
+        "2": "Share tips for developing negotiation and presentation skills",
+        "3": "Walk through the process of identifying and qualifying business opportunities",
+        "4": "Introduce key metrics and KPIs used in business development"
       },
       "experts": {
-        "0": "Present detailed research methodology for peer review",
-        "1": "Write technical paper for academic publication",
-        "2": "Discuss advanced statistical methods and limitations",
-        "3": "Analyze competing research and theoretical frameworks",
-        "4": "Share insights on emerging research methodologies"
+        "0": "Analyze emerging market trends and their impact on business development strategies",
+        "1": "Evaluate different partnership models and revenue sharing structures",
+        "2": "Discuss advanced negotiation techniques for complex enterprise deals",
+        "3": "Review best practices for account-based marketing and sales alignment",
+        "4": "Share insights on scaling business development operations globally"
       },
       "beginners": {
-        "0": "Explain what research is and its different types",
-        "1": "Introduce basic research concepts and terminology",
-        "2": "Walk through how to read and understand studies",
-        "3": "Explain the difference between qualitative and quantitative",
-        "4": "Create a guide to evaluating research credibility"
+        "0": "Explain what business development is and how it differs from sales",
+        "1": "Introduce the basics of prospecting and lead generation",
+        "2": "Walk through creating a simple business proposal",
+        "3": "Explain common business development terms and processes",
+        "4": "Create a guide to building professional relationships and networking"
       },
       "stakeholders": {
-        "0": "Present research progress and preliminary findings",
-        "1": "Report on research budget and resource utilization",
-        "2": "Communicate potential applications of research",
-        "3": "Identify research risks and timeline adjustments",
-        "4": "Outline research priorities for the next phase"
+        "0": "Present pipeline status and forecast with key deals and probabilities",
+        "1": "Report on partnership performance and ROI metrics",
+        "2": "Provide competitive analysis and market positioning updates",
+        "3": "Update on strategic initiatives and expansion progress",
+        "4": "Outline resource requirements for upcoming growth initiatives"
       },
       "team-members": {
-        "0": "Share research findings and analysis with the team",
-        "1": "Document experimental procedures for replication",
-        "2": "Coordinate data collection and analysis tasks",
-        "3": "Facilitate knowledge sharing from research insights",
-        "4": "Create research documentation and reference materials"
+        "0": "Share best practices and successful pitch strategies with the team",
+        "1": "Create training materials for new business development representatives",
+        "2": "Document the sales process and CRM usage guidelines",
+        "3": "Coordinate cross-functional collaboration for large deal pursuits",
+        "4": "Facilitate knowledge sharing session on client success stories"
       }
     }
   }
