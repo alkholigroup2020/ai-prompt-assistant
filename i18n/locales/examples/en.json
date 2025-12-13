@@ -1,68 +1,68 @@
 {
   "examples": {
-    "software-engineer": {
+    "hr-specialist": {
       "technical-team": {
-        "0": "Review this code snippet for potential performance issues and suggest optimizations",
-        "1": "Debug this error message and explain the root cause to the team",
-        "2": "Write API documentation for this endpoint including request/response examples",
-        "3": "Refactor this function to improve readability while maintaining functionality",
-        "4": "Create unit tests for this module covering edge cases and error handling"
+        "0": "Write a job description for this technical role with required skills and qualifications",
+        "1": "Create an onboarding checklist for new developers joining the team",
+        "2": "Design a training program for upskilling the team on new technologies",
+        "3": "Document the performance review process and evaluation criteria for tech roles",
+        "4": "Draft communication about upcoming policy changes affecting the technical team"
       },
       "executives": {
-        "0": "Summarize the technical debt situation and its impact on delivery timelines",
-        "1": "Explain the benefits of this architectural change in business terms",
-        "2": "Present the security audit findings with recommended actions and priorities",
-        "3": "Provide a non-technical overview of the system migration plan",
-        "4": "Estimate development resources needed for the Q2 roadmap features"
+        "0": "Present the quarterly workforce analytics report with key HR metrics and trends",
+        "1": "Create a talent acquisition strategy aligned with business growth objectives",
+        "2": "Propose a competitive compensation structure based on market analysis",
+        "3": "Report on employee engagement survey results with recommended action plans",
+        "4": "Develop a succession planning framework for critical leadership positions"
       },
       "clients": {
-        "0": "Write a technical specification document for the proposed feature",
-        "1": "Explain the project timeline and development milestones clearly",
-        "2": "Describe how the new feature will solve their business problem",
-        "3": "Answer common questions about system integration requirements",
-        "4": "Provide a summary of completed deliverables and next steps"
+        "0": "Prepare a proposal for HR consulting services tailored to their needs",
+        "1": "Create a staffing plan to support the client's project requirements",
+        "2": "Design an employee handbook template customized for their organization",
+        "3": "Document the recruitment process and timeline for their open positions",
+        "4": "Provide a summary of HR best practices for their industry sector"
       },
       "general-public": {
-        "0": "Explain how this software feature works in simple terms",
-        "1": "Write a user guide for setting up the mobile application",
-        "2": "Describe our security measures in a way anyone can understand",
-        "3": "Create FAQ answers about common technical issues",
-        "4": "Explain the benefits of our technology without using jargon"
+        "0": "Write about current job market trends and what employers are looking for",
+        "1": "Create tips for writing an effective resume and cover letter",
+        "2": "Explain employee rights and workplace protections in simple terms",
+        "3": "Answer common questions about interview preparation and techniques",
+        "4": "Share insights on building a positive workplace culture"
       },
       "students": {
-        "0": "Explain this programming concept with beginner-friendly examples",
-        "1": "Create a learning path for becoming a software developer",
-        "2": "Break down this algorithm into step-by-step explanations",
-        "3": "Explain the difference between these programming paradigms",
-        "4": "Provide practical coding exercises for learning this framework"
+        "0": "Explain career paths in human resources and how to get started",
+        "1": "Create a guide to preparing for your first professional interview",
+        "2": "Share tips for transitioning from academic life to the workplace",
+        "3": "Explain common HR terminology and concepts for newcomers",
+        "4": "Provide advice on building professional skills and networking"
       },
       "experts": {
-        "0": "Analyze the trade-offs between these architectural patterns",
-        "1": "Review this system design for scalability and reliability concerns",
-        "2": "Evaluate the performance benchmarks and suggest optimizations",
-        "3": "Assess the security vulnerabilities in this codebase",
-        "4": "Compare these technology stacks for our specific use case"
+        "0": "Analyze emerging trends in HR technology and workforce analytics",
+        "1": "Evaluate different approaches to diversity, equity, and inclusion programs",
+        "2": "Discuss advanced compensation strategies and total rewards optimization",
+        "3": "Review global HR compliance requirements and best practices",
+        "4": "Share insights on organizational development and change management"
       },
       "beginners": {
-        "0": "Explain what an API is and how it works in simple terms",
-        "1": "Walk through the basics of version control with Git",
-        "2": "Introduce the fundamentals of web development step by step",
-        "3": "Explain common programming errors and how to fix them",
-        "4": "Create a beginner's guide to reading and understanding code"
+        "0": "Explain what human resources does and why it matters in organizations",
+        "1": "Introduce the basics of recruitment and the hiring process",
+        "2": "Walk through common employee benefits and what they mean",
+        "3": "Explain workplace policies and why they are important",
+        "4": "Create a guide to understanding your employment contract"
       },
       "stakeholders": {
-        "0": "Provide a progress update on the development sprint",
-        "1": "Explain the technical risks that could impact the timeline",
-        "2": "Summarize the key technical decisions and their rationale",
-        "3": "Present the quality metrics and testing coverage report",
-        "4": "Outline the infrastructure costs and scaling requirements"
+        "0": "Present workforce planning updates and hiring progress against targets",
+        "1": "Report on employee turnover rates and retention initiatives",
+        "2": "Provide compensation benchmarking results and budget implications",
+        "3": "Update on HR compliance status and any regulatory changes",
+        "4": "Outline training program outcomes and development investments"
       },
       "team-members": {
-        "0": "Document the onboarding process for new developers",
-        "1": "Write the pull request description explaining these changes",
-        "2": "Create a technical decision record for this architecture choice",
-        "3": "Share best practices for our coding standards",
-        "4": "Prepare discussion points for the code review session"
+        "0": "Communicate updates about benefits enrollment and important deadlines",
+        "1": "Share the employee handbook updates and policy changes",
+        "2": "Create a schedule for upcoming training sessions and workshops",
+        "3": "Draft a team announcement about organizational changes or news",
+        "4": "Write guidelines for the employee recognition and appreciation program"
       }
     },
     "product-manager": {

@@ -194,16 +194,16 @@
       "clearFocus": "Clear Focus"
     },
     "role": {
-      "label": "Your Role",
-      "placeholder": "Select your role...",
-      "otherPlaceholder": "Enter your role (e.g., UX Researcher)",
+      "label": "AI Role",
+      "placeholder": "Select AI role...",
+      "otherPlaceholder": "Enter AI role (e.g., UX Researcher)",
       "otherLabel": "Custom Role",
       "otherHelp": "Enter a custom role that best describes your profession",
       "helpText": "Select the role that best describes your profession or expertise",
       "options": {
-        "softwareEngineer": {
-          "label": "Software Engineer",
-          "description": "Developer, programmer, or coder"
+        "hrSpecialist": {
+          "label": "HR Specialist",
+          "description": "Human resources, recruitment, or talent management"
         },
         "productManager": {
           "label": "Product Manager",

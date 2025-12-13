@@ -72,9 +72,9 @@ const formStore = useFormStore()
 // Role items with icons (for USelectMenu)
 const roleItems = computed<RoleItem[]>(() => [
   {
-    label: t('builder.role.options.softwareEngineer.label'),
-    value: 'software-engineer',
-    icon: 'i-heroicons-code-bracket',
+    label: t('builder.role.options.hrSpecialist.label'),
+    value: 'hr-specialist',
+    icon: 'i-heroicons-users',
   },
   {
     label: t('builder.role.options.productManager.label'),

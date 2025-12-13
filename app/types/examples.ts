@@ -8,7 +8,7 @@
  * Must match values in RoleSelector.vue
  */
 export type RoleId =
-  | 'software-engineer'
+  | 'hr-specialist'
   | 'product-manager'
   | 'data-analyst'
   | 'marketing-specialist'
