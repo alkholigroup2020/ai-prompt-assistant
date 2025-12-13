@@ -72,6 +72,16 @@ const formStore = useFormStore()
 // Role items with icons (for USelectMenu)
 const roleItems = computed<RoleItem[]>(() => [
   {
+    label: t('builder.role.options.other.label'),
+    value: 'other',
+    icon: 'i-heroicons-ellipsis-horizontal-circle',
+  },
+  {
+    label: t('builder.role.options.businessDevelopmentSpecialist.label'),
+    value: 'business-development-specialist',
+    icon: 'i-heroicons-rocket-launch',
+  },
+  {
     label: t('builder.role.options.hrSpecialist.label'),
     value: 'hr-specialist',
     icon: 'i-heroicons-users',
@@ -82,9 +92,9 @@ const roleItems = computed<RoleItem[]>(() => [
     icon: 'i-heroicons-calculator',
   },
   {
-    label: t('builder.role.options.dataAnalyst.label'),
-    value: 'data-analyst',
-    icon: 'i-heroicons-chart-bar',
+    label: t('builder.role.options.procurementSpecialist.label'),
+    value: 'procurement-specialist',
+    icon: 'i-heroicons-shopping-cart',
   },
   {
     label: t('builder.role.options.marketingSpecialist.label'),
@@ -92,9 +102,14 @@ const roleItems = computed<RoleItem[]>(() => [
     icon: 'i-heroicons-megaphone',
   },
   {
-    label: t('builder.role.options.procurementSpecialist.label'),
-    value: 'procurement-specialist',
-    icon: 'i-heroicons-shopping-cart',
+    label: t('builder.role.options.projectManager.label'),
+    value: 'project-manager',
+    icon: 'i-heroicons-user-group',
+  },
+  {
+    label: t('builder.role.options.dataAnalyst.label'),
+    value: 'data-analyst',
+    icon: 'i-heroicons-chart-bar',
   },
   {
     label: t('builder.role.options.businessAnalyst.label'),
@@ -106,21 +121,6 @@ const roleItems = computed<RoleItem[]>(() => [
     value: 'content-writer',
     icon: 'i-heroicons-pencil-square',
   },
-  {
-    label: t('builder.role.options.projectManager.label'),
-    value: 'project-manager',
-    icon: 'i-heroicons-user-group',
-  },
-  {
-    label: t('builder.role.options.businessDevelopmentSpecialist.label'),
-    value: 'business-development-specialist',
-    icon: 'i-heroicons-rocket-launch',
-  },
-  {
-    label: t('builder.role.options.other.label'),
-    value: 'other',
-    icon: 'i-heroicons-ellipsis-horizontal-circle',
-  },
 ])
 
 // Selected role (full object for USelectMenu)
@@ -130,8 +130,12 @@ const otherRoleValue = ref('')
 // Check if "Other" is selected
 const isOtherSelected = computed(() => selectedRole.value?.value === 'other')
 
-// Validation error from store
-const validationError = computed(() => formStore.validationErrors.role)
+// Validation error from store (translated)
+const validationError = computed(() => {
+  const error = formStore.validationErrors.role
+  if (!error) return undefined
+  return t(error.key, error.params || {})
+})
 
 // Check if field is required but empty (for label styling)
 const isFieldEmpty = computed(() => !formStore.formData.role || formStore.formData.role.trim().length === 0)
@@ -163,6 +167,14 @@ watch(
   },
   { immediate: true }
 )
+
+// Sync local otherRoleValue to store whenever it changes
+// This ensures the store is updated regardless of how the value changed
+watch(otherRoleValue, (newValue) => {
+  if (isOtherSelected.value && newValue !== formStore.formData.roleOther) {
+    formStore.updateField('roleOther', newValue)
+  }
+})
 
 // Handle role change
 const handleRoleChange = (value: RoleItem | undefined) => {

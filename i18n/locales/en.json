@@ -146,7 +146,11 @@
       "formatLabel": "Format",
       "constraintsLabel": "Constraints",
       "examplesLabel": "Examples",
-      "contextLabel": "Context"
+      "contextLabel": "Context",
+      "qualityAriaLabel": "Quality score: {score} out of 100, rated as {rating}",
+      "moreDetailsAriaLabel": "View quality score breakdown",
+      "qualityScoreAriaLabel": "Quality score indicator showing {score}",
+      "qualityModalDescription": "Detailed breakdown of your prompt quality score"
     },
     "autoSave": {
       "saved": "Saved",
@@ -173,7 +177,26 @@
     },
     "validation": {
       "error": "Validation Error",
-      "fixErrors": "Please fix the errors in the form before enhancing"
+      "fixErrors": "Please fix the errors in the form before enhancing",
+      "role": {
+        "required": "Role is required",
+        "maxLength": "Role must be less than {max} characters"
+      },
+      "audience": {
+        "required": "Audience is required",
+        "maxLength": "Audience must be less than {max} characters"
+      },
+      "task": {
+        "required": "Task description is required",
+        "minLength": "Task must be at least {min} characters",
+        "maxLength": "Task must be less than {max} characters"
+      },
+      "examples": {
+        "maxLength": "Examples must be less than {max} characters"
+      },
+      "context": {
+        "maxLength": "Context must be less than {max} characters"
+      }
     },
     "enhancement": {
       "success": "Enhancement Complete",

@@ -67,8 +67,10 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useFormStore } from '~/stores/form'
+import { useI18n } from 'vue-i18n'
 import { CHAR_LIMITS } from '~/utils/validators'
 
+const { t } = useI18n()
 const formStore = useFormStore()
 
 // Task value
@@ -95,8 +97,12 @@ const isWithinLimit = computed(
 )
 const isError = computed(() => !!validationError.value)
 
-// Validation error from store
-const validationError = computed(() => formStore.validationErrors.task)
+// Validation error from store (translated)
+const validationError = computed(() => {
+  const error = formStore.validationErrors.task
+  if (!error) return undefined
+  return t(error.key, error.params || {})
+})
 
 // Check if field is required but empty (for label styling)
 const isFieldEmpty = computed(() => !formStore.formData.task || formStore.formData.task.trim().length === 0 || formStore.formData.task.length < CHAR_LIMITS.TASK_MIN)
@@ -114,6 +120,15 @@ watch(
   },
   { immediate: true }
 )
+
+// Sync local taskValue to store whenever it changes
+// This ensures the store is updated regardless of how the value changed
+// (user typing, programmatic change, Playwright fill, etc.)
+watch(taskValue, (newValue) => {
+  if (newValue !== formStore.formData.task) {
+    formStore.updateField('task', newValue)
+  }
+})
 
 // Handle task change
 const handleTaskChange = () => {

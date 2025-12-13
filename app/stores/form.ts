@@ -7,17 +7,25 @@ import { defineStore } from 'pinia';
 import type { FormInput, Language, EnhancementLevel, Constraint } from '~/types/form';
 
 /**
+ * Validation error with i18n key and parameters
+ */
+export interface ValidationError {
+  key: string;
+  params?: Record<string, string | number>;
+}
+
+/**
  * Validation error structure
  */
 export interface ValidationErrors {
-  role?: string;
-  audience?: string;
-  task?: string;
-  tone?: string;
-  outputFormat?: string;
-  constraints?: string;
-  examples?: string;
-  context?: string;
+  role?: ValidationError;
+  audience?: ValidationError;
+  task?: ValidationError;
+  tone?: ValidationError;
+  outputFormat?: ValidationError;
+  constraints?: ValidationError;
+  examples?: ValidationError;
+  context?: ValidationError;
 }
 
 /**
@@ -86,14 +94,21 @@ export const useFormStore = defineStore('form', {
      * Check if form is complete (all required fields filled)
      */
     isComplete(): boolean {
-      return !!(
-        this.formInput.role &&
-        this.formInput.audience &&
-        this.formInput.task &&
-        this.formInput.task.length >= 10 &&
-        this.formInput.tone &&
-        this.formInput.outputFormat
-      );
+      // Check role - if "other" is selected, roleOther must be filled
+      const isRoleComplete = this.formInput.role &&
+        (this.formInput.role !== 'other' || (this.formInput.roleOther && this.formInput.roleOther.trim().length > 0));
+
+      // Check audience - if "other" is selected, audienceOther must be filled
+      const isAudienceComplete = this.formInput.audience &&
+        (this.formInput.audience !== 'other' || (this.formInput.audienceOther && this.formInput.audienceOther.trim().length > 0));
+
+      // Check task has minimum length
+      const isTaskComplete = this.formInput.task && this.formInput.task.length >= 10;
+
+      // Check tone and output format are selected
+      const isStyleComplete = this.formInput.tone && this.formInput.outputFormat;
+
+      return !!(isRoleComplete && isAudienceComplete && isTaskComplete && isStyleComplete);
     },
 
     /**
@@ -114,9 +129,9 @@ export const useFormStore = defineStore('form', {
     },
 
     /**
-     * Get error message for specific field
+     * Get error for specific field
      */
-    getError: (state) => (fieldName: keyof ValidationErrors): string | undefined => {
+    getError: (state) => (fieldName: keyof ValidationErrors): ValidationError | undefined => {
       return state.validationErrors[fieldName];
     },
 
@@ -212,35 +227,35 @@ export const useFormStore = defineStore('form', {
 
       // Validate role
       if (!this.formInput.role || this.formInput.role.trim().length === 0) {
-        errors.role = 'Role is required';
+        errors.role = { key: 'builder.validation.role.required' };
       } else if (this.formInput.role.length > 100) {
-        errors.role = 'Role must be less than 100 characters';
+        errors.role = { key: 'builder.validation.role.maxLength', params: { max: 100 } };
       }
 
       // Validate audience
       if (!this.formInput.audience || this.formInput.audience.trim().length === 0) {
-        errors.audience = 'Audience is required';
+        errors.audience = { key: 'builder.validation.audience.required' };
       } else if (this.formInput.audience.length > 100) {
-        errors.audience = 'Audience must be less than 100 characters';
+        errors.audience = { key: 'builder.validation.audience.maxLength', params: { max: 100 } };
       }
 
       // Validate task
       if (!this.formInput.task || this.formInput.task.trim().length === 0) {
-        errors.task = 'Task description is required';
+        errors.task = { key: 'builder.validation.task.required' };
       } else if (this.formInput.task.length < 10) {
-        errors.task = 'Task must be at least 10 characters';
+        errors.task = { key: 'builder.validation.task.minLength', params: { min: 10 } };
       } else if (this.formInput.task.length > 1000) {
-        errors.task = 'Task must be less than 1000 characters';
+        errors.task = { key: 'builder.validation.task.maxLength', params: { max: 1000 } };
       }
 
       // Validate examples (optional but has limit)
       if (this.formInput.examples && this.formInput.examples.length > 3000) {
-        errors.examples = 'Examples must be less than 3000 characters';
+        errors.examples = { key: 'builder.validation.examples.maxLength', params: { max: 3000 } };
       }
 
       // Validate context (optional but has limit)
       if (this.formInput.context && this.formInput.context.length > 1500) {
-        errors.context = 'Context must be less than 1500 characters';
+        errors.context = { key: 'builder.validation.context.maxLength', params: { max: 1500 } };
       }
 
       this.validationErrors = errors;
@@ -256,39 +271,39 @@ export const useFormStore = defineStore('form', {
       switch (field) {
         case 'role':
           if (!this.formInput.role || this.formInput.role.trim().length === 0) {
-            errors.role = 'Role is required';
+            errors.role = { key: 'builder.validation.role.required' };
           } else if (this.formInput.role.length > 100) {
-            errors.role = 'Role must be less than 100 characters';
+            errors.role = { key: 'builder.validation.role.maxLength', params: { max: 100 } };
           }
           break;
 
         case 'audience':
           if (!this.formInput.audience || this.formInput.audience.trim().length === 0) {
-            errors.audience = 'Audience is required';
+            errors.audience = { key: 'builder.validation.audience.required' };
           } else if (this.formInput.audience.length > 100) {
-            errors.audience = 'Audience must be less than 100 characters';
+            errors.audience = { key: 'builder.validation.audience.maxLength', params: { max: 100 } };
           }
           break;
 
         case 'task':
           if (!this.formInput.task || this.formInput.task.trim().length === 0) {
-            errors.task = 'Task description is required';
+            errors.task = { key: 'builder.validation.task.required' };
           } else if (this.formInput.task.length < 10) {
-            errors.task = 'Task must be at least 10 characters';
+            errors.task = { key: 'builder.validation.task.minLength', params: { min: 10 } };
           } else if (this.formInput.task.length > 1000) {
-            errors.task = 'Task must be less than 1000 characters';
+            errors.task = { key: 'builder.validation.task.maxLength', params: { max: 1000 } };
           }
           break;
 
         case 'examples':
           if (this.formInput.examples && this.formInput.examples.length > 3000) {
-            errors.examples = 'Examples must be less than 3000 characters';
+            errors.examples = { key: 'builder.validation.examples.maxLength', params: { max: 3000 } };
           }
           break;
 
         case 'context':
           if (this.formInput.context && this.formInput.context.length > 1500) {
-            errors.context = 'Context must be less than 1500 characters';
+            errors.context = { key: 'builder.validation.context.maxLength', params: { max: 1500 } };
           }
           break;
       }

@@ -146,7 +146,11 @@
       "formatLabel": "التنسيق",
       "constraintsLabel": "القيود",
       "examplesLabel": "الأمثلة",
-      "contextLabel": "السياق"
+      "contextLabel": "السياق",
+      "qualityAriaLabel": "درجة الجودة: {score} من 100، مصنفة كـ {rating}",
+      "moreDetailsAriaLabel": "عرض تفاصيل درجة الجودة",
+      "qualityScoreAriaLabel": "مؤشر درجة الجودة يظهر {score}",
+      "qualityModalDescription": "تفصيل مفصّل لدرجة جودة أمرك"
     },
     "autoSave": {
       "saved": "تم الحفظ",
@@ -173,7 +177,26 @@
     },
     "validation": {
       "error": "خطأ في التحقق",
-      "fixErrors": "يرجى إصلاح الأخطاء في النموذج قبل التحسين"
+      "fixErrors": "يرجى إصلاح الأخطاء في النموذج قبل التحسين",
+      "role": {
+        "required": "الدور مطلوب",
+        "maxLength": "يجب أن يكون الدور أقل من {max} حرف"
+      },
+      "audience": {
+        "required": "الجمهور مطلوب",
+        "maxLength": "يجب أن يكون الجمهور أقل من {max} حرف"
+      },
+      "task": {
+        "required": "وصف المهمة مطلوب",
+        "minLength": "يجب أن تكون المهمة {min} أحرف على الأقل",
+        "maxLength": "يجب أن تكون المهمة أقل من {max} حرف"
+      },
+      "examples": {
+        "maxLength": "يجب أن تكون الأمثلة أقل من {max} حرف"
+      },
+      "context": {
+        "maxLength": "يجب أن يكون السياق أقل من {max} حرف"
+      }
     },
     "enhancement": {
       "success": "اكتمل التحسين",

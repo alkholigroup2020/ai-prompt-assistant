@@ -72,9 +72,19 @@ const formStore = useFormStore()
 // Audience items with icons (for USelectMenu)
 const audienceItems = computed<AudienceItem[]>(() => [
   {
-    label: t('builder.audience.options.technicalTeam.label'),
-    value: 'technical-team',
-    icon: 'i-heroicons-cpu-chip',
+    label: t('builder.audience.options.other.label'),
+    value: 'other',
+    icon: 'i-heroicons-ellipsis-horizontal-circle',
+  },
+  {
+    label: t('builder.audience.options.clients.label'),
+    value: 'clients',
+    icon: 'i-heroicons-users',
+  },
+  {
+    label: t('builder.audience.options.teamMembers.label'),
+    value: 'team-members',
+    icon: 'i-heroicons-user-group',
   },
   {
     label: t('builder.audience.options.executives.label'),
@@ -82,9 +92,14 @@ const audienceItems = computed<AudienceItem[]>(() => [
     icon: 'i-heroicons-building-office',
   },
   {
-    label: t('builder.audience.options.clients.label'),
-    value: 'clients',
-    icon: 'i-heroicons-users',
+    label: t('builder.audience.options.stakeholders.label'),
+    value: 'stakeholders',
+    icon: 'i-heroicons-briefcase',
+  },
+  {
+    label: t('builder.audience.options.technicalTeam.label'),
+    value: 'technical-team',
+    icon: 'i-heroicons-cpu-chip',
   },
   {
     label: t('builder.audience.options.generalPublic.label'),
@@ -97,29 +112,14 @@ const audienceItems = computed<AudienceItem[]>(() => [
     icon: 'i-heroicons-academic-cap',
   },
   {
-    label: t('builder.audience.options.experts.label'),
-    value: 'experts',
-    icon: 'i-heroicons-star',
-  },
-  {
     label: t('builder.audience.options.beginners.label'),
     value: 'beginners',
     icon: 'i-heroicons-light-bulb',
   },
   {
-    label: t('builder.audience.options.stakeholders.label'),
-    value: 'stakeholders',
-    icon: 'i-heroicons-briefcase',
-  },
-  {
-    label: t('builder.audience.options.teamMembers.label'),
-    value: 'team-members',
-    icon: 'i-heroicons-user-group',
-  },
-  {
-    label: t('builder.audience.options.other.label'),
-    value: 'other',
-    icon: 'i-heroicons-ellipsis-horizontal-circle',
+    label: t('builder.audience.options.experts.label'),
+    value: 'experts',
+    icon: 'i-heroicons-star',
   },
 ])
 
@@ -130,8 +130,12 @@ const otherAudienceValue = ref('')
 // Check if "Other" is selected
 const isOtherSelected = computed(() => selectedAudience.value?.value === 'other')
 
-// Validation error from store
-const validationError = computed(() => formStore.validationErrors.audience)
+// Validation error from store (translated)
+const validationError = computed(() => {
+  const error = formStore.validationErrors.audience
+  if (!error) return undefined
+  return t(error.key, error.params || {})
+})
 
 // Check if field is required but empty (for label styling)
 const isFieldEmpty = computed(() => !formStore.formData.audience || formStore.formData.audience.trim().length === 0)
@@ -163,6 +167,14 @@ watch(
   },
   { immediate: true }
 )
+
+// Sync local otherAudienceValue to store whenever it changes
+// This ensures the store is updated regardless of how the value changed
+watch(otherAudienceValue, (newValue) => {
+  if (isOtherSelected.value && newValue !== formStore.formData.audienceOther) {
+    formStore.updateField('audienceOther', newValue)
+  }
+})
 
 // Handle audience change
 const handleAudienceChange = (value: AudienceItem | undefined) => {

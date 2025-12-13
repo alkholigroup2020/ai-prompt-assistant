@@ -163,9 +163,11 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useFormStore } from '~/stores/form';
+import { useI18n } from 'vue-i18n';
 import { CHAR_LIMITS } from '~/utils/validators';
 import type { EnhancementLevel } from '~/types';
 
+const { t } = useI18n();
 const formStore = useFormStore();
 
 // Enhancement level
@@ -179,9 +181,17 @@ const contextValue = ref('');
 const examplesCount = computed(() => examplesValue.value.length);
 const contextCount = computed(() => contextValue.value.length);
 
-// Validation errors
-const examplesError = computed(() => formStore.validationErrors.examples);
-const contextError = computed(() => formStore.validationErrors.context);
+// Validation errors (translated)
+const examplesError = computed(() => {
+  const error = formStore.validationErrors.examples;
+  if (!error) return undefined;
+  return t(error.key, error.params || {});
+});
+const contextError = computed(() => {
+  const error = formStore.validationErrors.context;
+  if (!error) return undefined;
+  return t(error.key, error.params || {});
+});
 
 // Initialize from store
 watch(() => formStore.formData.enhancementLevel, (newLevel) => {
