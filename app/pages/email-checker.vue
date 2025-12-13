@@ -432,9 +432,18 @@ useSeoMeta({
 
 // Form state
 const emailDraft = ref('')
+// Initialize with 'en' to avoid hydration mismatch, then update based on locale in onMounted
 const inputLanguage = ref<EmailLanguage>('en')
-const outputLanguage = ref<EmailLanguage>(locale.value === 'ar' ? 'ar' : 'en')
+const outputLanguage = ref<EmailLanguage>('en')
 const selectedTone = ref<EmailTone | undefined>('professional')
+
+// Set initial language based on locale after mount to avoid hydration mismatch
+onMounted(() => {
+  if (locale.value === 'ar') {
+    inputLanguage.value = 'ar'
+    outputLanguage.value = 'ar'
+  }
+})
 
 // Computed direction based on language
 const inputDirection = computed(() => (inputLanguage.value === 'ar' ? 'rtl' : 'ltr'))
@@ -508,7 +517,9 @@ const handleReset = () => {
 
 const confirmReset = () => {
   emailDraft.value = ''
-  selectedTone.value = undefined
+  inputLanguage.value = locale.value === 'ar' ? 'ar' : 'en'
+  outputLanguage.value = locale.value === 'ar' ? 'ar' : 'en'
+  selectedTone.value = 'professional'
   clear()
 
   toast.add({
@@ -522,7 +533,9 @@ const confirmReset = () => {
 // Handle new email action
 const handleNewEmail = () => {
   emailDraft.value = ''
-  selectedTone.value = undefined
+  inputLanguage.value = locale.value === 'ar' ? 'ar' : 'en'
+  outputLanguage.value = locale.value === 'ar' ? 'ar' : 'en'
+  selectedTone.value = 'professional'
   clear()
 
   // Scroll to top
@@ -572,6 +585,7 @@ const copySubject = async () => {
 watch(locale, (newLocale) => {
   // Only update if user hasn't manually changed the language
   if (!hasResult.value) {
+    inputLanguage.value = newLocale === 'ar' ? 'ar' : 'en'
     outputLanguage.value = newLocale === 'ar' ? 'ar' : 'en'
   }
 })

@@ -1,5 +1,9 @@
 <template>
-  <UModal v-model:open="isOpen">
+  <UModal
+    v-model:open="isOpen"
+    :title="$t('builder.resetModal.title')"
+    :description="$t('builder.resetModal.message')"
+  >
     <template #content>
       <!-- Gradient Header Background -->
       <div class="relative overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 dark:from-red-950/40 dark:via-orange-950/40 dark:to-amber-950/40">
@@ -31,13 +35,13 @@
             </div>
           </div>
 
-          <!-- Title -->
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+          <!-- Title (visually shown, also provided to UModal for accessibility) -->
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3" aria-hidden="true">
             {{ $t('builder.resetModal.title') }}
           </h3>
 
-          <!-- Message -->
-          <p class="text-base text-gray-700 dark:text-gray-300 max-w-md mx-auto">
+          <!-- Message (visually shown, also provided to UModal for accessibility) -->
+          <p class="text-base text-gray-700 dark:text-gray-300 max-w-md mx-auto" aria-hidden="true">
             {{ $t('builder.resetModal.message') }}
           </p>
         </div>

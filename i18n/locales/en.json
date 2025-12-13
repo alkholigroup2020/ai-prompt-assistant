@@ -840,5 +840,81 @@
     "error": {
       "title": "Enhancement Failed"
     }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Privacy Policy - AI Prompt Assistant",
+      "description": "Learn how AI Prompt Assistant handles your data and protects your privacy."
+    },
+    "title": "Privacy Policy",
+    "backToHome": "Back to Home",
+    "lastUpdated": "Last updated: {date}",
+    "sections": {
+      "intro": {
+        "title": "Introduction",
+        "content": "AI Prompt Assistant is committed to protecting your privacy. This policy explains how we handle information when you use our prompt building and email enhancement services."
+      },
+      "dataCollection": {
+        "title": "Information We Process",
+        "content": "We process minimal data to provide our services:",
+        "items": {
+          "prompts": "Prompts and emails you submit for enhancement (processed in real-time, not stored)",
+          "preferences": "Your language and theme preferences (stored locally in your browser)",
+          "usage": "Basic usage analytics to improve the service (anonymized)"
+        }
+      },
+      "dataUsage": {
+        "title": "How We Use Your Data",
+        "content": "Your prompts and emails are sent to AI providers (Google Gemini) for processing and are not stored on our servers. We do not use your content for training AI models or share it with third parties."
+      },
+      "dataStorage": {
+        "title": "Data Storage",
+        "content": "We use local browser storage to save your preferences, drafts, and recent prompt history. This data stays on your device and is not transmitted to our servers. You can clear this data at any time through your browser settings."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have questions about this privacy policy or how we handle your data, please contact the Alkholi Group IT department."
+      }
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Terms of Use - AI Prompt Assistant",
+      "description": "Terms and conditions for using the AI Prompt Assistant service."
+    },
+    "title": "Terms of Use",
+    "backToHome": "Back to Home",
+    "lastUpdated": "Last updated: {date}",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using AI Prompt Assistant, you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use this service."
+      },
+      "service": {
+        "title": "Service Description",
+        "content": "AI Prompt Assistant is an internal tool for Alkholi Group employees to create effective AI prompts and enhance email communications. The service uses AI technology to improve and optimize your text content."
+      },
+      "responsibilities": {
+        "title": "User Responsibilities",
+        "content": "When using this service, you agree to:",
+        "items": {
+          "appropriate": "Use the service for legitimate business purposes only",
+          "legal": "Not submit any illegal, harmful, or inappropriate content",
+          "respect": "Respect intellectual property rights and confidentiality"
+        }
+      },
+      "ip": {
+        "title": "Intellectual Property",
+        "content": "The content you create using this tool remains your intellectual property. The AI Prompt Assistant service, including its design, features, and functionality, is owned by Alkholi Group."
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "content": "The AI-generated content is provided as suggestions and should be reviewed before use. Alkholi Group is not responsible for any errors, omissions, or consequences arising from the use of AI-generated content."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For questions about these terms, please contact the Alkholi Group IT department."
+      }
+    }
   }
 }
