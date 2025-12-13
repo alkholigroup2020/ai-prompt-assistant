@@ -92,9 +92,9 @@ const roleItems = computed<RoleItem[]>(() => [
     icon: 'i-heroicons-megaphone',
   },
   {
-    label: t('builder.role.options.designer.label'),
-    value: 'designer',
-    icon: 'i-heroicons-paint-brush',
+    label: t('builder.role.options.procurementSpecialist.label'),
+    value: 'procurement-specialist',
+    icon: 'i-heroicons-shopping-cart',
   },
   {
     label: t('builder.role.options.businessAnalyst.label'),

@@ -217,9 +217,9 @@
           "label": "أخصائي تسويق",
           "description": "مسوق رقمي أو استراتيجي تسويق"
         },
-        "designer": {
-          "label": "مصمم",
-          "description": "مصمم واجهات أو مصمم جرافيك"
+        "procurementSpecialist": {
+          "label": "أخصائي مشتريات",
+          "description": "مشتريات أو سلسلة التوريد أو إدارة الموردين"
         },
         "businessAnalyst": {
           "label": "محلل أعمال",

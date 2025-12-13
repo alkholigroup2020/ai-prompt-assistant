@@ -12,7 +12,7 @@ export type RoleId =
   | 'expert-accountant'
   | 'data-analyst'
   | 'marketing-specialist'
-  | 'designer'
+  | 'procurement-specialist'
   | 'business-analyst'
   | 'content-writer'
   | 'project-manager'

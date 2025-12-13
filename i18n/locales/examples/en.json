@@ -260,69 +260,69 @@
         "4": "Organize asset library and creative resources"
       }
     },
-    "designer": {
+    "procurement-specialist": {
       "technical-team": {
-        "0": "Document design specifications and component guidelines",
-        "1": "Create a style guide with colors, typography, and spacing",
-        "2": "Explain responsive design requirements for mobile devices",
-        "3": "Provide interaction design specifications for developers",
-        "4": "Collaborate on design system implementation details"
+        "0": "Document technical specifications for equipment purchase requests",
+        "1": "Create vendor evaluation criteria for software and hardware",
+        "2": "Coordinate with IT on system requirements for new purchases",
+        "3": "Track delivery schedules and installation timelines",
+        "4": "Communicate procurement status updates for technical projects"
       },
       "executives": {
-        "0": "Present the design vision and brand evolution strategy",
-        "1": "Show the design impact on user engagement metrics",
-        "2": "Propose design investment for improving user experience",
-        "3": "Report on competitive design analysis and recommendations",
-        "4": "Demonstrate how design contributes to business goals"
+        "0": "Present the quarterly procurement savings and cost analysis report",
+        "1": "Propose vendor consolidation strategies to reduce costs",
+        "2": "Report on supply chain risks and mitigation measures",
+        "3": "Analyze spend patterns and recommend budget optimizations",
+        "4": "Develop strategic sourcing plans for key categories"
       },
       "clients": {
-        "0": "Present design concepts and gather feedback",
-        "1": "Explain the design rationale and user research insights",
-        "2": "Create mood boards showing design direction options",
-        "3": "Document design deliverables and revision process",
-        "4": "Guide clients through the design approval workflow"
+        "0": "Prepare contract terms and conditions for review",
+        "1": "Negotiate pricing and service level agreements",
+        "2": "Document the procurement timeline and delivery expectations",
+        "3": "Coordinate logistics and shipping arrangements",
+        "4": "Provide status updates on order fulfillment progress"
       },
       "general-public": {
-        "0": "Explain design principles in an accessible way",
-        "1": "Share the story behind our brand visual identity",
-        "2": "Create educational content about good design practices",
-        "3": "Write about design trends and their everyday impact",
-        "4": "Introduce the basics of user-centered design thinking"
+        "0": "Explain how procurement processes work in organizations",
+        "1": "Write about sustainable and ethical sourcing practices",
+        "2": "Share tips for negotiating better deals with suppliers",
+        "3": "Answer common questions about vendor selection",
+        "4": "Describe the importance of supply chain management"
       },
       "students": {
-        "0": "Create a beginner's guide to learning design fundamentals",
-        "1": "Explain color theory and its application in design",
-        "2": "Share resources for building a design portfolio",
-        "3": "Walk through the design process from concept to final",
-        "4": "Introduce UX research methods and their importance"
+        "0": "Explain career paths in procurement and supply chain",
+        "1": "Create a guide to understanding purchasing processes",
+        "2": "Share tips for developing negotiation skills",
+        "3": "Walk through a typical procurement cycle with examples",
+        "4": "Introduce key certifications in supply chain management"
       },
       "experts": {
-        "0": "Discuss advanced interaction design patterns and innovations",
-        "1": "Analyze design system architecture and scalability",
-        "2": "Evaluate accessibility compliance and inclusive design",
-        "3": "Review emerging design tools and workflow optimizations",
-        "4": "Share insights on design operations and team scaling"
+        "0": "Analyze global supply chain trends and their implications",
+        "1": "Evaluate strategic sourcing methodologies and best practices",
+        "2": "Discuss advanced contract negotiation techniques",
+        "3": "Review procurement technology and automation tools",
+        "4": "Share insights on supplier relationship management"
       },
       "beginners": {
-        "0": "Explain what UX and UI design mean in simple terms",
-        "1": "Introduce basic design tools and how to get started",
-        "2": "Walk through creating a simple design layout",
-        "3": "Explain common design mistakes and how to avoid them",
-        "4": "Create a glossary of essential design terminology"
+        "0": "Explain what procurement is and why it matters",
+        "1": "Introduce the basics of vendor selection and evaluation",
+        "2": "Walk through creating a simple purchase request",
+        "3": "Explain common procurement terms and processes",
+        "4": "Create a guide to understanding contracts and agreements"
       },
       "stakeholders": {
-        "0": "Present design progress and upcoming deliverables",
-        "1": "Show user testing results and design recommendations",
-        "2": "Report on design resource needs and timeline",
-        "3": "Demonstrate design impact on key user metrics",
-        "4": "Outline design priorities aligned with business objectives"
+        "0": "Present procurement status and pending approvals",
+        "1": "Report on vendor performance and contract compliance",
+        "2": "Provide cost savings achieved through negotiations",
+        "3": "Update on supply chain issues affecting operations",
+        "4": "Outline upcoming procurement needs and budget requests"
       },
       "team-members": {
-        "0": "Share design decisions and rationale with the team",
-        "1": "Create design review documentation and feedback",
-        "2": "Facilitate design critique sessions effectively",
-        "3": "Document design patterns for team consistency",
-        "4": "Coordinate handoff materials for development"
+        "0": "Share the updated procurement policies and procedures",
+        "1": "Document the approved vendor list and contact information",
+        "2": "Create a schedule for contract renewals and reviews",
+        "3": "Communicate changes to purchasing approval limits",
+        "4": "Coordinate bulk ordering opportunities for cost savings"
       }
     },
     "business-analyst": {

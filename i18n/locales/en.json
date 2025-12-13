@@ -217,9 +217,9 @@
           "label": "Marketing Specialist",
           "description": "Digital marketer or marketing strategist"
         },
-        "designer": {
-          "label": "Designer",
-          "description": "UI/UX designer or graphic designer"
+        "procurementSpecialist": {
+          "label": "Procurement Specialist",
+          "description": "Purchasing, supply chain, or vendor management"
         },
         "businessAnalyst": {
           "label": "Business Analyst",
