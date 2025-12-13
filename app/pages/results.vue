@@ -28,7 +28,7 @@
               class="min-h-[44px] cursor-pointer"
               @click="navigateToBuilder"
             >
-              {{ t('results.noResults.goToBuilder', 'Go to Prompt Builder') }}
+              {{ t('results.noResults.goToBuilder', 'Go to Prompt Enhancer') }}
             </UButton>
           </div>
         </UiCard>

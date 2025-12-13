@@ -5,8 +5,8 @@
   },
   "nav": {
     "home": "Home",
-    "builder": "Prompt Builder",
-    "emailChecker": "Email Checker",
+    "builder": "Prompt Enhancer",
+    "emailChecker": "Email Enhancer",
     "about": "About"
   },
   "header": {
@@ -80,7 +80,7 @@
     },
     "emailFeature": {
       "badge": "New Feature",
-      "title": "Email Checker & Enhancer",
+      "title": "Email Enhancer",
       "subtitle": "Write better emails in seconds",
       "description": "Check grammar, fix spelling, and enhance your emails with AI. Get professional, polished emails ready for any audience.",
       "benefits": {
@@ -88,7 +88,7 @@
         "tone": "Adjust tone for any audience",
         "bilingual": "Works in English & Arabic"
       },
-      "cta": "Try Email Checker"
+      "cta": "Try Email Enhancer"
     },
     "finalCta": {
       "title": "Ready to Create Better AI Prompts?",
@@ -116,11 +116,11 @@
   },
   "builder": {
     "meta": {
-      "title": "Prompt Builder - Create Perfect AI Prompts",
+      "title": "Prompt Enhancer - Create Perfect AI Prompts",
       "description": "Build effective, professional AI prompts with our smart prompt builder. Get real-time quality feedback and suggestions as you create.",
       "keywords": "prompt builder, AI prompts, quality score, prompt enhancement, ChatGPT prompts, Claude prompts"
     },
-    "title": "Prompt Builder",
+    "title": "Prompt Enhancer",
     "subtitle": "Build your perfect AI prompt with real-time quality feedback and smart suggestions",
     "progress": {
       "label": "Completion Progress"
@@ -628,7 +628,7 @@
     "noResults": {
       "title": "No Results Available",
       "description": "You need to enhance a prompt first before viewing results.",
-      "goToBuilder": "Go to Prompt Builder",
+      "goToBuilder": "Go to Prompt Enhancer",
       "redirectTitle": "No Results Found",
       "redirectDescription": "Redirecting to prompt builder..."
     },
@@ -785,10 +785,10 @@
   },
   "emailChecker": {
     "meta": {
-      "title": "Email Checker & Enhancer - AI Prompt Assistant",
+      "title": "Email Enhancer - AI Prompt Assistant",
       "description": "Check grammar, fix spelling, and enhance your emails with AI. Get professional, polished emails in seconds."
     },
-    "title": "Email Checker & Enhancer",
+    "title": "Email Enhancer",
     "subtitle": "Check grammar, fix spelling, and improve your emails instantly with AI",
     "input": {
       "label": "Email Draft",
