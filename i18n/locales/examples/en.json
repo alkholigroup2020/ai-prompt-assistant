@@ -65,69 +65,69 @@
         "4": "Write guidelines for the employee recognition and appreciation program"
       }
     },
-    "product-manager": {
+    "expert-accountant": {
       "technical-team": {
-        "0": "Write user stories with clear acceptance criteria for this feature",
-        "1": "Explain the business context and priorities behind these requirements",
-        "2": "Help prioritize the backlog based on impact and effort",
-        "3": "Create a roadmap timeline aligning technical and business goals",
-        "4": "Define success metrics for measuring feature adoption"
+        "0": "Explain the financial data requirements for the new system integration",
+        "1": "Document the accounting workflow and approval processes",
+        "2": "Review the automated calculations for accuracy and compliance",
+        "3": "Create specifications for the financial reporting module",
+        "4": "Validate the data migration plan for accounting records"
       },
       "executives": {
-        "0": "Present the quarterly product performance and key metrics",
-        "1": "Create an executive summary of the product roadmap",
-        "2": "Outline the strategic vision and market positioning",
-        "3": "Build the business case for this product investment",
-        "4": "Summarize competitive analysis and differentiation strategy"
+        "0": "Present the quarterly financial statements with variance analysis",
+        "1": "Create a cash flow forecast for strategic planning decisions",
+        "2": "Analyze the financial impact of proposed business initiatives",
+        "3": "Report on key financial ratios and performance indicators",
+        "4": "Develop the annual budget proposal with supporting justifications"
       },
       "clients": {
-        "0": "Announce upcoming features and improvements to customers",
-        "1": "Explain the release timeline and what to expect",
-        "2": "Gather and document customer feedback for prioritization",
-        "3": "Write release notes highlighting key changes and benefits",
-        "4": "Respond to customer feature requests with our roadmap plans"
+        "0": "Prepare the year-end financial statements and tax documentation",
+        "1": "Explain the audit findings and recommended corrective actions",
+        "2": "Create a customized financial analysis report for their business",
+        "3": "Document the bookkeeping procedures and chart of accounts",
+        "4": "Provide tax planning recommendations for the upcoming fiscal year"
       },
       "general-public": {
-        "0": "Write a product announcement for our website and social media",
-        "1": "Create a press release about our new product launch",
-        "2": "Explain our product's unique value proposition simply",
-        "3": "Answer common questions about product features and pricing",
-        "4": "Write engaging content about how our product solves problems"
+        "0": "Explain basic personal finance and budgeting concepts simply",
+        "1": "Write about common tax deductions and how to claim them",
+        "2": "Create a guide to understanding your financial statements",
+        "3": "Answer common questions about small business accounting",
+        "4": "Share tips for organizing financial records effectively"
       },
       "students": {
-        "0": "Explain the fundamentals of product management as a career",
-        "1": "Share insights on how to build and validate product ideas",
-        "2": "Describe the product development lifecycle with examples",
-        "3": "Provide tips for breaking into product management",
-        "4": "Explain how to conduct user research effectively"
+        "0": "Explain the fundamentals of accounting and career paths",
+        "1": "Create a study guide for understanding debits and credits",
+        "2": "Walk through the accounting cycle with practical examples",
+        "3": "Introduce key accounting certifications and how to prepare",
+        "4": "Provide tips for building skills in financial analysis"
       },
       "experts": {
-        "0": "Analyze market trends and their implications for our product",
-        "1": "Evaluate different product-market fit assessment frameworks",
-        "2": "Discuss advanced metrics for measuring product success",
-        "3": "Share insights on scaling product teams and processes",
-        "4": "Review industry best practices for product strategy"
+        "0": "Analyze the implications of new accounting standards on reporting",
+        "1": "Evaluate different approaches to revenue recognition scenarios",
+        "2": "Discuss advanced tax planning strategies for complex situations",
+        "3": "Review international accounting standards and compliance",
+        "4": "Share insights on forensic accounting and fraud detection"
       },
       "beginners": {
-        "0": "Explain what a product manager does in simple terms",
-        "1": "Introduce the basics of user experience and product design",
-        "2": "Walk through how products go from idea to launch",
-        "3": "Explain key product metrics and why they matter",
-        "4": "Create a guide to writing effective product requirements"
+        "0": "Explain what accountants do and why accounting matters",
+        "1": "Introduce the basics of bookkeeping and record keeping",
+        "2": "Walk through reading a simple income statement",
+        "3": "Explain common accounting terms and what they mean",
+        "4": "Create a guide to setting up basic business accounts"
       },
       "stakeholders": {
-        "0": "Present the product status update and upcoming priorities",
-        "1": "Outline the product roadmap with key milestones",
-        "2": "Explain budget requirements and expected ROI",
-        "3": "Share customer feedback themes and proposed actions",
-        "4": "Report on feature adoption and user engagement metrics"
+        "0": "Present the monthly financial performance and budget variances",
+        "1": "Report on accounts receivable aging and collection status",
+        "2": "Provide the cost analysis for proposed capital expenditures",
+        "3": "Update on tax compliance status and upcoming deadlines",
+        "4": "Outline the internal controls assessment and recommendations"
       },
       "team-members": {
-        "0": "Create sprint planning documentation with clear priorities",
-        "1": "Document the product requirements for the upcoming release",
-        "2": "Facilitate a retrospective to improve team processes",
-        "3": "Define the feature launch checklist and responsibilities",
-        "4": "Communicate cross-team dependencies and coordination needs"
+        "0": "Document the month-end closing procedures and checklist",
+        "1": "Share the updated accounting policies and guidelines",
+        "2": "Create a schedule for recurring financial reporting deadlines",
+        "3": "Explain the expense approval workflow and limits",
+        "4": "Coordinate the annual audit preparation and documentation"
       }
     },
     "data-analyst": {

@@ -9,7 +9,7 @@
  */
 export type RoleId =
   | 'hr-specialist'
-  | 'product-manager'
+  | 'expert-accountant'
   | 'data-analyst'
   | 'marketing-specialist'
   | 'designer'

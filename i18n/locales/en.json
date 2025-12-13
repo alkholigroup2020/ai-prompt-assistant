@@ -205,9 +205,9 @@
           "label": "HR Specialist",
           "description": "Human resources, recruitment, or talent management"
         },
-        "productManager": {
-          "label": "Product Manager",
-          "description": "Product owner or product strategist"
+        "expertAccountant": {
+          "label": "Expert Accountant",
+          "description": "Financial accounting, auditing, or tax specialist"
         },
         "dataAnalyst": {
           "label": "Data Analyst",

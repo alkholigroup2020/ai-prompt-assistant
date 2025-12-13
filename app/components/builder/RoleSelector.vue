@@ -77,9 +77,9 @@ const roleItems = computed<RoleItem[]>(() => [
     icon: 'i-heroicons-users',
   },
   {
-    label: t('builder.role.options.productManager.label'),
-    value: 'product-manager',
-    icon: 'i-heroicons-clipboard-document-list',
+    label: t('builder.role.options.expertAccountant.label'),
+    value: 'expert-accountant',
+    icon: 'i-heroicons-calculator',
   },
   {
     label: t('builder.role.options.dataAnalyst.label'),
