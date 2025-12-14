@@ -7,6 +7,7 @@
     "home": "Home",
     "builder": "Prompt Enhancer",
     "emailChecker": "Email Enhancer",
+    "userManual": "User Manual",
     "about": "About"
   },
   "header": {
@@ -57,7 +58,7 @@
       },
       "bilingual": {
         "title": "Languages",
-        "description": "Full support for English and Arabic (EN | AR)"
+        "description": "Full support for English and Arabic"
       }
     },
     "howItWorks": {
@@ -915,6 +916,232 @@
         "title": "Contact",
         "content": "For questions about these terms, please contact the Alkholi Group IT department."
       }
+    }
+  },
+  "userManual": {
+    "meta": {
+      "title": "User Manual - AI Prompt Assistant",
+      "description": "Learn how to use the AI Prompt Assistant to create powerful, effective prompts and enhance your emails."
+    },
+    "title": "User Manual",
+    "subtitle": "Learn how to create powerful AI prompts and enhance your emails with our comprehensive guide.",
+    "nav": {
+      "title": "Navigation",
+      "backHome": "Back to Home",
+      "toggleMenu": "Toggle navigation menu",
+      "closeMenu": "Close menu",
+      "gettingStarted": "Getting Started",
+      "whatIs": "What is AI Prompt Assistant?",
+      "quickStart": "Quick Start Guide",
+      "promptBuilder": "Prompt Builder",
+      "builderOverview": "Overview",
+      "roleSelection": "Role Selection",
+      "audienceTask": "Audience & Task",
+      "toneFormat": "Tone & Format",
+      "constraints": "Constraints",
+      "qualityScore": "Quality Score",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "emailEnhancer": "Email Enhancer",
+      "emailOverview": "Overview",
+      "emailWorkflow": "How to Use",
+      "results": "Results & Export",
+      "resultsOverview": "Results Page",
+      "exportOptions": "Export Options",
+      "tips": "Tips & Help",
+      "bestPractices": "Best Practices",
+      "troubleshooting": "Troubleshooting"
+    },
+    "section": {
+      "copyLink": "Copy link to {title}"
+    },
+    "callouts": {
+      "info": "Information",
+      "tip": "Tip",
+      "warning": "Warning",
+      "danger": "Important"
+    },
+    "shortcuts": {
+      "quickEnhance": "Quick Polish",
+      "deepEnhance": "Deep Enhancement",
+      "saveDraft": "Save Draft",
+      "resetForm": "Reset Form",
+      "clearFocus": "Clear Focus"
+    },
+    "whatIs": {
+      "title": "What is AI Prompt Assistant?",
+      "intro": "AI Prompt Assistant is an intelligent web application designed to help Alkholi Group employees create powerful, production-ready prompts for AI tools like ChatGPT, Claude, and Gemini.",
+      "description": "Whether you need to draft a professional email, create a detailed report, or generate creative content, this tool guides you through crafting the perfect prompt to get the best results from any AI assistant.",
+      "aiToolsTitle": "Works with Any AI Tool",
+      "aiToolsContent": "The prompts you create can be used with ChatGPT, Claude, Gemini, Copilot, or any other AI assistant. Simply copy your enhanced prompt and paste it into your preferred AI tool."
+    },
+    "quickStart": {
+      "title": "Quick Start Guide",
+      "intro": "Get started in just 3 simple steps:",
+      "step1": {
+        "title": "Fill Out the Form",
+        "description": "Navigate to the Prompt Enhancer and fill in your role, audience, task description, and preferred tone. The more details you provide, the better your prompt will be."
+      },
+      "step2": {
+        "title": "Enhance Your Prompt",
+        "description": "Click 'Quick Polish' for fast improvements or 'Deep Enhancement' for comprehensive optimization. Watch your quality score improve in real-time."
+      },
+      "step3": {
+        "title": "Copy & Use",
+        "description": "Review your enhanced prompt, copy it with one click, and paste it into ChatGPT, Claude, Gemini, or any AI tool of your choice."
+      },
+      "cta": "Start Building Your Prompt"
+    },
+    "builderOverview": {
+      "title": "Prompt Builder Overview",
+      "intro": "The Prompt Builder is your main workspace for creating effective AI prompts. It features a guided form that helps you structure your requirements clearly.",
+      "screenshotAlt": "Prompt Builder interface showing the form sections",
+      "screenshotCaption": "The Prompt Builder interface with form sections and live preview",
+      "description": "The builder is divided into sections: Basic Information (role, audience, task), Style & Format (tone, output format), Constraints (word limits, special requirements), and Advanced Options (examples, context).",
+      "tipTitle": "Pro Tip",
+      "tipContent": "Fill out all sections for the best results. The more context you provide, the better the AI can understand and enhance your prompt."
+    },
+    "roleSelection": {
+      "title": "Step 1: Select AI Role",
+      "intro": "Choose the role that best describes your profession or the perspective you want the AI to take. This helps frame the response appropriately.",
+      "roles": {
+        "bizDev": "Business Development",
+        "hr": "HR Specialist",
+        "accountant": "Expert Accountant",
+        "procurement": "Procurement Specialist",
+        "marketing": "Marketing Specialist",
+        "projectManager": "Project Manager",
+        "dataAnalyst": "Data Analyst",
+        "businessAnalyst": "Business Analyst",
+        "contentWriter": "Content Writer",
+        "other": "Other (Custom)"
+      },
+      "customTip": "If your role isn't listed, select 'Other' and enter a custom role description. Be specific about your expertise and responsibilities."
+    },
+    "audienceTask": {
+      "title": "Audience & Task Description",
+      "audienceIntro": "Select who will be reading or using the output. This helps the AI adjust the language complexity, tone, and level of detail appropriately.",
+      "taskIntro": "Describe what you want to accomplish in the Task Description field. Be specific and include relevant details. For example, instead of 'write an email', say 'write a follow-up email to a client about a delayed shipment'.",
+      "warningTitle": "Important",
+      "warningContent": "The task description should be between 10 and 1,000 characters. More detailed descriptions lead to better results."
+    },
+    "toneFormat": {
+      "title": "Tone & Output Format",
+      "toneIntro": "Select the tone that matches your communication style and audience expectations:",
+      "tones": {
+        "professional": "Professional",
+        "friendly": "Friendly",
+        "formal": "Formal",
+        "casual": "Casual",
+        "persuasive": "Persuasive",
+        "informative": "Informative",
+        "creative": "Creative",
+        "technical": "Technical",
+        "empathetic": "Empathetic"
+      },
+      "formatIntro": "Choose how you want the AI response structured: paragraph text, bullet points, numbered lists, email format, report structure, and more."
+    },
+    "constraints": {
+      "title": "Constraints & Requirements",
+      "intro": "Add optional constraints to refine the AI output. These help control the length, style, and content of the response.",
+      "wordLimitsTitle": "Word Limits",
+      "noLimit": "No Limit - Let the AI determine appropriate length",
+      "max100": "Max 100 Words - Short and concise",
+      "max300": "Max 300 Words - Moderate length",
+      "max500": "Max 500 Words - Detailed response",
+      "otherTitle": "Other Constraints",
+      "otherDescription": "Select additional requirements like 'Include Citations', 'No Jargon', 'Beginner Friendly', or 'Action-Oriented' to further customize the output."
+    },
+    "qualityScore": {
+      "title": "Understanding Quality Score",
+      "intro": "The Quality Score (0-100) appears in the top-right corner of the builder. It provides real-time feedback on how effective your prompt is likely to be.",
+      "screenshotAlt": "Quality score indicator showing score and rating",
+      "excellent": "Excellent - Your prompt is comprehensive and clear",
+      "veryGood": "Very Good - Minor improvements possible",
+      "good": "Good/Fair - Consider adding more details",
+      "needsWork": "Needs Work - Add more information for better results"
+    },
+    "keyboardShortcuts": {
+      "title": "Keyboard Shortcuts",
+      "intro": "Speed up your workflow with these keyboard shortcuts:"
+    },
+    "emailOverview": {
+      "title": "Email Enhancer",
+      "intro": "The Email Enhancer helps you polish your emails with AI. Fix grammar, improve clarity, and adjust the tone to match your audience.",
+      "screenshotAlt": "Email Enhancer interface",
+      "screenshotCaption": "The Email Enhancer with language and tone controls",
+      "tipTitle": "Translation Support",
+      "tipContent": "You can write in English and get an enhanced email in Arabic, or vice versa. Perfect for bilingual communication."
+    },
+    "emailWorkflow": {
+      "title": "How to Use Email Enhancer",
+      "step1": {
+        "title": "1. Write Your Draft",
+        "description": "Paste or type your email draft in the text area. Don't worry about grammar or formatting - the AI will handle that."
+      },
+      "step2": {
+        "title": "2. Select Languages",
+        "description": "Choose the input language (what you wrote in) and output language (what you want). You can keep them the same or translate between English and Arabic."
+      },
+      "step3": {
+        "title": "3. Choose a Tone",
+        "description": "Select from Professional, Friendly, Formal, or Casual tones. The AI will adjust the language to match your choice."
+      },
+      "step4": {
+        "title": "4. Get Your Enhanced Email",
+        "description": "Click 'Enhance Email' and get your polished result with a suggested subject line. Copy it with one click!"
+      }
+    },
+    "resultsOverview": {
+      "title": "Results Page",
+      "intro": "After enhancing your prompt, you'll see the Results page with a side-by-side comparison of your original and enhanced prompts.",
+      "screenshotAlt": "Results page showing before and after comparison",
+      "screenshotCaption": "The Results page with comparison view and export options",
+      "description": "The page shows your quality score, lists all improvements made, and may include alternative versions if you used Deep Enhancement mode."
+    },
+    "exportOptions": {
+      "title": "Export Options",
+      "intro": "Download your enhanced prompt in three formats:",
+      "txt": {
+        "title": "Plain Text (.txt)",
+        "description": "Simple text file that works anywhere. Great for quick sharing or pasting into documents."
+      },
+      "md": {
+        "title": "Markdown (.md)",
+        "description": "Formatted document with metadata. Ideal for documentation or version control systems."
+      },
+      "json": {
+        "title": "JSON (.json)",
+        "description": "Structured data format with full metadata. Perfect for developers or integration with other tools."
+      }
+    },
+    "bestPractices": {
+      "title": "Best Practices",
+      "intro": "Follow these tips to get the best results from AI Prompt Assistant:",
+      "tip1": "Be specific in your task description. Instead of 'write content', say 'write a 500-word blog post about sustainable business practices'.",
+      "tip2": "Match your tone to your audience. Use 'Professional' for executives, 'Friendly' for team members.",
+      "tip3": "Use constraints wisely. Word limits help keep responses focused; 'No Jargon' ensures clarity.",
+      "tip4": "Add examples in Advanced Options when you have a specific format or style in mind.",
+      "tip5": "Use Deep Enhancement for important prompts - it provides alternative versions and more comprehensive improvements."
+    },
+    "troubleshooting": {
+      "title": "Troubleshooting",
+      "rateLimit": {
+        "title": "Rate Limit Exceeded",
+        "description": "You can make up to 5 enhancement requests per minute. If you see a rate limit message, wait for the timer to reset.",
+        "solution": "The rate limit resets every minute. A countdown timer shows when you can make your next request."
+      },
+      "draftLost": {
+        "title": "Draft Not Saving?",
+        "description": "Drafts are auto-saved every 10 seconds to your browser's local storage. Make sure you're not in private/incognito mode, which may disable local storage."
+      },
+      "enhancementFailed": {
+        "title": "Enhancement Failed",
+        "description": "If enhancement fails, check your internet connection and try again. If the problem persists, refresh the page and re-enter your prompt."
+      }
+    },
+    "footer": {
+      "helpText": "Need more help? Contact the Alkholi Group IT department.",
+      "startButton": "Start Building Prompts"
     }
   }
 }

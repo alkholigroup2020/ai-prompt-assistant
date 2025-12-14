@@ -135,6 +135,7 @@ const navigationItems = [
   { to: '/', label: 'nav.home' },
   { to: '/email-checker', label: 'nav.emailChecker' },
   { to: '/builder', label: 'nav.builder' },
+  { to: '/user-manual', label: 'nav.userManual' },
 ]
 
 // Methods
