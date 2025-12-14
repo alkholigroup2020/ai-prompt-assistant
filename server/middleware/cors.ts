@@ -10,11 +10,18 @@ export default defineEventHandler((event) => {
   // Get allowed origins from config or use default
   const allowedOrigins = [
     config.public.appUrl || 'http://localhost:3000',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:5000',
+    'https://ai.alkholi.com',
+    'https://ai-prompt-assistant.vercel.app'
   ];
 
-  // Check if origin is allowed
-  const isAllowedOrigin = origin && allowedOrigins.includes(origin);
+  // Check if origin is allowed (also allow Vercel preview URLs)
+  const isAllowedOrigin = origin && (
+    allowedOrigins.includes(origin) ||
+    origin.endsWith('.vercel.app') ||
+    origin.endsWith('.alkholi.com')
+  );
 
   // Set CORS headers
   if (isAllowedOrigin) {
