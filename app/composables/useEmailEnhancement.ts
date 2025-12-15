@@ -1,5 +1,6 @@
 import type { EmailEnhanceRequest, EmailEnhanceResponse } from '~/types/email'
 import type { APIError } from '~/types/api'
+import { useRateLimitStore } from '~/stores/rateLimit'
 
 interface EmailEnhancementState {
   loading: boolean
@@ -13,6 +14,9 @@ interface EmailEnhancementState {
  * Uses direct API call for Vercel serverless compatibility
  */
 export function useEmailEnhancement() {
+  // Get rate limit store for tracking API limits
+  const rateLimitStore = useRateLimitStore()
+
   // Use Nuxt's useState for persistent state across page navigations
   const state = useState<EmailEnhancementState>('email-enhancement-state', () => ({
     loading: false,
@@ -34,16 +38,21 @@ export function useEmailEnhancement() {
     state.value.originalEmail = input.emailDraft
 
     try {
-      // Call the direct API endpoint
-      const response = await $fetch<EmailEnhanceResponse>('/api/enhance-email', {
+      // Call the direct API endpoint using $fetch.raw to get headers
+      const rawResponse = await $fetch.raw<EmailEnhanceResponse>('/api/enhance-email', {
         method: 'POST',
         body: input,
       })
 
-      if (response.success && response.data) {
+      // Extract rate limit headers and update store
+      rateLimitStore.updateFromHeaders(rawResponse.headers)
+
+      const response = rawResponse._data
+
+      if (response?.success && response.data) {
         state.value.result = response
       } else {
-        state.value.error = response.error || {
+        state.value.error = response?.error || {
           code: 'ENHANCEMENT_ERROR',
           message: 'Failed to enhance email',
         }
@@ -52,7 +61,13 @@ export function useEmailEnhancement() {
     } catch (error) {
       // Handle fetch errors
       if (!state.value.error) {
-        const fetchError = error as { data?: { error?: APIError }; statusCode?: number }
+        const fetchError = error as { response?: { headers?: Headers }; data?: { error?: APIError }; statusCode?: number }
+
+        // Try to extract rate limit headers from error response
+        if (fetchError.response?.headers) {
+          rateLimitStore.updateFromHeaders(fetchError.response.headers)
+        }
+
         if (fetchError.data?.error) {
           state.value.error = fetchError.data.error
         } else if (fetchError.statusCode === 429) {

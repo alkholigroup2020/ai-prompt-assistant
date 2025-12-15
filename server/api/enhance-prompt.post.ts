@@ -3,7 +3,18 @@
  * Main endpoint for prompt enhancement using AI (Groq primary, Gemini fallback)
  */
 
-import { randomUUID } from 'crypto';
+// Use crypto.randomUUID() which is available in Edge runtime (Web Crypto API)
+const generateRequestId = (): string => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  // Fallback for older environments
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0
+    const v = c === 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
+}
 import type { EnhancementResponse } from '~/types/api';
 import { validateFormInput } from '../utils/validation';
 import { enforceRateLimit } from '../utils/rate-limit';
@@ -11,7 +22,7 @@ import { enhancePrompt } from '../utils/ai-provider';
 
 export default defineEventHandler(async (event): Promise<EnhancementResponse> => {
   const startTime = Date.now();
-  const requestId = randomUUID();
+  const requestId = generateRequestId();
 
   try {
     // Apply rate limiting

@@ -76,8 +76,12 @@ const docsLayout = inject<{ closeMobileNav: () => void }>('docsLayout', {
   closeMobileNav: () => {}
 })
 
-// Track expanded sections - start collapsed by default
-const expandedSections = ref<string[]>([])
+// Track expanded sections - initialize with first section expanded
+const getInitialExpandedSections = (): string[] => {
+  const firstSection = props.sections[0]
+  return firstSection ? [firstSection.id] : []
+}
+const expandedSections = ref<string[]>(getInitialExpandedSections())
 
 // Toggle section expansion
 const toggleSection = (sectionId: string) => {
@@ -104,7 +108,7 @@ watch(() => props.activeSection, (newActive) => {
       expandedSections.value.push(parentSection.id)
     }
   }
-})
+}, { immediate: true })
 </script>
 
 <style scoped>

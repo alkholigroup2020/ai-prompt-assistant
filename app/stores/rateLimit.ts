@@ -174,11 +174,6 @@ export const useRateLimitStore = defineStore('rateLimit', {
       const remaining = getHeader('x-ratelimit-remaining')
       const resetAt = getHeader('x-ratelimit-reset')
 
-      // Debug logging
-      if (import.meta.dev) {
-        console.log('[RateLimit] Headers received:', { limit, remaining, resetAt })
-      }
-
       if (limit !== null) {
         this.limit = parseInt(limit, 10)
       }
@@ -195,12 +190,13 @@ export const useRateLimitStore = defineStore('rateLimit', {
       this.isLoaded = true
 
       // Persist to localStorage
-      saveToStorage(this.$state)
-
-      // Debug logging
-      if (import.meta.dev) {
-        console.log('[RateLimit] Store updated:', { limit: this.limit, remaining: this.remaining, resetAt: this.resetAt })
-      }
+      saveToStorage({
+        limit: this.limit,
+        remaining: this.remaining,
+        resetAt: this.resetAt,
+        isLoaded: this.isLoaded,
+        countdown: this.countdown
+      })
     },
 
     /**
@@ -263,8 +259,15 @@ export const useRateLimitStore = defineStore('rateLimit', {
 
     /**
      * Initialize - load from localStorage if available
+     * Only initializes once per session to prevent re-clearing data on component remount
      */
     initialize(): void {
+      // Skip if already initialized with real data (not just defaults)
+      // This prevents re-initialization when components remount
+      if (this.isLoaded && this.resetAt > 0) {
+        return
+      }
+
       // Try to load from localStorage first
       const stored = loadFromStorage()
 
@@ -276,10 +279,6 @@ export const useRateLimitStore = defineStore('rateLimit', {
           this.updateCountdown()
         }
         this.isLoaded = true
-
-        if (import.meta.dev) {
-          console.log('[RateLimit] Loaded from localStorage:', { limit: this.limit, remaining: this.remaining, resetAt: this.resetAt })
-        }
       } else {
         // Set default values if not loaded
         this.limit = 5

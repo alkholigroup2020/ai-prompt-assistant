@@ -164,6 +164,8 @@ export default defineNuxtConfig({
   routeRules: {
     // Static pages - prerender at build time
     '/': { prerender: true },
+    '/user-manual': { prerender: true },
+    '/ar/user-manual': { prerender: true },
 
     // Builder and results are dynamic, no caching
     '/builder': { ssr: true },
@@ -188,9 +190,16 @@ export default defineNuxtConfig({
 
       // Resource hints for better loading performance
       link: [
+        // Favicon - AKG Logo
+        { rel: 'icon', type: 'image/png', href: 'https://ik.imagekit.io/vrjsolbznpr/Group_Logos/AKG_29UglKTPUw.png?updatedAt=1749017913788' },
+        { rel: 'apple-touch-icon', href: 'https://ik.imagekit.io/vrjsolbznpr/Group_Logos/AKG_29UglKTPUw.png?updatedAt=1749017913788' },
+
         // Preconnect to Google Fonts
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+
+        // Preconnect to ImageKit for favicon and logo
+        { rel: 'preconnect', href: 'https://ik.imagekit.io' },
 
         // DNS prefetch for AI APIs (for faster API connections)
         { rel: 'dns-prefetch', href: 'https://api.groq.com' },

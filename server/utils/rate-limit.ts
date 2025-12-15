@@ -1,6 +1,7 @@
 /**
  * Rate Limiting Utility
- * Implements sliding window rate limiting to prevent API abuse
+ * Implements sliding window rate limiting using signed cookies
+ * Compatible with Vercel Edge runtime (no Node.js crypto required)
  */
 
 import type { H3Event } from 'h3';
@@ -15,86 +16,129 @@ interface RateLimitConfig {
 }
 
 /**
- * Request tracking entry
+ * Cookie data structure for rate limiting
  */
-interface RequestEntry {
-  timestamp: number;
-  count: number;
+interface RateLimitCookieData {
+  /** Array of request timestamps within the current window */
+  timestamps: number[];
+  /** Signature to prevent tampering */
+  signature: string;
+}
+
+const COOKIE_NAME = 'rl_data';
+const COOKIE_MAX_AGE = 3600; // 1 hour in seconds
+
+/**
+ * Get the signing secret from runtime config or use a default
+ */
+function getSigningSecret(): string {
+  try {
+    const config = useRuntimeConfig();
+    return (config.rateLimitSecret as string) || 'ai-prompt-assistant-rate-limit-secret-key-2024';
+  } catch {
+    return 'ai-prompt-assistant-rate-limit-secret-key-2024';
+  }
 }
 
 /**
- * In-memory store for request tracking
- * In production, this should be replaced with Redis or similar
+ * Simple hash function that works in Edge runtime (no Node.js crypto needed)
+ * Uses djb2 algorithm - fast and good distribution for strings
  */
-const requestStore = new Map<string, RequestEntry[]>();
+function simpleHash(str: string): string {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) + hash) ^ str.charCodeAt(i);
+  }
+  // Convert to hex and ensure positive
+  return (hash >>> 0).toString(16).padStart(8, '0');
+}
 
 /**
- * Cleanup old entries periodically (every 5 minutes)
+ * Create signature for data using simple hash with secret
  */
-let cleanupInterval: NodeJS.Timeout;
+function createSignature(data: string): string {
+  const secret = getSigningSecret();
+  // Combine data with secret and hash multiple times for better security
+  const combined = secret + data + secret;
+  const hash1 = simpleHash(combined);
+  const hash2 = simpleHash(hash1 + combined);
+  return hash1 + hash2;
+}
 
-function startCleanup() {
-  if (cleanupInterval) {
-    return;
+/**
+ * Verify signature
+ */
+function verifySignature(data: string, signature: string): boolean {
+  const expectedSignature = createSignature(data);
+  return expectedSignature === signature;
+}
+
+/**
+ * Parse and validate rate limit cookie
+ */
+function parseCookie(cookieValue: string | undefined): number[] {
+  if (!cookieValue) {
+    return [];
   }
 
-  cleanupInterval = setInterval(() => {
-    const now = Date.now();
-    const maxAge = 60 * 60 * 1000; // 1 hour
+  try {
+    const decoded = Buffer.from(cookieValue, 'base64').toString('utf-8');
+    const data: RateLimitCookieData = JSON.parse(decoded);
 
-    for (const [key, entries] of requestStore.entries()) {
-      const validEntries = entries.filter(entry => now - entry.timestamp < maxAge);
-
-      if (validEntries.length === 0) {
-        requestStore.delete(key);
-      } else {
-        requestStore.set(key, validEntries);
-      }
+    // Verify signature
+    const timestampsStr = JSON.stringify(data.timestamps);
+    if (!verifySignature(timestampsStr, data.signature)) {
+      console.warn('[RateLimit] Invalid cookie signature, resetting');
+      return [];
     }
-  }, 5 * 60 * 1000); // Run every 5 minutes
 
-  // Prevent the interval from keeping the process alive
-  if (cleanupInterval.unref) {
-    cleanupInterval.unref();
+    // Validate timestamps array
+    if (!Array.isArray(data.timestamps)) {
+      return [];
+    }
+
+    return data.timestamps.filter(t => typeof t === 'number' && t > 0);
+  } catch {
+    return [];
   }
 }
 
-// Start cleanup on module load
-startCleanup();
-
 /**
- * Get client identifier from request
+ * Serialize rate limit data to signed cookie value
  */
-function getClientId(event: H3Event): string {
-  // Try to get session ID from headers or cookies
-  const sessionId = getHeader(event, 'x-session-id');
-  if (sessionId) {
-    return `session:${sessionId}`;
-  }
+function serializeCookie(timestamps: number[]): string {
+  const timestampsStr = JSON.stringify(timestamps);
+  const signature = createSignature(timestampsStr);
 
-  // Fallback to IP address
-  const forwardedFor = getHeader(event, 'x-forwarded-for');
-  const ip = forwardedFor
-    ? forwardedFor.split(',')[0]?.trim() || 'unknown'
-    : event.node.req.socket.remoteAddress || 'unknown';
+  const data: RateLimitCookieData = {
+    timestamps,
+    signature
+  };
 
-  return `ip:${ip}`;
+  return Buffer.from(JSON.stringify(data)).toString('base64');
 }
 
 /**
  * Get default rate limit configuration
  */
 function getDefaultConfig(): RateLimitConfig {
-  const config = useRuntimeConfig();
-
-  return {
-    windowMs: parseInt(config.rateLimitWindow as string) || 60000, // 1 minute
-    maxRequests: parseInt(config.rateLimitMaxRequests as string) || 60
-  };
+  try {
+    const config = useRuntimeConfig();
+    return {
+      windowMs: parseInt(config.rateLimitWindow as string) || 600000, // 10 minutes
+      maxRequests: parseInt(config.rateLimitMaxRequests as string) || 5
+    };
+  } catch {
+    return {
+      windowMs: 600000,
+      maxRequests: 5
+    };
+  }
 }
 
 /**
  * Check if request is within rate limit
+ * Uses signed cookies for serverless compatibility
  */
 export function checkRateLimit(
   event: H3Event,
@@ -107,43 +151,57 @@ export function checkRateLimit(
   retryAfter?: number;
 } {
   const fullConfig = { ...getDefaultConfig(), ...config };
-  const clientId = getClientId(event);
   const now = Date.now();
   const windowStart = now - fullConfig.windowMs;
 
-  // Get or initialize request history
-  let requests = requestStore.get(clientId) || [];
+  // Get existing timestamps from cookie
+  const cookieValue = getCookie(event, COOKIE_NAME);
+  let timestamps = parseCookie(cookieValue);
 
-  // Remove requests outside the current window
-  requests = requests.filter(entry => entry.timestamp > windowStart);
+  // Remove timestamps outside the current window
+  timestamps = timestamps.filter(t => t > windowStart);
 
-  // Calculate total requests in the current window
-  const totalRequests = requests.reduce((sum, entry) => sum + entry.count, 0);
+  // Count requests in the current window
+  const totalRequests = timestamps.length;
 
   // Check if limit is exceeded
   const allowed = totalRequests < fullConfig.maxRequests;
-  const remaining = Math.max(0, fullConfig.maxRequests - totalRequests);
 
-  // Calculate reset time (end of current window)
-  const resetAt = new Date(now + fullConfig.windowMs);
+  // Calculate reset time based on oldest request in window
+  let resetAt: Date;
+  if (timestamps.length > 0) {
+    const oldestTimestamp = Math.min(...timestamps);
+    resetAt = new Date(oldestTimestamp + fullConfig.windowMs);
+  } else {
+    resetAt = new Date(now + fullConfig.windowMs);
+  }
 
   // If allowed, add this request to the tracking
   if (allowed) {
-    requests.push({
-      timestamp: now,
-      count: 1
-    });
-    requestStore.set(clientId, requests);
+    timestamps.push(now);
   }
+
+  // Update the cookie with new timestamps
+  const newCookieValue = serializeCookie(timestamps);
+  setCookie(event, COOKIE_NAME, newCookieValue, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: COOKIE_MAX_AGE,
+    path: '/'
+  });
+
+  // Calculate remaining AFTER counting the current request
+  const remaining = allowed
+    ? Math.max(0, fullConfig.maxRequests - totalRequests - 1)
+    : 0;
 
   // Calculate retry after (seconds until oldest request expires)
   let retryAfter: number | undefined;
-  if (!allowed && requests.length > 0) {
-    const oldestRequest = requests[0];
-    if (oldestRequest) {
-      const timeUntilExpiry = (oldestRequest.timestamp + fullConfig.windowMs) - now;
-      retryAfter = Math.ceil(timeUntilExpiry / 1000);
-    }
+  if (!allowed && timestamps.length > 0) {
+    const oldestTimestamp = Math.min(...timestamps);
+    const timeUntilExpiry = (oldestTimestamp + fullConfig.windowMs) - now;
+    retryAfter = Math.ceil(timeUntilExpiry / 1000);
   }
 
   return {
@@ -202,11 +260,10 @@ export function enforceRateLimit(
 
   // If rate limit exceeded, log and throw error
   if (!result.allowed) {
-    const clientId = getClientId(event);
     const path = event.path || 'unknown';
 
     // Log rate limit violation (sanitized - no sensitive data)
-    console.warn(`[RATE_LIMIT_EXCEEDED] Client: ${clientId.split(':')[0]}:*** | Path: ${path} | Limit: ${result.limit} | Retry After: ${result.retryAfter}s`);
+    console.warn(`[RATE_LIMIT_EXCEEDED] Path: ${path} | Limit: ${result.limit} | Retry After: ${result.retryAfter}s`);
 
     const error = createRateLimitError(
       result.limit,
@@ -227,28 +284,28 @@ export function enforceRateLimit(
 }
 
 /**
- * Clear rate limit for a specific client (for testing)
+ * Clear rate limit for current client (for testing)
  */
 export function clearRateLimit(event: H3Event): void {
-  const clientId = getClientId(event);
-  requestStore.delete(clientId);
+  deleteCookie(event, COOKIE_NAME);
 }
 
 /**
  * Get current rate limit status (for debugging)
  */
 export function getRateLimitStatus(event: H3Event): {
-  clientId: string;
   requestCount: number;
-  requests: RequestEntry[];
+  timestamps: number[];
 } {
-  const clientId = getClientId(event);
-  const requests = requestStore.get(clientId) || [];
-  const requestCount = requests.reduce((sum, entry) => sum + entry.count, 0);
+  const cookieValue = getCookie(event, COOKIE_NAME);
+  const timestamps = parseCookie(cookieValue);
+
+  const fullConfig = getDefaultConfig();
+  const windowStart = Date.now() - fullConfig.windowMs;
+  const validTimestamps = timestamps.filter(t => t > windowStart);
 
   return {
-    clientId,
-    requestCount,
-    requests
+    requestCount: validTimestamps.length,
+    timestamps: validTimestamps
   };
 }

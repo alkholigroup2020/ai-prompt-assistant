@@ -90,9 +90,7 @@
                   {{ t('results.nextSteps.title', "What's Next?") }}
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                  {{
-                    t('results.nextSteps.description', 'Create another prompt or save this one')
-                  }}
+                  {{ t('results.nextSteps.description', 'Create another prompt or save this one') }}
                 </p>
               </div>
             </div>
@@ -148,8 +146,8 @@
               </div>
 
               <UButton
-                color="neutral"
-                variant="outline"
+                color="primary"
+                variant="solid"
                 size="lg"
                 icon="i-heroicons-plus-circle"
                 class="flex-1 sm:flex-none cursor-pointer"
