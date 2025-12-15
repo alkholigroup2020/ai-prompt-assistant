@@ -16,7 +16,7 @@ useSeoMeta({
   description: () => t('userManual.meta.description'),
 })
 
-// Navigation sections for sidebar
+// Navigation sections for sidebar - computed to work with SSR
 const navSections = computed(() => [
   {
     id: 'getting-started',

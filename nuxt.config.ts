@@ -6,9 +6,9 @@ export default defineNuxtConfig({
   // SSR Configuration
   ssr: true,
 
-  // Deployment preset for Vercel Edge
+  // Deployment preset for Vercel Serverless (Node.js)
   nitro: {
-    preset: 'vercel-edge',
+    preset: 'vercel',
   },
 
   // Dev server configuration
@@ -164,8 +164,8 @@ export default defineNuxtConfig({
   routeRules: {
     // Static pages - prerender at build time
     '/': { prerender: true },
-    '/user-manual': { prerender: true },
-    '/ar/user-manual': { prerender: true },
+    '/user-manual': { ssr: true }, // Changed from prerender for i18n
+    '/ar/user-manual': { ssr: true }, // Changed from prerender for i18n
 
     // Builder and results are dynamic, no caching
     '/builder': { ssr: true },
